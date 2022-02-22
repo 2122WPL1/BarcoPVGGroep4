@@ -12,10 +12,9 @@
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
-Constants.cs
 
 #Barco connectie
-BarcoPVG/Dao/SQLConnection.cs
+BarcoPVG/Dao/Constants.cs
 
 # Mono auto generated files
 mono_crash.*
