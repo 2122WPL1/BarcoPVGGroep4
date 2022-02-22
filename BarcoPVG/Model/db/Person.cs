@@ -9,4 +9,11 @@ namespace BarcoPVG.Model.db
         public string? Voornaam { get; set; }
         public string? Familienaam { get; set; }
     }
+
+    public partial class CopyOfPerson
+    {
+        public string Afkorting { get; set; } = null!;
+        public string? Voornaam { get; set; }
+        public string? Familienaam { get; set; }
+    }
 }
