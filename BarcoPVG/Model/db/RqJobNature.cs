@@ -7,4 +7,14 @@ namespace BarcoPVG.Model.db
     {
         public string Nature { get; set; } = null!;
     }
+
+    public partial class CopyOfRqJobNature
+    {
+        public string Nature { get; set; } = null!;
+    }
+
+    public partial class CopyOfCopyOfRqJobNature
+    {
+        public string Nature { get; set; } = null!;
+    }
 }

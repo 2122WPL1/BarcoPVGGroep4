@@ -12,7 +12,9 @@
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
-Constants.cs
+
+#Barco connectie
+BarcoPVG/Dao/Constants.cs
 
 # Mono auto generated files
 mono_crash.*
@@ -33,9 +35,6 @@ bld/
 [Oo]ut/
 [Ll]og/
 [Ll]ogs/
-
-#Barco connectie
-BarcoPVG/Dao/SQLConnection.cs
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
