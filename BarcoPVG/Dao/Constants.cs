@@ -3,7 +3,7 @@
     internal class SQLConnection
     {
         //hier komt je connectiestring
-        internal static string CONNECTION_STRING
+        internal static string CONNECTION_STRING;
         
     }
 }
