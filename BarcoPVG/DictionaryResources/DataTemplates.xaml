@@ -4,7 +4,7 @@
     <!-- DataTemplate to display EUT's in listboxes/listviews - Kaat-->
     <DataTemplate x:Key="EUT">
 
-        <ListBoxItem BorderBrush="red" Width="180"  BorderThickness="2"  Background="LightGray" Foreground="Black">
+        <ListBoxItem BorderBrush="#FFF10000" Width="180"  BorderThickness="2"  Background="LightGray" Foreground="Black">
             <Grid  >
 
                 <Grid.RowDefinitions>
