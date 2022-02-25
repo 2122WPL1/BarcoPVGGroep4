@@ -60,8 +60,6 @@ namespace BarcoPVG.Viewmodels
             TesterReturnCommand = new DelegateCommand(TesterReturn);
 
             SetWindowProperties();
-
-
         }
 
         // Getters/Setters
