@@ -53,7 +53,7 @@
                 <TextBox Grid.Row="7" Grid.Column="1"  Text="{Binding JR.GrossWeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                 <Label Content="" Grid.Row="9"/>
-
+          
                 <Label Content="Link to testplan (optional):" Grid.Row="10"/>
                 <TextBox Text="{Binding JR.Link,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                              Grid.Column="1" Grid.Row="10" />

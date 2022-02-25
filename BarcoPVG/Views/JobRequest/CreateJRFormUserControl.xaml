@@ -4,122 +4,116 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BarcoPVG.Views"
-             mc:Ignorable="d" 
-             d:DesignHeight="800" d:DesignWidth="600" d:Background="LightGray">
-    <StackPanel Margin="10" >
-        <GroupBox Header="Project Details">
-            <Grid>
+             mc:Ignorable="d" d:DesignWidth="1516.225" d:Background="LightGray" Height="496">
+    <StackPanel Margin="10" Orientation="Horizontal" >
+        <GroupBox Header="Project Details" Width="686">
+            <Grid HorizontalAlignment="Center" Margin="0,0,0,84" Width="660">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="139*"/>
+                    <ColumnDefinition Width="148*"/>
                     <ColumnDefinition Width="10"/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
+                    <ColumnDefinition Width="148*"/>
+                    <ColumnDefinition Width="148*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-
+                    <RowDefinition Height="26*"/>
+                    <RowDefinition Height="26*"/>
+                    <RowDefinition Height="26*"/>
+                    <RowDefinition Height="26*"/>
+                    <RowDefinition Height="26*"/>
+                    <RowDefinition Height="26*"/>
+                    <RowDefinition Height="26*"/>
+                    <RowDefinition Height="26*"/>
+                    <RowDefinition Height="26*"/>
+                    <RowDefinition Height="26*"/>
+                    <RowDefinition Height="29*"/>
+                    <RowDefinition Height="23*"/>
+                    <RowDefinition Height="26*"/>
                 </Grid.RowDefinitions>
-                <Label HorizontalAlignment="Right" Content="Requester initials:"/>
-                <TextBox Text="{Binding JR.Requester, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1"/>
-                <Label HorizontalAlignment="Right" Content="Division:" Grid.Row="1"/>
+                <Label HorizontalAlignment="Left" Content="Requester initials:" Grid.Column="1" Margin="36,2,0,25" Grid.RowSpan="2" Width="102"/>
+                <TextBox Text="{Binding JR.Requester, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Margin="152,2,147,25" Grid.ColumnSpan="4" Width="Auto" HorizontalAlignment="Stretch" Grid.RowSpan="2"/>
+                <Label HorizontalAlignment="Left" Content="Division:" Grid.Column="1" Margin="84,2,0,25" Grid.Row="1" Grid.RowSpan="2" Width="54"/>
                 <ComboBox ItemsSource="{Binding Divisions}" 
-                              Text="{Binding JR.BarcoDivision, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                              Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" TextElement.Foreground="Black" />
-                <Label HorizontalAlignment="Right" Content="Job nature:" Grid.Row="2"/>
-                
+                              Text="{Binding JR.BarcoDivision, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                              Grid.Column="1" Grid.Row="1" TextElement.Foreground="Black" Margin="152,2,0,25" Grid.ColumnSpan="2" Grid.RowSpan="2" Width="150" />
+                <Label HorizontalAlignment="Left" Content="Job nature:" Grid.Row="1" Grid.Column="1" Margin="70,26,0,1" Grid.RowSpan="2" Width="68"/>
+
                 <ComboBox ItemsSource="{Binding JobNatures}" 
-                              Text="{Binding JR.JobNature,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
-                              Grid.Column="1" Grid.Row="2"/>
+                              Text="{Binding JR.JobNature, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                              Grid.Column="1" Grid.Row="2" Margin="152,1,0,0" Grid.ColumnSpan="2" Width="150"/>
 
-                <Label HorizontalAlignment="Right" Content="Partnumber(s):" Grid.Row="5"/>
-                <TextBox Grid.Column="1" Grid.Row="5" Text="{Binding JR.EutPartnr, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <Label HorizontalAlignment="Left" Content="Partnumber(s):" Grid.Row="5" Grid.Column="1" Margin="51,1,0,26" Grid.RowSpan="2" Width="87"/>
+                <TextBox Grid.Column="1" Grid.Row="5" Text="{Binding JR.EutPartnr, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="152,2,0,25" Grid.ColumnSpan="2" Grid.RowSpan="2" Width="150"/>
 
-                <Label HorizontalAlignment="Right" Grid.Row="6" Content="Net Weight(s) (kg):"/>
-                <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding JR.NetWeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <Label HorizontalAlignment="Left" Grid.Row="6" Content="Net Weight(s) (kg):" Grid.Column="1" Margin="30,0,0,1" Width="109"/>
+                <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding JR.NetWeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="152,1,0,0" Grid.ColumnSpan="2" Width="150"/>
 
-                <Label HorizontalAlignment="Right" Grid.Row="7" Content="Gross Weight(s) (kg):"/>
-                <TextBox Grid.Row="7" Grid.Column="1"  Text="{Binding JR.GrossWeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <Label HorizontalAlignment="Left" Grid.Row="6" Content="Gross Weight(s) (kg):" Grid.Column="1" Margin="20,26,0,1" Grid.RowSpan="2" Width="119"/>
+                <TextBox Grid.Row="7" Grid.Column="1"  Text="{Binding JR.GrossWeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="152,1,0,0" Grid.ColumnSpan="2" Width="150"/>
 
-                <Label Content="" Grid.Row="9"/>
+                <Label HorizontalAlignment="Left" Content="Link to testplan (optional):" Grid.Row="10" Grid.ColumnSpan="2" Margin="0,1,0,3" Width="148"/>
+                <TextBox Text="{Binding JR.Link, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                             Grid.Column="1" Grid.Row="10" Margin="152,1,0,3" Grid.ColumnSpan="2" Width="150" />
 
-                <Label HorizontalAlignment="Right" Content="Link to testplan (optional):" Grid.Row="10"/>
-                <TextBox Text="{Binding JR.Link,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                             Grid.Column="1" Grid.Row="10" />
-
-                <Label Content="Projectnr. (SAP/Hydra):" Grid.Column="3"/>
-                <TextBox Text="{Binding JR.HydraProjectnumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="4"/>
-                <Label Content="Eut projectname (nickname):" Grid.Column="3" Grid.Row="1"/>
+                <Label Content="Projectnr. (SAP/Hydra):" Grid.Column="4" Margin="28,1,162,0" Grid.ColumnSpan="2"/>
+                <TextBox Text="{Binding JR.HydraProjectnumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="5" HorizontalAlignment="Center" Margin="0,2,0,25" Width="148" Grid.RowSpan="2"/>
+                <Label Content="Eut projectname (nickname):" Grid.Column="4" Grid.Row="1" Margin="0,1,162,0" Grid.ColumnSpan="2"/>
                 <TextBox Text="{Binding JR.EutProjectname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                             Grid.Column="4" Grid.Row="1"/>
+                             Grid.Column="5" Grid.Row="1" HorizontalAlignment="Center" Margin="0,1,0,0" Width="150"/>
                 <CheckBox IsChecked="{Binding JR.Battery, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                              Content="Batteries inside" Grid.Column="5" Grid.Row="2"/>
+                              Content="Batteries inside" Grid.Column="5" Grid.Row="2" Height="15"/>
                 <!--Disabled for user: his item will be filled in automatically at acceptance of request-->
-                <Label Content="" Grid.Row="4"></Label>
-                
-                <Label Grid.Column="3" Grid.Row="5" Content="Request acceptance date:"/>
-                <TextBox Text="{Binding JR.RequestDate, StringFormat=dd/MM/yyyy, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                             Grid.Column="4" Grid.Row="5" IsEnabled="False" />
+                <Label Content="" Grid.Row="4" Grid.ColumnSpan="2" Margin="0,1,0,26" Grid.RowSpan="2"/>
+
+                <Label Grid.Column="4" Grid.Row="5" Content="Request acceptance date:" Margin="16,1,162,26" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+                <TextBox Text="{Binding JR.RequestDate, Mode=TwoWay, StringFormat=dd/MM/yyyy, UpdateSourceTrigger=PropertyChanged}" 
+                             Grid.Column="5" Grid.Row="5" IsEnabled="False" HorizontalAlignment="Center" Margin="0,1,0,26" Grid.RowSpan="2" Width="150" />
                 <!--Disabled for user: his item will be filled in automatically  
                 at acceptance of request-->
-                <Label Content="JR Number:" Grid.Column="3" Grid.Row="6"/>
-                <TextBox Grid.Column="4" Grid.Row="6" IsEnabled="False"/>
+                <Label Content="JR Number:" Grid.Column="4" Grid.Row="6" Margin="89,1,162,0" Grid.ColumnSpan="2"/>
+                <TextBox Grid.Column="5" Grid.Row="6" IsEnabled="False" HorizontalAlignment="Center" Margin="0,0,0,1" Width="150"/>
                 <!--TODO: disable for users not part of testteam, enable and autofill for testteam-->
-                <CheckBox Content="Internal" Grid.Column="4" Grid.Row="7" IsChecked="{Binding JR.InternRequest, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsEnabled="False"/>
-                <Label Content="Expected end date:" Grid.Row="10" Grid.Column="3"/>
+                <CheckBox Content="Internal" Grid.Column="5" Grid.Row="7" IsChecked="{Binding JR.InternRequest, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsEnabled="False" Height="15"/>
+                <Label Content="Expected end date:" Grid.Row="9" Grid.Column="4" Margin="47,17,162,14" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
                 <DatePicker SelectedDate ="{Binding JR.ExpEnddate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                Grid.Column="4" Grid.Row="10" IsTodayHighlighted="True" />
+                                Grid.Column="5" Grid.Row="9" IsTodayHighlighted="True" Margin="0,13,0,3" Grid.RowSpan="2" />
 
-                <Label HorizontalAlignment="Right" Content="Special remarks (optional):" Grid.Row="11"/>
-                <TextBox Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="4" Text="{Binding JR.Remarks,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Height="50" Margin="0,10,10,10" HorizontalAlignment="Stretch" Width="Auto"/>
+                <Label HorizontalAlignment="Left" Content="Special remarks (optional):" Grid.Row="11" Grid.ColumnSpan="2" Margin="-1,13,0,11" Grid.RowSpan="2" Width="150"/>
+                <TextBox Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="5" Text="{Binding JR.Remarks, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="Auto" HorizontalAlignment="Stretch" Width="Auto" Margin="152,1,0,0" Grid.RowSpan="2"/>
             </Grid>
         </GroupBox>
-        <GroupBox Header="Parts and tests">
-            <StackPanel>
-                <ListBox x:Name="ListEUT" Height="300" Background="LightGray"
+        <GroupBox Header="Parts and tests" Width="355">
+            <StackPanel Width="161" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <ListBox x:Name="ListEUT" Height="235" Background="LightGray"
                              ItemTemplate="{DynamicResource EUT}" 
                              ItemsSource="{Binding EUTs}" 
-                             SelectedItem="{Binding SelectedEUT, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }">
+                             SelectedItem="{Binding SelectedEUT, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="166">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <StackPanel Orientation='Horizontal'/>
                         </ItemsPanelTemplate>
                     </ListBox.ItemsPanel>
                 </ListBox>
-                <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" Width="234">
                     <Button Content="Add Part" 
-                                Command="{Binding Path=AddEUTCommand}" 
+                                Command="{Binding AddEUTCommand}" 
                                 Margin="10"/>
                     <Button Content="Remove Part" 
-                                Command="{Binding Path=RemoveEUTCommand}" 
+                                Command="{Binding RemoveEUTCommand}" 
                                 Margin="10"/>
                 </StackPanel>
             </StackPanel>
         </GroupBox>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Content="Confirm"
-                    Command="{Binding DataContext.SaveJrCommand, 
-                            RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, 
-                            Mode=OneWay}"
-                    Height="40" Margin="5"/>
+                    Command="{Binding DataContext.SaveJrCommand, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}}"
+                    Height="40"/>
             <Button Content="Empty All Fields"
-                        Command="{Binding Path=RefreshJRCommand}"
+                        Command="{Binding RefreshJRCommand}"
                         Height="40" Margin="5"/>
             <Button Content="Cancel"
-                        Command="{Binding DataContext.DisplayDevStartupCommand, 
-                            RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, 
-                            Mode=OneWay}"
+                        Command="{Binding DataContext.DisplayDevStartupCommand, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}}"
                         Height="40" Margin="5"/>
         </StackPanel>
     </StackPanel>
