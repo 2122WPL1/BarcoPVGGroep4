@@ -36,7 +36,7 @@ namespace BarcoPVG.Dao
         private DAO()
         {
             this._context = new BarcoContext();
-            this.BarcoUser = new BarcoUser() { Name = "Alladin", Division = "Sillex", Function = "Tester" };
+            this.BarcoUser = new BarcoUser() { Name = "sten", Division = "Sillex", Function = "DEV" };
             //this.BarcoUser = RegistryConnection.GetValueObject<BarcoUser>(@"SOFTWARE\VivesBarco\Test");
         }
 
@@ -140,7 +140,7 @@ namespace BarcoPVG.Dao
             RqRequest rqrequest = new RqRequest()
             {
                 JrStatus = Jr.JrStatus == null ? "To approve" : Jr.JrStatus,
-                RequestDate = Jr.ExpEnddate, // Nullable
+                RequestDate = (DateTime)Jr.ExpEnddate, // Nullable
                 Requester = Jr.Requester == null ? string.Empty : Jr.Requester,
                 BarcoDivision = Jr.BarcoDivision == null ? string.Empty : Jr.BarcoDivision,
                 JobNature = Jr.JobNature == null ? string.Empty : Jr.JobNature,
@@ -255,7 +255,7 @@ namespace BarcoPVG.Dao
 
                 rqrequest.JrNumber = Jr.JrNumber;
                 rqrequest.JrStatus = Jr.JrStatus;
-                rqrequest.RequestDate = Jr.RequestDate;
+                rqrequest.RequestDate = (DateTime)Jr.RequestDate;
                 rqrequest.Requester = Jr.Requester;
                 rqrequest.BarcoDivision = Jr.BarcoDivision;
                 rqrequest.JobNature = Jr.JobNature;
@@ -302,7 +302,8 @@ namespace BarcoPVG.Dao
                 RqRequest selectedRQ = _context.RqRequests.FirstOrDefault(rq => rq.IdRequest == idrequest);
                 RqOptionel selectedRQO = _context.RqOptionels.FirstOrDefault(rqo => rqo.IdRequest == idrequest);
                 // Create new JR with necessary data
-                JR selectedJR = new JR
+                
+            JR selectedJR = new JR
                 {
                     IdRequest = selectedRQ.IdRequest,
                     JrNumber = selectedRQ.JrNumber,
