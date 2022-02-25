@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BarcoPVG.Models.Classes.BarcoUser">
+    <Position X="47.25" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAYAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Classes\BarcoUser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BarcoPVG.Models.Classes.EUT">
+    <Position X="50.75" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAIMAABAEAAAAAgAAAAAACAAAIAAAAAIA=</HashCode>
+      <FileName>Models\Classes\EUT.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BarcoPVG.Models.Classes.JR">
+    <Position X="52.5" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAhAAAQIAAAIAAAQIQAAAAAgCCAAAQhgAiSAEAQAI=</HashCode>
+      <FileName>Models\Classes\JR.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BarcoPVG.Models.Classes.Test">
+    <Position X="56.25" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAEIAAgAAAAGAAAAAAgAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Models\Classes\Test.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BarcoPVG.Models.Db.Eut">
+    <Position X="49" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAECAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAEAAAIA=</HashCode>
+      <FileName>Models\Db\Eut.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BarcoPVG.Models.Db.Person">
+    <Position X="54.25" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAgAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Models\Db\Person.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BarcoPVG.Models.Db.PlPlanning">
+    <Position X="43.5" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAQAAAAGgAgAAAAIAAAQAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Models\Db\PlPlanning.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BarcoPVG.Models.Db.PlPlanningsKalender">
+    <Position X="43.5" Y="14" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAIAAIAAAAAgAAAAAAAAAASAAAACAgAACrAAAAAA=</HashCode>
+      <FileName>Models\Db\PlPlanningsKalender.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BarcoPVG.Models.Db.PlResource">
+    <Position X="45.5" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACACAAAAAAAAAAAAAAAABAAAAABAAAACAAAAAAAAAAI=</HashCode>
+      <FileName>Models\Db\PlResource.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BarcoPVG.Models.Db.PlResourcesDivision">
+    <Position X="54.25" Y="15.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAYAAAAAAAgAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Db\PlResourcesDivision.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BarcoPVG.Models.Db.PlVerletdagen">
+    <Position X="56.5" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Models\Db\PlVerletdagen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BarcoPVG.Models.Db.RqBarcoDivision">
+    <Position X="49" Y="18" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAAAAAAAAAABAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Models\Db\RqBarcoDivision.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BarcoPVG.Models.Db.RqBarcoDivisionPerson">
+    <Position X="54.25" Y="18" Width="2" />
+    <TypeIdentifier>
+      <HashCode>EAACAAAAEAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Db\RqBarcoDivisionPerson.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BarcoPVG.Models.Db.RqJobNature">
+    <Position X="47.25" Y="18.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Db\RqJobNature.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BarcoPVG.Models.Db.RqOptionel">
+    <Position X="49" Y="16" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAIAAAAgAAAAAAAAAAAAAAAAAAAAASAAAAAA=</HashCode>
+      <FileName>Models\Db\RqOptionel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BarcoPVG.Models.Db.RqRequest">
+    <Position X="58.25" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAMQAAAAKAAAAAQAAgAAgDAAAAQggACiAAAQAI=</HashCode>
+      <FileName>Models\Db\RqRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BarcoPVG.Models.Db.RqRequestDetail">
+    <Position X="47.25" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgoBAAAACAAAAAAAAACAAAACAAAAAA=</HashCode>
+      <FileName>Models\Db\RqRequestDetail.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BarcoPVG.Models.Db.RqTestDevision">
+    <Position X="50.75" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAgAAAAAAAAACAAAAAAAAAI=</HashCode>
+      <FileName>Models\Db\RqTestDevision.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BarcoPVG.Models.Db.Statistiek">
+    <Position X="45.5" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAEAAAAAAAAAAAAAAAAAABQEAAwAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Db\Statistiek.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.Object">
+    <Position X="51.25" Y="11.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

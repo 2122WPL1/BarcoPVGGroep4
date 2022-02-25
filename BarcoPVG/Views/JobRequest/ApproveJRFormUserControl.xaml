@@ -49,7 +49,7 @@
                 <Label Grid.Row="6" Content="Net Weight(s) (kg):"/>
                 <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding JR.NetWeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                <Label Grid.Row="7" Content="Gross Weight(s) (kg):"/>
+                <Label Grid.Row="7" Content="Gross Weight(s) (kg):" Height="25" VerticalAlignment="Top"/>
                 <TextBox Grid.Row="7" Grid.Column="1"  Text="{Binding JR.GrossWeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                 <Label Content="" Grid.Row="9"/>

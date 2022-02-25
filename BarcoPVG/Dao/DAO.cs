@@ -36,7 +36,8 @@ namespace BarcoPVG.Dao
         private DAO()
         {
             this._context = new BarcoContext();
-            this.BarcoUser = RegistryConnection.GetValueObject<BarcoUser>(@"SOFTWARE\VivesBarco\Test");
+            this.BarcoUser = new BarcoUser() { Name = "Admin", Division = "HC", Function = "DEV" };
+            //this.BarcoUser = RegistryConnection.GetValueObject<BarcoUser>(@"SOFTWARE\VivesBarco\Test");
         }
 
 
@@ -323,7 +324,6 @@ namespace BarcoPVG.Dao
                     // Testing
                     Link = selectedRQO.Link,
                     Remarks = selectedRQO.Remarks,
-
                 };
             
 
@@ -359,7 +359,6 @@ namespace BarcoPVG.Dao
                 // Testing
                 Link = selectedRQO.Link,
                 Remarks = selectedRQO.Remarks,
-
             };
 
             return selectedJR;
@@ -854,9 +853,8 @@ namespace BarcoPVG.Dao
 
                 if (property != null)
                 {
-                    property.SetValue(jr ,item.Pvgresp);
+                    property.SetValue(jr, item.Pvgresp);
                 }
-                
             }
         }
     }

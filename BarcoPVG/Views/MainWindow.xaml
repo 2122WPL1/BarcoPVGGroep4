@@ -39,20 +39,19 @@
                             Mode=OneWay}" 
                             Visibility="{Binding NewRequests}"
                             Margin="10"/>
-                    <Button Content="Edit/Approve requests" 
-                            Command="{Binding DisplayPlannerStartupCommand,
-                            Mode=OneWay}" 
+                        <Button Content="Edit/Approve requests" 
+                            Command="{Binding DisplayPlannerStartupCommand, Mode=OneWay}" 
                             Visibility="{Binding ApproveRequests}"
                             Margin="10"/>
-                    <Button Content="Plan tests" 
+                        <Button Content="Plan tests" 
                             Command="{Binding DisplayTesterPlanCommand, Mode=OneWay}"
                             Visibility="{Binding Test}"
                             Margin="10"/>
-                    <Button Content="View/Update tests" 
+                        <Button Content="View/Update tests" 
                             Command="{Binding DisplayTesterTestCommand, Mode=OneWay}"
                             Visibility="{Binding Test}"
                             Margin="10"/>
-                    <Button Content="Development"
+                        <Button Content="Development"
                         Command="{Binding DisplayDevStartupCommand, Mode=OneWay}" 
                             Visibility="{Binding SeeAll}"
                         Margin="10"/>
