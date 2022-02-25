@@ -57,7 +57,7 @@ namespace BarcoPVG.Viewmodels.JobRequest
 
             FillEUT(request);
 
-            _dao.PrintPvg(idRequest,_jr);
+            _dao.PrintPvg(idRequest, _jr);
         }
 
         // Loads jobNatures, divisions in cbb
@@ -106,7 +106,13 @@ namespace BarcoPVG.Viewmodels.JobRequest
         /// </summary>
         public void RemoveSelectedEUT()
         {
-            EUTs.Remove(SelectedEUT);//note: zorgen dat de eut hemzelf select 
+            //note: zorgen dat de eut hemzelf select 
+            EUTs.Remove(SelectedEUT); //werkt ook niet met de button wanneer hij geselecteerd is miss iets verkeerd met de binding
+
+
+
         }
+
+
     }
 }

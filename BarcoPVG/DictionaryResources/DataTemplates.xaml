@@ -3,7 +3,8 @@
 
     <DataTemplate x:Key="AddEUT">
         <StackPanel>
-            <Button Content="Voeg EUT toe" Command="{Binding AddEUTCommand}"></Button> <!-- note: weet niet hoe het in de listbox als item verschijnt-->
+            <Button Content="Voeg EUT toe" Command="{Binding AddEUTCommand}"></Button> 
+            <!-- note: weet niet hoe het in de listbox als item verschijnt-->
         </StackPanel>
     </DataTemplate> 
 
@@ -21,8 +22,8 @@
                     <ColumnDefinition/>
                     <ColumnDefinition Width="10"/>
                 </Grid.ColumnDefinitions>
-                <Button HorizontalAlignment="Right" Content="X" Command="{Binding RemoveEUTCommand}"></Button> 
-                <!-- note: doet nog niets waarschijnlijk doordat hij niet de eut zelf selecteerd als verwijderd item in viewmodelapprovejrform-->
+                <Button HorizontalAlignment="Right" Content="X" Command="{Binding RemoveEUTCommand}"></Button>
+                <!-- note: doet nog niets waarschijnlijk doordat hij niet de eut zelf selecteerd als verwijderd item in viewmodelapprovejrform of er is iets mis met de binding-->
                 <TextBlock  Text="EUT" Margin="5"/>
 
                 <StackPanel  Grid.Row="1" Orientation="Vertical"  TextElement.Foreground="Black">
