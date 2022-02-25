@@ -21,7 +21,7 @@ namespace BarcoPVG.Dao
     {
         // Variables
         private BarcoContext _context;
-        private static readonly DAO _instance = new DAO(); 
+        private static readonly DAO _instance = new(); 
 
         public BarcoUser BarcoUser { get; }
 
@@ -121,7 +121,7 @@ namespace BarcoPVG.Dao
         /// </summary>
         public JR GetNewJR()
         {
-            JR autofilledJR = new JR()
+            JR autofilledJR = new()
             {
              Requester = BarcoUser.Name,
                 BarcoDivision = BarcoUser.Division
@@ -137,7 +137,7 @@ namespace BarcoPVG.Dao
         {
             // Copy data from JR to new RqRequest
             // Used ternary operator to use String.Empty when null
-            RqRequest rqrequest = new RqRequest()
+            RqRequest rqrequest = new()
             {
                 JrStatus = Jr.JrStatus == null ? "To approve" : Jr.JrStatus,
                 RequestDate = Jr.ExpEnddate, // Nullable
@@ -160,7 +160,7 @@ namespace BarcoPVG.Dao
 
             //Matti voorlopig
             // We create a rqo object of the RqOptionel class to save the following fields in the database with the user input
-            RqOptionel rqo = new RqOptionel
+            RqOptionel rqo = new()
             {
                 Link = Jr.Link == null ? string.Empty : Jr.Link,
                 Remarks = Jr.Remarks == null ? string.Empty : Jr.Remarks,
@@ -302,7 +302,7 @@ namespace BarcoPVG.Dao
                 RqRequest selectedRQ = _context.RqRequests.FirstOrDefault(rq => rq.IdRequest == idrequest);
                 RqOptionel selectedRQO = _context.RqOptionels.FirstOrDefault(rqo => rqo.IdRequest == idrequest);
                 // Create new JR with necessary data
-                JR selectedJR = new JR
+                JR selectedJR = new()
                 {
                     IdRequest = selectedRQ.IdRequest,
                     JrNumber = selectedRQ.JrNumber,
@@ -337,7 +337,7 @@ namespace BarcoPVG.Dao
             RqOptionel selectedRQO = _context.RqOptionels.FirstOrDefault(rqo => rqo.IdRequest == selectedRQ.IdRequest);
 
             // Create new JR with necessary data
-            JR selectedJR = new JR
+            JR selectedJR = new()
             {
                 IdRequest = selectedRQ.IdRequest,
                 JrNumber = selectedRQ.JrNumber,
@@ -368,7 +368,7 @@ namespace BarcoPVG.Dao
         public List <EUT> GetEut(RqRequest rq)
         {
             List<RqRequestDetail> rqDetailsForJR = _context.RqRequestDetails.Where(r => r.IdRequest == rq.IdRequest).ToList();
-            List<EUT> EUTObjects = new List<EUT>();
+            List<EUT> EUTObjects = new();
             
             foreach (var detail in rqDetailsForJR)
             {
