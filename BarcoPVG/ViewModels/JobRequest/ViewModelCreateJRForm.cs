@@ -142,7 +142,7 @@ namespace BarcoPVG.Viewmodels.JobRequest
         /// </summary>
         public void RemoveSelectedEUT()
         {
-            EUTs.Remove(SelectedEUT);
+            EUTs.Remove(_selectedEUT); 
         }
     }
 }
