@@ -36,7 +36,7 @@ namespace BarcoPVG.Dao
         private DAO()
         {
             this._context = new BarcoContext();
-            this.BarcoUser = new BarcoUser() { Name = "Alladin", Division = "Sillex", Function = "Tester" };
+            this.BarcoUser = new BarcoUser() { Name = "Admin", Division = "HC", Function = "DEV" };
             //this.BarcoUser = RegistryConnection.GetValueObject<BarcoUser>(@"SOFTWARE\VivesBarco\Test");
         }
 
