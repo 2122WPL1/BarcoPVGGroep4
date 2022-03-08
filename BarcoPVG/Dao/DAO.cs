@@ -139,7 +139,8 @@ namespace BarcoPVG.Dao
             RqRequest rqrequest = new()
             {
                 JrStatus = Jr.JrStatus == null ? "To approve" : Jr.JrStatus,
-                RequestDate = Jr.ExpEnddate, // Nullable
+                RequestDate = Add5Datum(), // the JR has to be accepted within 5 non-holiday days.
+                //RequestDate = (DateTime)Jr.ExpEnddate, // Nullable
                 Requester = Jr.Requester == null ? string.Empty : Jr.Requester,
                 BarcoDivision = Jr.BarcoDivision == null ? string.Empty : Jr.BarcoDivision,
                 JobNature = Jr.JobNature == null ? string.Empty : Jr.JobNature,
@@ -170,6 +171,25 @@ namespace BarcoPVG.Dao
 
 
             return rqrequest;
+        }
+
+        private DateTime Add5Datum()
+        {
+            // Still have to look at holidays in Belgium****
+            DateTime newDate = DateTime.Now;
+            int fiveDays = 5;
+
+            while (fiveDays > 0)
+            {
+                newDate = newDate.AddDays(1);
+
+                if (newDate.DayOfWeek != DayOfWeek.Saturday && newDate.DayOfWeek != DayOfWeek.Sunday)
+                {
+                    fiveDays -= 1;
+                }
+            }
+
+            return newDate;
         }
 
 
@@ -250,31 +270,22 @@ namespace BarcoPVG.Dao
             // JR Number not empty?
             if (Jr.BarcoDivision != null)
             {
-                //Jarne
-                //Foutafhandeling van het openen van een JobRequest in development.
-                try
-                {
-                    RqRequest rqrequest = _context.RqRequests.FirstOrDefault(r => r.IdRequest == Jr.IdRequest);
+                RqRequest rqrequest = _context.RqRequests.FirstOrDefault(r => r.IdRequest == Jr.IdRequest);
 
-                    rqrequest.JrNumber = Jr.JrNumber;
-                    rqrequest.JrStatus = Jr.JrStatus;
-                    rqrequest.RequestDate = Jr.RequestDate;
-                    rqrequest.Requester = Jr.Requester;
-                    rqrequest.BarcoDivision = Jr.BarcoDivision;
-                    rqrequest.JobNature = Jr.JobNature;
-                    rqrequest.EutProjectname = Jr.EutProjectname;
-                    rqrequest.EutPartnumbers = Jr.EutPartnr;
-                    rqrequest.HydraProjectNr = Jr.HydraProjectnumber;
-                    rqrequest.ExpectedEnddate = (DateTime)Jr.ExpEnddate; // Not nullable, so needs to be casted
-                    rqrequest.InternRequest = Jr.InternRequest;
-                    rqrequest.GrossWeight = Jr.GrossWeight;
-                    rqrequest.NetWeight = Jr.NetWeight;
-                    rqrequest.Battery = Jr.Battery;
-                }
-                catch (Exception)
-                {
-                    return null;
-                }
+                rqrequest.JrNumber = Jr.JrNumber;
+                rqrequest.JrStatus = Jr.JrStatus;
+                rqrequest.RequestDate = (DateTime)Jr.RequestDate;
+                rqrequest.Requester = Jr.Requester;
+                rqrequest.BarcoDivision = Jr.BarcoDivision;
+                rqrequest.JobNature = Jr.JobNature;
+                rqrequest.EutProjectname = Jr.EutProjectname;
+                rqrequest.EutPartnumbers = Jr.EutPartnr;
+                rqrequest.HydraProjectNr = Jr.HydraProjectnumber;
+                rqrequest.ExpectedEnddate = (DateTime)Jr.ExpEnddate; // Not nullable, so needs to be casted
+                rqrequest.InternRequest = Jr.InternRequest;
+                rqrequest.GrossWeight = Jr.GrossWeight;
+                rqrequest.NetWeight = Jr.NetWeight;
+                rqrequest.Battery = Jr.Battery;
                 // Matti voorlopig
                 // We create the rqo RqOptionel object to link the user data to the db data and saves the changes in the Barco database
                 RqOptionel rqo = _context.RqOptionels.FirstOrDefault(o => o.IdRequest == Jr.IdRequest);

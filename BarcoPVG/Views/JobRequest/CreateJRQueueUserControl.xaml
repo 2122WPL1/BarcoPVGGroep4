@@ -5,18 +5,27 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BarcoPVG.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="800" d:DesignWidth="600" d:Background="LightGray">
+             d:DesignHeight="800" d:DesignWidth="857.17" d:Background="LightGray">
     <StackPanel Margin="10">
-        <GroupBox Header="Open Job Requests" BorderThickness="0.1">
-            <ListView ItemsSource="{Binding IdRequestsOnly}" SelectedItem="{Binding SelectedJR, Mode=TwoWay}" Height="250">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="Id" DisplayMemberBinding="{Binding IdRequest}" />
+        <GroupBox Header="Open Job Requests" BorderThickness="0.2">
+            <ListView x:Name="gvList" ItemsSource="{Binding IdRequestsOnly}" SelectedItem="{Binding SelectedJR, Mode=TwoWay}" Height="250" Background="White">
+                <ListView.View >
+                    <GridView >
+                        <GridViewColumn  Header="Division" DisplayMemberBinding="{Binding BarcoDivision}" />
+                        <GridViewColumn Header="Requester" DisplayMemberBinding="{Binding Requester}" />
+                        <GridViewColumn Header="EUT Projectname" DisplayMemberBinding="{Binding EutProjectname}" />
+                        <GridViewColumn  Header="Job Nature" DisplayMemberBinding="{Binding JobNature}" />
+                        <GridViewColumn Header="JR number" DisplayMemberBinding="{Binding JrNumber}" />
+                        <GridViewColumn Header="Expected Approve Date" DisplayMemberBinding="{Binding RequestDate, StringFormat=d}" />
+                        <GridViewColumn Header="Expected End Date" DisplayMemberBinding="{Binding ExpectedEnddate, StringFormat=d}" />
+
+
+                        <!--<GridViewColumn Header="Id" DisplayMemberBinding="{Binding IdRequest}" />
                         <GridViewColumn Header="Job Request Number" DisplayMemberBinding="{Binding JrNumber}" />
                         <GridViewColumn Header="Eut Projectname" DisplayMemberBinding="{Binding EutProjectname}" />
                         <GridViewColumn Header="Hydra Project Number" DisplayMemberBinding="{Binding HydraProjectNr}" />
                         <GridViewColumn Header="Expected End Date" DisplayMemberBinding="{Binding ExpectedEnddate, StringFormat=d}" />
-                        <GridViewColumn Header="Status" DisplayMemberBinding="{Binding JrStatus}" />
+                        <GridViewColumn Header="Status" DisplayMemberBinding="{Binding JrStatus}" />-->
                     </GridView>
                 </ListView.View>
             </ListView>
