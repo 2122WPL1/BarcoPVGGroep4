@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BarcoPVG.Viewmodels.JobRequest;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -18,9 +19,13 @@ namespace BarcoPVG.Views.JobRequest
     /// </summary>
     public partial class ApproveJRFormUserControl : UserControl
     {
+        
+        
         public ApproveJRFormUserControl()
         {
+            
             InitializeComponent();
+
         }
     }
 }
