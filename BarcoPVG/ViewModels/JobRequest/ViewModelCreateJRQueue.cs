@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Input;
 using BarcoPVG;
+using BarcoPVG.Views.JobRequest;
 
 namespace BarcoPVG.Viewmodels.JobRequest
 {
@@ -17,6 +18,7 @@ namespace BarcoPVG.Viewmodels.JobRequest
         public ViewModelCreateJRQueue() : base()
         {
             Load();
+            ChangeColorJobNature();
         }
 
         // Function used in code behind
@@ -26,10 +28,23 @@ namespace BarcoPVG.Viewmodels.JobRequest
             var requestIds = _dao.GetAllJobRequests().Where(rq => rq.Requester == _dao.BarcoUser.Name);
             IdRequestsOnly.Clear();
 
-            foreach (var requestId in requestIds)
+            foreach (var requestId in requestIds) // Change Date +5, Change Job nature to colors
             {
+                //requestId.ExpectedEnddate = requestId.RequestDate.AddDays(5.0);
                 IdRequestsOnly.Add(requestId);
+
+                
             }
+        }
+
+        public void ChangeColorJobNature()
+        {
+            if (true)
+            {
+                //als job nature qualification is → kleur groen
+                //else if job nature ... is → kleur rood
+                //else kleur grijs
+            }   
         }
     }
 }
