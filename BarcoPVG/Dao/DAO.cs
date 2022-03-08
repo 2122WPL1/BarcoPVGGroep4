@@ -14,7 +14,7 @@ using BarcoPVG.Models.Db;
 
 namespace BarcoPVG.Dao
 {
-    // SINGLETON PATTERN
+    // SINGLETON PATTERN bfgsdf
     // Private constructor, static instance
     // Ensures only one DBconnection is opened at a time
     // Ensures connection is closed when not in use
