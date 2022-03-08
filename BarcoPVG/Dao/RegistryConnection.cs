@@ -30,6 +30,8 @@ namespace BarcoPVG.Dao
             //{
             //    login.xaml;
             //}
+
+            //kijken naar DAO waar de username, division en 
         }
     }
 }
