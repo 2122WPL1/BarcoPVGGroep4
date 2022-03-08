@@ -23,5 +23,17 @@ namespace BarcoPVG.Views.Login
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            MainWindow mainw = new MainWindow();
+            mainw.Show();
+        }
     }
 }
