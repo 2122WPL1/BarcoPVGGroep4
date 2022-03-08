@@ -30,7 +30,7 @@ namespace BarcoPVG.Views
             //if a user is already logged in then the MainWindow pops-up 
             //else the Login screen pops-up
             //Jarne
-            if (IsLoggedIn)
+            if (IsLoggedIn == true)
             {
                 MainWindow;
             }
