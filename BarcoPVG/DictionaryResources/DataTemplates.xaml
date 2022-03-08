@@ -12,8 +12,7 @@
     <DataTemplate x:Key="EUT">
 
         <ListBoxItem BorderBrush="#FFF10000" Width="180"  BorderThickness="2"  Background="LightGray" Foreground="Black">
-            <Grid  >
-                
+            <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
@@ -25,7 +24,7 @@
                 <Button HorizontalAlignment="Right" Content="X" Command="{Binding RemoveEUTCommand}"></Button>
                 <!--note:
                 Severity	Count	Data Context	Binding Path	Target	Target Type	Description	File	Line	Project
-                Error	2	EUT	RemoveEUTCommand	Button.Command	ICommand	RemoveEUTCommand property not found on object of type EUT.	\DictionaryResources\DataTemplates.xaml	25	BarcoPVG
+                Error	2	EUT	RemoveEUTCommand	Button.Command	ICommand	RemoveEUTCommand property not found on object of type EUT.	\DictionaryResources\DataTemplates.xaml	25	BarcoPVG-->
                 <TextBlock  Text="EUT" Margin="5"/>
 
                 <StackPanel  Grid.Row="1" Orientation="Vertical"  TextElement.Foreground="Black">
@@ -36,11 +35,8 @@
                     <CheckBox IsChecked="{Binding PCK, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="PACKAGING"  FontSize="12" Width="150"  Margin="5"/>
                     <CheckBox IsChecked="{Binding ECO, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="GREEN COMPLIANCE" FontSize="12" Width="150"  Margin="5"/>
                     <TextBlock  Text="Foreseen availability date:" Margin="5"/>
-                    <!--<DatePicker  SelectedDate="{Binding AvailabilityDate}" IsTodayHighlighted="True" Margin="5"/>-->
-                    <DatePicker SelectedDate ="{Binding AvailabilityDate}"
-                                Grid.Column="4" Grid.Row="10" IsTodayHighlighted="True" />
-
-
+                    <!--<DatePicker  SelectedDate="{Binding AvailabilityDate}" IsTodayHighlighted="True" Margin="5"/>--> 
+                <DatePicker SelectedDate ="{Binding AvailabilityDate}" Grid.Column="4" Grid.Row="10" IsTodayHighlighted="True"/>
                 </StackPanel>
             </Grid>
         </ListBoxItem>

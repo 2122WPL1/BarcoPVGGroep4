@@ -20,7 +20,6 @@ namespace BarcoPVG.Views
     /// </summary>
     public partial class MainWindow : Window
     {
-        public bool IsLoggedIn { get; set; } = false;
         
         public MainWindow()
         // Global variables
@@ -42,8 +41,6 @@ namespace BarcoPVG.Views
             //    //tonen van het login scherm
             //    Login;
             //}
-
-
         }
     }
 }

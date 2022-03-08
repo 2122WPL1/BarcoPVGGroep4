@@ -321,7 +321,7 @@ namespace BarcoPVG.Dao
             if (selectedRQO != null)
             {
                 // Create new JR with necessary data
-                JR selectedJR = new()
+                selectedJR = new()
                 {
                     IdRequest = selectedRQ.IdRequest,
                     JrNumber = selectedRQ.JrNumber,
