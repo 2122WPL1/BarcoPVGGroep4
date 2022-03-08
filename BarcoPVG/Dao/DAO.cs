@@ -140,7 +140,8 @@ namespace BarcoPVG.Dao
             RqRequest rqrequest = new RqRequest()
             {
                 JrStatus = Jr.JrStatus == null ? "To approve" : Jr.JrStatus,
-                RequestDate = (DateTime)Jr.ExpEnddate, // Nullable
+                RequestDate = Add5Datum(), // the JR has to be accepted within 5 non-holiday days.
+                //RequestDate = (DateTime)Jr.ExpEnddate, // Nullable
                 Requester = Jr.Requester == null ? string.Empty : Jr.Requester,
                 BarcoDivision = Jr.BarcoDivision == null ? string.Empty : Jr.BarcoDivision,
                 JobNature = Jr.JobNature == null ? string.Empty : Jr.JobNature,
@@ -171,6 +172,25 @@ namespace BarcoPVG.Dao
 
 
             return rqrequest;
+        }
+
+        private DateTime Add5Datum()
+        {
+            // Still have to look at holidays in Belgium****
+            DateTime newDate = DateTime.Now;
+            int fiveDays = 5;
+
+            while (fiveDays > 0)
+            {
+                newDate = newDate.AddDays(1);
+
+                if (newDate.DayOfWeek != DayOfWeek.Saturday && newDate.DayOfWeek != DayOfWeek.Sunday)
+                {
+                    fiveDays -= 1;
+                }
+            }
+
+            return newDate;
         }
 
 

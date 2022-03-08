@@ -17,7 +17,7 @@
                         <GridViewColumn  Header="Job Nature" DisplayMemberBinding="{Binding JobNature}" />
                         <GridViewColumn Header="JR number" DisplayMemberBinding="{Binding JrNumber}" />
                         <GridViewColumn Header="Expected Approve Date" DisplayMemberBinding="{Binding RequestDate, StringFormat=d}" />
-                        <GridViewColumn Header="Expected Approve Date" DisplayMemberBinding="{Binding ExpectedEnddate, StringFormat=d}" />
+                        <GridViewColumn Header="Expected End Date" DisplayMemberBinding="{Binding ExpectedEnddate, StringFormat=d}" />
 
 
                         <!--<GridViewColumn Header="Id" DisplayMemberBinding="{Binding IdRequest}" />

@@ -30,7 +30,7 @@ namespace BarcoPVG.Viewmodels.JobRequest
 
             foreach (var requestId in requestIds) // Change Date +5, Change Job nature to colors
             {
-                requestId.ExpectedEnddate = requestId.RequestDate.AddDays(5.0);
+                //requestId.ExpectedEnddate = requestId.RequestDate.AddDays(5.0);
                 IdRequestsOnly.Add(requestId);
 
                 
