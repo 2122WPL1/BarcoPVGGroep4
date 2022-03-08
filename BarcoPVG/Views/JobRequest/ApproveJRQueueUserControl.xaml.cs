@@ -18,9 +18,11 @@ namespace BarcoPVG.Views.JobRequest
     /// </summary>
     public partial class ApproveJRQueueUserControl : UserControl
     {
+        
         public ApproveJRQueueUserControl()
         {
             InitializeComponent();
+            
         }
     }
 }

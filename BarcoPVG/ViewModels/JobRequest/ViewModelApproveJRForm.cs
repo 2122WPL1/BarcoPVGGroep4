@@ -107,7 +107,7 @@ namespace BarcoPVG.Viewmodels.JobRequest
         public void RemoveSelectedEUT()
         {
             //note: zorgen dat de eut hemzelf select 
-            EUTs.Remove(SelectedEUT); //werkt ook niet met de button wanneer hij geselecteerd is miss iets verkeerd met de binding
+            EUTs.Remove(SelectedEUT); 
 
 
 

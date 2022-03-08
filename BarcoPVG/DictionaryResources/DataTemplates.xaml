@@ -23,6 +23,10 @@
                     <ColumnDefinition Width="10"/>
                 </Grid.ColumnDefinitions>
                 <Button HorizontalAlignment="Right" Content="X" Command="{Binding RemoveEUTCommand}"></Button>
+                <!--note:
+                Severity	Count	Data Context	Binding Path	Target	Target Type	Description	File	Line	Project
+                Error	2	EUT	RemoveEUTCommand	Button.Command	ICommand	RemoveEUTCommand property not found on object of type EUT.	\DictionaryResources\DataTemplates.xaml	25	BarcoPVG
+-->
                 <!-- note: doet nog niets waarschijnlijk doordat hij niet de eut zelf selecteerd als verwijderd item in viewmodelapprovejrform of er is iets mis met de binding-->
                 <TextBlock  Text="EUT" Margin="5"/>
 
