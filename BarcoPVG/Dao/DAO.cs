@@ -283,8 +283,6 @@ namespace BarcoPVG.Dao
                 // We combine the rqo and rqrequest objects
                 rqrequest.RqOptionels.Add(rqo);
 
-
-
                 _context.RqRequests.Update(rqrequest);
                 SaveChanges();
             }
