@@ -15,6 +15,8 @@
 
 #Barco connectie
 BarcoPVG/Dao/Constants.cs
+Dao/Constants.cs
+Constants.cs
 
 # Mono auto generated files
 mono_crash.*
