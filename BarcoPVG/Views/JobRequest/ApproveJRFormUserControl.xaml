@@ -91,17 +91,33 @@
                 <!--<ScrollViewer Height="50">-->
                 <ContentControl ContentTemplate="{DynamicResource PVGRes}"
                                 Content="{Binding JR}"/>
-             
+
                 <!--</ScrollViewer>-->
+                <!--ItemsSource="{Binding EUTs}"-->
+                <!--ItemTemplate="{DynamicResource EUT}"-->
                 <ListBox x:Name="ListEUT" Height="150" Background="#363636"
-                         ItemTemplate="{DynamicResource EUT}" 
-                         ItemsSource="{Binding EUTs}" 
-                         SelectedItem="{Binding SelectedEUT, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }"/>
-                <StackPanel Orientation="Horizontal">
+                         
+                         
+                         SelectedItem="{Binding SelectedEUT, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }">
+                        
+                    
+<!--Itemsource + button voor het toevoegen-->
+<!--https://stackoverflow.com/questions/53502828/add-listboxitem-with-add-button-that-is-inside-the-listbox-itself-->
+                    <!--<ListBox.ItemsSource>
+                        <CompositeCollection>
+                            <CollectionContainer Collection="{Binding EUT}"/>
+                            <ListBoxItem>
+                                <Button Command="{Binding Path=AddEUTCommand}">X</Button>
+                            </ListBoxItem>
+                        </CompositeCollection>
+                    </ListBox.ItemsSource>-->
+                </ListBox>
+                
+                <StackPanel Orientation="Horizontal" >
                     <Button Content="Add Part" 
                                 Command="{Binding Path=AddEUTCommand}" 
                                 Margin="10"/>
-                    <Button Content="Remove Part" 
+                    <Button Content="Remove Part"
                                 Command="{Binding Path=RemoveEUTCommand}" 
                                 Margin="10"/>
                 </StackPanel>

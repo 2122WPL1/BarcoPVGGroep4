@@ -11,6 +11,7 @@ using BarcoPVG;
 using BarcoPVG.Models;
 using BarcoPVG.Models.Db;
 
+
 namespace BarcoPVG.Dao
 {
     // SINGLETON PATTERN
@@ -288,8 +289,9 @@ namespace BarcoPVG.Dao
                 rqrequest.Battery = Jr.Battery;
                 // Matti voorlopig
                 // We create the rqo RqOptionel object to link the user data to the db data and saves the changes in the Barco database
-                RqOptionel rqo = _context.RqOptionels.FirstOrDefault(o => o.IdRequest == Jr.IdRequest);
-                rqo.Link = Jr.Link;
+                RqOptionel rqo = _context.RqOptionels.FirstOrDefault(o => o.IdRequest == Jr.IdRequest);      
+                //Sander: wss wanneer er een JR aangepast wordt zodat het wel optionele velden heeft komt er hier een crash
+                rqo.Link = Jr.Link; // context heeft geen rqoptional
                 rqo.Remarks = Jr.Remarks;
                 // We combine the rqo and rqrequest objects
                 rqrequest.RqOptionels.Add(rqo);
@@ -309,11 +311,15 @@ namespace BarcoPVG.Dao
         // Gets existing JR by ID
         // TODO: catch nullRefEx - Currently impossible due to selecting listitem on load
         
-        public JR GetJR(int idrequest)
+        public JR GetJR(int idrequest) //Sander: Optionele JR velden geven geen error als ze inveguld zijn
         {
                 // Find selected RqRequest
                 RqRequest selectedRQ = _context.RqRequests.FirstOrDefault(rq => rq.IdRequest == idrequest);
                 RqOptionel selectedRQO = _context.RqOptionels.FirstOrDefault(rqo => rqo.IdRequest == idrequest);
+            JR selectedJR = null;
+
+            if (selectedRQO != null)
+            {
                 // Create new JR with necessary data
                 JR selectedJR = new()
                 {
@@ -337,7 +343,29 @@ namespace BarcoPVG.Dao
                     // Testing
                     Link = selectedRQO.Link,
                     Remarks = selectedRQO.Remarks,
+                };     
+            }
+            else
+            {
+                selectedJR = new JR
+                {
+                    IdRequest = selectedRQ.IdRequest,
+                    JrNumber = selectedRQ.JrNumber,
+                    JrStatus = selectedRQ.JrStatus,
+                    RequestDate = selectedRQ.RequestDate,
+                    Requester = selectedRQ.Requester,
+                    BarcoDivision = selectedRQ.BarcoDivision,
+                    JobNature = selectedRQ.JobNature,
+                    EutProjectname = selectedRQ.EutProjectname,
+                    EutPartnr = selectedRQ.EutPartnumbers,
+                    HydraProjectnumber = selectedRQ.HydraProjectNr,
+                    ExpEnddate = selectedRQ.ExpectedEnddate,
+                    InternRequest = selectedRQ.InternRequest,
+                    GrossWeight = selectedRQ.GrossWeight,
+                    NetWeight = selectedRQ.NetWeight,
+                    Battery = selectedRQ.Battery,
                 };
+            }
             return selectedJR;
         }
 
@@ -684,7 +712,6 @@ namespace BarcoPVG.Dao
             dbRq.JrStatus = "Finished";
 
             SaveChanges();
-
         }
 
 
@@ -742,7 +769,6 @@ namespace BarcoPVG.Dao
                     return true;
                 }
             }
-
             return false;
         }
 
@@ -808,7 +834,6 @@ namespace BarcoPVG.Dao
                 TestDiv = division,
                 TestDivStatus = "In plan", // use enums?
             };
-
             return planning;
         }
 

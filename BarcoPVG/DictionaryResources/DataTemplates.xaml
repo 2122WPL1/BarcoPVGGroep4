@@ -2,11 +2,10 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <DataTemplate x:Key="AddEUT">
-        <Grid>
-            <StackPanel>
-                <Button Content="Voeg EUT toe" Command="{Binding AddEUTCommand}"></Button> <!-- note: weet niet hoe het in de listbox als item verschijnt-->
-            </StackPanel>
-         </Grid>
+        <StackPanel>
+            <Button Content="Voeg EUT toe" Command="{Binding AddEUTCommand}"></Button> 
+            <!-- note: weet niet hoe het in de listbox als item verschijnt-->
+        </StackPanel>
     </DataTemplate> 
 
     <!-- DataTemplate to display EUT's in listboxes/listviews - Kaat-->
@@ -23,8 +22,10 @@
                     <ColumnDefinition/>
                     <ColumnDefinition Width="10"/>
                 </Grid.ColumnDefinitions>
-                <Button HorizontalAlignment="Right" Content="X" Command="{Binding RemoveEUTCommand}"></Button> 
-                <!-- note: doet nog niets waarschijnlijk doordat hij niet de eut zelf selecteerd als verwijderd item in viewmodelapprovejrform-->
+                <Button HorizontalAlignment="Right" Content="X" Command="{Binding RemoveEUTCommand}"></Button>
+                <!--note:
+                Severity	Count	Data Context	Binding Path	Target	Target Type	Description	File	Line	Project
+                Error	2	EUT	RemoveEUTCommand	Button.Command	ICommand	RemoveEUTCommand property not found on object of type EUT.	\DictionaryResources\DataTemplates.xaml	25	BarcoPVG
                 <TextBlock  Text="EUT" Margin="5"/>
 
                 <StackPanel  Grid.Row="1" Orientation="Vertical"  TextElement.Foreground="Black">
