@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.Win32;
 
 namespace BarcoPVG.Dao
 {
@@ -14,19 +15,12 @@ namespace BarcoPVG.Dao
         /// <typeparam name="T">Type that can store the values in a subkey</typeparam>
         /// <param name="subkeyPath">Relative path to the subkey, starting at the Current User key</param>
         /// <returns></returns>
-        
-        public static T GetValueObject<T>(string subkeyPath) where T : new()
-        {
-            var storage = new T();
 
-            using (RegistryKey valueKey = Registry.CurrentUser.OpenSubKey(subkeyPath))
-            {
-                foreach (var property in typeof(T).GetProperties())
-                {
-                    property.SetValue(storage, valueKey.GetValue(property.Name));
-                }
-            }
-            return storage;
+        //changing the login when opening the application that the username and password is asked instead of the registry key.
+        //Jarne
+        [AssemblyInitialize]
+        public static void AssemblyInitialize(TestContext testContext)
+        {
         }
     }
 }
