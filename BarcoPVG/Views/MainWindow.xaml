@@ -55,10 +55,6 @@
                         Command="{Binding DisplayDevStartupCommand, Mode=OneWay}" 
                             Visibility="{Binding SeeAll}"
                         Margin="10" Background="#FFF10000"/>
-                        <Button Content="Database Management"
-                            Command="{Binding DisplayDevStartupCommand, Mode=OneWay}" 
-                            Visibility="{Binding SeeAll}"
-                            Background="#FFF10000" Width="178"/>
                     </StackPanel>
                 <ScrollViewer Height="450">
                     <ContentControl Content="{Binding ViewModel}"/>
