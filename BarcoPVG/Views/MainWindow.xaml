@@ -10,7 +10,7 @@
         WindowStartupLocation="CenterScreen">
     <StackPanel>
         <!--<StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Stretch">
-            --><!--<Image Style="{StaticResource BarcoLogo}" Source="/DictionaryResources/barco-logo.png"/>--><!--
+            <Image Style="{StaticResource BarcoLogo}" Source="/DictionaryResources/barco-logo.png"/>
             <Image Style="{StaticResource BarcoLogo}"/>
         </StackPanel>-->
         <StackPanel Margin="10">
@@ -38,23 +38,23 @@
                             Command="{Binding DisplayEmployeeStartupCommand,
                             Mode=OneWay}" 
                             Visibility="{Binding NewRequests}"
-                            Margin="10"/>
+                            Margin="10" Background="#FFF10000"/>
                         <Button Content="Edit/Approve requests" 
                             Command="{Binding DisplayPlannerStartupCommand, Mode=OneWay}" 
                             Visibility="{Binding ApproveRequests}"
-                            Margin="10"/>
+                            Background="#FFF10000"/>
                         <Button Content="Plan tests" 
                             Command="{Binding DisplayTesterPlanCommand, Mode=OneWay}"
                             Visibility="{Binding Test}"
-                            Margin="10"/>
+                            Margin="10" Background="#FFF10000"/>
                         <Button Content="View/Update tests" 
                             Command="{Binding DisplayTesterTestCommand, Mode=OneWay}"
                             Visibility="{Binding Test}"
-                            Margin="10"/>
+                            Background="#FFF10000"/>
                         <Button Content="Development"
                         Command="{Binding DisplayDevStartupCommand, Mode=OneWay}" 
                             Visibility="{Binding SeeAll}"
-                        Margin="10"/>
+                        Margin="10" Background="#FFF10000"/>
                     </StackPanel>
                 <ScrollViewer Height="450">
                     <ContentControl Content="{Binding ViewModel}"/>

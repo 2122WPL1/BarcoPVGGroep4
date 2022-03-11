@@ -11,11 +11,19 @@
             <ListView ItemsSource="{Binding PlansToApprove}" SelectedItem="{Binding SelectedPlan, Mode=TwoWay}" Height="250">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Id Planning" DisplayMemberBinding="{Binding IdPlanning}" />
+                        <GridViewColumn  Header="Division" DisplayMemberBinding="{Binding BarcoDivision}" />
+                        <GridViewColumn Header="Requester" DisplayMemberBinding="{Binding Requester}" />
+                        <GridViewColumn Header="EUT Projectname" DisplayMemberBinding="{Binding EutProjectname}" />
+                        <GridViewColumn  Header="Job Nature" DisplayMemberBinding="{Binding JobNature}" />
+                        <GridViewColumn Header="JR number" DisplayMemberBinding="{Binding JrNumber}" />
+                        <GridViewColumn Header="Expected Approve Date" DisplayMemberBinding="{Binding RequestDate, StringFormat=d}" />
+                        <GridViewColumn Header="Expected End Date" DisplayMemberBinding="{Binding ExpectedEnddate, StringFormat=d}" />
+
+                        <!--<GridViewColumn Header="Id Planning" DisplayMemberBinding="{Binding IdPlanning}" />
                         <GridViewColumn Header="Job Request Number" DisplayMemberBinding="{Binding JrNr}" />
                         <GridViewColumn Header="Request Date" DisplayMemberBinding="{Binding Requestdate, StringFormat=d}" />
                         <GridViewColumn Header="Due Date" DisplayMemberBinding="{Binding DueDate, StringFormat=d}" />
-                        <GridViewColumn Header="Test Division" DisplayMemberBinding="{Binding TestDiv}" />
+                        <GridViewColumn Header="Test Division" DisplayMemberBinding="{Binding TestDiv}" />-->
                     </GridView>
                 </ListView.View>
             </ListView>

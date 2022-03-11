@@ -20,11 +20,27 @@ namespace BarcoPVG.Views
     /// </summary>
     public partial class MainWindow : Window
     {
+        
         public MainWindow()
         // Global variables
         {
-            DataContext = new ViewModelMain();
+            DataContext = new ViewModelMain(); //user ingeven als parameter
+
             InitializeComponent();
+
+            //if a user is already logged in then the MainWindow pops-up 
+            //else the Login screen pops-up
+            //Jarne
+            //if (IsLoggedIn == true)
+            //{
+            //    //tonen van de mainwindow
+            //    MainWindow;
+            //}
+            //else
+            //{
+            //    //tonen van het login scherm
+            //    Login;
+            //}
         }
     }
 }
