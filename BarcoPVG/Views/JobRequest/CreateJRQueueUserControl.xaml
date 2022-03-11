@@ -4,18 +4,28 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BarcoPVG.Views"
+             xmlns:vm="clr-namespace:BarcoPVG.Viewmodels.JobRequest"
              mc:Ignorable="d" 
-             d:DesignHeight="800" d:DesignWidth="857.17" d:Background="LightGray">
+             d:DesignHeight="800" d:DesignWidth="923.745" d:Background="LightGray">
+    <UserControl.Resources>
+        <vm:ViewModelCreateJRQueue x:Key="converterToColor"/>
+    </UserControl.Resources>
     <StackPanel Margin="10">
-        <GroupBox Header="Open Job Requests" BorderThickness="0.2">
+        <GroupBox Header="Open Job Requests TEST" BorderThickness="0.2">
             <ListView x:Name="gvList" ItemsSource="{Binding IdRequestsOnly}" SelectedItem="{Binding SelectedJR, Mode=TwoWay}" Height="250" Background="White">
                 <ListView.View >
                     <GridView >
                         <GridViewColumn  Header="Division" DisplayMemberBinding="{Binding BarcoDivision}" />
                         <GridViewColumn Header="Requester" DisplayMemberBinding="{Binding Requester}" />
                         <GridViewColumn Header="EUT Projectname" DisplayMemberBinding="{Binding EutProjectname}" />
-                        <GridViewColumn  Header="Job Nature" DisplayMemberBinding="{Binding JobNature}" />
-                        <GridViewColumn Header="JR number" DisplayMemberBinding="{Binding JrNumber}" />
+                        <GridViewColumn  Header="Job Nature" >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding JobNature}" Background="{Binding JobNature, Converter={StaticResource converterToColor}}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="JR number" DisplayMemberBinding="{Binding JrNumber}"/>
                         <GridViewColumn Header="Expected Approve Date" DisplayMemberBinding="{Binding RequestDate, StringFormat=d}" />
                         <GridViewColumn Header="Expected End Date" DisplayMemberBinding="{Binding ExpectedEnddate, StringFormat=d}" />
 
