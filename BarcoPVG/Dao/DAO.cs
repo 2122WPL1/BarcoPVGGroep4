@@ -14,7 +14,7 @@ using BarcoPVG.Models.Db;
 
 namespace BarcoPVG.Dao
 {
-    // SINGLETON PATTERN bfgsdf
+    // SINGLETON PATTERN
     // Private constructor, static instance
     // Ensures only one DBconnection is opened at a time
     // Ensures connection is closed when not in use
@@ -37,7 +37,7 @@ namespace BarcoPVG.Dao
         private DAO()
         {
             this._context = new BarcoContext();
-            this.BarcoUser = new BarcoUser() { Name = "Admin", Division = "HC", Function = "DEV" };
+            this.BarcoUser = new BarcoUser() { Name = "Admin", Division = "HC", Function = "ADM" };
         }
 
 
