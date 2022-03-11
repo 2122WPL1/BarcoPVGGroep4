@@ -21,6 +21,17 @@ namespace BarcoPVG.Dao
         [AssemblyInitialize]
         public static void AssemblyInitialize(TestContext testContext)
         {
+            ////control if IsLoggedIn equals true or false
+            //if (IsLoggedIn == true)
+            //{
+            //    MainWindow.xaml;
+            //}
+            //else
+            //{
+            //    login.xaml;
+            //}
+
+            //kijken naar DAO waar de username, division en 
         }
     }
 }

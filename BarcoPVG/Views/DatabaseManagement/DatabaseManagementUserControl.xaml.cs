@@ -19,9 +19,5 @@ namespace BarcoPVG.Views.DatabaseManagement
     /// </summary>
     public partial class DatabaseManagementUserControl : Window
     {
-        public DatabaseManagementUserControl()
-        {
-            InitializeComponent();
-        }
     }
 }

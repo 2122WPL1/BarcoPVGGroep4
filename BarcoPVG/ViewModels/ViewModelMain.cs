@@ -87,19 +87,30 @@ namespace BarcoPVG.Viewmodels
             this.ViewModel = new ViewModelCreateJRForm(true);
         }
 
-        public void DisplayExistingJR()
+        public void DisplayExistingJR() //Sander: Foutmelding wanneer er niets geselecteerd wordt
         {
+
             SaveJrCommand = new DelegateCommand(UpdateJr);
+
 
             var ExistingJrId = ((AbstractViewModelCollectionRQ)this.ViewModel).SelectedJR.IdRequest;
 
-            if (this.ViewModel is ViewModelApproveJRQueue)
+            if (((AbstractViewModelCollectionRQ)this.ViewModel).SelectedJR.ExpectedEnddate != new DateTime()) //als de verwachte einddatum niet geset is dan geeft hij een foutmelding
             {
-                 this.ViewModel = new ViewModelApproveJRForm(ExistingJrId);
+                if (this.ViewModel is ViewModelApproveJRQueue)
+                {
+                    this.ViewModel = new ViewModelApproveJRForm(ExistingJrId);
+                }
+                else
+                {
+
+                    this.ViewModel = new ViewModelCreateJRForm(ExistingJrId);
+                }
             }
             else
             {
-                this.ViewModel = new ViewModelCreateJRForm(ExistingJrId);
+                MessageBox.Show("Geen JR geselecteerd");
+
             }
         }
 

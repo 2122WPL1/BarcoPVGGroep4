@@ -8,6 +8,7 @@
         mc:Ignorable="d"
         Title="DatabaseManagementUserControl" Height="450" Width="800" Background="LightGray">
     <Grid>
+        <!--Jarne-->
         <StackPanel>
             <GroupBox Header="Database Management" Height="435">
                 <Grid>
@@ -24,23 +25,22 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Label Content="Choose action first" HorizontalAlignment="Center" VerticalAlignment="Top" Width="157" HorizontalContentAlignment="Center" Margin="0,71,0,0" Grid.RowSpan="2"/>
-                    <Label Content="Abbreviation:" HorizontalAlignment="Left" Margin="76,0,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.Column="1"/>
-                    <Label Content="Firstname:" HorizontalAlignment="Left" Margin="93,0,0,0" Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="2" Grid.Column="1"/>
-                    <Label Content="Lastname:" HorizontalAlignment="Left" Margin="94,70,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
-                    <TextBox Grid.Row="1" VerticalAlignment="Top" Width="156" Grid.Column="2" HorizontalAlignment="Center"/>
-                    <TextBox Grid.Row="1" VerticalAlignment="Center" Width="156" Grid.Column="2" HorizontalAlignment="Center"/>
-                    <TextBox Grid.Row="1" VerticalAlignment="Top" Width="156" Grid.Column="2" HorizontalAlignment="Center" Margin="0,70,0,0"/>
-                    <Label Content="Lastname:" HorizontalAlignment="Left" Margin="95,10,0,0" Grid.Row="2" VerticalAlignment="Top" Grid.Column="1" Grid.ColumnSpan="2"/>
-                    <TextBox Grid.Row="2" VerticalAlignment="Top" Width="156" Grid.Column="2" HorizontalAlignment="Center" Margin="0,10,0,0"/>
-                    <Label Content="Lastname:" HorizontalAlignment="Left" Margin="94,48,0,0" Grid.Row="2" VerticalAlignment="Top" Grid.Column="1" Grid.ColumnSpan="2"/>
-                    <TextBox Grid.Row="2" VerticalAlignment="Top" Width="156" Grid.Column="2" HorizontalAlignment="Center" Margin="0,48,0,0"/>
-                    <Button Content="Add User" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
-                    <Button Content="Remove User" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="105,10,0,0" Grid.ColumnSpan="2"/>
-                    <Button Grid.Column="1" Content="Add Resources" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="70,10,0,0" Grid.ColumnSpan="2"/>
-                    <Button Grid.Column="2" Content="Remove Resources" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="45,10,0,0" Grid.ColumnSpan="2"/>
-                    <Button Content="Cancel" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,26,0,0" Grid.Row="3" Grid.Column="4"/>
-                    <Button Content="Save changes" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="27,26,0,0" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2" Width="130"/>
+                    <Label x:Name="lblAbbreviation" Content="Abbreviation:" HorizontalAlignment="Left" Margin="20,48,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+                    <TextBox Grid.Row="1" VerticalAlignment="Top" Width="156" Grid.ColumnSpan="2" Margin="105,48,0,0"/>
+                    <Label x:Name="lblFirstname" Content="Firstname:" HorizontalAlignment="Left" Margin="36,84,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.RowSpan="2"/>
+                    <TextBox Grid.Row="1" VerticalAlignment="Top" Width="156" Grid.ColumnSpan="2" Margin="105,84,0,0" Grid.RowSpan="2"/>
+                    <Label x:Name="lblLastname" Content="Lastname:" HorizontalAlignment="Left" Margin="37,22,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+                    <TextBox Grid.Row="2" VerticalAlignment="Top" Width="156" Margin="105,22,0,0" Grid.ColumnSpan="2"/>
+                    <Label Content="USERNAME:" HorizontalAlignment="Left" Margin="123,48,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.Column="1" Grid.ColumnSpan="2"/>
+                    <TextBox Grid.Row="1" VerticalAlignment="Top" Width="156" Grid.Column="2" Margin="45,48,0,0" Grid.ColumnSpan="2"/>
+                    <Label Content="PASSWORD:" HorizontalAlignment="Left" Margin="121,84,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.Column="1" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+                    <TextBox Grid.Row="1" VerticalAlignment="Top" Width="156" Grid.Column="2" Margin="45,84,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+                    <Button x:Name="btnAddUser" Content="Add User" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Click="btnAddUser_Click"/>
+                    <Button x:Name="btnRemoveUser" Content="Remove User" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="105,10,0,0" Grid.ColumnSpan="2" Click="btnRemoveUser_Click"/>
+                    <Button x:Name="btnAddResources" Grid.Column="1" Content="Add Resources" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="70,10,0,0" Grid.ColumnSpan="2" Click="btnAddResources_Click"/>
+                    <Button x:Name="btnRemoveResources" Grid.Column="2" Content="Remove Resources" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="45,10,0,0" Grid.ColumnSpan="2" Click="btnRemoveResources_Click"/>
+                    <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,26,0,0" Grid.Row="3" Grid.Column="4" Click="btnCancel_Click"/>
+                    <Button x:Name="btnSaveChanges" Content="Save changes" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="27,26,0,0" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2" Width="130" Click="btnSaveChanges_Click"/>
 
 
 

@@ -56,21 +56,27 @@ namespace BarcoPVG.Viewmodels.JobRequest
             Load();
 
             // Look for JR with correct ID
-            this._jr = _dao.GetJR(idRequest);
-
-
-            List<RqRequestDetail> eutList = _dao.RqDetail(idRequest);
-            // We use a foreach to loop over every item in the eutList
-            // And link the user inputed data to the correct variables
-            var request = new RqRequest();
-            foreach (var id in eutList)
+            if (_dao.GetJR(idRequest) == null)
             {
-                // Use DAO? --> base class
-                request = _context.RqRequests.FirstOrDefault(e => e.IdRequest == id.IdRequest);
-               
+
             }
-            FillEUT(request);
-          
+            else
+            {
+                this._jr = _dao.GetJR(idRequest);
+
+
+                List<RqRequestDetail> eutList = _dao.RqDetail(idRequest);
+                // We use a foreach to loop over every item in the eutList
+                // And link the user inputed data to the correct variables
+                var request = new RqRequest();
+                foreach (var id in eutList)
+                {
+                    // Use DAO? --> base class
+                    request = _context.RqRequests.FirstOrDefault(e => e.IdRequest == id.IdRequest);
+
+                }
+                FillEUT(request);
+            }
         }
 
         // Code reused in both constructors
@@ -142,7 +148,7 @@ namespace BarcoPVG.Viewmodels.JobRequest
         /// </summary>
         public void RemoveSelectedEUT()
         {
-            EUTs.Remove(SelectedEUT);
+            EUTs.Remove(_selectedEUT); 
         }
     }
 }
