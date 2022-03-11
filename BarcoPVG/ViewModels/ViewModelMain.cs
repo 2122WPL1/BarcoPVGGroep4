@@ -22,19 +22,20 @@ namespace BarcoPVG.Viewmodels
 
 
         // TODO: check if ICommand also works
-        public DelegateCommand DisplayNewJRCommand { get; set; }
-        public DelegateCommand DisplayExistingJRCommand { get; set; }
-        public DelegateCommand DisplayEmployeeStartupCommand { get; set; }
-        public DelegateCommand DisplayPlannerStartupCommand { get; set; }
-        public DelegateCommand DisplayTesterPlanCommand { get; set; }
-        public DelegateCommand DisplayTesterTestCommand { get; set; }
-        public DelegateCommand DisplayDevStartupCommand { get; set; }
-        public DelegateCommand SaveJrCommand { get; set; }
-        public DelegateCommand ApproveJRCommand { get; set; }
-        public DelegateCommand DisplayTestPlanningCommand { get; set; }
-        public DelegateCommand SaveTestsAndReturnCommand { get; set; }
-        public DelegateCommand ApprovePlanAndReturnCommand { get; set; }
-        public DelegateCommand TesterReturnCommand { get; set; }
+        // got u homie -sander
+        public ICommand DisplayNewJRCommand { get; set; }
+        public ICommand DisplayExistingJRCommand { get; set; }
+        public ICommand DisplayEmployeeStartupCommand { get; set; }
+        public ICommand DisplayPlannerStartupCommand { get; set; }
+        public ICommand DisplayTesterPlanCommand { get; set; }
+        public ICommand DisplayTesterTestCommand { get; set; }
+        public ICommand DisplayDevStartupCommand { get; set; }
+        public ICommand SaveJrCommand { get; set; }
+        public ICommand ApproveJRCommand { get; set; }
+        public ICommand DisplayTestPlanningCommand { get; set; }
+        public ICommand SaveTestsAndReturnCommand { get; set; }
+        public ICommand ApprovePlanAndReturnCommand { get; set; }
+        public ICommand TesterReturnCommand { get; set; }
 
         // Visibility of buttons
         public Visibility NewRequests { get; set; }
@@ -103,7 +104,7 @@ namespace BarcoPVG.Viewmodels
                 }
                 else
                 {
-
+                    
                     this.ViewModel = new ViewModelCreateJRForm(ExistingJrId);
                 }
             }
@@ -206,12 +207,19 @@ namespace BarcoPVG.Viewmodels
         }
 
         // Switch to test planning for tester
-        public void DisplayTestPlanning()
+        public void DisplayTestPlanning() //sander: foutafhandeling wanneer er niets geselecteerd is
         {
             // get id from JR
-            var plan = ((ViewModelPlanTestQueue)this.ViewModel).SelectedPlan;
 
-            this.ViewModel = new ViewModelPlanTestForm(plan);
+            var plan = ((ViewModelPlanTestQueue)this.ViewModel).SelectedPlan;
+            if(plan.JrNr != null)
+            {
+                this.ViewModel = new ViewModelPlanTestForm(plan);
+            }
+            else
+            {
+                MessageBox.Show("Geen planning geselecteerd");
+            }   
         }
 
         public void SaveTestsAndReturn()
@@ -280,6 +288,5 @@ namespace BarcoPVG.Viewmodels
                     break;
             }
         }
-
     }
 }
