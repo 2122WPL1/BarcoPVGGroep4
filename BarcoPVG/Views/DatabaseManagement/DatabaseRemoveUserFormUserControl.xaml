@@ -5,8 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BarcoPVG.Views.DatabaseManagement"
         mc:Ignorable="d"
-        Title="DatabaseRemoveUserFormUserControl" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="DatabaseRemoveUserFormUserControl" Height="450" Width="800" Background="LightGray">
+    <GroupBox Header="Remove User">
+        <StackPanel>
+            <ListView Height="269" d:ItemsSource="{d:SampleData ItemCount=5}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="First name" Width="140"/>
+                        <GridViewColumn Header="Last name" Width="140"/>
+                        <GridViewColumn Header="Username" Width="140"/>
+                        <GridViewColumn Header="Password" Width="140"/>
+                        <GridViewColumn Header="Function" Width="140"/>
+                        <GridViewColumn Header="Abbrevation" Width="140"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <StackPanel Height="100" Width="auto" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="Remove User" Margin="5"/>
+                <Button Content="Cancel" Margin="5"/>
+            </StackPanel>
+        </StackPanel>
+    </GroupBox>
+
+
+
+
 </Window>

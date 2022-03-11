@@ -38,9 +38,7 @@ namespace BarcoPVG.Dao
         private DAO()
         {
             this._context = new BarcoContext();
-            this.BarcoUser = new BarcoUser() { Name = "sten", Division = "Sillex", Function = "DEV" };
-            
-            //this.BarcoUser = RegistryConnection.GetValueObject<BarcoUser>(@"SOFTWARE\VivesBarco\Test");
+            this.BarcoUser = new BarcoUser() { Name = "Admin", Division = "HC", Function = "DEV" };
         }
 
 
@@ -351,7 +349,7 @@ namespace BarcoPVG.Dao
                     InternRequest = selectedRQ.InternRequest,
                     GrossWeight = selectedRQ.GrossWeight,
                     NetWeight = selectedRQ.NetWeight,
-                    Battery = selectedRQ.Battery,
+                    Battery = (bool)selectedRQ.Battery,
                     //EutPartnr = selectedRQ.EutPartnumbers,
 
                     // Testing
@@ -378,9 +376,6 @@ namespace BarcoPVG.Dao
                     GrossWeight = selectedRQ.GrossWeight,
                     NetWeight = selectedRQ.NetWeight,
                     Battery = selectedRQ.Battery,
-
-                    
-                    
                 };
             }
             return selectedJR;
@@ -408,7 +403,7 @@ namespace BarcoPVG.Dao
                 InternRequest = selectedRQ.InternRequest,
                 GrossWeight = selectedRQ.GrossWeight,
                 NetWeight = selectedRQ.NetWeight,
-                Battery = selectedRQ.Battery,
+                Battery = (bool)selectedRQ.Battery,
                 //EutPartnr = selectedRQ.EutPartnumbers,
 
                 // Testing

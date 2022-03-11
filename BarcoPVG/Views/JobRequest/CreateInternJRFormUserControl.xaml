@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="CreateInternJRFormUserControl" Height="450" Width="800" Background="LightGray">
     <Grid>
+        <!--amy-->
         <Grid>
             <StackPanel>
                 <GroupBox Height="353" Header="Add a request">
@@ -34,14 +35,12 @@
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <Button Content="Confirm" 
-                                Command="{Binding DataContext.SaveJrCommand, 
-                                          Mode=OneWay}"
-                                HorizontalAlignment="Left" Margin="282,18,0,0" VerticalAlignment="Top"/>
-                        <Button Grid.Column="1" Content="Cancel" 
-                                Command="{Binding DataContext.DisplayDevStartupCommand, 
-                                        Mode=OneWay}"
-                                HorizontalAlignment="Left" Margin="46,18,0,0" VerticalAlignment="Top"/>
+                        <Button Content="Confirm" HorizontalAlignment="Left" 
+                                Command="{Binding DataContext.SafeJrCommand, Mode=OneWay}"
+                                Margin="282,18,0,0" VerticalAlignment="Top"/>
+                        <Button Grid.Column="1" Content="Cancel" HorizontalAlignment="Left" 
+                                Command="{Binding Datacontext.DisplayDevStartupCommand, Mode=OneWay}"
+                                Margin="46,18,0,0" VerticalAlignment="Top"/>
                     </Grid>
 
                 </DockPanel>
