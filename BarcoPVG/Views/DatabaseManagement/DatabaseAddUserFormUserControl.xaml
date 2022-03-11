@@ -34,8 +34,12 @@
             </Grid>
             <DockPanel Height="100" LastChildFill="False">
                 <Label Content="" Width="525"/>
-                <Button Content="Add User" Width="Auto" Margin="10,5,10,5"/>
-                <Button Content="Cancel" Width="Auto" HorizontalAlignment="Center" Margin="10,5,10,5"/>
+                <Button Content="Add User" 
+                        Command="{Binding Path=AddUserCommand}"
+                        Width="Auto" Margin="10,5,10,5"/>
+                <Button Content="Cancel" Width="Auto" 
+                        Command="{Binding Path=CancelAddUserCommand}"
+                        HorizontalAlignment="Center" Margin="10,5,10,5"/>
             </DockPanel>
         </StackPanel>
     </GroupBox>

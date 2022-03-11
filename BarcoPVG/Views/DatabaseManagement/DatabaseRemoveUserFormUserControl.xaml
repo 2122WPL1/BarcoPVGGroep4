@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BarcoPVG.Views.DatabaseManagement"
         mc:Ignorable="d"
-        Title="DatabaseRemoveUserFormUserControl" Height="450" Width="800" Background="LightGray">
+        Title="DatabaseRemoveUserFormUserControl" Height="450" Width="849" Background="LightGray">
     <GroupBox Header="Remove User">
         <StackPanel>
-            <ListView Height="269" d:ItemsSource="{d:SampleData ItemCount=5}">
+            <ListView Height="269">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="First name" Width="140"/>
@@ -21,8 +21,12 @@
                 </ListView.View>
             </ListView>
             <StackPanel Height="100" Width="auto" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Content="Remove User" Margin="5"/>
-                <Button Content="Cancel" Margin="5"/>
+                <Button Content="Remove User" 
+                        Command="{Binding Path=RemoveUserCommand}"
+                        Margin="5"/>
+                <Button Content="Cancel" 
+                        Command="{Binding Path=CancelRemoveUserCommand}"
+                        Margin="5"/>
             </StackPanel>
         </StackPanel>
     </GroupBox>

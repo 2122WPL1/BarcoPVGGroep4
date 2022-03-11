@@ -154,7 +154,7 @@ namespace BarcoPVG.Viewmodels
         //Jarne & Amy
         public void DisplayAddUser()
         {
-            this.ViewModel = new ViewModelDatabaseAddUser(); jhg
+            this.ViewModel = new ViewModelDatabaseAddUser();
         }
         public void DisplayRemoveUser()
         {
