@@ -14,6 +14,7 @@ using BarcoPVG.Models.Db;
 
 namespace BarcoPVG.Dao
 {
+    //Test gitignore
     // SINGLETON PATTERN
     // Private constructor, static instance
     // Ensures only one DBconnection is opened at a time
@@ -37,7 +38,9 @@ namespace BarcoPVG.Dao
         private DAO()
         {
             this._context = new BarcoContext();
-            this.BarcoUser = new BarcoUser() { Name = "Admin", Division = "HC", Function = "DEV" };
+            this.BarcoUser = new BarcoUser() { Name = "sten", Division = "Sillex", Function = "DEV" };
+            
+            //this.BarcoUser = RegistryConnection.GetValueObject<BarcoUser>(@"SOFTWARE\VivesBarco\Test");
         }
 
 

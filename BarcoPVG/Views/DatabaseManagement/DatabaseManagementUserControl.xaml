@@ -25,19 +25,16 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Label x:Name="lblName" Content="{Binding}" HorizontalAlignment="Center" VerticalAlignment="Top" Width="157" HorizontalContentAlignment="Center" Margin="0,71,0,0" Grid.RowSpan="2"/>
                     <Label x:Name="lblAbbreviation" Content="Abbreviation:" HorizontalAlignment="Left" Margin="20,48,0,0" Grid.Row="1" VerticalAlignment="Top"/>
                     <TextBox Grid.Row="1" VerticalAlignment="Top" Width="156" Grid.ColumnSpan="2" Margin="105,48,0,0"/>
                     <Label x:Name="lblFirstname" Content="Firstname:" HorizontalAlignment="Left" Margin="36,84,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.RowSpan="2"/>
                     <TextBox Grid.Row="1" VerticalAlignment="Top" Width="156" Grid.ColumnSpan="2" Margin="105,84,0,0" Grid.RowSpan="2"/>
                     <Label x:Name="lblLastname" Content="Lastname:" HorizontalAlignment="Left" Margin="37,22,0,0" Grid.Row="2" VerticalAlignment="Top"/>
                     <TextBox Grid.Row="2" VerticalAlignment="Top" Width="156" Margin="105,22,0,0" Grid.ColumnSpan="2"/>
-                    <Label Content="test:" HorizontalAlignment="Left" Margin="8,48,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.Column="2"/>
+                    <Label Content="USERNAME:" HorizontalAlignment="Left" Margin="123,48,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.Column="1" Grid.ColumnSpan="2"/>
                     <TextBox Grid.Row="1" VerticalAlignment="Top" Width="156" Grid.Column="2" Margin="45,48,0,0" Grid.ColumnSpan="2"/>
-                    <Label Content="test:" HorizontalAlignment="Left" Margin="8,84,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.Column="2" Grid.RowSpan="2"/>
+                    <Label Content="PASSWORD:" HorizontalAlignment="Left" Margin="121,84,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.Column="1" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
                     <TextBox Grid.Row="1" VerticalAlignment="Top" Width="156" Grid.Column="2" Margin="45,84,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
-                    <Label Content="test:" HorizontalAlignment="Left" Margin="8,22,0,0" Grid.Row="2" VerticalAlignment="Top" Grid.Column="2"/>
-                    <TextBox Grid.Row="2" VerticalAlignment="Top" Width="156" Grid.Column="2" Margin="45,22,0,0" Grid.ColumnSpan="2"/>
                     <Button x:Name="btnAddUser" Content="Add User" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Click="btnAddUser_Click"/>
                     <Button x:Name="btnRemoveUser" Content="Remove User" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="105,10,0,0" Grid.ColumnSpan="2" Click="btnRemoveUser_Click"/>
                     <Button x:Name="btnAddResources" Grid.Column="1" Content="Add Resources" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="70,10,0,0" Grid.ColumnSpan="2" Click="btnAddResources_Click"/>
