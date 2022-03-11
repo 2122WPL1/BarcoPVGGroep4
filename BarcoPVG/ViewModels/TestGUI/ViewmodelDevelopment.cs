@@ -7,7 +7,7 @@ using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Input;
-
+using BarcoPVG.Dao;
 using BarcoPVG.Models;
 using BarcoPVG.Views;
 
