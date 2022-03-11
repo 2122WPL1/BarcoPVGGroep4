@@ -8,5 +8,6 @@ namespace BarcoPVG.ViewModels.DatabaseManagement
 {
     internal class ViewModelDatabaseAddUser
     {
+
     }
 }
