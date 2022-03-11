@@ -49,7 +49,7 @@
             <Button Content="Open JR details"
                     Command="{Binding DataContext.DisplayExistingJRCommand, 
                             RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, 
-                            Mode=OneWay}" 
+                            Mode=OneWay}"
                     Margin="10"/>
         </StackPanel>
     </StackPanel>
