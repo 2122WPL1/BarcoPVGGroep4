@@ -15,7 +15,7 @@ using BarcoPVG.Models.Db;
 namespace BarcoPVG.Dao
 {
     //Test gitignore
-    // SINGLETON PATTERN
+    // SINGLETON PATTERN ghvh
     // Private constructor, static instance
     // Ensures only one DBconnection is opened at a time
     // Ensures connection is closed when not in use
@@ -375,7 +375,7 @@ namespace BarcoPVG.Dao
                     InternRequest = selectedRQ.InternRequest,
                     GrossWeight = selectedRQ.GrossWeight,
                     NetWeight = selectedRQ.NetWeight,
-                    Battery = selectedRQ.Battery,
+                    Battery = selectedRQ.Battery??false,
                 };
             }
             return selectedJR;
