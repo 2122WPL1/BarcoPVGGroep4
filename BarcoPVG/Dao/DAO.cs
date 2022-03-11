@@ -11,9 +11,10 @@ using BarcoPVG;
 using BarcoPVG.Models;
 using BarcoPVG.Models.Db;
 
+
 namespace BarcoPVG.Dao
 {
-    // SINGLETON PATTERN
+    // SINGLETON PATTERN fr
     // Private constructor, static instance
     // Ensures only one DBconnection is opened at a time
     // Ensures connection is closed when not in use
@@ -21,7 +22,7 @@ namespace BarcoPVG.Dao
     {
         // Variables
         private BarcoContext _context;
-        private static readonly DAO _instance = new DAO(); 
+        private static readonly DAO _instance = new(); 
 
         public BarcoUser BarcoUser { get; }
 
@@ -36,8 +37,7 @@ namespace BarcoPVG.Dao
         private DAO()
         {
             this._context = new BarcoContext();
-            this.BarcoUser = new BarcoUser() { Name = "Admin", Division = "HC", Function = "DEV" };
-            //this.BarcoUser = RegistryConnection.GetValueObject<BarcoUser>(@"SOFTWARE\VivesBarco\Test");
+            this.BarcoUser = new BarcoUser() { Name = "Admin", Division = "HC", Function = "ADM" };
         }
 
 
@@ -121,7 +121,7 @@ namespace BarcoPVG.Dao
         /// </summary>
         public JR GetNewJR()
         {
-            JR autofilledJR = new JR()
+            JR autofilledJR = new()
             {
              Requester = BarcoUser.Name,
                 BarcoDivision = BarcoUser.Division
@@ -137,10 +137,11 @@ namespace BarcoPVG.Dao
         {
             // Copy data from JR to new RqRequest
             // Used ternary operator to use String.Empty when null
-            RqRequest rqrequest = new RqRequest()
+            RqRequest rqrequest = new()
             {
                 JrStatus = Jr.JrStatus == null ? "To approve" : Jr.JrStatus,
-                RequestDate = Jr.ExpEnddate, // Nullable
+                RequestDate = Add5Datum(), // the JR has to be accepted within 5 non-holiday days.
+                //RequestDate = (DateTime)Jr.ExpEnddate, // Nullable
                 Requester = Jr.Requester == null ? string.Empty : Jr.Requester,
                 BarcoDivision = Jr.BarcoDivision == null ? string.Empty : Jr.BarcoDivision,
                 JobNature = Jr.JobNature == null ? string.Empty : Jr.JobNature,
@@ -160,7 +161,7 @@ namespace BarcoPVG.Dao
 
             //Matti voorlopig
             // We create a rqo object of the RqOptionel class to save the following fields in the database with the user input
-            RqOptionel rqo = new RqOptionel
+            RqOptionel rqo = new()
             {
                 Link = Jr.Link == null ? string.Empty : Jr.Link,
                 Remarks = Jr.Remarks == null ? string.Empty : Jr.Remarks,
@@ -171,6 +172,25 @@ namespace BarcoPVG.Dao
 
 
             return rqrequest;
+        }
+
+        private DateTime Add5Datum()
+        {
+            // Still have to look at holidays in Belgium****
+            DateTime newDate = DateTime.Now;
+            int fiveDays = 5;
+
+            while (fiveDays > 0)
+            {
+                newDate = newDate.AddDays(1);
+
+                if (newDate.DayOfWeek != DayOfWeek.Saturday && newDate.DayOfWeek != DayOfWeek.Sunday)
+                {
+                    fiveDays -= 1;
+                }
+            }
+
+            return newDate;
         }
 
 
@@ -186,7 +206,7 @@ namespace BarcoPVG.Dao
         public void AddEutToRqRequest(RqRequest request, EUT eut, string EutNr)
         {
 
-            List<string> testDivision = new List<string>();
+            List<string> testDivision = new();
 
             //request.GrossWeight = request.GrossWeight == null ? string.Empty : request.GrossWeight;
             //request.NetWeight = request.NetWeight == null ? string.Empty : request.NetWeight;
@@ -255,7 +275,7 @@ namespace BarcoPVG.Dao
 
                 rqrequest.JrNumber = Jr.JrNumber;
                 rqrequest.JrStatus = Jr.JrStatus;
-                rqrequest.RequestDate = Jr.RequestDate;
+                rqrequest.RequestDate = (DateTime)Jr.RequestDate;
                 rqrequest.Requester = Jr.Requester;
                 rqrequest.BarcoDivision = Jr.BarcoDivision;
                 rqrequest.JobNature = Jr.JobNature;
@@ -267,16 +287,14 @@ namespace BarcoPVG.Dao
                 rqrequest.GrossWeight = Jr.GrossWeight;
                 rqrequest.NetWeight = Jr.NetWeight;
                 rqrequest.Battery = Jr.Battery;
-
                 // Matti voorlopig
                 // We create the rqo RqOptionel object to link the user data to the db data and saves the changes in the Barco database
-                RqOptionel rqo = _context.RqOptionels.FirstOrDefault(o => o.IdRequest == Jr.IdRequest);
-                rqo.Link = Jr.Link;
+                RqOptionel rqo = _context.RqOptionels.FirstOrDefault(o => o.IdRequest == Jr.IdRequest);      
+                //Sander: wss wanneer er een JR aangepast wordt zodat het wel optionele velden heeft komt er hier een crash
+                rqo.Link = Jr.Link; // context heeft geen rqoptional
                 rqo.Remarks = Jr.Remarks;
                 // We combine the rqo and rqrequest objects
                 rqrequest.RqOptionels.Add(rqo);
-
-
 
                 _context.RqRequests.Update(rqrequest);
                 SaveChanges();
@@ -293,16 +311,17 @@ namespace BarcoPVG.Dao
         // Gets existing JR by ID
         // TODO: catch nullRefEx - Currently impossible due to selecting listitem on load
         
-        public JR GetJR(int idrequest)
+        public JR GetJR(int idrequest) //Sander: Optionele JR velden geven geen error als ze inveguld zijn
         {
-
-           
-
                 // Find selected RqRequest
                 RqRequest selectedRQ = _context.RqRequests.FirstOrDefault(rq => rq.IdRequest == idrequest);
                 RqOptionel selectedRQO = _context.RqOptionels.FirstOrDefault(rqo => rqo.IdRequest == idrequest);
+            JR selectedJR = null;
+
+            if (selectedRQO != null)
+            {
                 // Create new JR with necessary data
-                JR selectedJR = new JR
+                selectedJR = new()
                 {
                     IdRequest = selectedRQ.IdRequest,
                     JrNumber = selectedRQ.JrNumber,
@@ -324,11 +343,30 @@ namespace BarcoPVG.Dao
                     // Testing
                     Link = selectedRQO.Link,
                     Remarks = selectedRQO.Remarks,
+                };     
+            }
+            else
+            {
+                selectedJR = new JR
+                {
+                    IdRequest = selectedRQ.IdRequest,
+                    JrNumber = selectedRQ.JrNumber,
+                    JrStatus = selectedRQ.JrStatus,
+                    RequestDate = selectedRQ.RequestDate,
+                    Requester = selectedRQ.Requester,
+                    BarcoDivision = selectedRQ.BarcoDivision,
+                    JobNature = selectedRQ.JobNature,
+                    EutProjectname = selectedRQ.EutProjectname,
+                    EutPartnr = selectedRQ.EutPartnumbers,
+                    HydraProjectnumber = selectedRQ.HydraProjectNr,
+                    ExpEnddate = selectedRQ.ExpectedEnddate,
+                    InternRequest = selectedRQ.InternRequest,
+                    GrossWeight = selectedRQ.GrossWeight,
+                    NetWeight = selectedRQ.NetWeight,
+                    Battery = selectedRQ.Battery,
                 };
-            
-
+            }
             return selectedJR;
-            
         }
 
         public JR GetJR(RqRequest selectedRQ)
@@ -337,7 +375,7 @@ namespace BarcoPVG.Dao
             RqOptionel selectedRQO = _context.RqOptionels.FirstOrDefault(rqo => rqo.IdRequest == selectedRQ.IdRequest);
 
             // Create new JR with necessary data
-            JR selectedJR = new JR
+            JR selectedJR = new()
             {
                 IdRequest = selectedRQ.IdRequest,
                 JrNumber = selectedRQ.JrNumber,
@@ -360,7 +398,6 @@ namespace BarcoPVG.Dao
                 Link = selectedRQO.Link,
                 Remarks = selectedRQO.Remarks,
             };
-
             return selectedJR;
         }
 
@@ -368,7 +405,7 @@ namespace BarcoPVG.Dao
         public List <EUT> GetEut(RqRequest rq)
         {
             List<RqRequestDetail> rqDetailsForJR = _context.RqRequestDetails.Where(r => r.IdRequest == rq.IdRequest).ToList();
-            List<EUT> EUTObjects = new List<EUT>();
+            List<EUT> EUTObjects = new();
             
             foreach (var detail in rqDetailsForJR)
             {
@@ -388,15 +425,12 @@ namespace BarcoPVG.Dao
                             AvailabilityDate = eut.AvailableDate,
                             OmschrijvingEut = eut.OmschrijvingEut,
                         };
-    
                         EUTObjects.Add(selectedEUTObject);
                     }
-
                     // Set division to true
                     divisionBool.SetValue(selectedEUTObject, true);
                 }
             }
-
             return EUTObjects;
         }
 
@@ -454,7 +488,6 @@ namespace BarcoPVG.Dao
                     TestDiv = division,
                     TestDivStatus = "In plan",
                 };
-
                 _context.Add(planning);
                 _context.SaveChanges();
             }
@@ -527,7 +560,6 @@ namespace BarcoPVG.Dao
                 Resource = GetResource(dbTest.Resources).Naam,
                 Status = dbTest.TestStatus
             };
-
             return test;
         }
 
@@ -605,7 +637,6 @@ namespace BarcoPVG.Dao
                 var newTest = GetTest(item);
                 tests.Add(newTest);
             }
-
             return tests;
         }
 
@@ -626,7 +657,6 @@ namespace BarcoPVG.Dao
                 var newTest = GetTest(item);
                 tests.Add(newTest);
             }
-
             return tests;
         }
 
@@ -645,7 +675,6 @@ namespace BarcoPVG.Dao
                 var newTest = GetTest(item);
                 tests.Add(newTest);
             }
-
             return tests;
         }
 
@@ -660,7 +689,6 @@ namespace BarcoPVG.Dao
             {
                 uiTests.Add(GetTest(item));
             }
-
             return uiTests;
         }
 
@@ -678,14 +706,12 @@ namespace BarcoPVG.Dao
             {
                 return;
             }
-
             // Get request
             var dbRq = _context.RqRequests.SingleOrDefault(rq => rq.IdRequest == rqId);
 
             dbRq.JrStatus = "Finished";
 
             SaveChanges();
-
         }
 
 
@@ -700,7 +726,6 @@ namespace BarcoPVG.Dao
             {
                 uiTests.Add(GetTest(item));
             }
-
             return uiTests;
         }
 
@@ -744,7 +769,6 @@ namespace BarcoPVG.Dao
                     return true;
                 }
             }
-
             return false;
         }
 
@@ -810,7 +834,6 @@ namespace BarcoPVG.Dao
                 TestDiv = division,
                 TestDivStatus = "In plan", // use enums?
             };
-
             return planning;
         }
 

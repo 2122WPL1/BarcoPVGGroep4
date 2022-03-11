@@ -15,7 +15,7 @@ namespace BarcoPVG.Models.Db
 
         public int IdRequest { get; set; }
         public string? JrNumber { get; set; }
-        public DateTime? RequestDate { get; set; }
+        public DateTime RequestDate { get; set; }
         public string? JrStatus { get; set; }
         /// <summary>
         /// initialen
