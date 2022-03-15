@@ -22,7 +22,7 @@
                 <Label Content="Abbrevation:" HorizontalAlignment="Left" Margin="33,108,0,0" VerticalAlignment="Top" Height="26" Width="auto"/>
                 <Label Content="First name:" HorizontalAlignment="Left" Margin="43,0,0,0" Grid.Row="1" VerticalAlignment="Center" Height="24" Width="auto"/>
                 <Label Content="Last name:" HorizontalAlignment="Left" Margin="44,12,0,0" Grid.Row="2" VerticalAlignment="Top" Height="26" Width="auto"/>
-                <Label Grid.Column="1" Content="Username:" HorizontalAlignment="Left" Margin="10,108,0,0" VerticalAlignment="Top" Height="25" Width="auto"/>
+                <Label Grid.Column="1" Content="E-mail:" HorizontalAlignment="Left" Margin="28,108,0,0" VerticalAlignment="Top" Height="25" Width="auto"/>
                 <Label Grid.Column="1" Content="Password:" HorizontalAlignment="Left" Margin="14,0,0,0" Grid.Row="1" VerticalAlignment="Center" Height="24" Width="auto"/>
                 <TextBox Margin="128,108,0,0" Text="" VerticalAlignment="Top" Width="150"/>
                 <TextBox Margin="128,0,0,0" Grid.Row="1" Text="" VerticalAlignment="Center" Width="150"/>
@@ -35,7 +35,9 @@
             <DockPanel Height="100" LastChildFill="False">
                 <Label Content="" Width="525"/>
                 <Button Content="Add User" 
-                        Command="{Binding Path=AddUserCommand}"
+                        Command="{Binding DataContext.SaveAddUserCommand, 
+                            RelativeSource={RelativeSource AncestorType={x:Type local:DatabaseManagementUserControl}}, 
+                            Mode=OneWay}"
                         Width="Auto" Margin="10,5,10,5"/>
                 <Button Content="Cancel" Width="Auto" 
                         Command="{Binding Path=CancelAddUserCommand}"

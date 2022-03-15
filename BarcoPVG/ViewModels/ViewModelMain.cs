@@ -43,6 +43,7 @@ namespace BarcoPVG.Viewmodels
         public DelegateCommand AddResourceCommand { get; set; }
         public DelegateCommand RemoveResourceCommand { get; set; }
         public DelegateCommand DatabaseManagementCommand { get; set; }
+        public DelegateCommand SaveAddUserCommand { get; set; }
 
 
         // Visibility of buttons
@@ -50,7 +51,9 @@ namespace BarcoPVG.Viewmodels
         public Visibility ApproveRequests { get; set; }
         public Visibility Test { get; set; }
         public Visibility SeeAll { get; set; }
-       
+        //Jarne
+        public Visibility Data { get; set; }
+
         public ViewModelMain()
         {
             this.User = _dao.BarcoUser;
@@ -73,6 +76,7 @@ namespace BarcoPVG.Viewmodels
             AddResourceCommand = new DelegateCommand(DisplayAddResource);
             RemoveResourceCommand = new DelegateCommand(DisplayRemoveResource);
             DatabaseManagementCommand = new DelegateCommand(DisplayDatabaseManagement);
+            SaveAddUserCommand = new DelegateCommand(DisplayAddUser);
 
             SetWindowProperties();
         }
@@ -156,6 +160,7 @@ namespace BarcoPVG.Viewmodels
         //Jarne & Amy
         public void DisplayAddUser()
         {
+            SaveAddUserCommand = new DelegateCommand(InsertUser);
             this.ViewModel = new ViewModelDatabaseAddUser();
         }
         public void DisplayRemoveUser()
@@ -286,11 +291,24 @@ namespace BarcoPVG.Viewmodels
         {
             switch (_dao.BarcoUser.Function)
             {
+
+                //Jarne
+                case "DATA":
+                    NewRequests = Visibility.Visible;
+                    ApproveRequests = Visibility.Visible;
+                    Test = Visibility.Visible;
+                    SeeAll = Visibility.Visible;
+                    Data = Visibility.Visible;
+
+                    this.ViewModel = new ViewModelDatabaseManagement();
+
+                    break;
                 case "DEV":
                     NewRequests = Visibility.Visible;
                     ApproveRequests = Visibility.Visible;
                     Test = Visibility.Visible;
                     SeeAll = Visibility.Visible;
+                    Data = Visibility.Hidden;
 
                     this.ViewModel = new ViewModelDevelopment();
 
@@ -300,6 +318,7 @@ namespace BarcoPVG.Viewmodels
                     ApproveRequests = Visibility.Hidden;
                     Test = Visibility.Visible;
                     SeeAll = Visibility.Hidden;
+                    Data = Visibility.Hidden;
 
                     DisplayNewJRCommand = new DelegateCommand(DisplayNewInternalJR);
 
@@ -311,10 +330,12 @@ namespace BarcoPVG.Viewmodels
                     ApproveRequests = Visibility.Visible;
                     Test = Visibility.Hidden;
                     SeeAll = Visibility.Hidden;
+                    Data = Visibility.Hidden;
 
                     this.ViewModel = new ViewModelApproveJRQueue();
 
                     break;
+
                 default:
                     NewRequests = Visibility.Visible;
                     ApproveRequests = Visibility.Hidden;
@@ -326,5 +347,11 @@ namespace BarcoPVG.Viewmodels
                     break;
             }
         }
+
+        public void InsertUser()
+        {
+
+        }
+
     }
 }
