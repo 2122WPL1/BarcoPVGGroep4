@@ -93,10 +93,10 @@
                                 Content="{Binding JR}"/>
 
                 <!--</ScrollViewer>-->
-                <!--ItemsSource="{Binding EUTs}"-->
-                <!--ItemTemplate="{DynamicResource EUT}"-->
-                <ListBox x:Name="ListEUT" Height="150" Background="#363636"
-                         
+                
+                <ListBox x:Name="ListEUT" Height="300" Background="#363636"
+                         ItemsSource="{Binding EUTs}"
+                ItemTemplate="{DynamicResource EUT}"
                          
                          SelectedItem="{Binding SelectedEUT, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }">
                         
