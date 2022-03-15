@@ -4,19 +4,37 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BarcoPVG.Views"
-             mc:Ignorable="d" 
-             d:DesignHeight="800" d:DesignWidth="600" d:Background="LightGray">
+             xmlns:vm="clr-namespace:BarcoPVG.Viewmodels.JobRequest"
+             mc:Ignorable="d" d:Background="LightGray" Width="1145" Height="435">
+    <UserControl.Resources>
+        <vm:ViewModelCreateJRQueue x:Key="converterToColor"/>
+    </UserControl.Resources>
     <StackPanel Margin="10">
-        <GroupBox Header="Open Job Requests" BorderThickness="0.1">
-            <ListView ItemsSource="{Binding IdRequestsOnly}" SelectedItem="{Binding SelectedJR, Mode=TwoWay}" Height="250">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="Id" DisplayMemberBinding="{Binding IdRequest}" />
+        <GroupBox Header="Open Job Requests TEST" BorderThickness="0.2">
+            <ListView x:Name="gvList" ItemsSource="{Binding IdRequestsOnly}" SelectedItem="{Binding SelectedJR, Mode=TwoWay}" Height="250" Background="White">
+                <ListView.View >
+                    <GridView >
+                        <GridViewColumn  Header="Division" DisplayMemberBinding="{Binding BarcoDivision}" />
+                        <GridViewColumn Header="Requester" DisplayMemberBinding="{Binding Requester}" />
+                        <GridViewColumn Header="EUT Projectname" DisplayMemberBinding="{Binding EutProjectname}" />
+                        <GridViewColumn  Header="Job Nature" >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding JobNature}" Background="{Binding JobNature, Converter={StaticResource converterToColor}}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="JR number" DisplayMemberBinding="{Binding JrNumber}"/>
+                        <GridViewColumn Header="Expected Approve Date" DisplayMemberBinding="{Binding RequestDate, StringFormat=d}" />
+                        <GridViewColumn Header="Expected End Date" DisplayMemberBinding="{Binding ExpectedEnddate, StringFormat=d}" />
+
+
+                        <!--<GridViewColumn Header="Id" DisplayMemberBinding="{Binding IdRequest}" />
                         <GridViewColumn Header="Job Request Number" DisplayMemberBinding="{Binding JrNumber}" />
                         <GridViewColumn Header="Eut Projectname" DisplayMemberBinding="{Binding EutProjectname}" />
                         <GridViewColumn Header="Hydra Project Number" DisplayMemberBinding="{Binding HydraProjectNr}" />
                         <GridViewColumn Header="Expected End Date" DisplayMemberBinding="{Binding ExpectedEnddate, StringFormat=d}" />
-                        <GridViewColumn Header="Status" DisplayMemberBinding="{Binding JrStatus}" />
+                        <GridViewColumn Header="Status" DisplayMemberBinding="{Binding JrStatus}" />-->
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -30,7 +48,7 @@
             <Button Content="Open JR details"
                     Command="{Binding DataContext.DisplayExistingJRCommand, 
                             RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, 
-                            Mode=OneWay}" 
+                            Mode=OneWay}"
                     Margin="10"/>
         </StackPanel>
     </StackPanel>

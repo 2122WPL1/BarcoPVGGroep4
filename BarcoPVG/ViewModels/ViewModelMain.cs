@@ -11,6 +11,7 @@ using BarcoPVG.Models.Classes;
 using BarcoPVG.Viewmodels.JobRequest;
 using BarcoPVG.Viewmodels.TestGUI;
 using BarcoPVG.Viewmodels.Planning;
+using BarcoPVG.ViewModels.DatabaseManagement;
 
 namespace BarcoPVG.Viewmodels
 {
@@ -22,6 +23,7 @@ namespace BarcoPVG.Viewmodels
 
 
         // TODO: check if ICommand also works
+
         public DelegateCommand DisplayNewJRCommand { get; set; }
         public DelegateCommand DisplayExistingJRCommand { get; set; }
         public DelegateCommand DisplayEmployeeStartupCommand { get; set; }
@@ -35,13 +37,23 @@ namespace BarcoPVG.Viewmodels
         public DelegateCommand SaveTestsAndReturnCommand { get; set; }
         public DelegateCommand ApprovePlanAndReturnCommand { get; set; }
         public DelegateCommand TesterReturnCommand { get; set; }
+        // Amy & Jarne
+        public DelegateCommand AddUserCommand { get; set; }
+        public DelegateCommand RemoveUserCommand { get; set; }
+        public DelegateCommand AddResourceCommand { get; set; }
+        public DelegateCommand RemoveResourceCommand { get; set; }
+        public DelegateCommand DatabaseManagementCommand { get; set; }
+        public DelegateCommand SaveAddUserCommand { get; set; }
+
 
         // Visibility of buttons
         public Visibility NewRequests { get; set; }
         public Visibility ApproveRequests { get; set; }
         public Visibility Test { get; set; }
         public Visibility SeeAll { get; set; }
-       
+        //Jarne
+        public Visibility Data { get; set; }
+
         public ViewModelMain()
         {
             this.User = _dao.BarcoUser;
@@ -58,6 +70,13 @@ namespace BarcoPVG.Viewmodels
             SaveTestsAndReturnCommand = new DelegateCommand(SaveTestsAndReturn);
             ApprovePlanAndReturnCommand = new DelegateCommand(ApprovePlanAndReturn);
             TesterReturnCommand = new DelegateCommand(TesterReturn);
+            //Jarne & Amy
+            AddUserCommand = new DelegateCommand(DisplayAddUser);
+            RemoveUserCommand = new DelegateCommand(DisplayRemoveUser);
+            AddResourceCommand = new DelegateCommand(DisplayAddResource);
+            RemoveResourceCommand = new DelegateCommand(DisplayRemoveResource);
+            DatabaseManagementCommand = new DelegateCommand(DisplayDatabaseManagement);
+            SaveAddUserCommand = new DelegateCommand(DisplayAddUser);
 
             SetWindowProperties();
         }
@@ -103,7 +122,7 @@ namespace BarcoPVG.Viewmodels
                 }
                 else
                 {
-
+                    
                     this.ViewModel = new ViewModelCreateJRForm(ExistingJrId);
                 }
             }
@@ -136,6 +155,31 @@ namespace BarcoPVG.Viewmodels
         public void DisplayDevStartup()
         {
             this.ViewModel = new ViewModelDevelopment();
+        }
+
+        //Jarne & Amy
+        public void DisplayAddUser()
+        {
+            SaveAddUserCommand = new DelegateCommand(InsertUser);
+            this.ViewModel = new ViewModelDatabaseAddUser();
+        }
+        public void DisplayRemoveUser()
+        {
+            this.ViewModel = new ViewModelDatabaseRemoveUser();
+        }
+
+        public void DisplayAddResource()
+        {
+            this.ViewModel = new ViewModelDatabaseAddResource();
+        }
+
+        public void DisplayRemoveResource()
+        {
+            this.ViewModel = new ViewModelDatabaseRemoveResource();
+        }
+        public void DisplayDatabaseManagement()
+        {
+            this.ViewModel = new ViewModelDatabaseManagement();
         }
 
         // JR CRUD
@@ -206,12 +250,19 @@ namespace BarcoPVG.Viewmodels
         }
 
         // Switch to test planning for tester
-        public void DisplayTestPlanning()
+        public void DisplayTestPlanning() //sander: foutafhandeling wanneer er niets geselecteerd is
         {
             // get id from JR
-            var plan = ((ViewModelPlanTestQueue)this.ViewModel).SelectedPlan;
 
-            this.ViewModel = new ViewModelPlanTestForm(plan);
+            var plan = ((ViewModelPlanTestQueue)this.ViewModel).SelectedPlan;
+            if(plan.JrNr != null)
+            {
+                this.ViewModel = new ViewModelPlanTestForm(plan);
+            }
+            else
+            {
+                MessageBox.Show("Geen planning geselecteerd");
+            }   
         }
 
         public void SaveTestsAndReturn()
@@ -240,45 +291,70 @@ namespace BarcoPVG.Viewmodels
         {
             switch (_dao.BarcoUser.Function)
             {
+
+                //Jarne
+                case "DATA":
+                    NewRequests = Visibility.Visible;
+                    ApproveRequests = Visibility.Visible;
+                    Test = Visibility.Visible;
+                    SeeAll = Visibility.Visible;
+                    Data = Visibility.Visible;
+
+                    this.ViewModel = new ViewModelDatabaseManagement();
+
+                    break;
+
                 case "DEV":
                     NewRequests = Visibility.Visible;
                     ApproveRequests = Visibility.Visible;
                     Test = Visibility.Visible;
                     SeeAll = Visibility.Visible;
+                    Data = Visibility.Hidden;
 
                     this.ViewModel = new ViewModelDevelopment();
 
                     break;
+
                 case "TEST":
                     NewRequests = Visibility.Visible;
                     ApproveRequests = Visibility.Hidden;
                     Test = Visibility.Visible;
                     SeeAll = Visibility.Hidden;
+                    Data = Visibility.Hidden;
 
                     DisplayNewJRCommand = new DelegateCommand(DisplayNewInternalJR);
 
                     this.ViewModel = new ViewModelPlanTestQueue();
 
                     break;
+
                 case "PLAN":
                     NewRequests = Visibility.Hidden;
                     ApproveRequests = Visibility.Visible;
                     Test = Visibility.Hidden;
                     SeeAll = Visibility.Hidden;
+                    Data = Visibility.Hidden;
 
                     this.ViewModel = new ViewModelApproveJRQueue();
 
                     break;
+
                 default:
                     NewRequests = Visibility.Visible;
                     ApproveRequests = Visibility.Hidden;
                     Test = Visibility.Hidden;
                     SeeAll = Visibility.Hidden;
+                    Data = Visibility.Hidden;
 
                     this.ViewModel = new ViewModelCreateJRQueue();
 
                     break;
             }
+        }
+
+        public void InsertUser()
+        {
+
         }
 
     }
