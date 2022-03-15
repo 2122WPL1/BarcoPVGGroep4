@@ -7,14 +7,14 @@
         Height="720" Width="980" Background="LightGray" Foreground="White"
         WindowState="Maximized"
         WindowStyle="ThreeDBorderWindow"
-        WindowStartupLocation="CenterScreen">
-    <StackPanel>
+        WindowStartupLocation="CenterScreen" >
+    <StackPanel >
         <!--<StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Stretch">
             --><!--<Image Style="{StaticResource BarcoLogo}" Source="/DictionaryResources/barco-logo.png"/>--><!--
             <Image Style="{StaticResource BarcoLogo}"/>
         </StackPanel>-->
         <StackPanel Margin="10">
-            <GroupBox BorderThickness="0.1">
+            <GroupBox BorderThickness="0.1" >
                 <GroupBox.Header>
                     <!-- This could be done more efficiently? -->
                     <Grid>

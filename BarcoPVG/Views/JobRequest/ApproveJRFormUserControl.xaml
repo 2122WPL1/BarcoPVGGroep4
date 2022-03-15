@@ -106,7 +106,7 @@
                         </ItemsPanelTemplate>
                     </ListBox.ItemsPanel>
                     <ListBox.Resources>
-                         <CollectionViewSource x:Key="EUTs" Source="{Binding EUTs}" />
+                        <CollectionViewSource x:Key="EUTs" Source="{Binding EUTs}" />
                     </ListBox.Resources>
                     <ListBox.ItemsSource>
                         <CompositeCollection>
@@ -117,7 +117,7 @@
                         </CompositeCollection>
                     </ListBox.ItemsSource>
                 </ListBox>
-                
+
                 <StackPanel Orientation="Horizontal" >
                     <Button Content="Add Part" 
                                 Command="{Binding Path=AddEUTCommand}" 
