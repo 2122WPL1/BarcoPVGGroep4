@@ -14,8 +14,7 @@ using BarcoPVG.Models.Db;
 
 namespace BarcoPVG.Dao
 {
-    //Test gitignore
-    // SINGLETON PATTERN ghvh
+    // SINGLETON PATTERN
     // Private constructor, static instance
     // Ensures only one DBconnection is opened at a time
     // Ensures connection is closed when not in use
@@ -471,7 +470,10 @@ namespace BarcoPVG.Dao
                 var planning = CreatePlPlanning(request, division);
 
                 _context.Add(planning);
-                _context.SaveChanges();
+                    _context.SaveChanges(); //Sander: het approven van een job request zorgt voor een probleem met de databank primary key van Planning_PK en pl_Planning
+                                        //een dubbele id
+                                        // hij wilt een record aanmaken met hetzelfde id 0 ookal bestaad die al
+
             }
         }
 
@@ -789,7 +791,7 @@ namespace BarcoPVG.Dao
         // Stores all data from GUI in DB
         public void SaveChanges()
         {
-            _context.SaveChanges();
+            _context.SaveChanges(); //Sander: fout bij het aaanmaken van een JR (database probleem)
         }
 
         /// <summary>

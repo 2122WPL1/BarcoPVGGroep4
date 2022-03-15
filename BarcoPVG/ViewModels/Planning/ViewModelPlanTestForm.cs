@@ -87,8 +87,14 @@ namespace BarcoPVG.Viewmodels.Planning
             get => startDate;
             set
             {
+                
                 startDate = value;
-                editingTest.StartDate = value;
+                if(editingTest == null)
+                {
+                    editingTest = new Test(); //Sander: wanneer een test verwijderd wordt dan bestaad editingTest niet meer dus geef ik hem hier een lege Test
+                }
+                editingTest.StartDate = value; 
+
                 SetVisibility();
                 OnpropertyChanged();
             }
@@ -116,13 +122,24 @@ namespace BarcoPVG.Viewmodels.Planning
             }
         }
 
-        public void AddTest()
+        public void AddTest() //Sander: controle op de input
         {
+            if (editingTest.Resource == null)
+            {
+                MessageBox.Show("Select a Resource");
+                return;
+            }
             if (startDate > endDate)
             {
                 MessageBox.Show("End Date Can't be before Start Date");
                 return;
             }
+            if(startDate ==null || endDate == null)
+            {
+                MessageBox.Show("End Date and Start Date must be selected");
+                return;
+            }
+           
 
             Test newTest = new Test
             {
