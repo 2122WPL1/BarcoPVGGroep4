@@ -53,7 +53,7 @@
                 <TextBox Grid.Row="7" Grid.Column="1"  Text="{Binding JR.GrossWeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                 <Label Content="" Grid.Row="9"/>
-
+          
                 <Label Content="Link to testplan (optional):" Grid.Row="10"/>
                 <TextBox Text="{Binding JR.Link,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                              Grid.Column="1" Grid.Row="10" />
@@ -101,9 +101,9 @@
                          SelectedItem="{Binding SelectedEUT, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }">
                         
                     
-<!--Itemsource + button voor het toevoegen-->
-<!--https://stackoverflow.com/questions/53502828/add-listboxitem-with-add-button-that-is-inside-the-listbox-itself-->
-                    <!--<ListBox.ItemsSource>
+                    <!--Itemsource + button voor het toevoegen
+                    https://stackoverflow.com/questions/53502828/add-listboxitem-with-add-button-that-is-inside-the-listbox-itself
+                    <ListBox.ItemsSource>
                         <CompositeCollection>
                             <CollectionContainer Collection="{Binding EUT}"/>
                             <ListBoxItem>

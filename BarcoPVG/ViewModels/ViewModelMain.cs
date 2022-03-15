@@ -11,6 +11,7 @@ using BarcoPVG.Models.Classes;
 using BarcoPVG.Viewmodels.JobRequest;
 using BarcoPVG.Viewmodels.TestGUI;
 using BarcoPVG.Viewmodels.Planning;
+using BarcoPVG.ViewModels.DatabaseManagement;
 
 namespace BarcoPVG.Viewmodels
 {
@@ -22,20 +23,27 @@ namespace BarcoPVG.Viewmodels
 
 
         // TODO: check if ICommand also works
-        // got u homie -sander
-        public ICommand DisplayNewJRCommand { get; set; }
-        public ICommand DisplayExistingJRCommand { get; set; }
-        public ICommand DisplayEmployeeStartupCommand { get; set; }
-        public ICommand DisplayPlannerStartupCommand { get; set; }
-        public ICommand DisplayTesterPlanCommand { get; set; }
-        public ICommand DisplayTesterTestCommand { get; set; }
-        public ICommand DisplayDevStartupCommand { get; set; }
-        public ICommand SaveJrCommand { get; set; }
-        public ICommand ApproveJRCommand { get; set; }
-        public ICommand DisplayTestPlanningCommand { get; set; }
-        public ICommand SaveTestsAndReturnCommand { get; set; }
-        public ICommand ApprovePlanAndReturnCommand { get; set; }
-        public ICommand TesterReturnCommand { get; set; }
+
+        public DelegateCommand DisplayNewJRCommand { get; set; }
+        public DelegateCommand DisplayExistingJRCommand { get; set; }
+        public DelegateCommand DisplayEmployeeStartupCommand { get; set; }
+        public DelegateCommand DisplayPlannerStartupCommand { get; set; }
+        public DelegateCommand DisplayTesterPlanCommand { get; set; }
+        public DelegateCommand DisplayTesterTestCommand { get; set; }
+        public DelegateCommand DisplayDevStartupCommand { get; set; }
+        public DelegateCommand SaveJrCommand { get; set; }
+        public DelegateCommand ApproveJRCommand { get; set; }
+        public DelegateCommand DisplayTestPlanningCommand { get; set; }
+        public DelegateCommand SaveTestsAndReturnCommand { get; set; }
+        public DelegateCommand ApprovePlanAndReturnCommand { get; set; }
+        public DelegateCommand TesterReturnCommand { get; set; }
+        // Amy & Jarne
+        public DelegateCommand AddUserCommand { get; set; }
+        public DelegateCommand RemoveUserCommand { get; set; }
+        public DelegateCommand AddResourceCommand { get; set; }
+        public DelegateCommand RemoveResourceCommand { get; set; }
+        public DelegateCommand DatabaseManagementCommand { get; set; }
+
 
         // Visibility of buttons
         public Visibility NewRequests { get; set; }
@@ -59,6 +67,12 @@ namespace BarcoPVG.Viewmodels
             SaveTestsAndReturnCommand = new DelegateCommand(SaveTestsAndReturn);
             ApprovePlanAndReturnCommand = new DelegateCommand(ApprovePlanAndReturn);
             TesterReturnCommand = new DelegateCommand(TesterReturn);
+            //Jarne & Amy
+            AddUserCommand = new DelegateCommand(DisplayAddUser);
+            RemoveUserCommand = new DelegateCommand(DisplayRemoveUser);
+            AddResourceCommand = new DelegateCommand(DisplayAddResource);
+            RemoveResourceCommand = new DelegateCommand(DisplayRemoveResource);
+            DatabaseManagementCommand = new DelegateCommand(DisplayDatabaseManagement);
 
             SetWindowProperties();
         }
@@ -137,6 +151,30 @@ namespace BarcoPVG.Viewmodels
         public void DisplayDevStartup()
         {
             this.ViewModel = new ViewModelDevelopment();
+        }
+
+        //Jarne & Amy
+        public void DisplayAddUser()
+        {
+            this.ViewModel = new ViewModelDatabaseAddUser();
+        }
+        public void DisplayRemoveUser()
+        {
+            this.ViewModel = new ViewModelDatabaseRemoveUser();
+        }
+
+        public void DisplayAddResource()
+        {
+            this.ViewModel = new ViewModelDatabaseAddResource();
+        }
+
+        public void DisplayRemoveResource()
+        {
+            this.ViewModel = new ViewModelDatabaseRemoveResource();
+        }
+        public void DisplayDatabaseManagement()
+        {
+            this.ViewModel = new ViewModelDatabaseManagement();
         }
 
         // JR CRUD

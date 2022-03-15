@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -8,21 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace BarcoPVG.Views.JobRequest
 {
     /// <summary>
-    /// Interaction logic for CreateJRQueueUserControl.xaml
+    /// Interaction logic for CreateInternJRFormUserControl.xaml
     /// </summary>
-    public partial class CreateJRQueueUserControl : UserControl
+    public partial class CreateInternJRFormUserControl : Window
     {
-        public CreateJRQueueUserControl()
+        public CreateInternJRFormUserControl()
         {
             InitializeComponent();
-
         }
-
     }
 }

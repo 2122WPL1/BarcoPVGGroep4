@@ -8,6 +8,9 @@ using System.Text;
 using System.Windows;
 using System.Windows.Input;
 using BarcoPVG;
+using BarcoPVG.Views.JobRequest;
+using System.Windows.Media;
+using System.Windows.Data;
 
 namespace BarcoPVG.Viewmodels.JobRequest
 {
@@ -16,7 +19,7 @@ namespace BarcoPVG.Viewmodels.JobRequest
         //Constructor
         public ViewModelCreateJRQueue() : base()
         {
-            Load();
+            Load();   
         }
 
         // Function used in code behind
@@ -28,8 +31,11 @@ namespace BarcoPVG.Viewmodels.JobRequest
 
             foreach (var requestId in requestIds)
             {
-                IdRequestsOnly.Add(requestId);
+                //IdRequestsOnly.Add(requestId);
             }
         }
+
+
+
     }
 }
