@@ -1,20 +1,22 @@
-﻿
-    <!-- Kaat -->
+﻿<!-- Kaat -->
 <!-- Datatemplates to connect viewmodels to views -->
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
-                    xmlns:viewModels="clr-namespace:BarcoPVG.Viewmodels"
-                    xmlns:viewModelJR="clr-namespace:BarcoPVG.Viewmodels.JobRequest"
-                    xmlns:viewModelPlanning="clr-namespace:BarcoPVG.Viewmodels.Planning"
-                    xmlns:viewModelTestGUI="clr-namespace:BarcoPVG.Viewmodels.TestGUI"
-                    xmlns:views="clr-namespace:BarcoPVG.Views"
-                    xmlns:viewsJR="clr-namespace:BarcoPVG.Views.JobRequest"
-                    xmlns:viewsPlanning="clr-namespace:BarcoPVG.Views.Planning"
-                    xmlns:viewsTestGUI="clr-namespace:BarcoPVG.Views.TestGUI"
-                    >
+xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+xmlns:viewModels="clr-namespace:BarcoPVG.Viewmodels"
+xmlns:viewModelJR="clr-namespace:BarcoPVG.Viewmodels.JobRequest"
+xmlns:viewModelPlanning="clr-namespace:BarcoPVG.Viewmodels.Planning"
+xmlns:viewModelTestGUI="clr-namespace:BarcoPVG.Viewmodels.TestGUI"
+xmlns:views="clr-namespace:BarcoPVG.Views"
+xmlns:viewsJR="clr-namespace:BarcoPVG.Views.JobRequest"
+xmlns:viewsPlanning="clr-namespace:BarcoPVG.Views.Planning"
+xmlns:viewsTestGUI="clr-namespace:BarcoPVG.Views.TestGUI"
+xmlns:viewModelDatabaseManagement="clr-namespace:BarcoPVG.Views.DatabaseManagement"
+>
     <DataTemplate DataType="{x:Type viewModels:ViewModelMain}">
         <views:MainWindow/>
     </DataTemplate>
+
+
 
 
     <DataTemplate DataType="{x:Type viewModelTestGUI:ViewModelDevelopment}">
@@ -40,5 +42,12 @@
     </DataTemplate>
     <DataTemplate DataType="{x:Type viewModelTestGUI:ViewModelUpdateTestQueue}">
         <viewsTestGUI:UpdateTestQueueUserControl/>
+    </DataTemplate>
+
+
+
+    <!--Amy & Jarne-->
+    <DataTemplate DataType="{x:Type viewModelDatabaseManagement:DatabaseManagementUserControl}">
+        <viewModelDatabaseManagement:DatabaseManagementUserControl/>
     </DataTemplate>
 </ResourceDictionary>

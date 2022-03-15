@@ -82,7 +82,7 @@ namespace BarcoPVG.Viewmodels
         }
 
         // Getters/Setters
-        public AbstractViewModelBase ViewModel 
+        public AbstractViewModelBase ViewModel
         { 
             get => _viewModel;
             set
