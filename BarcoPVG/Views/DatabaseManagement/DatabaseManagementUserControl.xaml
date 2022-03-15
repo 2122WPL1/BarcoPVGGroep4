@@ -1,23 +1,32 @@
-﻿<Window
+﻿<UserControl x:Class="BarcoPVG.Views.DatabaseManagement.DatabaseManagementUserControl"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BarcoPVG.Views.DatabaseManagement"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="BarcoPVG.Views.DatabaseManagement.DatabaseManagementUserControl"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="DatabaseManagementUserControl" Height="450" Width="800" Background="LightGray">
+        d:DesignHeight="800" d:DesignWidth="600" d:Background="LightGray">
+        
     <GroupBox Header="Database Management">
         <!--amy-->
         <StackPanel>
             <StackPanel Height="100" Orientation="Horizontal" HorizontalAlignment="Center" Width="auto">
-                <Button Content="Add User" Margin="5"/>
-                <Button Content="Remove User" Margin="5"/>
-                <Button Content="Add Resource" 
-                        Command="{Binding Path=AddResourceCommand}"
+                <Button Content="Add User" 
+                        Command="{Binding Path=AddNewUserCommand}"
                         Margin="5"/>
-                <Button Content="Remove Resource" Margin="5"/>
-                <Button Content="Cancel" Margin="5"/>
+                <Button Content="Remove User" 
+                        Command="{Binding Path=DeleteUserCommand}"
+                        Margin="5"/>
+                <Button Content="Add Resource" 
+                        Command="{Binding Path=AddNewResourceCommand}"
+                        Margin="5"/>
+                <Button Content="Remove Resource" 
+                        Command="{Binding Path=DeleteResourceCommand}"
+                        Margin="5"/>
+                <Button Content="Cancel" 
+                        Command="{Binding Path=ReturnMainWindowCommand}"
+                        Margin="5"/>
             </StackPanel>
             <StackPanel Height="284">
                 <ScrollViewer Height="284">
@@ -69,4 +78,4 @@
             </GroupBox>
         </StackPanel>
     </Grid>-->
-</Window>
+</UserControl>

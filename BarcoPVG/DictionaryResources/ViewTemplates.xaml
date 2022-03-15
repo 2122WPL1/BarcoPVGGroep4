@@ -11,6 +11,7 @@
                     xmlns:viewsJR="clr-namespace:BarcoPVG.Views.JobRequest"
                     xmlns:viewsPlanning="clr-namespace:BarcoPVG.Views.Planning"
                     xmlns:viewsTestGUI="clr-namespace:BarcoPVG.Views.TestGUI"
+                    xmlns:viewModelDatabaseManagement="clr-namespace:BarcoPVG.Views.DatabaseManagement"
                     >
     <DataTemplate DataType="{x:Type viewModels:ViewModelMain}">
         <views:MainWindow/>
@@ -40,5 +41,10 @@
     </DataTemplate>
     <DataTemplate DataType="{x:Type viewModelTestGUI:ViewModelUpdateTestQueue}">
         <viewsTestGUI:UpdateTestQueueUserControl/>
+    </DataTemplate>
+
+       <!--Amy & Jarne-->
+    <DataTemplate DataType="{x:Type viewModelDatabaseManagement:DatabaseManagementUserControl}">
+        <viewModelDatabaseManagement:DatabaseManagementUserControl/>
     </DataTemplate>
 </ResourceDictionary>

@@ -43,6 +43,7 @@ namespace BarcoPVG.Viewmodels
         public DelegateCommand RemoveResourceCommand { get; set; }
         public DelegateCommand DatabaseManagementCommand { get; set; }
         public DelegateCommand SaveAddUserCommand { get; set; }
+        public DelegateCommand DisplayDatabaseManagementStartupCommand { get; set; }
 
         // Visibility of buttons
         public Visibility NewRequests { get; set; }
@@ -75,6 +76,7 @@ namespace BarcoPVG.Viewmodels
             RemoveResourceCommand = new DelegateCommand(DisplayRemoveResource);
             DatabaseManagementCommand = new DelegateCommand(DisplayDatabaseManagement);
             SaveAddUserCommand = new DelegateCommand(DisplayAddUser);
+            DisplayDatabaseManagementStartupCommand = new DelegateCommand(DisplayDatabaseManagementStartup);
 
             SetWindowProperties();
         }
@@ -176,6 +178,10 @@ namespace BarcoPVG.Viewmodels
             this.ViewModel = new ViewModelDatabaseRemoveResource();
         }
         public void DisplayDatabaseManagement()
+        {
+            this.ViewModel = new ViewModelDatabaseManagement();
+        }
+        public void DisplayDatabaseManagementStartup()
         {
             this.ViewModel = new ViewModelDatabaseManagement();
         }
@@ -338,6 +344,8 @@ namespace BarcoPVG.Viewmodels
                     break;
             }
         }
+
+
 
         public void InsertUser()
         {
