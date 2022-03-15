@@ -10,7 +10,7 @@ using BarcoPVG.Models.Classes;
 using BarcoPVG;
 using BarcoPVG.Models;
 using BarcoPVG.Models.Db;
-
+using System.Data.SqlClient;
 
 namespace BarcoPVG.Dao
 {
@@ -38,11 +38,27 @@ namespace BarcoPVG.Dao
         private DAO()
         {
             this._context = new BarcoContext();
-            this.BarcoUser = new BarcoUser() { Name = "sten", Division = "Sillex", Function = "DEV" };
+            Person CurrentPerson = new Person();
+            CurrentPerson = LoginSucceedded(GetAllUser());
+            this.BarcoUser = new BarcoUser() { Name = CurrentPerson.Voornaam, Division = "Sillex", Function = "DEV" };
             
             //this.BarcoUser = RegistryConnection.GetValueObject<BarcoUser>(@"SOFTWARE\VivesBarco\Test");
         }
 
+        //Login
+        private Person LoginSucceedded(List<Person> people)
+        {
+            
+            foreach (Person onePerson in people)
+            {
+                if (onePerson.Voornaam == "Test")
+                {
+                    return onePerson;
+                }
+            }
+
+            return null;
+        }
 
         /// <summary>
         /// Removes unsaved changed by replacing the context by a new instance
@@ -55,6 +71,13 @@ namespace BarcoPVG.Dao
 
 
         // LISTS
+
+        // Eakarach
+        // Returns list of all user
+        public List<Person> GetAllUser()
+        {
+            return _context.People.ToList();          
+        }
 
         // Returns list of all JRs
         public List<RqRequest> GetAllJobRequests()
@@ -377,7 +400,7 @@ namespace BarcoPVG.Dao
                     InternRequest = selectedRQ.InternRequest,
                     GrossWeight = selectedRQ.GrossWeight,
                     NetWeight = selectedRQ.NetWeight,
-                    Battery = selectedRQ.Battery,
+                    Battery = (bool)selectedRQ.Battery,
                 };
             }
             return selectedJR;
