@@ -34,8 +34,14 @@
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <Button Content="Button" HorizontalAlignment="Left" Margin="282,18,0,0" VerticalAlignment="Top"/>
-                        <Button Grid.Column="1" Content="Button" HorizontalAlignment="Left" Margin="46,18,0,0" VerticalAlignment="Top"/>
+                        <Button Content="Confirm" 
+                                Command="{Binding DataContext.SaveJrCommand, 
+                                          Mode=OneWay}"
+                                HorizontalAlignment="Left" Margin="282,18,0,0" VerticalAlignment="Top"/>
+                        <Button Grid.Column="1" Content="Cancel" 
+                                Command="{Binding DataContext.DisplayDevStartupCommand, 
+                                        Mode=OneWay}"
+                                HorizontalAlignment="Left" Margin="46,18,0,0" VerticalAlignment="Top"/>
                     </Grid>
 
                 </DockPanel>

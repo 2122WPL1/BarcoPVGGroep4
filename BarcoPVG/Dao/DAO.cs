@@ -14,6 +14,7 @@ using BarcoPVG.Models.Db;
 
 namespace BarcoPVG.Dao
 {
+    //Test gitignore
     // SINGLETON PATTERN
     // Private constructor, static instance
     // Ensures only one DBconnection is opened at a time
@@ -37,7 +38,9 @@ namespace BarcoPVG.Dao
         private DAO()
         {
             this._context = new BarcoContext();
-            this.BarcoUser = new BarcoUser() { Name = "Admin", Division = "HC", Function = "ADM" };
+            this.BarcoUser = new BarcoUser() { Name = "sten", Division = "Sillex", Function = "DEV" };
+            
+            //this.BarcoUser = RegistryConnection.GetValueObject<BarcoUser>(@"SOFTWARE\VivesBarco\Test");
         }
 
 
@@ -289,13 +292,24 @@ namespace BarcoPVG.Dao
                 rqrequest.Battery = Jr.Battery;
                 // Matti voorlopig
                 // We create the rqo RqOptionel object to link the user data to the db data and saves the changes in the Barco database
-                RqOptionel rqo = _context.RqOptionels.FirstOrDefault(o => o.IdRequest == Jr.IdRequest);      
+      
+                RqOptionel rqo = _context.RqOptionels.FirstOrDefault(o => o.IdRequest == Jr.IdRequest);
+
+                if(rqo == null)
+                {
+                    rqo = new RqOptionel
+                    {
+                        Link = Jr.Link == null ? string.Empty : Jr.Link,
+                        Remarks = Jr.Remarks == null ? string.Empty : Jr.Remarks,
+                    };
+                }
+                
                 //Sander: wss wanneer er een JR aangepast wordt zodat het wel optionele velden heeft komt er hier een crash
-                rqo.Link = Jr.Link; // context heeft geen rqoptional
+                //Sander: context heeft geen rqoptional
+                rqo.Link = Jr.Link;
                 rqo.Remarks = Jr.Remarks;
                 // We combine the rqo and rqrequest objects
                 rqrequest.RqOptionels.Add(rqo);
-
                 _context.RqRequests.Update(rqrequest);
                 SaveChanges();
             }
@@ -337,7 +351,7 @@ namespace BarcoPVG.Dao
                     InternRequest = selectedRQ.InternRequest,
                     GrossWeight = selectedRQ.GrossWeight,
                     NetWeight = selectedRQ.NetWeight,
-                    Battery = selectedRQ.Battery,
+                    Battery = (bool)selectedRQ.Battery,
                     //EutPartnr = selectedRQ.EutPartnumbers,
 
                     // Testing
@@ -391,7 +405,7 @@ namespace BarcoPVG.Dao
                 InternRequest = selectedRQ.InternRequest,
                 GrossWeight = selectedRQ.GrossWeight,
                 NetWeight = selectedRQ.NetWeight,
-                Battery = selectedRQ.Battery,
+                Battery = (bool)selectedRQ.Battery,
                 //EutPartnr = selectedRQ.EutPartnumbers,
 
                 // Testing

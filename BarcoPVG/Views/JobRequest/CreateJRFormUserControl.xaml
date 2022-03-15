@@ -102,10 +102,10 @@
                                 <StackPanel Orientation="Horizontal">
                                     <Button Content="Add Part" 
                                 Command="{Binding Path=AddEUTCommand}" 
-                                Margin="10" Background="#FFBBF436"/>
+                                Margin="10"/>
                                     <Button Content="Remove Part" 
                                 Command="{Binding Path=RemoveEUTCommand}" 
-                                Margin="10" Background="#FFDDF436"/>
+                                Margin="10"/>
                                 </StackPanel>
                             </StackPanel>
                         </GroupBox>
@@ -119,15 +119,15 @@
                     Command="{Binding DataContext.SaveJrCommand, 
                             RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, 
                             Mode=OneWay}"
-                    Height="40" Margin="5" Background="#FFF10000"/>
+                    Height="40" Margin="5"/>
             <Button Content="Empty All Fields"
                         Command="{Binding Path=RefreshJRCommand}"
-                        Height="40" Margin="5" Background="#FFF10000"/>
+                        Height="40" Margin="5"/>
             <Button Content="Cancel"
                         Command="{Binding DataContext.DisplayDevStartupCommand, 
                             RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, 
                             Mode=OneWay}"
-                        Height="40" Margin="5" Background="#FFF10000"/>
+                        Height="40" Margin="5"/>
         </StackPanel>
     </StackPanel>
 </UserControl>
