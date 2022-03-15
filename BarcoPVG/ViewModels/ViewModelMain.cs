@@ -1,17 +1,11 @@
-﻿using Microsoft.Toolkit.Mvvm.Input;
+﻿using BarcoPVG.Models.Classes;
+using BarcoPVG.Viewmodels.JobRequest;
+using BarcoPVG.Viewmodels.Planning;
+using BarcoPVG.Viewmodels.TestGUI;
+using BarcoPVG.ViewModels.DatabaseManagement;
 using Prism.Commands;
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using BarcoPVG.Models.Classes;
-using BarcoPVG.Viewmodels.JobRequest;
-using BarcoPVG.Viewmodels.TestGUI;
-using BarcoPVG.Viewmodels.Planning;
-using BarcoPVG.ViewModels.DatabaseManagement;
 
 namespace BarcoPVG.Viewmodels
 {
@@ -82,8 +76,8 @@ namespace BarcoPVG.Viewmodels
         }
 
         // Getters/Setters
-        public AbstractViewModelBase ViewModel 
-        { 
+        public AbstractViewModelBase ViewModel
+        {
             get => _viewModel;
             set
             {
@@ -122,7 +116,7 @@ namespace BarcoPVG.Viewmodels
                 }
                 else
                 {
-                    
+
                     this.ViewModel = new ViewModelCreateJRForm(ExistingJrId);
                 }
             }
@@ -177,10 +171,12 @@ namespace BarcoPVG.Viewmodels
         {
             this.ViewModel = new ViewModelDatabaseRemoveResource();
         }
+        
         public void DisplayDatabaseManagement()
         {
             this.ViewModel = new ViewModelDatabaseManagement();
         }
+        
 
         // JR CRUD
         // Command functions
@@ -207,7 +203,7 @@ namespace BarcoPVG.Viewmodels
             var jr = _dao.AddJobRequest(((AbstractViewModelContainer)this.ViewModel).JR); // SaveChanges included in function
 
             jr.JrStatus = "In Plan";
-            
+
             int count = 0;
             foreach (var thisEUT in ((AbstractViewModelContainer)this.ViewModel).EUTs)
             {
@@ -255,14 +251,14 @@ namespace BarcoPVG.Viewmodels
             // get id from JR
 
             var plan = ((ViewModelPlanTestQueue)this.ViewModel).SelectedPlan;
-            if(plan.JrNr != null)
+            if (plan.JrNr != null)
             {
                 this.ViewModel = new ViewModelPlanTestForm(plan);
             }
             else
             {
                 MessageBox.Show("Geen planning geselecteerd");
-            }   
+            }
         }
 
         public void SaveTestsAndReturn()

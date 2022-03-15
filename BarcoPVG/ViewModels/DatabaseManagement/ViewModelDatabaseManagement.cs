@@ -11,11 +11,6 @@ namespace BarcoPVG.ViewModels.DatabaseManagement
     {
         public ViewModelDatabaseManagement() : base()
         {
-            Load();
-        }
-
-        public void Load()
-        {
         }
     }
 }

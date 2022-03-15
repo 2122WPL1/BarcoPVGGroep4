@@ -9,10 +9,6 @@
         WindowStyle="ThreeDBorderWindow"
         WindowStartupLocation="CenterScreen">
     <StackPanel>
-        <!--<StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Stretch">
-            <Image Style="{StaticResource BarcoLogo}" Source="/DictionaryResources/barco-logo.png"/>
-            <Image Style="{StaticResource BarcoLogo}"/>
-        </StackPanel>-->
         <StackPanel Margin="10">
             <GroupBox BorderThickness="0.1">
                 <GroupBox.Header>
@@ -52,12 +48,12 @@
                             Visibility="{Binding Test}"
                             Background="#FFF10000"/>
                         <Button Content="Development"
-                        Command="{Binding DisplayDevStartupCommand, Mode=OneWay}" 
+                            Command="{Binding DisplayDevStartupCommand, Mode=OneWay}" 
                             Visibility="{Binding SeeAll}"
-                        Margin="10" Background="#FFF10000"/>
+                            Margin="10" Background="#FFF10000"/>
                         <Button Content="Database Management"
-                                Command="{Binding DisplayDatabaseManagementCommand, Mode=OneWay}"
-                                Visibility="{Binding Data}"/>
+                            Command="{Binding DatabaseManagementCommand, Mode=OneWay}"
+                            Visibility="{Binding Data}"/>
                     </StackPanel>
                 <ScrollViewer Height="450">
                     <ContentControl Content="{Binding ViewModel}"/>
