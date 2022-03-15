@@ -23,6 +23,7 @@ namespace BarcoPVG.Viewmodels
 
 
         // TODO: check if ICommand also works
+
         public DelegateCommand DisplayNewJRCommand { get; set; }
         public DelegateCommand DisplayExistingJRCommand { get; set; }
         public DelegateCommand DisplayEmployeeStartupCommand { get; set; }
@@ -43,6 +44,7 @@ namespace BarcoPVG.Viewmodels
         public DelegateCommand RemoveResourceCommand { get; set; }
         public DelegateCommand DatabaseManagementCommand { get; set; }
         public DelegateCommand SaveAddUserCommand { get; set; }
+
 
         // Visibility of buttons
         public Visibility NewRequests { get; set; }
@@ -120,7 +122,7 @@ namespace BarcoPVG.Viewmodels
                 }
                 else
                 {
-
+                    
                     this.ViewModel = new ViewModelCreateJRForm(ExistingJrId);
                 }
             }
@@ -248,12 +250,19 @@ namespace BarcoPVG.Viewmodels
         }
 
         // Switch to test planning for tester
-        public void DisplayTestPlanning()
+        public void DisplayTestPlanning() //sander: foutafhandeling wanneer er niets geselecteerd is
         {
             // get id from JR
-            var plan = ((ViewModelPlanTestQueue)this.ViewModel).SelectedPlan;
 
-            this.ViewModel = new ViewModelPlanTestForm(plan);
+            var plan = ((ViewModelPlanTestQueue)this.ViewModel).SelectedPlan;
+            if(plan.JrNr != null)
+            {
+                this.ViewModel = new ViewModelPlanTestForm(plan);
+            }
+            else
+            {
+                MessageBox.Show("Geen planning geselecteerd");
+            }   
         }
 
         public void SaveTestsAndReturn()
