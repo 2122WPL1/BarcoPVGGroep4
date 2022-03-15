@@ -18,8 +18,12 @@
                 </ListView.View>
             </ListView>
             <StackPanel Height="100" Orientation="Horizontal" HorizontalAlignment="Center" Width="auto">
-                <Button Content="Remove Resource" Margin="5"/>
-                <Button Content="Cancel" Margin="5"/>
+                <Button Content="Remove Resource" 
+                        Command="{Binding Path=RemoveResourceCommand}"
+                        Margin="5"/>
+                <Button Content="Cancel" 
+                        Command="{Binding Path=CancelRemoveResourceCommand}"
+                        Margin="5"/>
             </StackPanel>
         </StackPanel>
     </GroupBox>
