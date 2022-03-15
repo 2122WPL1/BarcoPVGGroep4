@@ -303,6 +303,7 @@ namespace BarcoPVG.Viewmodels
                     this.ViewModel = new ViewModelDatabaseManagement();
 
                     break;
+
                 case "DEV":
                     NewRequests = Visibility.Visible;
                     ApproveRequests = Visibility.Visible;
@@ -313,6 +314,7 @@ namespace BarcoPVG.Viewmodels
                     this.ViewModel = new ViewModelDevelopment();
 
                     break;
+
                 case "TEST":
                     NewRequests = Visibility.Visible;
                     ApproveRequests = Visibility.Hidden;
@@ -325,6 +327,7 @@ namespace BarcoPVG.Viewmodels
                     this.ViewModel = new ViewModelPlanTestQueue();
 
                     break;
+
                 case "PLAN":
                     NewRequests = Visibility.Hidden;
                     ApproveRequests = Visibility.Visible;
@@ -341,6 +344,7 @@ namespace BarcoPVG.Viewmodels
                     ApproveRequests = Visibility.Hidden;
                     Test = Visibility.Hidden;
                     SeeAll = Visibility.Hidden;
+                    Data = Visibility.Hidden;
 
                     this.ViewModel = new ViewModelCreateJRQueue();
 
