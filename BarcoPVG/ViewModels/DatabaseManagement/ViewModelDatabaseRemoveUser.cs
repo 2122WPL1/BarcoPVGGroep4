@@ -9,6 +9,9 @@ namespace BarcoPVG.ViewModels.DatabaseManagement
 {
     public class ViewModelDatabaseRemoveUser : AbstractViewModelCollectionRQ
     {
+        public ViewModelDatabaseRemoveUser() : base()
+        {
 
+        }
     }
 }

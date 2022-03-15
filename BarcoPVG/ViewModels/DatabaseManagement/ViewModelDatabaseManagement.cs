@@ -9,6 +9,20 @@ namespace BarcoPVG.ViewModels.DatabaseManagement
 {
     public class ViewModelDatabaseManagement : AbstractViewModelCollectionRQ
     {
+        public ViewModelDatabaseManagement() : base()
+        {
+            Load();
+        }
 
+        public void Load()
+        {
+            var requestIds = _dao.GetAllJobRequests();
+            IdRequestsOnly.Clear();
+
+            foreach (var requestId in requestIds)
+            {
+                IdRequestsOnly.Add(requestId);
+            }
+        }
     }
 }

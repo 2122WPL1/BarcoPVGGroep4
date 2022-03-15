@@ -5,8 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BarcoPVG.Views"
              xmlns:vm="clr-namespace:BarcoPVG.Viewmodels.JobRequest"
-             mc:Ignorable="d" 
-             d:DesignHeight="800" d:DesignWidth="923.745" d:Background="LightGray">
+             mc:Ignorable="d" d:Background="LightGray" Width="1145" Height="435">
     <UserControl.Resources>
         <vm:ViewModelCreateJRQueue x:Key="converterToColor"/>
     </UserControl.Resources>

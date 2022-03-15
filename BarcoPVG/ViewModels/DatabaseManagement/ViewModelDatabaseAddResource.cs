@@ -9,6 +9,9 @@ namespace BarcoPVG.ViewModels.DatabaseManagement
 {
     public class ViewModelDatabaseAddResource : AbstractViewModelCollectionRQ
     {
-      
+        public ViewModelDatabaseAddResource() : base()
+        {
+
+        }
     }
 }

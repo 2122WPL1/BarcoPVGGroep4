@@ -9,6 +9,9 @@ namespace BarcoPVG.ViewModels.DatabaseManagement
 {
     public class ViewModelDatabaseAddUser : AbstractViewModelCollectionRQ
     {
+        public ViewModelDatabaseAddUser() : base()
+        {
 
+        }
     }
 }
