@@ -118,14 +118,14 @@
                     </ListBox.ItemsSource>
                 </ListBox>
                 
-                <StackPanel Orientation="Horizontal" >
+                <!--<StackPanel Orientation="Horizontal" >
                     <Button Content="Add Part" 
                                 Command="{Binding Path=AddEUTCommand}" 
                                 Margin="10"/>
                     <Button Content="Remove Part"
                                 Command="{Binding Path=RemoveEUTCommand}" 
                                 Margin="10"/>
-                </StackPanel>
+                </StackPanel>-->
             </StackPanel>
         </GroupBox>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">

@@ -1,20 +1,15 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:JobRequest="clr-namespace:BarcoPVG.Views.JobRequest" xmlns:Viewmodels="clr-namespace:BarcoPVG.Viewmodels">
 
-    <DataTemplate x:Key="AddEUT">
-        <StackPanel>
-            <Button Content="Voeg EUT toe" Command="{Binding AddEUTCommand}"></Button> 
-            <!-- note: weet niet hoe het in de listbox als item verschijnt-->
-        </StackPanel>
-    </DataTemplate> 
+    <!--<SolidColorBrush x:Key="ResourceColor" Color="{Binding Kleur}"  /> -->
 
     <!-- DataTemplate to display EUT's in listboxes/listviews - Kaat-->
     <DataTemplate x:Key="EUT">
-        
-            <ListBoxItem BorderBrush="red" Width="180"  BorderThickness="2"  Background="LightGray" Foreground="Black">
-            
+
+        <ListBoxItem BorderBrush="red" Width="180"  BorderThickness="2"  Background="LightGray" Foreground="Black">
+
             <Grid  >
-                
+
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
@@ -23,11 +18,15 @@
                     <ColumnDefinition/>
                     <ColumnDefinition Width="10"/>
                 </Grid.ColumnDefinitions>
-                <Button HorizontalAlignment="Right" Content="X" Command="{Binding RemoveEUTCommand}"></Button>
+                <!-- <Button HorizontalAlignment="Right" Content="X" Command="{Binding RemoveEUTCommand}">-->
+                <Button HorizontalAlignment="Right" Content="X" Command="{Binding Path=RemoveSingleEUTCommand }" CommandParameter="{Binding}">
+                    
+                
+                </Button>
                 <!--Button nog niet goed gebind-->
                 <!--Wilt enkel binden naar Model/Classes/EUT-->
                 <!--Kan RemoveEUTCommand niet vinden-->
-                
+
                 <TextBlock  Text="EUT" Margin="5" Width="30" HorizontalAlignment="Left"/>
 
                 <StackPanel  Grid.Row="1" Orientation="Vertical"  TextElement.Foreground="Black">
@@ -45,12 +44,10 @@
 
                 </StackPanel>
             </Grid>
-            
-        </ListBoxItem>
-        
-    </DataTemplate>
-    <!--<SolidColorBrush x:Key="ResourceColor" Color="{Binding Kleur}"  /> -->
 
+        </ListBoxItem>
+
+    </DataTemplate>
     <!--Data template for pvg responsible in the Gui-->
     <DataTemplate x:Key="PVGRes">
         <!--<ListBoxItem BorderBrush="white" BorderThickness="1" HorizontalContentAlignment="Stretch"  Foreground="White">-->
@@ -80,5 +77,5 @@
         </Grid>
         <!--</ListBoxItem>-->
     </DataTemplate>
-        
+
 </ResourceDictionary>

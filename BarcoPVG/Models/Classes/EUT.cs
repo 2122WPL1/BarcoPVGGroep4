@@ -1,6 +1,11 @@
-﻿using System;
+﻿using BarcoPVG.Viewmodels;
+using BarcoPVG.Viewmodels.JobRequest;
+using Microsoft.Toolkit.Mvvm.Input;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows;
+using System.Windows.Input;
 
 namespace BarcoPVG.Models.Classes
 {
@@ -8,6 +13,7 @@ namespace BarcoPVG.Models.Classes
     // Use class so only one getter/setter/onPropertyChanged needs to be created
     public class EUT
     {
+        public ICommand RemoveSingleEUTCommand { get; set; }
         // Variables
         public int IdRqDetail { get; set; }
         public DateTime? AvailabilityDate { get; set; }
@@ -35,6 +41,20 @@ namespace BarcoPVG.Models.Classes
             SAV = false;
             PCK = false;
             ECO = false;
+            RemoveSingleEUTCommand = new RelayCommand<object>((obj) => DeleteItem(obj));
+        }
+        private void DeleteItem(object? obj)
+        {
+            if (obj != null)
+            {
+                //verwijder EUT ViewModelApproveJRForm
+              
+                MessageBox.Show(obj.ToString());
+            }
+            else
+            {
+                MessageBox.Show("error");
+            }
         }
     }
 }
