@@ -23,36 +23,5 @@ namespace BarcoPVG.Views.DatabaseManagement
         {
             InitializeComponent();
         }
-
-
-        private void btnAddUser_Click(object sender, RoutedEventArgs e)
-        {
-            lblName.Content = "Add User";
-        }
-
-        private void btnRemoveUser_Click(object sender, RoutedEventArgs e)
-        {
-            lblName.Content = "Remove User";
-        }
-
-        private void btnAddResources_Click(object sender, RoutedEventArgs e)
-        {
-            lblName.Content = "Add Resources";
-        }
-
-        private void btnRemoveResources_Click(object sender, RoutedEventArgs e)
-        {
-            lblName.Content = "Remove Resources";
-        }
-
-        private void btnSaveChanges_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnCancel_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
