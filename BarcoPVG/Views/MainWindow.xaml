@@ -9,15 +9,11 @@
         WindowStyle="ThreeDBorderWindow"
         WindowStartupLocation="CenterScreen">
     <StackPanel>
-        <!--<StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Stretch">
-            <Image Style="{StaticResource BarcoLogo}" Source="/DictionaryResources/barco-logo.png"/>
-            <Image Style="{StaticResource BarcoLogo}"/>
-        </StackPanel>-->
         <StackPanel Margin="10">
             <GroupBox BorderThickness="0.1">
                 <GroupBox.Header>
                     <!-- This could be done more efficiently? -->
-                    <Grid>
+                    <Grid Background="#FFF10000">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="150"/>
                             <ColumnDefinition/>
@@ -33,8 +29,8 @@
                     </Grid>
                 </GroupBox.Header>
                 <StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="10">
-                    <Button Content="Your requests" 
+                    <StackPanel Orientation="Horizontal" Margin="10">
+                        <Button Content="Your requests" 
                             Command="{Binding DisplayEmployeeStartupCommand,
                             Mode=OneWay}" 
                             Visibility="{Binding NewRequests}"
@@ -59,9 +55,9 @@
                                 Command="{Binding DisplayDatabaseManagementCommand, Mode=OneWay}"
                                 Visibility="{Binding Data}"/>
                     </StackPanel>
-                <ScrollViewer Height="450">
-                    <ContentControl Content="{Binding ViewModel}"/>
-                </ScrollViewer>
+                    <ScrollViewer Height="450">
+                        <ContentControl Content="{Binding ViewModel}"/>
+                    </ScrollViewer>
                 </StackPanel>
             </GroupBox>
         </StackPanel>

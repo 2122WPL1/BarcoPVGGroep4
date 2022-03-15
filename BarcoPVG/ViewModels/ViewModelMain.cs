@@ -13,6 +13,8 @@ using BarcoPVG.Viewmodels.TestGUI;
 using BarcoPVG.Viewmodels.Planning;
 using BarcoPVG.ViewModels.DatabaseManagement;
 
+
+
 namespace BarcoPVG.Viewmodels
 {
     // Kaat
@@ -22,7 +24,11 @@ namespace BarcoPVG.Viewmodels
         public BarcoUser User { get; set; }
 
 
+
+
         // TODO: check if ICommand also works
+
+
 
         public DelegateCommand DisplayNewJRCommand { get; set; }
         public DelegateCommand DisplayExistingJRCommand { get; set; }
@@ -44,6 +50,9 @@ namespace BarcoPVG.Viewmodels
         public DelegateCommand RemoveResourceCommand { get; set; }
         public DelegateCommand DatabaseManagementCommand { get; set; }
         public DelegateCommand SaveAddUserCommand { get; set; }
+        public DelegateCommand DisplayDatabaseManagementStartupCommand { get; set; }
+
+
 
 
         // Visibility of buttons
@@ -54,9 +63,13 @@ namespace BarcoPVG.Viewmodels
         //Jarne
         public Visibility Data { get; set; }
 
+
+
         public ViewModelMain()
         {
             this.User = _dao.BarcoUser;
+
+
 
             DisplayNewJRCommand = new DelegateCommand(DisplayNewJR);
             DisplayExistingJRCommand = new DelegateCommand(DisplayExistingJR);
@@ -77,13 +90,18 @@ namespace BarcoPVG.Viewmodels
             RemoveResourceCommand = new DelegateCommand(DisplayRemoveResource);
             DatabaseManagementCommand = new DelegateCommand(DisplayDatabaseManagement);
             SaveAddUserCommand = new DelegateCommand(DisplayAddUser);
+            DisplayDatabaseManagementStartupCommand = new DelegateCommand(DisplayDatabaseManagementStartup);
+
+
 
             SetWindowProperties();
         }
 
+
+
         // Getters/Setters
-        public AbstractViewModelBase ViewModel 
-        { 
+        public AbstractViewModelBase ViewModel
+        {
             get => _viewModel;
             set
             {
@@ -91,6 +109,8 @@ namespace BarcoPVG.Viewmodels
                 OnpropertyChanged();
             }
         }
+
+
 
         // Command methods
         // TODO: add method to switch return window based on function
@@ -100,19 +120,29 @@ namespace BarcoPVG.Viewmodels
             this.ViewModel = new ViewModelCreateJRForm();
         }
 
+
+
         public void DisplayNewInternalJR()
         {
             SaveJrCommand = new DelegateCommand(InsertInternalJr);
             this.ViewModel = new ViewModelCreateJRForm(true);
         }
 
+
+
         public void DisplayExistingJR() //Sander: Foutmelding wanneer er niets geselecteerd wordt
         {
+
+
 
             SaveJrCommand = new DelegateCommand(UpdateJr);
 
 
+
+
             var ExistingJrId = ((AbstractViewModelCollectionRQ)this.ViewModel).SelectedJR.IdRequest;
+
+
 
             if (((AbstractViewModelCollectionRQ)this.ViewModel).SelectedJR.ExpectedEnddate != new DateTime()) //als de verwachte einddatum niet geset is dan geeft hij een foutmelding
             {
@@ -122,7 +152,7 @@ namespace BarcoPVG.Viewmodels
                 }
                 else
                 {
-                    
+
                     this.ViewModel = new ViewModelCreateJRForm(ExistingJrId);
                 }
             }
@@ -130,13 +160,19 @@ namespace BarcoPVG.Viewmodels
             {
                 MessageBox.Show("Geen JR geselecteerd");
 
+
+
             }
         }
+
+
 
         public void DisplayEmployeeStartup()
         {
             this.ViewModel = new ViewModelCreateJRQueue();
         }
+
+
 
         public void DisplayPlannerStartup()
         {
@@ -147,15 +183,21 @@ namespace BarcoPVG.Viewmodels
             this.ViewModel = new ViewModelPlanTestQueue();
         }
 
+
+
         public void DisplayTesterTest()
         {
             this.ViewModel = new ViewModelUpdateTestQueue();
         }
 
+
+
         public void DisplayDevStartup()
         {
             this.ViewModel = new ViewModelDevelopment();
         }
+
+
 
         //Jarne & Amy
         public void DisplayAddUser()
@@ -168,10 +210,14 @@ namespace BarcoPVG.Viewmodels
             this.ViewModel = new ViewModelDatabaseRemoveUser();
         }
 
+
+
         public void DisplayAddResource()
         {
             this.ViewModel = new ViewModelDatabaseAddResource();
         }
+
+
 
         public void DisplayRemoveResource()
         {
@@ -181,6 +227,12 @@ namespace BarcoPVG.Viewmodels
         {
             this.ViewModel = new ViewModelDatabaseManagement();
         }
+        public void DisplayDatabaseManagementStartup()
+        {
+            this.ViewModel = new ViewModelDatabaseManagement();
+        }
+
+
 
         // JR CRUD
         // Command functions
@@ -190,24 +242,32 @@ namespace BarcoPVG.Viewmodels
             var jr = _dao.AddJobRequest(((AbstractViewModelContainer)this.ViewModel).JR); // SaveChanges included in function
             int count = 0;
 
+
+
             foreach (var thisEUT in ((AbstractViewModelContainer)this.ViewModel).EUTs)
             {
                 count++;
                 _dao.AddEutToRqRequest(jr, thisEUT, count.ToString());
             }
 
+
+
             // Here we call the SaveChanges method, so that we can link several EUTs to one JR
             _dao.SaveChanges();
             DisplayDevStartup();
         }
 
-        // Change so no JR and no 
+
+
+        // Change so no JR and no
         public void InsertInternalJr()
         {
             var jr = _dao.AddJobRequest(((AbstractViewModelContainer)this.ViewModel).JR); // SaveChanges included in function
 
+
+
             jr.JrStatus = "In Plan";
-            
+
             int count = 0;
             foreach (var thisEUT in ((AbstractViewModelContainer)this.ViewModel).EUTs)
             {
@@ -215,18 +275,28 @@ namespace BarcoPVG.Viewmodels
                 _dao.AddEutToRqRequest(jr, thisEUT, count.ToString());
             }
 
+
+
             // Here we call the SaveChanges method, so that we can link several EUTs to one JR
             _dao.SaveChanges();
 
+
+
             _dao.ApproveInternalRequest(jr.IdRequest);
+
+
 
             DisplayDevStartup();
         }
+
+
 
         // Updates existing job request and switches windows
         public void UpdateJr()
         {
             string error = _dao.UpdateJobRequest(((AbstractViewModelContainer)this.ViewModel).JR); // SaveChanges included in function
+
+
 
             if (error == null)
             {
@@ -238,32 +308,44 @@ namespace BarcoPVG.Viewmodels
             }
         }
 
+
+
         // Switch screen for planner
         // Kaat
         public void ApproveJR()
         {
             int jrId = ((AbstractViewModelContainer)this.ViewModel).JR.IdRequest;
 
+
+
             _dao.ApproveRequest(jrId);
+
+
 
             this.ViewModel = new ViewModelApproveJRQueue();
         }
+
+
 
         // Switch to test planning for tester
         public void DisplayTestPlanning() //sander: foutafhandeling wanneer er niets geselecteerd is
         {
             // get id from JR
 
+
+
             var plan = ((ViewModelPlanTestQueue)this.ViewModel).SelectedPlan;
-            if(plan.JrNr != null)
+            if (plan.JrNr != null)
             {
                 this.ViewModel = new ViewModelPlanTestForm(plan);
             }
             else
             {
                 MessageBox.Show("Geen planning geselecteerd");
-            }   
+            }
         }
+
+
 
         public void SaveTestsAndReturn()
         {
@@ -271,9 +353,13 @@ namespace BarcoPVG.Viewmodels
             this.ViewModel = new ViewModelPlanTestQueue();
         }
 
+
+
         public void ApprovePlanAndReturn()
         {
             var isSaved = ((ViewModelPlanTestForm)this.ViewModel).ApprovePlan();
+
+
 
             if (isSaved)
             {
@@ -281,16 +367,22 @@ namespace BarcoPVG.Viewmodels
             }
         }
 
+
+
         public void TesterReturn()
         {
             _dao.RemoveChanges();
             this.ViewModel = new ViewModelPlanTestQueue();
         }
 
+
+
         private void SetWindowProperties()
         {
             switch (_dao.BarcoUser.Function)
             {
+
+
 
                 //Jarne
                 case "DATA":
@@ -300,10 +392,13 @@ namespace BarcoPVG.Viewmodels
                     SeeAll = Visibility.Visible;
                     Data = Visibility.Visible;
 
+
+
                     this.ViewModel = new ViewModelDatabaseManagement();
 
-                    break;
 
+
+                    break;
                 case "DEV":
                     NewRequests = Visibility.Visible;
                     ApproveRequests = Visibility.Visible;
@@ -311,10 +406,13 @@ namespace BarcoPVG.Viewmodels
                     SeeAll = Visibility.Visible;
                     Data = Visibility.Hidden;
 
+
+
                     this.ViewModel = new ViewModelDevelopment();
 
-                    break;
 
+
+                    break;
                 case "TEST":
                     NewRequests = Visibility.Visible;
                     ApproveRequests = Visibility.Hidden;
@@ -322,12 +420,17 @@ namespace BarcoPVG.Viewmodels
                     SeeAll = Visibility.Hidden;
                     Data = Visibility.Hidden;
 
+
+
                     DisplayNewJRCommand = new DelegateCommand(DisplayNewInternalJR);
+
+
 
                     this.ViewModel = new ViewModelPlanTestQueue();
 
-                    break;
 
+
+                    break;
                 case "PLAN":
                     NewRequests = Visibility.Hidden;
                     ApproveRequests = Visibility.Visible;
@@ -335,27 +438,44 @@ namespace BarcoPVG.Viewmodels
                     SeeAll = Visibility.Hidden;
                     Data = Visibility.Hidden;
 
+
+
                     this.ViewModel = new ViewModelApproveJRQueue();
 
+
+
                     break;
+
+
 
                 default:
                     NewRequests = Visibility.Visible;
                     ApproveRequests = Visibility.Hidden;
                     Test = Visibility.Hidden;
                     SeeAll = Visibility.Hidden;
-                    Data = Visibility.Hidden;
+
+
 
                     this.ViewModel = new ViewModelCreateJRQueue();
+
+
 
                     break;
             }
         }
 
+
+
+
+
         public void InsertUser()
         {
 
+
+
         }
+
+
 
     }
 }
