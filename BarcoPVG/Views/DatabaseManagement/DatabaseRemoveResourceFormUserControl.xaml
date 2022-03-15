@@ -1,0 +1,27 @@
+﻿<Window x:Class="BarcoPVG.Views.DatabaseManagement.DatabaseRemoveResourceFormUserControl"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BarcoPVG.Views.DatabaseManagement"
+        mc:Ignorable="d"
+        Title="DatabaseRemoveResourceFormUserControl" Height="450" Width="800" Background="LightGray">
+    <GroupBox Header="Remove Resource">
+        <StackPanel>
+            <ListView Height="260">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Name" Width=" 250"/>
+                        <GridViewColumn Header="Color RGB" Width="250"/>
+                        <GridViewColumn Header="Color HEX" Width="250"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <StackPanel Height="100" Orientation="Horizontal" HorizontalAlignment="Center" Width="auto">
+                <Button Content="Remove Resource" Margin="5"/>
+                <Button Content="Cancel" Margin="5"/>
+            </StackPanel>
+        </StackPanel>
+    </GroupBox>
+
+</Window>
