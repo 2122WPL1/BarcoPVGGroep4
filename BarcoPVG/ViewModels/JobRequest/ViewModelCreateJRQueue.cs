@@ -19,7 +19,7 @@ namespace BarcoPVG.Viewmodels.JobRequest
         //Constructor
         public ViewModelCreateJRQueue() : base()
         {
-            Load();   
+            Load();
         }
 
         // Function used in code behind
