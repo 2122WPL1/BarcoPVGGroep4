@@ -57,7 +57,7 @@
                         Margin="10" Background="#FFF10000"/>
                         <Button Content="Database Management"
                                 Command="{Binding DisplayDatabaseManagementCommand, Mode=OneWay}"
-                                Visibility="{Binding SeeAll}"/>
+                                Visibility="{Binding Data}"/>
                     </StackPanel>
                 <ScrollViewer Height="450">
                     <ContentControl Content="{Binding ViewModel}"/>

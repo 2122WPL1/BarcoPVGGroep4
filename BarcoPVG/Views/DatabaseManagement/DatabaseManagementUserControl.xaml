@@ -7,13 +7,17 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="BarcoPVG.Views.DatabaseManagement.DatabaseManagementUserControl"
         mc:Ignorable="d"
         Title="DatabaseManagementUserControl" Height="450" Width="800" Background="LightGray">
+    <Grid>
+        <!--Jarne-->
     <GroupBox Header="Database Management">
         <!--amy-->
         <StackPanel>
             <StackPanel Height="100" Orientation="Horizontal" HorizontalAlignment="Center" Width="auto">
                 <Button Content="Add User" Margin="5"/>
                 <Button Content="Remove User" Margin="5"/>
-                <Button Content="Add Resource" Margin="5"/>
+                <Button Content="Add Resource" 
+                        Command="{Binding Path=AddResourceCommand}"
+                        Margin="5"/>
                 <Button Content="Remove Resource" Margin="5"/>
                 <Button Content="Cancel" Margin="5"/>
             </StackPanel>

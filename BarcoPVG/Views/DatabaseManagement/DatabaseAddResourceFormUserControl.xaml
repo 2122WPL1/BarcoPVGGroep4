@@ -30,10 +30,10 @@
             </StackPanel>
             <StackPanel Height="100" Orientation="Horizontal" HorizontalAlignment="Right"  Width="auto">
                 <Button Content="Add Resource" 
-                        Command="{Binding Path=AddResourceCommand}"
+                        
                         Margin="5"/>
                 <Button Content="Cancel" 
-                        Command="{Binding Path=CancelAddResourceCommand}"
+                 
                         Margin="5"/>
             </StackPanel>
         </StackPanel>
