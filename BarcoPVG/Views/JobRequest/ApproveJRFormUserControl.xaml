@@ -102,7 +102,7 @@
                          >
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <StackPanel Orientation="Horizontal"></StackPanel>
+                            <StackPanel Orientation="Horizontal"/>
                         </ItemsPanelTemplate>
                     </ListBox.ItemsPanel>
                     <ListBox.Resources>
@@ -112,7 +112,7 @@
                         <CompositeCollection>
                             <CollectionContainer Collection="{Binding Source={StaticResource EUTs}}"/>
                             <ListBoxItem>
-                                <Button Command="{Binding Path=AddEUTCommand}">+</Button>
+                                <Button Command="{Binding Path=AddEUTCommand}" Content="+"/>
                             </ListBoxItem>
                         </CompositeCollection>
                     </ListBox.ItemsSource>

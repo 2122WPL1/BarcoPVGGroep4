@@ -23,7 +23,7 @@ namespace BarcoPVG.Views.JobRequest
         
         public ApproveJRFormUserControl()
         {
-            
+             
             InitializeComponent();
 
         }
