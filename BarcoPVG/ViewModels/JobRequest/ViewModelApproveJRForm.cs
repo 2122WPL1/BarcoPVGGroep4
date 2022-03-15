@@ -25,8 +25,8 @@ namespace BarcoPVG.Viewmodels.JobRequest
         // ICommand does not take pinput
         public ICommand AddEUTCommand { get; set; }
         public ICommand RemoveEUTCommand { get; set; }
-        public ICommand RefreshJRCommand { get; set; }
-        public ICommand AddMockEUTCommand { get; set; }
+        public ICommand? RefreshJRCommand { get; set; }
+        public ICommand? AddMockEUTCommand { get; set; }
 
         // Constructor for existing JR
         // Planner only works with existing JRs
@@ -108,9 +108,6 @@ namespace BarcoPVG.Viewmodels.JobRequest
         {
             //note: zorgen dat de eut hemzelf select 
             EUTs.Remove(SelectedEUT); 
-
-
-
         }
 
 

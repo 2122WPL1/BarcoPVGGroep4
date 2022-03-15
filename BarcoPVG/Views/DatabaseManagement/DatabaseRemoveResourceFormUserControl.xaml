@@ -8,7 +8,7 @@
         Title="DatabaseRemoveResourceFormUserControl" Height="450" Width="800" Background="LightGray">
     <GroupBox Header="Remove Resource">
         <StackPanel>
-            <ListView Height="260" d:ItemsSource="{d:SampleData ItemCount=5}">
+            <ListView Height="260">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Name" Width=" 250"/>
