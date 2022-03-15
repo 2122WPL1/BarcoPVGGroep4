@@ -3,8 +3,9 @@
 
     <!-- DataTemplate to display EUT's in listboxes/listviews - Kaat-->
     <DataTemplate x:Key="EUT">
-
-        <ListBoxItem BorderBrush="red" Width="180"  BorderThickness="2"  Background="LightGray" Foreground="Black">
+        
+            <ListBoxItem BorderBrush="red" Width="180"  BorderThickness="2"  Background="LightGray" Foreground="Black">
+            
             <Grid  >
 
                 <Grid.RowDefinitions>
@@ -15,6 +16,12 @@
                     <ColumnDefinition/>
                     <ColumnDefinition Width="10"/>
                 </Grid.ColumnDefinitions>
+                <Button HorizontalAlignment="Right" Content="X" Command="{Binding RemoveEUTCommand}"></Button>
+                <!--note:
+                Severity	Count	Data Context	Binding Path	Target	Target Type	Description	File	Line	Project
+                Error	2	EUT	RemoveEUTCommand	Button.Command	ICommand	RemoveEUTCommand property not found on object of type EUT.	\DictionaryResources\DataTemplates.xaml	25	BarcoPVG-->
+                <!-- note: doet nog niets waarschijnlijk doordat hij niet de eut zelf selecteerd als verwijderd item in viewmodelapprovejrform of er is iets mis met de binding-->
+                <TextBlock  Text="EUT" Margin="5" Width="30" HorizontalAlignment="Left"/>
                 <TextBlock  Text="EUT" Margin="5"/>
 
                 <StackPanel  Grid.Row="1" Orientation="Vertical"  TextElement.Foreground="Black">
@@ -29,8 +36,9 @@
                 <DatePicker SelectedDate ="{Binding AvailabilityDate}" Grid.Column="4" Grid.Row="10" IsTodayHighlighted="True"/>
                 </StackPanel>
             </Grid>
+            
         </ListBoxItem>
-
+        
     </DataTemplate>
     <!--<SolidColorBrush x:Key="ResourceColor" Color="{Binding Kleur}"  /> -->
 
@@ -58,9 +66,10 @@
                 <TextBox Text="{Binding SAVpvg, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" Width="85" Margin="5"/>
                 <TextBox Text="{Binding PCKpvg, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" Width="85" Margin="5"/>
                 <TextBox Text="{Binding ECOpvg, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" Width="85" Margin="5"/>
-
             </StackPanel>
+
         </Grid>
         <!--</ListBoxItem>-->
     </DataTemplate>
+        
 </ResourceDictionary>
