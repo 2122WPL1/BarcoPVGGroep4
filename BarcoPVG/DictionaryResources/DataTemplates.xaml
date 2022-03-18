@@ -49,7 +49,7 @@
     </DataTemplate>
     <!--<SolidColorBrush x:Key="ResourceColor" Color="{Binding Kleur}"  /> -->
 
-    </DataTemplate>
+   
     <!--Data template for pvg responsible in the Gui-->
     <DataTemplate x:Key="PVGRes">
         <!--<ListBoxItem BorderBrush="white" BorderThickness="1" HorizontalContentAlignment="Stretch"  Foreground="White">-->
