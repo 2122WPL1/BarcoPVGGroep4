@@ -19,7 +19,7 @@ namespace BarcoPVG.Views.DatabaseManagement
     /// </summary>
     public partial class DataBaseUser : UserControl
     {
-        public DataBaseUser()
+        public DataBaseUser() 
         {
             InitializeComponent();
         }

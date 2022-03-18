@@ -17,9 +17,9 @@ namespace BarcoPVG.Views.DatabaseManagement
     /// <summary>
     /// Interaction logic for DatabaseResources.xaml
     /// </summary>
-    public partial class DatabaseResources : Window
+    public partial class DatabaseResources 
     {
-        public DatabaseResources()
+        public DatabaseResources() 
         {
             InitializeComponent();
         }

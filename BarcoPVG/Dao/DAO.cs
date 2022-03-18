@@ -348,7 +348,7 @@ namespace BarcoPVG.Dao
                     InternRequest = selectedRQ.InternRequest,
                     GrossWeight = selectedRQ.GrossWeight,
                     NetWeight = selectedRQ.NetWeight,
-                    Battery = selectedRQ.Battery,
+                    Battery = (bool)selectedRQ.Battery,
                     //EutPartnr = selectedRQ.EutPartnumbers,
 
                     // Testing
@@ -374,7 +374,7 @@ namespace BarcoPVG.Dao
                     InternRequest = selectedRQ.InternRequest,
                     GrossWeight = selectedRQ.GrossWeight,
                     NetWeight = selectedRQ.NetWeight,
-                    Battery = selectedRQ.Battery
+                    Battery = (bool)selectedRQ.Battery
                 };
             }
             return selectedJR;
