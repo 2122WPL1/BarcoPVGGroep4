@@ -34,15 +34,13 @@ namespace BarcoPVG.Viewmodels
         public DelegateCommand ApprovePlanAndReturnCommand { get; set; }
         public DelegateCommand TesterReturnCommand { get; set; }
         // Amy & Jarne
-        public DelegateCommand AddUserCommand { get; set; }
-        public DelegateCommand RemoveUserCommand { get; set; }
-        public DelegateCommand AddResourceCommand { get; set; }
-        public DelegateCommand RemoveResourceCommand { get; set; }
+        //public DelegateCommand AddUserCommand { get; set; }
+        //public DelegateCommand RemoveUserCommand { get; set; }
+        //public DelegateCommand AddResourceCommand { get; set; }
+        //public DelegateCommand RemoveResourceCommand { get; set; }
         public DelegateCommand DatabaseManagementCommand { get; set; }
-        public DelegateCommand SaveAddUserCommand { get; set; }
+        //public DelegateCommand SaveAddUserCommand { get; set; }
         public DelegateCommand DisplayDatabaseManagementStartupCommand { get; set; }
-
-
 
 
         // Visibility of buttons
@@ -70,15 +68,13 @@ namespace BarcoPVG.Viewmodels
             ApprovePlanAndReturnCommand = new DelegateCommand(ApprovePlanAndReturn);
             TesterReturnCommand = new DelegateCommand(TesterReturn);
             //Jarne & Amy
-            AddUserCommand = new DelegateCommand(DisplayAddUser);
-            RemoveUserCommand = new DelegateCommand(DisplayRemoveUser);
-            AddResourceCommand = new DelegateCommand(DisplayAddResource);
-            RemoveResourceCommand = new DelegateCommand(DisplayRemoveResource);
+            //AddUserCommand = new DelegateCommand(DisplayAddUser);
+            //RemoveUserCommand = new DelegateCommand(DisplayRemoveUser);
+            //AddResourceCommand = new DelegateCommand(DisplayAddResource);
+            //RemoveResourceCommand = new DelegateCommand(DisplayRemoveResource);
             DatabaseManagementCommand = new DelegateCommand(DisplayDatabaseManagement);
-            SaveAddUserCommand = new DelegateCommand(DisplayAddUser);
+            //SaveAddUserCommand = new DelegateCommand(DisplayAddUser);
             DisplayDatabaseManagementStartupCommand = new DelegateCommand(DisplayDatabaseManagementStartup);
-
-
 
             SetWindowProperties();
         }
@@ -160,27 +156,30 @@ namespace BarcoPVG.Viewmodels
         }
 
         //Jarne & Amy
-        public void DisplayAddUser()
-        {
-            SaveAddUserCommand = new DelegateCommand(InsertUser);
-            this.ViewModel = new ViewModelDatabaseAddUser();
-        }
-        public void DisplayRemoveUser()
-        {
-            this.ViewModel = new ViewModelDatabaseRemoveUser();
-        }
+        //public void DisplayAddUser()
+        //{
+        //    SaveAddUserCommand = new DelegateCommand(InsertUser);
+        //    this.ViewModel = new ViewModelDatabaseAddUser();
+        //}
+        //public void DisplayRemoveUser()
+        //{
+        //    this.ViewModel = new ViewModelDatabaseRemoveUser();
+        //}
 
-        public void DisplayAddResource()
-        {
-            this.ViewModel = new ViewModelDatabaseAddResource();
-        }
+        //public void DisplayAddResource()
+        //{
+        //    this.ViewModel = new ViewModelDatabaseAddResource();
+        //}
 
-        public void DisplayRemoveResource()
-        {
-            this.ViewModel = new ViewModelDatabaseRemoveResource();
-        }
-        
+        //public void DisplayRemoveResource()
+        //{
+        //    this.ViewModel = new ViewModelDatabaseRemoveResource();
+        //}
         public void DisplayDatabaseManagement()
+        {
+            this.ViewModel = new ViewModelDatabaseManagement();
+        }
+        public void DisplayDatabaseManagementStartup()
         {
             this.ViewModel = new ViewModelDatabaseManagement();
         }
@@ -360,6 +359,8 @@ namespace BarcoPVG.Viewmodels
                     break;
             }
         }
+
+
 
         public void InsertUser()
         {

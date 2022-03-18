@@ -23,7 +23,7 @@ namespace BarcoPVG.Viewmodels.Planning
         public ObservableCollection<Test> Tests { get; set; }
         private Visibility doubleBooked;
         private Test selectedTest;
-        private Test editingTest;
+        private Test editingTest; 
 
         // Used to triigger check for dates
         private DateTime? startDate;
