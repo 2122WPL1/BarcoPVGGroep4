@@ -12,7 +12,7 @@ namespace BarcoPVG.ViewModels.DatabaseManagement
     {
         public ViewModelDatabaseManagement() : base()
         {
-
+            
         }
         //public ViewModelDatabaseManagement() : base()
         //{
