@@ -16,6 +16,13 @@ namespace BarcoPVG.ViewModels.DatabaseManagement
 
         public void Load()
         {
+            var requestIds = _dao.GetAllJobRequests();
+            IdRequestsOnly.Clear();
+
+            foreach (var requestId in requestIds)
+            {
+                IdRequestsOnly.Add(requestId);
+            }
         }
     }
 }

@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Height="720" Width="980" Background="LightGray" Foreground="White"
+        Height="1143" Width="980" Background="LightGray" Foreground="White"
         WindowState="Maximized"
         WindowStyle="ThreeDBorderWindow"
         WindowStartupLocation="CenterScreen">
@@ -28,7 +28,7 @@
                         </StackPanel>
                     </Grid>
                 </GroupBox.Header>
-                <StackPanel>
+                <StackPanel Width="920">
                     <StackPanel Orientation="Horizontal" Margin="10">
                         <Button Content="Your requests" 
                             Command="{Binding DisplayEmployeeStartupCommand,
@@ -48,12 +48,12 @@
                             Visibility="{Binding Test}"
                             Background="#FFF10000"/>
                         <Button Content="Development"
-                        Command="{Binding DisplayDevStartupCommand, Mode=OneWay}" 
+                            Command="{Binding DisplayDevStartupCommand, Mode=OneWay}" 
                             Visibility="{Binding SeeAll}"
-                        Margin="10" Background="#FFF10000"/>
+                            Margin="10" Background="#FFF10000"/>
                         <Button Content="Database Management"
-                                Command="{Binding DisplayDatabaseManagementCommand, Mode=OneWay}"
-                                Visibility="{Binding Data}"/>
+                            Command="{Binding DatabaseManagementCommand, Mode=OneWay}"
+                            Visibility="{Binding Data}" Background="#FFF10000" />
                     </StackPanel>
                     <ScrollViewer Height="450">
                         <ContentControl Content="{Binding ViewModel}"/>

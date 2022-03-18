@@ -1,17 +1,11 @@
-﻿using Microsoft.Toolkit.Mvvm.Input;
+﻿using BarcoPVG.Models.Classes;
+using BarcoPVG.Viewmodels.JobRequest;
+using BarcoPVG.Viewmodels.Planning;
+using BarcoPVG.Viewmodels.TestGUI;
+using BarcoPVG.ViewModels.DatabaseManagement;
 using Prism.Commands;
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using BarcoPVG.Models.Classes;
-using BarcoPVG.Viewmodels.JobRequest;
-using BarcoPVG.Viewmodels.TestGUI;
-using BarcoPVG.Viewmodels.Planning;
-using BarcoPVG.ViewModels.DatabaseManagement;
 
 
 
@@ -24,11 +18,7 @@ namespace BarcoPVG.Viewmodels
         public BarcoUser User { get; set; }
 
 
-
-
         // TODO: check if ICommand also works
-
-
 
         public DelegateCommand DisplayNewJRCommand { get; set; }
         public DelegateCommand DisplayExistingJRCommand { get; set; }
@@ -63,13 +53,9 @@ namespace BarcoPVG.Viewmodels
         //Jarne
         public Visibility Data { get; set; }
 
-
-
         public ViewModelMain()
         {
             this.User = _dao.BarcoUser;
-
-
 
             DisplayNewJRCommand = new DelegateCommand(DisplayNewJR);
             DisplayExistingJRCommand = new DelegateCommand(DisplayExistingJR);
@@ -97,8 +83,6 @@ namespace BarcoPVG.Viewmodels
             SetWindowProperties();
         }
 
-
-
         // Getters/Setters
         public AbstractViewModelBase ViewModel
         {
@@ -110,8 +94,6 @@ namespace BarcoPVG.Viewmodels
             }
         }
 
-
-
         // Command methods
         // TODO: add method to switch return window based on function
         public void DisplayNewJR()
@@ -120,29 +102,19 @@ namespace BarcoPVG.Viewmodels
             this.ViewModel = new ViewModelCreateJRForm();
         }
 
-
-
         public void DisplayNewInternalJR()
         {
             SaveJrCommand = new DelegateCommand(InsertInternalJr);
             this.ViewModel = new ViewModelCreateJRForm(true);
         }
 
-
-
         public void DisplayExistingJR() //Sander: Foutmelding wanneer er niets geselecteerd wordt
         {
-
-
 
             SaveJrCommand = new DelegateCommand(UpdateJr);
 
 
-
-
             var ExistingJrId = ((AbstractViewModelCollectionRQ)this.ViewModel).SelectedJR.IdRequest;
-
-
 
             if (((AbstractViewModelCollectionRQ)this.ViewModel).SelectedJR.ExpectedEnddate != new DateTime()) //als de verwachte einddatum niet geset is dan geeft hij een foutmelding
             {
@@ -152,7 +124,7 @@ namespace BarcoPVG.Viewmodels
                 }
                 else
                 {
-
+                    
                     this.ViewModel = new ViewModelCreateJRForm(ExistingJrId);
                 }
             }
@@ -160,19 +132,13 @@ namespace BarcoPVG.Viewmodels
             {
                 MessageBox.Show("Geen JR geselecteerd");
 
-
-
             }
         }
-
-
 
         public void DisplayEmployeeStartup()
         {
             this.ViewModel = new ViewModelCreateJRQueue();
         }
-
-
 
         public void DisplayPlannerStartup()
         {
@@ -183,21 +149,15 @@ namespace BarcoPVG.Viewmodels
             this.ViewModel = new ViewModelPlanTestQueue();
         }
 
-
-
         public void DisplayTesterTest()
         {
             this.ViewModel = new ViewModelUpdateTestQueue();
         }
 
-
-
         public void DisplayDevStartup()
         {
             this.ViewModel = new ViewModelDevelopment();
         }
-
-
 
         //Jarne & Amy
         public void DisplayAddUser()
@@ -210,19 +170,16 @@ namespace BarcoPVG.Viewmodels
             this.ViewModel = new ViewModelDatabaseRemoveUser();
         }
 
-
-
         public void DisplayAddResource()
         {
             this.ViewModel = new ViewModelDatabaseAddResource();
         }
 
-
-
         public void DisplayRemoveResource()
         {
             this.ViewModel = new ViewModelDatabaseRemoveResource();
         }
+        
         public void DisplayDatabaseManagement()
         {
             this.ViewModel = new ViewModelDatabaseManagement();
@@ -242,15 +199,11 @@ namespace BarcoPVG.Viewmodels
             var jr = _dao.AddJobRequest(((AbstractViewModelContainer)this.ViewModel).JR); // SaveChanges included in function
             int count = 0;
 
-
-
             foreach (var thisEUT in ((AbstractViewModelContainer)this.ViewModel).EUTs)
             {
                 count++;
                 _dao.AddEutToRqRequest(jr, thisEUT, count.ToString());
             }
-
-
 
             // Here we call the SaveChanges method, so that we can link several EUTs to one JR
             _dao.SaveChanges();
@@ -264,10 +217,8 @@ namespace BarcoPVG.Viewmodels
         {
             var jr = _dao.AddJobRequest(((AbstractViewModelContainer)this.ViewModel).JR); // SaveChanges included in function
 
-
-
             jr.JrStatus = "In Plan";
-
+            
             int count = 0;
             foreach (var thisEUT in ((AbstractViewModelContainer)this.ViewModel).EUTs)
             {
@@ -275,28 +226,18 @@ namespace BarcoPVG.Viewmodels
                 _dao.AddEutToRqRequest(jr, thisEUT, count.ToString());
             }
 
-
-
             // Here we call the SaveChanges method, so that we can link several EUTs to one JR
             _dao.SaveChanges();
 
-
-
             _dao.ApproveInternalRequest(jr.IdRequest);
-
-
 
             DisplayDevStartup();
         }
-
-
 
         // Updates existing job request and switches windows
         public void UpdateJr()
         {
             string error = _dao.UpdateJobRequest(((AbstractViewModelContainer)this.ViewModel).JR); // SaveChanges included in function
-
-
 
             if (error == null)
             {
@@ -308,31 +249,21 @@ namespace BarcoPVG.Viewmodels
             }
         }
 
-
-
         // Switch screen for planner
         // Kaat
         public void ApproveJR()
         {
             int jrId = ((AbstractViewModelContainer)this.ViewModel).JR.IdRequest;
 
-
-
             _dao.ApproveRequest(jrId);
-
-
 
             this.ViewModel = new ViewModelApproveJRQueue();
         }
-
-
 
         // Switch to test planning for tester
         public void DisplayTestPlanning() //sander: foutafhandeling wanneer er niets geselecteerd is
         {
             // get id from JR
-
-
 
             var plan = ((ViewModelPlanTestQueue)this.ViewModel).SelectedPlan;
             if (plan.JrNr != null)
@@ -345,21 +276,15 @@ namespace BarcoPVG.Viewmodels
             }
         }
 
-
-
         public void SaveTestsAndReturn()
         {
             ((ViewModelPlanTestForm)this.ViewModel).SaveTests();
             this.ViewModel = new ViewModelPlanTestQueue();
         }
 
-
-
         public void ApprovePlanAndReturn()
         {
             var isSaved = ((ViewModelPlanTestForm)this.ViewModel).ApprovePlan();
-
-
 
             if (isSaved)
             {
@@ -367,22 +292,16 @@ namespace BarcoPVG.Viewmodels
             }
         }
 
-
-
         public void TesterReturn()
         {
             _dao.RemoveChanges();
             this.ViewModel = new ViewModelPlanTestQueue();
         }
 
-
-
         private void SetWindowProperties()
         {
             switch (_dao.BarcoUser.Function)
             {
-
-
 
                 //Jarne
                 case "DATA":
@@ -392,11 +311,7 @@ namespace BarcoPVG.Viewmodels
                     SeeAll = Visibility.Visible;
                     Data = Visibility.Visible;
 
-
-
                     this.ViewModel = new ViewModelDatabaseManagement();
-
-
 
                     break;
                 case "DEV":
@@ -406,13 +321,10 @@ namespace BarcoPVG.Viewmodels
                     SeeAll = Visibility.Visible;
                     Data = Visibility.Hidden;
 
-
-
                     this.ViewModel = new ViewModelDevelopment();
 
-
-
                     break;
+
                 case "TEST":
                     NewRequests = Visibility.Visible;
                     ApproveRequests = Visibility.Hidden;
@@ -420,15 +332,9 @@ namespace BarcoPVG.Viewmodels
                     SeeAll = Visibility.Hidden;
                     Data = Visibility.Hidden;
 
-
-
                     DisplayNewJRCommand = new DelegateCommand(DisplayNewInternalJR);
 
-
-
                     this.ViewModel = new ViewModelPlanTestQueue();
-
-
 
                     break;
                 case "PLAN":
@@ -438,44 +344,27 @@ namespace BarcoPVG.Viewmodels
                     SeeAll = Visibility.Hidden;
                     Data = Visibility.Hidden;
 
-
-
                     this.ViewModel = new ViewModelApproveJRQueue();
 
-
-
                     break;
-
-
 
                 default:
                     NewRequests = Visibility.Visible;
                     ApproveRequests = Visibility.Hidden;
                     Test = Visibility.Hidden;
                     SeeAll = Visibility.Hidden;
-
-
+                    Data = Visibility.Hidden;
 
                     this.ViewModel = new ViewModelCreateJRQueue();
-
-
 
                     break;
             }
         }
 
-
-
-
-
         public void InsertUser()
         {
 
-
-
         }
-
-
 
     }
 }
