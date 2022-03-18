@@ -17,7 +17,7 @@ namespace BarcoPVG.Views.DatabaseManagement
     /// <summary>
     /// Interaction logic for DataBaseUser.xaml
     /// </summary>
-    public partial class DataBaseUser 
+    public partial class DataBaseUser : UserControl
     {
         public DataBaseUser() 
         {
