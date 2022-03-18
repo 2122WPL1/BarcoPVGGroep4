@@ -12,14 +12,12 @@ xmlns:viewsPlanning="clr-namespace:BarcoPVG.Views.Planning"
 xmlns:viewsTestGUI="clr-namespace:BarcoPVG.Views.TestGUI"
 xmlns:viewsDatabaseManagement="clr-namespace:BarcoPVG.Views.DatabaseManagement"
 xmlns:viewModelDatabaseManagement="clr-namespace:BarcoPVG.ViewModels.DatabaseManagement"
+xmlns:viewModelDBUSer="clr-namespace:BarcoPVG.ViewModels.DatabaseManagement"
+                    
 >
     <DataTemplate DataType="{x:Type viewModels:ViewModelMain}">
         <views:MainWindow/>
     </DataTemplate>
-
-
-
-
     <DataTemplate DataType="{x:Type viewModelTestGUI:ViewModelDevelopment}">
         <viewsTestGUI:DevelopmentUserControl/>
     </DataTemplate>
@@ -47,5 +45,8 @@ xmlns:viewModelDatabaseManagement="clr-namespace:BarcoPVG.ViewModels.DatabaseMan
        <!--Amy & Jarne-->
     <DataTemplate DataType="{x:Type viewModelDatabaseManagement:ViewModelDatabaseManagement}">
         <viewsDatabaseManagement:DatabaseManagementUserControl/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type viewModelDBUSer:ViewModelEditUserDB}">
+        <viewsDatabaseManagement:EditUserDBManagementUserControl/>
     </DataTemplate>
 </ResourceDictionary>
