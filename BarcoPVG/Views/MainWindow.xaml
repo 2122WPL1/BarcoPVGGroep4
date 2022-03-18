@@ -19,11 +19,12 @@
                     <!-- This could be done more efficiently? -->
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="8.667"/>
+                            <ColumnDefinition Width="141.333"/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <Image Style="{StaticResource BarcoLogo}"/>
-                        <StackPanel Orientation="Horizontal" Grid.Column="1" >
+                        <Image Style="{StaticResource BarcoLogo}" Grid.Column="1" Margin="16,0,25,0"/>
+                        <StackPanel Orientation="Horizontal" Grid.Column="2" >
                             <TextBlock FontSize="14" Text="Welcome "/>
                             <TextBlock FontSize="14" FontWeight="Bold" Text="{Binding User.Name}"/>
                             <TextBlock FontSize="14" Text=" ("/>
@@ -33,8 +34,8 @@
                     </Grid>
                 </GroupBox.Header>
                 <StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="10">
-                    <Button Content="Your requests" 
+                    <StackPanel Orientation="Horizontal" Margin="10">
+                        <Button Content="Your requests" 
                             Command="{Binding DisplayEmployeeStartupCommand,
                             Mode=OneWay}" 
                             Visibility="{Binding NewRequests}"
@@ -59,9 +60,9 @@
                                 Command="{Binding DisplayDatabaseManagementStartupCommand, Mode=OneWay}"
                                 Visibility="{Binding Data}"/>
                     </StackPanel>
-                <ScrollViewer Height="450">
-                    <ContentControl Content="{Binding ViewModel}"/>
-                </ScrollViewer>
+                    <ScrollViewer Height="450">
+                        <ContentControl Content="{Binding ViewModel}"/>
+                    </ScrollViewer>
                 </StackPanel>
             </GroupBox>
         </StackPanel>
