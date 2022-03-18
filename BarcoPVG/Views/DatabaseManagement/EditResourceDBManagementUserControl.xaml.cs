@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace BarcoPVG.Views.DatabaseManagement
 {
     /// <summary>
-    /// Interaction logic for DatabaseAddUserFormUserControl.xaml
+    /// Interaction logic for EditResourceDBManagementUserControl.xaml
     /// </summary>
-    public partial class DatabaseAddUserFormUserControl : Window
+    public partial class EditResourceDBManagementUserControl : Window
     {
-        public DatabaseAddUserFormUserControl()
+        public EditResourceDBManagementUserControl()
         {
             InitializeComponent();
         }

@@ -10,7 +10,8 @@ xmlns:views="clr-namespace:BarcoPVG.Views"
 xmlns:viewsJR="clr-namespace:BarcoPVG.Views.JobRequest"
 xmlns:viewsPlanning="clr-namespace:BarcoPVG.Views.Planning"
 xmlns:viewsTestGUI="clr-namespace:BarcoPVG.Views.TestGUI"
-xmlns:viewModelDatabaseManagement="clr-namespace:BarcoPVG.Views.DatabaseManagement"
+xmlns:viewsDatabaseManagement="clr-namespace:BarcoPVG.Views.DatabaseManagement"
+xmlns:viewModelDatabaseManagement="clr-namespace:BarcoPVG.ViewModels.DatabaseManagement"
 >
     <DataTemplate DataType="{x:Type viewModels:ViewModelMain}">
         <views:MainWindow/>
@@ -39,11 +40,8 @@ xmlns:viewModelDatabaseManagement="clr-namespace:BarcoPVG.Views.DatabaseManageme
     <DataTemplate DataType="{x:Type viewModelTestGUI:ViewModelUpdateTestQueue}">
         <viewsTestGUI:UpdateTestQueueUserControl/>
     </DataTemplate>
-
-
-
-    <!--Amy & Jarne-->
-    <DataTemplate DataType="{x:Type viewModelDatabaseManagement:DatabaseManagementUserControl}">
-        <viewModelDatabaseManagement:DatabaseManagementUserControl/>
+       <!--Amy & Jarne-->
+    <DataTemplate DataType="{x:Type viewModelDatabaseManagement:ViewModelDatabaseManagement}">
+        <viewsDatabaseManagement:DatabaseManagementUserControl/>
     </DataTemplate>
 </ResourceDictionary>

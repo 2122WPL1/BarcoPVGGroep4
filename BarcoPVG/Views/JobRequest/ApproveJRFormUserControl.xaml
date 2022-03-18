@@ -4,8 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BarcoPVG.Views"
-             mc:Ignorable="d" 
-             d:DesignHeight="800" d:DesignWidth="600" d:Background="LightGray">
+             mc:Ignorable="d" d:Background="LightGray" Height="900" Width="750">
     <StackPanel Margin="10" >
         <GroupBox Header="Project Details">
             <Grid>
@@ -53,7 +52,7 @@
                 <TextBox Grid.Row="7" Grid.Column="1"  Text="{Binding JR.GrossWeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                 <Label Content="" Grid.Row="9"/>
-          
+
                 <Label Content="Link to testplan (optional):" Grid.Row="10"/>
                 <TextBox Text="{Binding JR.Link,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                              Grid.Column="1" Grid.Row="10" />
@@ -102,41 +101,30 @@
                          >
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <StackPanel Orientation="Horizontal"></StackPanel>
+                            <StackPanel Orientation="Horizontal"/>
                         </ItemsPanelTemplate>
                     </ListBox.ItemsPanel>
                     <ListBox.Resources>
                         <CollectionViewSource x:Key="EUTs" Source="{Binding EUTs}" />
                     </ListBox.Resources>
-                <!--
-                <ListBox x:Name="ListEUT" Height="300" Background="#363636"
-                         ItemsSource="{Binding EUTs}"
-                ItemTemplate="{DynamicResource EUT}"
-                         
-                         SelectedItem="{Binding SelectedEUT, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }">
-                        
-                    
-                    <!--Itemsource + button voor het toevoegen
-                    https://stackoverflow.com/questions/53502828/add-listboxitem-with-add-button-that-is-inside-the-listbox-itself
-                    -->
                     <ListBox.ItemsSource>
                         <CompositeCollection>
                             <CollectionContainer Collection="{Binding Source={StaticResource EUTs}}"/>
                             <ListBoxItem>
-                                <Button Command="{Binding Path=AddEUTCommand}">+</Button>
+                                <Button Command="{Binding Path=AddEUTCommand}" Content="+"/>
                             </ListBoxItem>
                         </CompositeCollection>
                     </ListBox.ItemsSource>
                 </ListBox>
-
-                <StackPanel Orientation="Horizontal" >
+              
+                <!--<StackPanel Orientation="Horizontal" >
                     <Button Content="Add Part" 
                                 Command="{Binding Path=AddEUTCommand}" 
                                 Margin="10"/>
                     <Button Content="Remove Part"
                                 Command="{Binding Path=RemoveEUTCommand}" 
                                 Margin="10"/>
-                </StackPanel>
+                </StackPanel>-->
             </StackPanel>
         </GroupBox>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
