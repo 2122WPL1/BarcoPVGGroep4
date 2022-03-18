@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BarcoPVG.Models.Classes;
 using BarcoPVG.Viewmodels;
+using BarcoPVG.ViewModels.Login;
 
 namespace BarcoPVG.Views.Login
 {
@@ -20,14 +21,11 @@ namespace BarcoPVG.Views.Login
     /// </summary>
     public partial class Login : Window
     {
-        public bool IsLoggedIn { get; set; } = false;
 
         public Login()
         {
-            DataContext = new ViewModelMain(); //user ingeven als parameter
-
             InitializeComponent();
-
+            DataContext = new ViewModelLogin(); //user ingeven als parameter
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -35,12 +33,12 @@ namespace BarcoPVG.Views.Login
             this.Close();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            this.Hide();
-            MainWindow mainw = new MainWindow();
-            mainw.Show();
-        }
+        //private void Button_Click_1(object sender, RoutedEventArgs e)
+        //{
+        //    this.Hide();
+        //    MainWindow mainw = new MainWindow();
+        //    mainw.Show();
+        //}
     }
 }
 
