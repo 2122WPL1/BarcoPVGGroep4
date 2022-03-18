@@ -101,41 +101,30 @@
                          >
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <StackPanel Orientation="Horizontal"></StackPanel>
+                            <StackPanel Orientation="Horizontal"/>
                         </ItemsPanelTemplate>
                     </ListBox.ItemsPanel>
                     <ListBox.Resources>
                         <CollectionViewSource x:Key="EUTs" Source="{Binding EUTs}" />
                     </ListBox.Resources>
-                <!--
-                <ListBox x:Name="ListEUT" Height="300" Background="#363636"
-                         ItemsSource="{Binding EUTs}"
-                ItemTemplate="{DynamicResource EUT}"
-                         
-                         SelectedItem="{Binding SelectedEUT, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }">
-                        
-                    
-                    Itemsource + button voor het toevoegen
-                    https://stackoverflow.com/questions/53502828/add-listboxitem-with-add-button-that-is-inside-the-listbox-itself
-                    -->
                     <ListBox.ItemsSource>
                         <CompositeCollection>
                             <CollectionContainer Collection="{Binding Source={StaticResource EUTs}}"/>
                             <ListBoxItem>
-                                <Button Command="{Binding Path=AddEUTCommand}">+</Button>
+                                <Button Command="{Binding Path=AddEUTCommand}" Content="+"/>
                             </ListBoxItem>
                         </CompositeCollection>
                     </ListBox.ItemsSource>
                 </ListBox>
-
-                <StackPanel Orientation="Horizontal" >
+              
+                <!--<StackPanel Orientation="Horizontal" >
                     <Button Content="Add Part" 
                                 Command="{Binding Path=AddEUTCommand}" 
                                 Margin="10"/>
                     <Button Content="Remove Part"
                                 Command="{Binding Path=RemoveEUTCommand}" 
                                 Margin="10"/>
-                </StackPanel>
+                </StackPanel>-->
             </StackPanel>
         </GroupBox>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
