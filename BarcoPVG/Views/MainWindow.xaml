@@ -60,7 +60,7 @@
                             Visibility="{Binding SeeAll}"
                             Margin="10" Background="#FFF10000"/>
                         <Button Content="Database Management"
-                                Command="{Binding DisplayDatabaseManagementCommand, Mode=OneWay}"
+                                Command="{Binding DatabaseManagementCommand, Mode=OneWay}"
                                 Visibility="{Binding Data}"
                                 Background="#FFF10000"/>
                     </StackPanel>
