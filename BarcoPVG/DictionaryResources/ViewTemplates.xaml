@@ -15,10 +15,6 @@ xmlns:viewModelDatabaseManagement="clr-namespace:BarcoPVG.Views.DatabaseManageme
     <DataTemplate DataType="{x:Type viewModels:ViewModelMain}">
         <views:MainWindow/>
     </DataTemplate>
-
-
-
-
     <DataTemplate DataType="{x:Type viewModelTestGUI:ViewModelDevelopment}">
         <viewsTestGUI:DevelopmentUserControl/>
     </DataTemplate>
