@@ -173,11 +173,6 @@ namespace BarcoPVG.Viewmodels
         //{
         //    this.ViewModel = new ViewModelDatabaseRemoveResource();
         //}
-        //public void DisplayDatabaseManagement()
-        //{
-        //    this.ViewModel = new ViewModelDatabaseManagement();
-        //}
-
         //Amy
         public void DisplayDatabaseManagementStartup()
         {

@@ -10,7 +10,7 @@
         WindowStartupLocation="CenterScreen">
     <StackPanel>
         <StackPanel Margin="10">
-            <GroupBox BorderThickness="0.1">
+            <GroupBox BorderThickness="0.1" >
                 <GroupBox.Header>
                     <!-- This could be done more efficiently? -->
                     <Grid Background="#FFF10000">
