@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:BarcoPVG.Views.DatabaseManagement"
         mc:Ignorable="d"
         Title="EditUserDBManagementUserControl" Height="450" Width="800" Background="LightGray">
+    <!--amy-->
     <StackPanel Margin="5">
         <GroupBox Header="User" Height="413">
             <Grid>

@@ -17,17 +17,15 @@
                     <RowDefinition Height="289*"/>
                 </Grid.RowDefinitions>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="263">
-                    <Button Content="User" Margin="5"/>
+                    <Button Content="User" 
+                            Command="{Binding DisplayDatabaseUserCommand, Mode=OneWay}"
+                            Margin="5"/>
                     <Button Content="Resource" Margin="5"/>
                     <Button Content="Division" Margin="5"/>
                 </StackPanel>
-                <ListView Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}">
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn/>
-                        </GridView>
-                    </ListView.View>
-                </ListView>
+                <ScrollViewer Grid.Row="1">
+                    <ContentControl Content="{Binding DataBase}"/>
+                </ScrollViewer>
             </Grid>
 
         </GroupBox>
