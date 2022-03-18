@@ -42,16 +42,36 @@ namespace BarcoPVG.Dao
             //this.BarcoUser = RegistryConnection.GetValueObject<BarcoUser>(@"SOFTWARE\VivesBarco\Test");
         }
 
+        //Eakarach
         //Login
         public void LoginSucceedded(Person loginPerson)
         {
+            string name = loginPerson.Voornaam;
 
+            //Put division or to list if they have more than one division
+            //string division = GetAllDivisions().Where(div => "TS" == loginPerson.Afkorting).ToString();
+
+            //Put Function to give right the the user
+            //string func = "";
             this.BarcoUser = new BarcoUser()
             {
-                Name = loginPerson.Voornaam,
+                Name = name, 
                 Division = "test Division",
                 Function = "DEV",
             };
+           
+        }
+
+        public void GetDiv(Person loginPerson)
+        {
+            List<RqBarcoDivision> listDiv = GetAllDivisions();
+            foreach (RqBarcoDivision div in listDiv)
+            {
+                //if (div.Afkorting == loginPerson)
+                //{
+
+                //}
+            }
         }
 
         /// <summary>

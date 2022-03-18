@@ -28,10 +28,10 @@ namespace BarcoPVG.Views.Login
             DataContext = new ViewModelLogin(); //user ingeven als parameter
         }
 
-        //private void Button_Click(object sender, RoutedEventArgs e)
-        //{
-        //    this.Close();
-        //}
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
 
         //private void Button_Click_1(object sender, RoutedEventArgs e)
         //{
