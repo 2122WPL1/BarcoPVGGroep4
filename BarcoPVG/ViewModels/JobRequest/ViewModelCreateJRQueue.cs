@@ -31,7 +31,7 @@ namespace BarcoPVG.Viewmodels.JobRequest
 
             foreach (var requestId in requestIds)
             {
-                IdRequestsOnly.Add(requestId);
+                //IdRequestsOnly.Add(requestId);
             }
         }
 

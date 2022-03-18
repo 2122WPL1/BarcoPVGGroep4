@@ -45,7 +45,7 @@ namespace BarcoPVG.ViewModels.Login
         {
             ObservableCollection<object> listParameter = (ObservableCollection<object>)param;
             List<Person> allUser = _dao.GetAllUser();
-            Person loginPerson = null ; 
+            Person loginPerson = null;
 
             foreach (Person person in allUser)
             {
@@ -59,14 +59,10 @@ namespace BarcoPVG.ViewModels.Login
             if (loginPerson != null)
             {
                 _dao.LoginSucceedded(loginPerson);
-
-                //Hide Login screen.
-                Application.Current.Windows[0].Hide();
-                //foreach (Window item in Application.Current.Windows)
-                //{
-                //    item.Hide();
-                //}
-
+                foreach (Window item in Application.Current.Windows)
+                {
+                    item.Hide();
+                }
                 DisplayMainWindow();
             }
             else
