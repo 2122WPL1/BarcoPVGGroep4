@@ -116,7 +116,7 @@
                         </CompositeCollection>
                     </ListBox.ItemsSource>
                 </ListBox>
-              
+
                 <!--<StackPanel Orientation="Horizontal" >
                     <Button Content="Add Part" 
                                 Command="{Binding Path=AddEUTCommand}" 

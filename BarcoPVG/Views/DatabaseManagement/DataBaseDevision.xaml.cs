@@ -17,9 +17,9 @@ namespace BarcoPVG.Views.DatabaseManagement
     /// <summary>
     /// Interaction logic for DataBaseDevision.xaml
     /// </summary>
-    public partial class DataBaseDevision : Window
+    public partial class DataBaseDevision 
     {
-        public DataBaseDevision()
+        public DataBaseDevision() 
         {
             InitializeComponent();
         }
