@@ -374,7 +374,7 @@ namespace BarcoPVG.Dao
                     InternRequest = selectedRQ.InternRequest,
                     GrossWeight = selectedRQ.GrossWeight,
                     NetWeight = selectedRQ.NetWeight,
-                    Battery = selectedRQ.Battery??false,
+                    Battery = selectedRQ.Battery
                 };
             }
             return selectedJR;

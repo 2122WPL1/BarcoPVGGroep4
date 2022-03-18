@@ -33,7 +33,7 @@ namespace BarcoPVG.Models.Db
         public bool? InternRequest { get; set; }
         public string? GrossWeight { get; set; } = null!;
         public string? NetWeight { get; set; } = null!;
-        public bool? Battery { get; set; }
+        public bool Battery { get; set; }
 
         public virtual ICollection<PlPlanning> PlPlannings { get; set; }
         public virtual ICollection<PlPlanningsKalender> PlPlanningsKalenders { get; set; }

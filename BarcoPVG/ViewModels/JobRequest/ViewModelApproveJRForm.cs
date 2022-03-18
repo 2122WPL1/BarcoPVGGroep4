@@ -110,7 +110,7 @@ namespace BarcoPVG.Viewmodels.JobRequest
         /// <summary>
         /// deletes selected EUT via _selectedEut variable
         /// </summary>
-        public void RemoveSelectedEUT(int EUTID)
+        public void RemoveSelectedEUT()
         {
             //note: zorgen dat de eut hemzelf select 
             EUTs.Remove(SelectedEUT); 
