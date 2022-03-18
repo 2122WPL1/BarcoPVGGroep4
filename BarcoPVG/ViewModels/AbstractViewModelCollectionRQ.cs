@@ -54,22 +54,17 @@ namespace BarcoPVG.Viewmodels
 
             var jobNature = (string)value;
 
-            switch (jobNature)
+            jobNatureColor = jobNature switch
             {
-                case "Qualification (FQR)":
-                    jobNatureColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFCC99"));
-                    break;
+                "Qualification (FQR)" => new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFCC99")),
                 //case "Confidence (CDR)":
                 //    jobNatureColor = Brushes.Green;
                 //    break;
                 //case "Confidence (IDR)":
                 //    jobNatureColor = Brushes.Green;
                 //    break;
-                default:
-                    jobNatureColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFC0C0C0"));
-                    break;
-            }
-
+                _ => new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFC0C0C0")),
+            };
             return JobNatureColor;
         }
 

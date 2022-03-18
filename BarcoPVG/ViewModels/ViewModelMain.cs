@@ -38,7 +38,6 @@ namespace BarcoPVG.Viewmodels
         //public DelegateCommand RemoveUserCommand { get; set; }
         //public DelegateCommand AddResourceCommand { get; set; }
         //public DelegateCommand RemoveResourceCommand { get; set; }
-        public DelegateCommand DatabaseManagementCommand { get; set; }
         //public DelegateCommand SaveAddUserCommand { get; set; }
         public DelegateCommand DisplayDatabaseManagementStartupCommand { get; set; }
 
@@ -72,7 +71,6 @@ namespace BarcoPVG.Viewmodels
             //RemoveUserCommand = new DelegateCommand(DisplayRemoveUser);
             //AddResourceCommand = new DelegateCommand(DisplayAddResource);
             //RemoveResourceCommand = new DelegateCommand(DisplayRemoveResource);
-            DatabaseManagementCommand = new DelegateCommand(DisplayDatabaseManagement);
             //SaveAddUserCommand = new DelegateCommand(DisplayAddUser);
             DisplayDatabaseManagementStartupCommand = new DelegateCommand(DisplayDatabaseManagementStartup);
 
@@ -175,16 +173,11 @@ namespace BarcoPVG.Viewmodels
         //{
         //    this.ViewModel = new ViewModelDatabaseRemoveResource();
         //}
-        public void DisplayDatabaseManagement()
-        {
-            this.ViewModel = new ViewModelDatabaseManagement();
-        }
+        //Amy
         public void DisplayDatabaseManagementStartup()
         {
             this.ViewModel = new ViewModelDatabaseManagement();
         }
-
-
 
         // JR CRUD
         // Command functions
