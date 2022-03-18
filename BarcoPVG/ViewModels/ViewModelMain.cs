@@ -183,10 +183,6 @@ namespace BarcoPVG.Viewmodels
         {
             this.ViewModel = new ViewModelDatabaseManagement();
         }
-        public void DisplayDatabaseManagementStartup()
-        {
-            this.ViewModel = new ViewModelDatabaseManagement();
-        }
 
 
 
