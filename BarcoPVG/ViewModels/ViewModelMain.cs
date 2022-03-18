@@ -1,17 +1,13 @@
-﻿using Microsoft.Toolkit.Mvvm.Input;
+﻿using BarcoPVG.Models.Classes;
+using BarcoPVG.Viewmodels.JobRequest;
+using BarcoPVG.Viewmodels.Planning;
+using BarcoPVG.Viewmodels.TestGUI;
+using BarcoPVG.ViewModels.DatabaseManagement;
 using Prism.Commands;
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using BarcoPVG.Models.Classes;
-using BarcoPVG.Viewmodels.JobRequest;
-using BarcoPVG.Viewmodels.TestGUI;
-using BarcoPVG.Viewmodels.Planning;
-using BarcoPVG.ViewModels.DatabaseManagement;
+
+
 
 namespace BarcoPVG.Viewmodels
 {
@@ -44,6 +40,9 @@ namespace BarcoPVG.Viewmodels
         public DelegateCommand RemoveResourceCommand { get; set; }
         public DelegateCommand DatabaseManagementCommand { get; set; }
         public DelegateCommand SaveAddUserCommand { get; set; }
+        public DelegateCommand DisplayDatabaseManagementStartupCommand { get; set; }
+
+
 
 
         // Visibility of buttons
@@ -77,13 +76,16 @@ namespace BarcoPVG.Viewmodels
             RemoveResourceCommand = new DelegateCommand(DisplayRemoveResource);
             DatabaseManagementCommand = new DelegateCommand(DisplayDatabaseManagement);
             SaveAddUserCommand = new DelegateCommand(DisplayAddUser);
+            DisplayDatabaseManagementStartupCommand = new DelegateCommand(DisplayDatabaseManagementStartup);
+
+
 
             SetWindowProperties();
         }
 
         // Getters/Setters
-        public AbstractViewModelBase ViewModel 
-        { 
+        public AbstractViewModelBase ViewModel
+        {
             get => _viewModel;
             set
             {
@@ -177,10 +179,17 @@ namespace BarcoPVG.Viewmodels
         {
             this.ViewModel = new ViewModelDatabaseRemoveResource();
         }
+        
         public void DisplayDatabaseManagement()
         {
             this.ViewModel = new ViewModelDatabaseManagement();
         }
+        public void DisplayDatabaseManagementStartup()
+        {
+            this.ViewModel = new ViewModelDatabaseManagement();
+        }
+
+
 
         // JR CRUD
         // Command functions
@@ -201,7 +210,9 @@ namespace BarcoPVG.Viewmodels
             DisplayDevStartup();
         }
 
-        // Change so no JR and no 
+
+
+        // Change so no JR and no
         public void InsertInternalJr()
         {
             var jr = _dao.AddJobRequest(((AbstractViewModelContainer)this.ViewModel).JR); // SaveChanges included in function
@@ -255,14 +266,14 @@ namespace BarcoPVG.Viewmodels
             // get id from JR
 
             var plan = ((ViewModelPlanTestQueue)this.ViewModel).SelectedPlan;
-            if(plan.JrNr != null)
+            if (plan.JrNr != null)
             {
                 this.ViewModel = new ViewModelPlanTestForm(plan);
             }
             else
             {
                 MessageBox.Show("Geen planning geselecteerd");
-            }   
+            }
         }
 
         public void SaveTestsAndReturn()
@@ -313,6 +324,7 @@ namespace BarcoPVG.Viewmodels
                     this.ViewModel = new ViewModelDevelopment();
 
                     break;
+
                 case "TEST":
                     NewRequests = Visibility.Visible;
                     ApproveRequests = Visibility.Hidden;
@@ -341,6 +353,7 @@ namespace BarcoPVG.Viewmodels
                     ApproveRequests = Visibility.Hidden;
                     Test = Visibility.Hidden;
                     SeeAll = Visibility.Hidden;
+                    Data = Visibility.Hidden;
 
                     this.ViewModel = new ViewModelCreateJRQueue();
 
