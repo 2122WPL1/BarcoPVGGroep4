@@ -23,9 +23,9 @@ namespace BarcoPVG.Dao
     {
         // Variables
         private BarcoContext _context;
-        private static readonly DAO _instance = new(); 
+        private static readonly DAO _instance = new();
 
-        public BarcoUser BarcoUser { get; }
+        public BarcoUser BarcoUser { get; private set; }
 
         // Calls an DAO instance
         public static DAO Instance()
@@ -38,26 +38,20 @@ namespace BarcoPVG.Dao
         private DAO()
         {
             this._context = new BarcoContext();
-            Person CurrentPerson = new Person();
-            CurrentPerson = LoginSucceedded(GetAllUser());
-            this.BarcoUser = new BarcoUser() { Name = CurrentPerson.Voornaam, Division = "Sillex", Function = "DEV" };
-            
+
             //this.BarcoUser = RegistryConnection.GetValueObject<BarcoUser>(@"SOFTWARE\VivesBarco\Test");
         }
 
         //Login
-        private Person LoginSucceedded(List<Person> people)
+        public void LoginSucceedded(Person loginPerson)
         {
-            
-            foreach (Person onePerson in people)
-            {
-                if (onePerson.Voornaam == "Test")
-                {
-                    return onePerson;
-                }
-            }
 
-            return null;
+            this.BarcoUser = new BarcoUser()
+            {
+                Name = loginPerson.Voornaam,
+                Division = "test Division",
+                Function = "DEV",
+            };
         }
 
         /// <summary>
