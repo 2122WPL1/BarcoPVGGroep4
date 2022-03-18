@@ -13,7 +13,7 @@
             <GroupBox BorderThickness="0.1">
                 <GroupBox.Header>
                     <!-- This could be done more efficiently? -->
-                    <Grid>
+                    <Grid Background="#FFF10000">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="150"/>
                             <ColumnDefinition/>

@@ -7,6 +7,8 @@ using Prism.Commands;
 using System;
 using System.Windows;
 
+
+
 namespace BarcoPVG.Viewmodels
 {
     // Kaat
@@ -38,6 +40,9 @@ namespace BarcoPVG.Viewmodels
         public DelegateCommand RemoveResourceCommand { get; set; }
         public DelegateCommand DatabaseManagementCommand { get; set; }
         public DelegateCommand SaveAddUserCommand { get; set; }
+        public DelegateCommand DisplayDatabaseManagementStartupCommand { get; set; }
+
+
 
 
         // Visibility of buttons
@@ -71,6 +76,9 @@ namespace BarcoPVG.Viewmodels
             RemoveResourceCommand = new DelegateCommand(DisplayRemoveResource);
             DatabaseManagementCommand = new DelegateCommand(DisplayDatabaseManagement);
             SaveAddUserCommand = new DelegateCommand(DisplayAddUser);
+            DisplayDatabaseManagementStartupCommand = new DelegateCommand(DisplayDatabaseManagementStartup);
+
+
 
             SetWindowProperties();
         }
@@ -116,7 +124,7 @@ namespace BarcoPVG.Viewmodels
                 }
                 else
                 {
-
+                    
                     this.ViewModel = new ViewModelCreateJRForm(ExistingJrId);
                 }
             }
@@ -176,7 +184,12 @@ namespace BarcoPVG.Viewmodels
         {
             this.ViewModel = new ViewModelDatabaseManagement();
         }
-        
+        public void DisplayDatabaseManagementStartup()
+        {
+            this.ViewModel = new ViewModelDatabaseManagement();
+        }
+
+
 
         // JR CRUD
         // Command functions
@@ -197,13 +210,15 @@ namespace BarcoPVG.Viewmodels
             DisplayDevStartup();
         }
 
-        // Change so no JR and no 
+
+
+        // Change so no JR and no
         public void InsertInternalJr()
         {
             var jr = _dao.AddJobRequest(((AbstractViewModelContainer)this.ViewModel).JR); // SaveChanges included in function
 
             jr.JrStatus = "In Plan";
-
+            
             int count = 0;
             foreach (var thisEUT in ((AbstractViewModelContainer)this.ViewModel).EUTs)
             {
@@ -299,7 +314,6 @@ namespace BarcoPVG.Viewmodels
                     this.ViewModel = new ViewModelDatabaseManagement();
 
                     break;
-
                 case "DEV":
                     NewRequests = Visibility.Visible;
                     ApproveRequests = Visibility.Visible;
@@ -323,7 +337,6 @@ namespace BarcoPVG.Viewmodels
                     this.ViewModel = new ViewModelPlanTestQueue();
 
                     break;
-
                 case "PLAN":
                     NewRequests = Visibility.Hidden;
                     ApproveRequests = Visibility.Visible;
