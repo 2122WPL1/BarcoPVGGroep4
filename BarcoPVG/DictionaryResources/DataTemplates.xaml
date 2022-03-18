@@ -2,6 +2,13 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:JobRequest="clr-namespace:BarcoPVG.Views.JobRequest" xmlns:Viewmodels="clr-namespace:BarcoPVG.Viewmodels">
 
 
+    <DataTemplate x:Key="AddEUT">
+        <StackPanel>
+            <Button Content="Voeg EUT toe" Command="{Binding AddEUTCommand}"></Button>
+            <!-- note: weet niet hoe het in de listbox als item verschijnt-->
+        </StackPanel>
+    </DataTemplate>
+
     <!-- DataTemplate to display EUT's in listboxes/listviews - Kaat-->
     <DataTemplate x:Key="EUT">
 
@@ -30,12 +37,17 @@
                     <CheckBox IsChecked="{Binding PCK, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="PACKAGING"  FontSize="12" Width="150"  Margin="5"/>
                     <CheckBox IsChecked="{Binding ECO, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="GREEN COMPLIANCE" FontSize="12" Width="150"  Margin="5"/>
                     <TextBlock  Text="Foreseen availability date:" Margin="5"/>
-                    <!--<DatePicker  SelectedDate="{Binding AvailabilityDate}" IsTodayHighlighted="True" Margin="5"/>--> 
-                <DatePicker SelectedDate ="{Binding AvailabilityDate}" Grid.Column="4" Grid.Row="10" IsTodayHighlighted="True"/>
+                    <!--<DatePicker  SelectedDate="{Binding AvailabilityDate}" IsTodayHighlighted="True" Margin="5"/>-->
+                    <DatePicker SelectedDate ="{Binding AvailabilityDate}"
+                                Grid.Column="4" Grid.Row="10" IsTodayHighlighted="True" />
+
+
                 </StackPanel>
             </Grid>
 
         </ListBoxItem>
+    </DataTemplate>
+    <!--<SolidColorBrush x:Key="ResourceColor" Color="{Binding Kleur}"  /> -->
 
     </DataTemplate>
     <!--Data template for pvg responsible in the Gui-->

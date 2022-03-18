@@ -20,16 +20,16 @@ namespace BarcoPVG.Models.Db
         /// <summary>
         /// initialen
         /// </summary>
-        public string? Requester { get; set; } = null!;
+        public string Requester { get; set; } = null!;
         /// <summary>
         /// uit keuzelijst
         /// </summary>
-        public string? BarcoDivision { get; set; } = null!;
-        public string? JobNature { get; set; } = null!;
-        public string? EutProjectname { get; set; } = null!;
-        public string? EutPartnumbers { get; set; } = null!;
-        public string? HydraProjectNr { get; set; } = null!;
-        public DateTime? ExpectedEnddate { get; set; }
+        public string BarcoDivision { get; set; } = null!;
+        public string JobNature { get; set; } = null!;
+        public string EutProjectname { get; set; } = null!;
+        public string EutPartnumbers { get; set; } = null!;
+        public string HydraProjectNr { get; set; } = null!;
+        public DateTime ExpectedEnddate { get; set; }
         public bool? InternRequest { get; set; }
         public string? GrossWeight { get; set; } = null!;
         public string? NetWeight { get; set; } = null!;

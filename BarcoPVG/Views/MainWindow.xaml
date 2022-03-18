@@ -4,30 +4,23 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Height="720" Width="980" Background="LightGray" Foreground="White"
+        Height="1143" Width="980" Background="LightGray" Foreground="White"
         WindowState="Maximized"
         WindowStyle="ThreeDBorderWindow"
-        WindowStartupLocation="CenterScreen" >
-    <StackPanel >
-        <!--<StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Stretch">
-            <Image Style="{StaticResource BarcoLogo}" Source="/DictionaryResources/barco-logo.png"/>
-            <Image Style="{StaticResource BarcoLogo}"/>
-        </StackPanel>-->
+        WindowStartupLocation="CenterScreen">
+    <StackPanel>
         <StackPanel Margin="10">
             <GroupBox BorderThickness="0.1" >
                 <GroupBox.Header>
                     <!-- This could be done more efficiently? -->
                     <Grid Background="#FFF10000">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="19*"/>
-                            <RowDefinition Height="12*"/>
-                        </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="8.667"/>
+                            <ColumnDefinition Width="141.333"/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <Image Style="{StaticResource BarcoLogo}" Margin="25,0,25,0" Grid.RowSpan="2"/>
-                        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.RowSpan="2" >
+                        <Image Style="{StaticResource BarcoLogo}" Grid.Column="1" Margin="16,0,25,0"/>
+                        <StackPanel Orientation="Horizontal" Grid.Column="2" >
                             <TextBlock FontSize="14" Text="Welcome "/>
                             <TextBlock FontSize="14" FontWeight="Bold" Text="{Binding User.Name}"/>
                             <TextBlock FontSize="14" Text=" ("/>
@@ -56,13 +49,12 @@
                             Visibility="{Binding Test}"
                             Background="#FFF10000"/>
                         <Button Content="Development"
-                        Command="{Binding DisplayDevStartupCommand, Mode=OneWay}" 
+                            Command="{Binding DisplayDevStartupCommand, Mode=OneWay}" 
                             Visibility="{Binding SeeAll}"
                             Margin="10" Background="#FFF10000"/>
                         <Button Content="Database Management"
-                                Command="{Binding DatabaseManagementCommand, Mode=OneWay}"
-                                Visibility="{Binding Data}"
-                                Background="#FFF10000"/>
+                                Command="{Binding DisplayDatabaseManagementStartupCommand, Mode=OneWay}"
+                                Visibility="{Binding Data}"/>
                     </StackPanel>
                     <ScrollViewer Height="450">
                         <ContentControl Content="{Binding ViewModel}"/>

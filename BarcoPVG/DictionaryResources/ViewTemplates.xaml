@@ -43,10 +43,7 @@ xmlns:viewModelDatabaseManagement="clr-namespace:BarcoPVG.Views.DatabaseManageme
     <DataTemplate DataType="{x:Type viewModelTestGUI:ViewModelUpdateTestQueue}">
         <viewsTestGUI:UpdateTestQueueUserControl/>
     </DataTemplate>
-
-
-
-    <!--Amy & Jarne-->
+       <!--Amy & Jarne-->
     <DataTemplate DataType="{x:Type viewModelDatabaseManagement:DatabaseManagementUserControl}">
         <viewModelDatabaseManagement:DatabaseManagementUserControl/>
     </DataTemplate>
