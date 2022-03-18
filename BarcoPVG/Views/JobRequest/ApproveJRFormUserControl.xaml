@@ -4,8 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BarcoPVG.Views"
-             mc:Ignorable="d" 
-             d:DesignHeight="800" d:DesignWidth="600" d:Background="LightGray">
+             mc:Ignorable="d" d:Background="LightGray" Height="900" Width="750">
     <StackPanel Margin="10" >
         <GroupBox Header="Project Details">
             <Grid>
@@ -53,7 +52,7 @@
                 <TextBox Grid.Row="7" Grid.Column="1"  Text="{Binding JR.GrossWeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                 <Label Content="" Grid.Row="9"/>
-          
+
                 <Label Content="Link to testplan (optional):" Grid.Row="10"/>
                 <TextBox Text="{Binding JR.Link,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                              Grid.Column="1" Grid.Row="10" />
@@ -106,7 +105,7 @@
                         </ItemsPanelTemplate>
                     </ListBox.ItemsPanel>
                     <ListBox.Resources>
-                         <CollectionViewSource x:Key="EUTs" Source="{Binding EUTs}" />
+                        <CollectionViewSource x:Key="EUTs" Source="{Binding EUTs}" />
                     </ListBox.Resources>
                 <!--
                 <ListBox x:Name="ListEUT" Height="300" Background="#363636"
@@ -128,7 +127,7 @@
                         </CompositeCollection>
                     </ListBox.ItemsSource>
                 </ListBox>
-                
+
                 <StackPanel Orientation="Horizontal" >
                     <Button Content="Add Part" 
                                 Command="{Binding Path=AddEUTCommand}" 
