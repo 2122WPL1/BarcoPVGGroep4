@@ -15,6 +15,7 @@ namespace BarcoPVG.Viewmodels
     class ViewModelMain : AbstractViewModelBase
     {
         private AbstractViewModelBase _viewModel;
+        private AbstractViewModelBase _DataBase;
         public BarcoUser User { get; set; }
 
 
@@ -40,6 +41,7 @@ namespace BarcoPVG.Viewmodels
         //public DelegateCommand RemoveResourceCommand { get; set; }
         //public DelegateCommand SaveAddUserCommand { get; set; }
         public DelegateCommand DisplayDatabaseManagementStartupCommand { get; set; }
+        public DelegateCommand DisplayDatabaseUserCommand { get; set; }
 
 
         // Visibility of buttons
@@ -73,6 +75,7 @@ namespace BarcoPVG.Viewmodels
             //RemoveResourceCommand = new DelegateCommand(DisplayRemoveResource);
             //SaveAddUserCommand = new DelegateCommand(DisplayAddUser);
             DisplayDatabaseManagementStartupCommand = new DelegateCommand(DisplayDatabaseManagementStartup);
+            DisplayDatabaseUserCommand = new DelegateCommand(DisplayDatabaseUserStartup);
 
             SetWindowProperties();
         }
@@ -84,6 +87,16 @@ namespace BarcoPVG.Viewmodels
             set
             {
                 _viewModel = value;
+                OnpropertyChanged();
+            }
+        }
+
+        public AbstractViewModelBase DataBase
+        {
+            get => _DataBase;
+            set 
+            {
+                _DataBase = value;
                 OnpropertyChanged();
             }
         }
@@ -177,6 +190,11 @@ namespace BarcoPVG.Viewmodels
         public void DisplayDatabaseManagementStartup()
         {
             this.ViewModel = new ViewModelDatabaseManagement();
+        }
+
+        public void DisplayDatabaseUserStartup()
+        {
+            this.DataBase = new ViewModelDBUser();
         }
 
         // JR CRUD
@@ -351,10 +369,6 @@ namespace BarcoPVG.Viewmodels
 
 
 
-        public void InsertUser()
-        {
-
-        }
 
     }
 }
