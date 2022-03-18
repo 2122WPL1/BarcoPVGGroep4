@@ -26,7 +26,7 @@ namespace BarcoPVG.Viewmodels.JobRequest
         // ICommand does not take pinput
      
         public ICommand AddEUTCommand { get; set; }
-        
+        public ICommand RemoveEUTCommand { get; set; }
         public ICommand RefreshJRCommand { get; set; }
         public ICommand AddMockEUTCommand { get; set; }
 
@@ -112,9 +112,11 @@ namespace BarcoPVG.Viewmodels.JobRequest
         /// </summary>
         public void RemoveSelectedEUT(int EUTID)
         {
-            //zorg nog dat de eut hemzelf select
-            EUTs.Remove(SelectedEUT);
-            MessageBox.Show("werkt");
+            //note: zorgen dat de eut hemzelf select 
+            EUTs.Remove(SelectedEUT); 
+
+
+
         }
 
 

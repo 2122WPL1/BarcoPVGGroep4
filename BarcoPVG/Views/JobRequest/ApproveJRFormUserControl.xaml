@@ -53,7 +53,7 @@
                 <TextBox Grid.Row="7" Grid.Column="1"  Text="{Binding JR.GrossWeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                 <Label Content="" Grid.Row="9"/>
-
+          
                 <Label Content="Link to testplan (optional):" Grid.Row="10"/>
                 <TextBox Text="{Binding JR.Link,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                              Grid.Column="1" Grid.Row="10" />
@@ -106,8 +106,19 @@
                         </ItemsPanelTemplate>
                     </ListBox.ItemsPanel>
                     <ListBox.Resources>
-                         <CollectionViewSource x:Key="EUTs" Source="{Binding EUTs}" />
+                        <CollectionViewSource x:Key="EUTs" Source="{Binding EUTs}" />
                     </ListBox.Resources>
+                <!--
+                <ListBox x:Name="ListEUT" Height="300" Background="#363636"
+                         ItemsSource="{Binding EUTs}"
+                ItemTemplate="{DynamicResource EUT}"
+                         
+                         SelectedItem="{Binding SelectedEUT, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }">
+                        
+                    
+                    <!--Itemsource + button voor het toevoegen
+                    https://stackoverflow.com/questions/53502828/add-listboxitem-with-add-button-that-is-inside-the-listbox-itself
+                    -->
                     <ListBox.ItemsSource>
                         <CompositeCollection>
                             <CollectionContainer Collection="{Binding Source={StaticResource EUTs}}"/>
