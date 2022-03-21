@@ -291,7 +291,7 @@ namespace BarcoPVG.Viewmodels
             switch (_dao.BarcoUser.Function)
             {
 
-                //Jarne
+                //Jarne aanmaken van een nieuwe view die DATA noemt
                 case "DATA":
                     NewRequests = Visibility.Visible;
                     ApproveRequests = Visibility.Visible;
@@ -348,8 +348,6 @@ namespace BarcoPVG.Viewmodels
                     break;
             }
         }
-
-
 
         public void InsertUser()
         {
