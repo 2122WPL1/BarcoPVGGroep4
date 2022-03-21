@@ -37,7 +37,27 @@ namespace BarcoPVG.Dao
         private DAO()
         {
             this._context = new BarcoContext();
-            this.BarcoUser = new BarcoUser() { Name = "Super-Admin", Division = "HC", Function = "DATA" };
+            //this.BarcoUser = RegistryConnection.GetValueObject<BarcoUser>(@"SOFTWARE\VivesBarco\Test");
+        }
+
+        //Eakarach
+        //Login
+        public void LoginSucceedded(Person loginPerson)
+        {
+            string name = loginPerson.Voornaam;
+
+            //Put division or to list if they have more than one division
+            //string division = GetAllDivisions().Where(div => "TS" == loginPerson.Afkorting).ToString();
+
+            //Put Function to give right the the user
+            //string func = "";
+            this.BarcoUser = new BarcoUser()
+            {
+                Name = name, 
+                Division = "Super-Admin",
+                Function = "DATA",
+            };
+           
         }
 
 
