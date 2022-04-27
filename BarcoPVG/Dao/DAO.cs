@@ -23,7 +23,7 @@ namespace BarcoPVG.Dao
         private BarcoContext _context;
         private static readonly DAO _instance = new();
 
-        public BarcoUser BarcoUser { get; }
+        public BarcoUser BarcoUser { get; set; }
 
         // Calls an DAO instance
         public static DAO Instance()
@@ -36,7 +36,7 @@ namespace BarcoPVG.Dao
         private DAO()
         {
             this._context = new BarcoContext();
-            //this.BarcoUser = RegistryConnection.GetValueObject<BarcoUser>(@"SOFTWARE\VivesBarco\Test");
+            this.BarcoUser = RegistryConnection.GetValueObject<BarcoUser>(@"SOFTWARE\VivesBarco\Test");
         }
 
         

@@ -45,7 +45,5 @@ xmlns:viewModelDatabaseManagement="clr-namespace:BarcoPVG.ViewModels.DatabaseMan
     <DataTemplate DataType="{x:Type viewModelDatabaseManagement:ViewModelDatabaseManagement}">
         <viewsDatabaseManagement:DatabaseManagementUserControl/>
     </DataTemplate>
-    <DataTemplate DataType="{x:Type viewModelDatabaseManagement:ViewModelDBUser}">
-        <viewsDatabaseManagement:DataBaseUser/>
-    </DataTemplate>
+    
 </ResourceDictionary>
