@@ -116,8 +116,6 @@
                          SelectedItem="{Binding SelectedEUT, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }">
                         
                     
-                    <!--Itemsource + button voor het toevoegen
-                    https://stackoverflow.com/questions/53502828/add-listboxitem-with-add-button-that-is-inside-the-listbox-itself
                     -->
                     <ListBox.ItemsSource>
                         <CompositeCollection>
