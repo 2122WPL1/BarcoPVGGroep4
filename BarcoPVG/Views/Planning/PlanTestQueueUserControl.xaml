@@ -19,11 +19,6 @@
                         <GridViewColumn Header="Expected Approve Date" DisplayMemberBinding="{Binding RequestDate, StringFormat=d}" />
                         <GridViewColumn Header="Expected End Date" DisplayMemberBinding="{Binding ExpectedEnddate, StringFormat=d}" />
 
-                        <!--<GridViewColumn Header="Id Planning" DisplayMemberBinding="{Binding IdPlanning}" />
-                        <GridViewColumn Header="Job Request Number" DisplayMemberBinding="{Binding JrNr}" />
-                        <GridViewColumn Header="Request Date" DisplayMemberBinding="{Binding Requestdate, StringFormat=d}" />
-                        <GridViewColumn Header="Due Date" DisplayMemberBinding="{Binding DueDate, StringFormat=d}" />
-                        <GridViewColumn Header="Test Division" DisplayMemberBinding="{Binding TestDiv}" />-->
                     </GridView>
                 </ListView.View>
             </ListView>
