@@ -78,6 +78,8 @@ namespace BarcoPVG.Dao
                 entity.Property(e => e.Familienaam).HasMaxLength(50);
 
                 entity.Property(e => e.Voornaam).HasMaxLength(50);
+
+                entity.Property(e => e.Password).HasMaxLength(50);
             });
 
             modelBuilder.Entity<PlPlanning>(entity =>

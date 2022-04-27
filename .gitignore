@@ -9,12 +9,10 @@
 *.user
 *.userosscache
 *.sln.docstates
+BarcoPVG\Dao\Constants.cs
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
-
-#Barco connectie
-BarcoPVG/Dao/Constants.cs
 
 # Mono auto generated files
 mono_crash.*
