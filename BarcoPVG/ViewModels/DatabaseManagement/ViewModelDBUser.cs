@@ -4,15 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Input;
 
 namespace BarcoPVG.ViewModels.DatabaseManagement
 {
-    public class ViewModelDatabaseManagement : AbstractViewModelCollectionRQ
+    internal class ViewModelDBUser : AbstractViewModelCollectionRQ
     {
-        public ViewModelDatabaseManagement() : base()
+        public ViewModelDBUser() : base()
         {
-            
+
         }
     }
 }

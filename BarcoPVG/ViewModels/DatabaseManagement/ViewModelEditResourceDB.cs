@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace BarcoPVG.ViewModels.DatabaseManagement
 {
-    public class ViewModelDatabaseRemoveUser
+    internal class ViewModelEditResourceDB
     {
-
     }
 }

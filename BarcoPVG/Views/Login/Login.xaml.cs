@@ -41,5 +41,3 @@ namespace BarcoPVG.Views.Login
         //}
     }
 }
-
-
