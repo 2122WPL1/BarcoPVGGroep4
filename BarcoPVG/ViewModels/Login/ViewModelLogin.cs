@@ -52,6 +52,7 @@ namespace BarcoPVG.ViewModels.Login
             }
         }
 
+        //Eakarach
         private void ExitCommandMethode()
         {
             foreach (Window item in Application.Current.Windows)

@@ -38,6 +38,7 @@ namespace BarcoPVG.Dao
         {
             this._context = new BarcoContext();
             //this.BarcoUser = RegistryConnection.GetValueObject<BarcoUser>(@"SOFTWARE\VivesBarco\Test");
+            
         }
 
         //Eakarach
