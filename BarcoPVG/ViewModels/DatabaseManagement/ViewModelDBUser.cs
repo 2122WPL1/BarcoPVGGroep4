@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace BarcoPVG.ViewModels.DatabaseManagement
 {
-    public class ViewModelDatabaseAddResource : AbstractViewModelCollectionRQ
+    internal class ViewModelDBUser : AbstractViewModelCollectionRQ
     {
-        public ViewModelDatabaseAddResource() : base()
+        public ViewModelDBUser() : base()
         {
 
         }

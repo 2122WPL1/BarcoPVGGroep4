@@ -11,7 +11,6 @@ using BarcoPVG;
 using BarcoPVG.Models;
 using BarcoPVG.Models.Db;
 
-
 namespace BarcoPVG.Dao
 {
     // SINGLETON PATTERN
@@ -37,9 +36,29 @@ namespace BarcoPVG.Dao
         private DAO()
         {
             this._context = new BarcoContext();
-            this.BarcoUser = new BarcoUser() { Name = "Super-Admin", Division = "HC", Function = "DATA" };
+            //this.BarcoUser = RegistryConnection.GetValueObject<BarcoUser>(@"SOFTWARE\VivesBarco\Test");
         }
 
+        
+        //Eakarach
+        //Login
+        public void LoginSucceedded(Person loginPerson)
+        {
+            string name = loginPerson.Voornaam;
+
+            //Put division or to list if they have more than one division
+            //string division = GetAllDivisions().Where(div => "TS" == loginPerson.Afkorting).ToString();
+
+            //Put Function to give right the the user
+            //string func = "";
+            this.BarcoUser = new BarcoUser()
+            {
+                Name = name, 
+                Division = "Super-Admin",
+                Function = "DATA",
+            };
+        }
+        
 
         /// <summary>
         /// Removes unsaved changed by replacing the context by a new instance
@@ -374,7 +393,7 @@ namespace BarcoPVG.Dao
                     InternRequest = selectedRQ.InternRequest,
                     GrossWeight = selectedRQ.GrossWeight,
                     NetWeight = selectedRQ.NetWeight,
-                    Battery = selectedRQ.Battery
+                    Battery = (bool)selectedRQ.Battery
                 };
             }
             return selectedJR;
@@ -417,7 +436,7 @@ namespace BarcoPVG.Dao
         {
             List<RqRequestDetail> rqDetailsForJR = _context.RqRequestDetails.Where(r => r.IdRequest == rq.IdRequest).ToList();
             List<EUT> EUTObjects = new();
-
+            
             foreach (var detail in rqDetailsForJR)
             {
                 List<Eut> eutsForDetail = _context.Euts.Where(e => e.IdRqDetail == detail.IdRqDetail).ToList(); ;

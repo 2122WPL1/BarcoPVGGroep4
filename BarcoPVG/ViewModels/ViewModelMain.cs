@@ -15,6 +15,7 @@ namespace BarcoPVG.Viewmodels
     class ViewModelMain : AbstractViewModelBase
     {
         private AbstractViewModelBase _viewModel;
+        private AbstractViewModelBase _DataBase;
         public BarcoUser User { get; set; }
 
 
@@ -34,12 +35,12 @@ namespace BarcoPVG.Viewmodels
         public DelegateCommand ApprovePlanAndReturnCommand { get; set; }
         public DelegateCommand TesterReturnCommand { get; set; }
         // Amy & Jarne
-        //public DelegateCommand AddUserCommand { get; set; }
-        //public DelegateCommand RemoveUserCommand { get; set; }
-        //public DelegateCommand AddResourceCommand { get; set; }
-        //public DelegateCommand RemoveResourceCommand { get; set; }
-        //public DelegateCommand SaveAddUserCommand { get; set; }
-        public DelegateCommand DisplayDatabaseManagementStartupCommand { get; set; }
+        public DelegateCommand AddUserCommand { get; set; }
+        public DelegateCommand RemoveUserCommand { get; set; }
+        public DelegateCommand AddResourceCommand { get; set; }
+        public DelegateCommand RemoveResourceCommand { get; set; }
+        public DelegateCommand DatabaseManagementCommand { get; set; }
+        public DelegateCommand SaveAddUserCommand { get; set; }
 
 
         // Visibility of buttons
@@ -67,12 +68,12 @@ namespace BarcoPVG.Viewmodels
             ApprovePlanAndReturnCommand = new DelegateCommand(ApprovePlanAndReturn);
             TesterReturnCommand = new DelegateCommand(TesterReturn);
             //Jarne & Amy
-            //AddUserCommand = new DelegateCommand(DisplayAddUser);
-            //RemoveUserCommand = new DelegateCommand(DisplayRemoveUser);
-            //AddResourceCommand = new DelegateCommand(DisplayAddResource);
-            //RemoveResourceCommand = new DelegateCommand(DisplayRemoveResource);
-            //SaveAddUserCommand = new DelegateCommand(DisplayAddUser);
-            DisplayDatabaseManagementStartupCommand = new DelegateCommand(DisplayDatabaseManagementStartup);
+            AddUserCommand = new DelegateCommand(DisplayAddUser);
+            RemoveUserCommand = new DelegateCommand(DisplayRemoveUser);
+            AddResourceCommand = new DelegateCommand(DisplayAddResource);
+            RemoveResourceCommand = new DelegateCommand(DisplayRemoveResource);
+            DatabaseManagementCommand = new DelegateCommand(DisplayDatabaseManagement);
+            SaveAddUserCommand = new DelegateCommand(DisplayAddUser);
 
             SetWindowProperties();
         }
@@ -84,6 +85,16 @@ namespace BarcoPVG.Viewmodels
             set
             {
                 _viewModel = value;
+                OnpropertyChanged();
+            }
+        }
+
+        public AbstractViewModelBase DataBase
+        {
+            get => _DataBase;
+            set 
+            {
+                _DataBase = value;
                 OnpropertyChanged();
             }
         }
@@ -118,7 +129,7 @@ namespace BarcoPVG.Viewmodels
                 }
                 else
                 {
-
+                    
                     this.ViewModel = new ViewModelCreateJRForm(ExistingJrId);
                 }
             }
@@ -164,19 +175,18 @@ namespace BarcoPVG.Viewmodels
         //    this.ViewModel = new ViewModelDatabaseRemoveUser();
         //}
 
-        //public void DisplayAddResource()
-        //{
-        //    this.ViewModel = new ViewModelDatabaseAddResource();
-        //}
-
-        //public void DisplayRemoveResource()
-        //{
-        //    this.ViewModel = new ViewModelDatabaseRemoveResource();
-        //}
-        //Amy
-        public void DisplayDatabaseManagementStartup()
+        public void DisplayAddResource()
         {
-            this.ViewModel = new ViewModelDatabaseManagement();
+            this.ViewModel = new ViewModelDatabaseAddResource();
+        }
+
+        public void DisplayRemoveResource()
+        {
+            this.ViewModel = new ViewModelDatabaseRemoveResource();
+        }
+        public void DisplayDatabaseManagement()
+        {
+            this.DataBase = new ViewModelDBUser();
         }
 
         // JR CRUD
@@ -291,7 +301,7 @@ namespace BarcoPVG.Viewmodels
             switch (_dao.BarcoUser.Function)
             {
 
-                //Jarne
+                //Jarne aanmaken van een nieuwe view die DATA noemt
                 case "DATA":
                     NewRequests = Visibility.Visible;
                     ApproveRequests = Visibility.Visible;

@@ -6,19 +6,10 @@
     <Application.Resources>
         <ResourceDictionary>
 
-            <!--SExternal style dictionaries-->
+            <!--External style dictionaries-->
             <ResourceDictionary.MergedDictionaries>
-                <!--<ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Dark.xaml" />-->
-                <!--buttons in blauw-->
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
-                <!--<ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Indigo.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />-->
-
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
-                <!--<ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
-                -->
-                <!--<materialDesign:CustomColorTheme BaseTheme="Inherit" PrimaryColor="#F10000" SecondaryColor="Lime"/>-->
-                <!--<materialDesign:BundledTheme BaseTheme="Light" PrimaryColor="Red" SecondaryColor="Lime" />-->
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Red.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
 
