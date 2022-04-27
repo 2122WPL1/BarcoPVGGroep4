@@ -5,34 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BarcoPVG.Views.DatabaseManagement"
         mc:Ignorable="d"
-        Title="DatabaseAddResourceFormUserControl" Height="450" Width="800" Background="LightGray">
-    <GroupBox Header="Add Resource">
-        <StackPanel>
-            <StackPanel Height="269">
-                <Grid Height="106"/>
-                <Grid Height="148">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="327*"/>
-                        <ColumnDefinition Width="455*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <Label Content="Name:" HorizontalAlignment="Left" Margin="263,0,0,0" VerticalAlignment="Center" Height="25" Width="44"/>
-                    <Label Content="Color RGB:" HorizontalAlignment="Left" Margin="241,10,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="67"/>
-                    <Label Content="Color HEX:" HorizontalAlignment="Left" Margin="242,10,0,0" Grid.Row="2" VerticalAlignment="Top" Height="25" Width="65"/>
-                    <TextBox Grid.Column="1" Margin="17,0,0,0" Text="" VerticalAlignment="Center" Width="150" Height="25"/>
-                    <TextBox Grid.Column="1" Margin="17,0,0,0" Grid.Row="1" Text="" VerticalAlignment="Center" Width="150" Height="24"/>
-                    <TextBox Grid.Column="1" Margin="17,10,0,0" Grid.Row="2" Text="" VerticalAlignment="Top" Width="150" Height="25"/>
-                </Grid>
-            </StackPanel>
-            <StackPanel Height="100" Orientation="Horizontal" HorizontalAlignment="Right"  Width="auto">
-                <Button Content="Add Resource" Margin="5"/>
-                <Button Content="Cancel" Margin="5"/>
-            </StackPanel>
-        </StackPanel>
-    </GroupBox>
-
+        Title="DatabaseAddResourceFormUserControl" Height="450" Width="800">
+    <Grid>
+        
+    </Grid>
 </Window>
