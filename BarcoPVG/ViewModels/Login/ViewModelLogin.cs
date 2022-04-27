@@ -14,10 +14,15 @@ using System.Windows.Input;
 
 namespace BarcoPVG.ViewModels.Login
 {
+    //Eakarach
     public class ViewModelLogin : AbstractViewModelBase
     {
         private ICommand loginCommand, exitCommand;
-        //public DelegateCommand MainWindowCommand { get; set; }
+
+        private string _username = "username";
+        private string _password = "password";
+
+        bool isClicked = false;
 
         public ViewModelLogin() 
         {
@@ -52,7 +57,40 @@ namespace BarcoPVG.ViewModels.Login
             }
         }
 
-        //Eakarach
+        //MouseDown event
+        public string Username 
+        {
+            get => _username;
+            set
+            {
+                if (!isClicked)
+                {
+                    isClicked = true;
+                    _username.GetType().GetEvent("MouseDown");
+                    _username = string.Empty;
+                    OnpropertyChanged("Username");
+                }
+                else
+                {
+                    _username = value;
+                    OnpropertyChanged("Username");
+                }
+
+            }
+             
+        }
+        public string Password
+        { 
+            get => _password;
+            set
+            {
+                _password = value;
+                OnpropertyChanged("Password");
+            }
+            
+        }
+
+        
         private void ExitCommandMethode()
         {
             foreach (Window item in Application.Current.Windows)

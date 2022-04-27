@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BarcoPVG.Views.Login"
         xmlns:vm="clr-namespace:BarcoPVG.ViewModels" 
+        xmlns:login="clr-namespace:BarcoPVG.ViewModels.Login" d:DataContext="{d:DesignInstance Type=login:ViewModelLogin}"
         mc:Ignorable="d"
         Title="Login" Height="450" Width="350"
         AllowsTransparency="true" Background="Transparent"
@@ -38,7 +39,7 @@
             <StackPanel Orientation="Horizontal">
                 <TextBox x:Name="txtUsername" FontFamily="Helvetica"
                              FontWeight="Light"
-                             Text="Username"
+                             Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
                              FontSize="20"
                              HorizontalAlignment="Center"
                              Foreground="White"
@@ -48,7 +49,8 @@
                              HorizontalContentAlignment="Left"
                              Opacity="0.5"
                              Height="25"
-                             Margin="50,0,0,0"/>
+                             Margin="50,0,0,0"
+                             />
                 <Image Style="{StaticResource IconUser}" Width="20"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
@@ -57,9 +59,9 @@
             <Border Width="250" Height="2" Background="Black" Opacity="0.5"></Border>
 
             <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
-                <PasswordBox x:Name="pwdPassword" FontFamily="Helvetica"
+                <local:BindablePasswordBox x:Name="pwdPassword" FontFamily="Helvetica"
                              FontWeight="Light"
-                             Password="Password"
+                             Password="{Binding Password}"
                              FontSize="20"
                              HorizontalAlignment="Center"
                              Foreground="White"
@@ -70,6 +72,7 @@
                              Opacity="0.5"
                              Height="25"
                              Margin="50,0,0,0"/>
+                
                 <Image Style="{StaticResource IconLock}" Width="20"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"

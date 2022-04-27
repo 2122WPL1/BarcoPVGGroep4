@@ -150,7 +150,7 @@
         <Setter Property="Height" Value="80"/>
     </Style>
 
-    
+
     <!--CHECKBOXES-->
     <Style TargetType="CheckBox">
         <Setter Property="VerticalAlignment" Value="Center"/>
