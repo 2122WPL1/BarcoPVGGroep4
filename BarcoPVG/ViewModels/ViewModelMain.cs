@@ -42,6 +42,7 @@ namespace BarcoPVG.Viewmodels
         //public DelegateCommand SaveAddUserCommand { get; set; }
         public DelegateCommand DisplayDatabaseManagementStartupCommand { get; set; }
         public DelegateCommand DisplayDatabaseUserCommand { get; set; }
+        public DelegateCommand DisplayDatabaseDivisionCommand { get; set; }
 
 
         // Visibility of buttons
@@ -76,6 +77,7 @@ namespace BarcoPVG.Viewmodels
             //SaveAddUserCommand = new DelegateCommand(DisplayAddUser);
             DisplayDatabaseManagementStartupCommand = new DelegateCommand(DisplayDatabaseManagementStartup);
             DisplayDatabaseUserCommand = new DelegateCommand(DisplayDatabaseUserStartup);
+            DisplayDatabaseDivisionCommand = new DelegateCommand(DisplayDatabaseDivisionStartup);
 
             SetWindowProperties();
         }
@@ -195,6 +197,11 @@ namespace BarcoPVG.Viewmodels
         public void DisplayDatabaseUserStartup()
         {
             this.DataBase = new ViewModelDBUser();
+        }
+        
+        public void DisplayDatabaseDivisionStartup()
+        {
+            this.DataBase = new ViewModelDBDevision();
         }
 
         // JR CRUD
