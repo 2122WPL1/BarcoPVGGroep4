@@ -14,7 +14,7 @@ using BarcoPVG.Models.Db;
 
 namespace BarcoPVG.Dao
 {
-    // SINGLETON PATTERN fr
+    // SINGLETON PATTERN
     // Private constructor, static instance
     // Ensures only one DBconnection is opened at a time
     // Ensures connection is closed when not in use
@@ -37,7 +37,7 @@ namespace BarcoPVG.Dao
         private DAO()
         {
             this._context = new BarcoContext();
-            this.BarcoUser = new BarcoUser() { Name = "Admin", Division = "HC", Function = "DEV" };
+            this.BarcoUser = new BarcoUser() { Name = "Super-Admin", Division = "HC", Function = "DATA" };
         }
 
 
@@ -289,13 +289,24 @@ namespace BarcoPVG.Dao
                 rqrequest.Battery = Jr.Battery;
                 // Matti voorlopig
                 // We create the rqo RqOptionel object to link the user data to the db data and saves the changes in the Barco database
-                RqOptionel rqo = _context.RqOptionels.FirstOrDefault(o => o.IdRequest == Jr.IdRequest);      
+      
+                RqOptionel rqo = _context.RqOptionels.FirstOrDefault(o => o.IdRequest == Jr.IdRequest);
+
+                if(rqo == null)
+                {
+                    rqo = new RqOptionel
+                    {
+                        Link = Jr.Link == null ? string.Empty : Jr.Link,
+                        Remarks = Jr.Remarks == null ? string.Empty : Jr.Remarks,
+                    };
+                }
+                
                 //Sander: wss wanneer er een JR aangepast wordt zodat het wel optionele velden heeft komt er hier een crash
-                rqo.Link = Jr.Link; // context heeft geen rqoptional
+                //Sander: context heeft geen rqoptional
+                rqo.Link = Jr.Link;
                 rqo.Remarks = Jr.Remarks;
                 // We combine the rqo and rqrequest objects
                 rqrequest.RqOptionels.Add(rqo);
-
                 _context.RqRequests.Update(rqrequest);
                 SaveChanges();
             }
@@ -337,7 +348,7 @@ namespace BarcoPVG.Dao
                     InternRequest = selectedRQ.InternRequest,
                     GrossWeight = selectedRQ.GrossWeight,
                     NetWeight = selectedRQ.NetWeight,
-                    Battery = selectedRQ.Battery,
+                    Battery = (bool)selectedRQ.Battery,
                     //EutPartnr = selectedRQ.EutPartnumbers,
 
                     // Testing
@@ -363,7 +374,7 @@ namespace BarcoPVG.Dao
                     InternRequest = selectedRQ.InternRequest,
                     GrossWeight = selectedRQ.GrossWeight,
                     NetWeight = selectedRQ.NetWeight,
-                    Battery = selectedRQ.Battery,
+                    Battery = (bool)selectedRQ.Battery
                 };
             }
             return selectedJR;
@@ -391,7 +402,7 @@ namespace BarcoPVG.Dao
                 InternRequest = selectedRQ.InternRequest,
                 GrossWeight = selectedRQ.GrossWeight,
                 NetWeight = selectedRQ.NetWeight,
-                Battery = selectedRQ.Battery,
+                Battery = (bool)selectedRQ.Battery,
                 //EutPartnr = selectedRQ.EutPartnumbers,
 
                 // Testing
@@ -459,7 +470,10 @@ namespace BarcoPVG.Dao
                 var planning = CreatePlPlanning(request, division);
 
                 _context.Add(planning);
-                _context.SaveChanges();
+                    _context.SaveChanges(); //Sander: het approven van een job request zorgt voor een probleem met de databank primary key van Planning_PK en pl_Planning
+                                        //een dubbele id
+                                        // hij wilt een record aanmaken met hetzelfde id 0 ookal bestaad die al
+
             }
         }
 
@@ -777,7 +791,7 @@ namespace BarcoPVG.Dao
         // Stores all data from GUI in DB
         public void SaveChanges()
         {
-            _context.SaveChanges();
+            _context.SaveChanges(); //Sander: fout bij het aaanmaken van een JR (database probleem)
         }
 
         /// <summary>

@@ -31,7 +31,7 @@
                     </ComboBox.ItemContainerStyle> 
                     -->
                 </ComboBox>
-                
+
                 <TextBox Text="{Binding EditingTest.Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="10"/>
                 <!--Currently two datepickers for start/end, looking into using one to get an array? -->
                 <DatePicker SelectedDate="{Binding StartDate}" IsTodayHighlighted="True" Margin="5"/>

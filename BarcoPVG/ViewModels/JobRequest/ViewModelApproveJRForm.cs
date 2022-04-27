@@ -11,6 +11,7 @@ using BarcoPVG;
 using BarcoPVG.Models.Db;
 using BarcoPVG.Models.Classes;
 using BarcoPVG.Dao;
+using System.Windows;
 
 namespace BarcoPVG.Viewmodels.JobRequest
 {
@@ -23,6 +24,7 @@ namespace BarcoPVG.Viewmodels.JobRequest
         public ObservableCollection<string> Divisions { get; set; }
 
         // ICommand does not take pinput
+     
         public ICommand AddEUTCommand { get; set; }
         public ICommand RemoveEUTCommand { get; set; }
         public ICommand RefreshJRCommand { get; set; }
@@ -30,15 +32,18 @@ namespace BarcoPVG.Viewmodels.JobRequest
 
         // Constructor for existing JR
         // Planner only works with existing JRs
+      
         public ViewModelApproveJRForm(int idRequest) : base()
         {
+            
+
             // Fill in dropdown menu's
             JobNatures = new ObservableCollection<string>();
             Divisions = new ObservableCollection<string>();
 
             Load();
             AddEUTCommand = new DelegateCommand(AddEUT);
-            RemoveEUTCommand = new DelegateCommand(RemoveSelectedEUT);
+            
 
             // Look for JR with correct ID
             this._jr = _dao.GetJR(idRequest);
@@ -59,6 +64,7 @@ namespace BarcoPVG.Viewmodels.JobRequest
 
             _dao.PrintPvg(idRequest, _jr);
         }
+       
 
         // Loads jobNatures, divisions in cbb
         public void Load()

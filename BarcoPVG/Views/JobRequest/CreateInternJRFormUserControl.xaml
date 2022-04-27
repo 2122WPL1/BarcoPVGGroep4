@@ -38,7 +38,9 @@
                         <Button Content="Confirm" HorizontalAlignment="Left" 
                                 Command="{Binding DataContext.SafeJrCommand, Mode=OneWay}"
                                 Margin="282,18,0,0" VerticalAlignment="Top"/>
-                        <Button Grid.Column="1" Content="Cancel" HorizontalAlignment="Left" Margin="46,18,0,0" VerticalAlignment="Top"/>
+                        <Button Grid.Column="1" Content="Cancel" HorizontalAlignment="Left" 
+                                Command="{Binding Datacontext.DisplayDevStartupCommand, Mode=OneWay}"
+                                Margin="46,18,0,0" VerticalAlignment="Top"/>
                     </Grid>
 
                 </DockPanel>

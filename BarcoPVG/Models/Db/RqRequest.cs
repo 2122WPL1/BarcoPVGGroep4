@@ -15,7 +15,7 @@ namespace BarcoPVG.Models.Db
 
         public int IdRequest { get; set; }
         public string? JrNumber { get; set; }
-        public DateTime RequestDate { get; set; }
+        public DateTime? RequestDate { get; set; }
         public string? JrStatus { get; set; }
         /// <summary>
         /// initialen
@@ -31,8 +31,8 @@ namespace BarcoPVG.Models.Db
         public string HydraProjectNr { get; set; } = null!;
         public DateTime ExpectedEnddate { get; set; }
         public bool? InternRequest { get; set; }
-        public string GrossWeight { get; set; } = null!;
-        public string NetWeight { get; set; } = null!;
+        public string? GrossWeight { get; set; } = null!;
+        public string? NetWeight { get; set; } = null!;
         public bool Battery { get; set; }
 
         public virtual ICollection<PlPlanning> PlPlannings { get; set; }
