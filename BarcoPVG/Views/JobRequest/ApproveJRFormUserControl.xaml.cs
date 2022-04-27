@@ -27,7 +27,5 @@ namespace BarcoPVG.Views.JobRequest
            InitializeComponent();
 
         }
-       
-        
     }
 }

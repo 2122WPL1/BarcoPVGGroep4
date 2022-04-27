@@ -11,7 +11,6 @@ using BarcoPVG;
 using BarcoPVG.Models;
 using BarcoPVG.Models.Db;
 
-
 namespace BarcoPVG.Dao
 {
     // SINGLETON PATTERN
@@ -40,6 +39,7 @@ namespace BarcoPVG.Dao
             //this.BarcoUser = RegistryConnection.GetValueObject<BarcoUser>(@"SOFTWARE\VivesBarco\Test");
         }
 
+        
         //Eakarach
         //Login
         public void LoginSucceedded(Person loginPerson)
@@ -57,9 +57,8 @@ namespace BarcoPVG.Dao
                 Division = "Super-Admin",
                 Function = "DATA",
             };
-           
         }
-
+        
 
         /// <summary>
         /// Removes unsaved changed by replacing the context by a new instance
