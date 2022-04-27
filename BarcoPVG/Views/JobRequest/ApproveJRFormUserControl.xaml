@@ -4,10 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BarcoPVG.Views"
-             mc:Ignorable="d" 
-             d:DesignHeight="800" d:DesignWidth="600" d:Background="LightGray">
-    <StackPanel Margin="10" >
-        <GroupBox Header="Project Details">
+             mc:Ignorable="d" d:Background="LightGray" Height="auto" Width="auto">
+    <StackPanel Margin="10" Orientation="Horizontal" >
+
+        <GroupBox Header="Project Details" Margin="10" Width="auto" >
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -53,7 +53,7 @@
                 <TextBox Grid.Row="7" Grid.Column="1"  Text="{Binding JR.GrossWeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                 <Label Content="" Grid.Row="9"/>
-          
+
                 <Label Content="Link to testplan (optional):" Grid.Row="10"/>
                 <TextBox Text="{Binding JR.Link,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                              Grid.Column="1" Grid.Row="10" />
@@ -84,75 +84,72 @@
                 <TextBox Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="4" Text="{Binding JR.Remarks,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Height="50" Margin="0,10,10,10" HorizontalAlignment="Stretch" Width="Auto"/>
             </Grid>
         </GroupBox>
-        <GroupBox Header="Parts and tests">
+
+        <GroupBox Header="Parts and tests" Margin="10" Width="auto">
             <StackPanel>
-                <!-- Matti: naam dynamicResource aanpassen om andere datatemplate in te laden-->
-                <!--<ListBox x:Name="ListPVGRes"-->
-                <!--<ScrollViewer Height="50">-->
-                <ContentControl ContentTemplate="{DynamicResource PVGRes}"
+                <StackPanel>
+                    <!-- Matti: naam dynamicResource aanpassen om andere datatemplate in te laden-->
+                    <!--<ListBox x:Name="ListPVGRes"-->
+                    <!--<ScrollViewer Height="50">-->
+                    <ContentControl ContentTemplate="{DynamicResource PVGRes}"
                                 Content="{Binding JR}"/>
 
-                <!--</ScrollViewer>-->
+                    <!--</ScrollViewer>-->
 
-                <!--ItemsSource="{Binding EUTs}"-->
+                    <!--ItemsSource="{Binding EUTs}"-->
 
-                <ListBox x:Name="ListEUT" Height="300" Background="#363636"
+                    <ListBox x:Name="ListEUT" Height="auto" MinHeight="300" Background="#363636" ScrollViewer.HorizontalScrollBarVisibility="Auto"
                          ItemTemplate="{DynamicResource EUT}"
-                         SelectedItem="{Binding SelectedEUT, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }"
+                         SelectedItem="{Binding SelectedEUT, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }" Margin="-0.1,0,0,0"
                          >
-                    <ListBox.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <StackPanel Orientation="Horizontal"></StackPanel>
-                        </ItemsPanelTemplate>
-                    </ListBox.ItemsPanel>
-                    <ListBox.Resources>
-                         <CollectionViewSource x:Key="EUTs" Source="{Binding EUTs}" />
-                    </ListBox.Resources>
-                <!--
-                <ListBox x:Name="ListEUT" Height="300" Background="#363636"
-                         ItemsSource="{Binding EUTs}"
-                ItemTemplate="{DynamicResource EUT}"
-                         
-                         SelectedItem="{Binding SelectedEUT, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }">
-                        
-                    
-                    -->
-                    <ListBox.ItemsSource>
-                        <CompositeCollection>
-                            <CollectionContainer Collection="{Binding Source={StaticResource EUTs}}"/>
-                            <ListBoxItem>
-                                <Button Command="{Binding Path=AddEUTCommand}">+</Button>
-                            </ListBoxItem>
-                        </CompositeCollection>
-                    </ListBox.ItemsSource>
-                </ListBox>
-                
-                <StackPanel Orientation="Horizontal" >
-                    <Button Content="Add Part" 
+
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBox.Resources>
+                            <CollectionViewSource x:Key="EUTs" Source="{Binding EUTs}" />
+                        </ListBox.Resources>
+                        <ListBox.ItemsSource>
+                            <CompositeCollection>
+                                <CollectionContainer Collection="{Binding Source={StaticResource EUTs}}"/>
+                                <ListBoxItem>
+                                    <Button Command="{Binding Path=AddEUTCommand}" Content="+"/>
+                                </ListBoxItem>
+                            </CompositeCollection>
+                        </ListBox.ItemsSource>
+                    </ListBox>
+
+                    <StackPanel Orientation="Horizontal" >
+                        <!--<Button Content="Add Part" 
                                 Command="{Binding Path=AddEUTCommand}" 
+                                Margin="10"/>-->
+                        <Button Content="Remove Part"
+                                Command="{Binding Path= RemoveEUTCommand}" 
                                 Margin="10"/>
-                    <Button Content="Remove Part"
-                                Command="{Binding Path=RemoveEUTCommand}" 
-                                Margin="10"/>
+                    </StackPanel>
+
                 </StackPanel>
-            </StackPanel>
-        </GroupBox>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Content="Approve"
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Content="Approve"
                     Command="{Binding DataContext.ApproveJRCommand, 
                             RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, 
                             Mode=OneWay}"
                         Height="40" Margin="5"/>
-            <Button Content="Save changes"
+                    <Button Content="Save changes"
                     Command="{Binding DataContext.SaveJrCommand, 
                             RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, 
                             Mode=OneWay}"
                     Height="40" Margin="5"/>
-            <Button Content="Cancel"
+                    <Button Content="Cancel"
                         Command="{Binding DataContext.DisplayDevStartupCommand, 
                             RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, 
                             Mode=OneWay}"
                         Height="40" Margin="5"/>
-        </StackPanel>
+                </StackPanel>
+            </StackPanel>
+
+        </GroupBox>
     </StackPanel>
 </UserControl>
