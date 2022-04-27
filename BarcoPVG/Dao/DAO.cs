@@ -37,7 +37,7 @@ namespace BarcoPVG.Dao
         private DAO()
         {
             this._context = new BarcoContext();
-            this.BarcoUser = new BarcoUser() { Name = "Admin", Division = "HC", Function = "ADM" };
+            this.BarcoUser = new BarcoUser() { Name = "Admin", Division = "HC", Function = "DEV" };
         }
 
 
