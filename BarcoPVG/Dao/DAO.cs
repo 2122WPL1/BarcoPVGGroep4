@@ -37,9 +37,14 @@ namespace BarcoPVG.Dao
         private DAO()
         {
             this._context = new BarcoContext();
-            this.BarcoUser = new BarcoUser() { Name = "Super-Admin", Division = "HC", Function = "DATA" };
+            this.BarcoUser = new BarcoUser()
+            {
+                Name = "Super-Admin",
+                Division = "Super-Admin", 
+                Function = "DATA" 
+            };
         }
-
+        
 
         /// <summary>
         /// Removes unsaved changed by replacing the context by a new instance
@@ -894,5 +899,7 @@ namespace BarcoPVG.Dao
                 }
             }
         }
+
+        
     }
 }
