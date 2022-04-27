@@ -27,7 +27,6 @@ namespace BarcoPVG.Views.Login
             DataContext = new ViewModelMain(); //user ingeven als parameter
 
             InitializeComponent();
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -43,5 +42,3 @@ namespace BarcoPVG.Views.Login
         }
     }
 }
-
-
