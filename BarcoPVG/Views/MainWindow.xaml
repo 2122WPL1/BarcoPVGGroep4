@@ -38,23 +38,22 @@
                             Command="{Binding DisplayEmployeeStartupCommand,
                             Mode=OneWay}" 
                             Visibility="{Binding NewRequests}"
-                            Margin="10" Background="#FFF10000"/>
+                            Margin="10" />
                         <Button Content="Edit/Approve requests" 
                             Command="{Binding DisplayPlannerStartupCommand, Mode=OneWay}" 
                             Visibility="{Binding ApproveRequests}"
-                            Background="#FFF10000"/>
+                            />
                         <Button Content="Plan tests" 
                             Command="{Binding DisplayTesterPlanCommand, Mode=OneWay}"
                             Visibility="{Binding Test}"
-                            Margin="10" Background="#FFF10000"/>
+                            Margin="10"/>
                         <Button Content="View/Update tests" 
                             Command="{Binding DisplayTesterTestCommand, Mode=OneWay}"
-                            Visibility="{Binding Test}"
-                            Background="#FFF10000"/>
+                            Visibility="{Binding Test}"/>
                         <Button Content="Development"
                             Command="{Binding DisplayDevStartupCommand, Mode=OneWay}" 
                             Visibility="{Binding SeeAll}"
-                        Margin="10" Background="#FFF10000"/>
+                        Margin="10" />
                         <Button Content="Database Management"
                                 Command="{Binding DisplayDatabaseManagementCommand, Mode=OneWay}"
                                 Visibility="{Binding SeeAll}"/>

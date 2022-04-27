@@ -9,10 +9,13 @@
 
   <ItemGroup>
     <None Remove="DictionaryResources\barco-logo.png" />
+    <None Remove="DictionaryResources\lock.png" />
+    <None Remove="DictionaryResources\user.png" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="EntityFramework" Version="6.4.4" />
+    <PackageReference Include="MahApps.Metro.IconPacks.Material" Version="4.11.0" />
     <PackageReference Include="MaterialDesignThemes" Version="4.3.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.2">
       <PrivateAssets>all</PrivateAssets>
@@ -34,6 +37,12 @@
 
   <ItemGroup>
     <Resource Include="DictionaryResources\barco-logo.png" />
+    <Resource Include="DictionaryResources\lock.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="DictionaryResources\user.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>

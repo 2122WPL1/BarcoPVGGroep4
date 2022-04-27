@@ -16,7 +16,7 @@ namespace BarcoPVG.ViewModels.Login
 {
     public class ViewModelLogin : AbstractViewModelBase
     {
-        private ICommand loginCommand;
+        private ICommand loginCommand, exitCommand;
         //public DelegateCommand MainWindowCommand { get; set; }
 
         public ViewModelLogin() 
@@ -40,6 +40,25 @@ namespace BarcoPVG.ViewModels.Login
             }
         }
 
+        public ICommand ExitCommand
+        { 
+            get 
+            {
+                if (exitCommand == null)
+                {
+                    exitCommand = new Command((param) => this.ExitCommandMethode());
+                }
+                return exitCommand; 
+            }
+        }
+
+        private void ExitCommandMethode()
+        {
+            foreach (Window item in Application.Current.Windows)
+            {
+                item.Close();
+            }
+        }
 
         private void DisplayLogin(object param)
         {

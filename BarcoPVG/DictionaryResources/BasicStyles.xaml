@@ -9,14 +9,26 @@
     </Style>
     
 
-    <!--IMAGE BARCO-->
+    <!--IMAGES-->
     <Style x:Key="BarcoLogo" TargetType="{x:Type Image}">
         <Setter Property="Width" Value="100"/>
         <Setter Property="Source" Value="barco-logo.png"/>
         <Setter Property="Margin" Value="0 0 0 0"/>
     </Style>
 
-    
+    <Style x:Key="IconUser" TargetType="{x:Type Image}">
+        <Setter Property="Width" Value="100"/>
+        <Setter Property="Source" Value="user.png"/>
+        <Setter Property="Margin" Value="0 0 0 0"/>
+    </Style>
+
+    <Style x:Key="IconLock" TargetType="{x:Type Image}">
+        <Setter Property="Width" Value="100"/>
+        <Setter Property="Source" Value="lock.png"/>
+        <Setter Property="Margin" Value="0 0 0 0"/>
+    </Style>
+
+
     <!--LISTBOX & LISTBOXITEMS-->
     <Style TargetType="ListBox">
         <Setter Property="Height" Value="150"/>
@@ -33,11 +45,37 @@
     <Style x:Key="AddJRbtn" TargetType="Button">
         <Setter Property="MinWidth" Value="100"/>
         <Setter Property="Height" Value="40"/>
+        <Setter Property="Background" Value="#FFF10000"/>
+        <Setter Property="FontFamily" Value="Helvetica"/>
+        <Setter Property="FontWeight" Value="Light"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="20"
+                            BorderThickness="2"
+                            BorderBrush="White">
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Background" Value="red"/>
+                <Setter Property="Opacity" Value="0.4"/>
+                <Setter Property="Foreground" Value="black"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
     <Style x:Key="HorButtons" TargetType="Button">
         <Setter Property="Margin" Value="10"/>
         <Setter Property="Padding" Value="10 0"/>
+    </Style>
+
+    <Style x:Key="LoginButton">
+        
     </Style>
     
 
