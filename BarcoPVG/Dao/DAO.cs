@@ -38,9 +38,14 @@ namespace BarcoPVG.Dao
         {
             this._context = new BarcoContext();
             //this.BarcoUser = RegistryConnection.GetValueObject<BarcoUser>(@"SOFTWARE\VivesBarco\Test");
-            
+            this.BarcoUser = new BarcoUser()
+            {
+                Name = "Super-Admin",
+                Division = "Super-Admin",
+                Function = "DATA",
+            };
         }
-
+      
         //Eakarach
         //Login
         public void LoginSucceedded(Person loginPerson)
@@ -930,5 +935,7 @@ namespace BarcoPVG.Dao
                 }
             }
         }
+
+        
     }
 }

@@ -7,8 +7,11 @@ using System.Threading.Tasks;
 
 namespace BarcoPVG.ViewModels.DatabaseManagement
 {
-    public class ViewModelDatabaseAddUser : AbstractViewModelBase
+    public class ViewModelDBResource : AbstractViewModelCollectionRQ
     {
+        public ViewModelDBResource() : base()
+        {
 
+        }
     }
 }

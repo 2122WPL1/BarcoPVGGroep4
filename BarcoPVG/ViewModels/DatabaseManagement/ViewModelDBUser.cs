@@ -8,11 +8,16 @@ using System.Windows.Input;
 
 namespace BarcoPVG.ViewModels.DatabaseManagement
 {
-    public class ViewModelDatabaseManagement : AbstractViewModelCollectionRQ
+    public class ViewModelDBUser : AbstractViewModelCollectionRQ
     {
-        public ViewModelDatabaseManagement() : base()
+        public ViewModelDBUser() : base()
         {
-            
+            Load();
+        }
+
+        private void Load()
+        {
+
         }
     }
 }

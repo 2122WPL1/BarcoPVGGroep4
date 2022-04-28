@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace BarcoPVG.ViewModels.DatabaseManagement
 {
-    public class ViewModelDatabaseRemoveResource : AbstractViewModelBase
+    public class ViewModelEditDevisionDB
     {
-
     }
 }
