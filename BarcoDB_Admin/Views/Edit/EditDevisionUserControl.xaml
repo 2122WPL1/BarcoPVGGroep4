@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="BarcoDB_Admin.Views.Edit.EditDevisionUserControl"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BarcoDB_Admin.Views.Edit"
+        mc:Ignorable="d"
+        Height="450" Width="800" Background="LightGray">
+    <!--amy-->
+    <StackPanel Margin="5">
+        <GroupBox Height="422" Header="Devision">
+            <Grid>
+                <Label Content="Abbreviation:" HorizontalAlignment="Left" Margin="212,114,0,0" VerticalAlignment="Top"/>
+                <Label Content="Alias:" HorizontalAlignment="Left" Margin="255,160,0,0" VerticalAlignment="Top"/>
+                <TextBox Margin="353,114,0,0" Text="" VerticalAlignment="Top" Width="150"/>
+                <TextBox Text="" VerticalAlignment="Top" Width="150" Margin="353,160,0,0"/>
+                <Button Content="Save" HorizontalAlignment="Left" Margin="569,322,0,0" VerticalAlignment="Top"/>
+                <Button Content="Cancel" HorizontalAlignment="Left" Margin="654,322,0,0" VerticalAlignment="Top"/>
+                <Label Content="Active:" HorizontalAlignment="Left" Margin="247,207,0,0" VerticalAlignment="Top"/>
+                <CheckBox Content="" HorizontalAlignment="Left" Margin="353,213,0,0" VerticalAlignment="Top"/>
+            </Grid>
+        </GroupBox>
+    </StackPanel>
+</UserControl>
