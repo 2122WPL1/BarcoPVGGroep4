@@ -10,7 +10,7 @@
         WindowStartupLocation="CenterScreen">
     <StackPanel>
         <StackPanel Margin="10">
-            <GroupBox BorderThickness="0.1" Height="980" >
+            <GroupBox BorderThickness="0.1">
                 <GroupBox.Header>
                     <!-- This could be done more efficiently? -->
                     <Grid Background="#FFF10000">
@@ -55,9 +55,9 @@
                                 Command="{Binding DisplayDatabaseManagementStartupCommand, Mode=OneWay}"
                                 Visibility="{Binding Data}"/>
                     </StackPanel>
-                    <ScrollViewer Height="980" >
-                        <ContentControl Content="{Binding ViewModel}" Height="980"/>
-                    </ScrollViewer>
+                <ScrollViewer Height="450">
+                    <ContentControl Content="{Binding ViewModel}"/>
+                </ScrollViewer>
                 </StackPanel>
             </GroupBox>
         </StackPanel>
