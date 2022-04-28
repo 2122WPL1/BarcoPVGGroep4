@@ -14,10 +14,13 @@ using System.Windows.Input;
 
 namespace BarcoPVG.ViewModels.Login
 {
+    //Eakarach
     public class ViewModelLogin : AbstractViewModelBase
     {
-        private ICommand loginCommand;
-        //public DelegateCommand MainWindowCommand { get; set; }
+        private ICommand loginCommand, exitCommand;
+
+        private string _username = "";
+        private string _password = "";
 
         public ViewModelLogin() 
         {
@@ -40,12 +43,52 @@ namespace BarcoPVG.ViewModels.Login
             }
         }
 
+        public ICommand ExitCommand
+        { 
+            get 
+            {
+                if (exitCommand == null)
+                {
+                    exitCommand = new Command((param) => this.ExitCommandMethode());
+                }
+                return exitCommand; 
+            }
+        }
+
+        public string Username 
+        {
+            get => _username;
+            set
+            {
+                _username = value;
+                OnpropertyChanged("Username");
+            }
+        }
+        public string Password
+        { 
+            get => _password;
+            set
+            {
+                _password = value;
+                OnpropertyChanged("Password");
+            }
+            
+        }
+
+        
+        private void ExitCommandMethode()
+        {
+            foreach (Window item in Application.Current.Windows)
+            {
+                item.Close();
+            }
+        }
 
         private void DisplayLogin(object param)
         {
             ObservableCollection<object> listParameter = (ObservableCollection<object>)param;
             List<Person> allUser = _dao.GetAllUser();
-            Person loginPerson = null ; 
+            Person loginPerson = null;
 
             foreach (Person person in allUser)
             {
@@ -59,14 +102,10 @@ namespace BarcoPVG.ViewModels.Login
             if (loginPerson != null)
             {
                 _dao.LoginSucceedded(loginPerson);
-
-                //Hide Login screen.
-                Application.Current.Windows[0].Hide();
-                //foreach (Window item in Application.Current.Windows)
-                //{
-                //    item.Hide();
-                //}
-
+                foreach (Window item in Application.Current.Windows)
+                {
+                    item.Hide();
+                }
                 DisplayMainWindow();
             }
             else

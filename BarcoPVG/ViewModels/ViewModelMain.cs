@@ -180,12 +180,13 @@ namespace BarcoPVG.Viewmodels
         public void DisplayDataBaseResourceStartup()
         {
             this.DataBase = new ViewModelDBResource();
-
-            //public void DisplayDatabaseDivisionStartup()
-            //{
-            //    this.DataBase = new ViewModelDBDevision();
-            //}
         }
+        
+        //public void DisplayDatabaseDivisionStartup()
+        //{
+        //    this.DataBase = new ViewModelDBDevision();
+        //}
+        
 
         // JR CRUD
         // Command functions
@@ -302,8 +303,7 @@ namespace BarcoPVG.Viewmodels
         {
             switch (_dao.BarcoUser.Function)
             {
-
-                //Jarne aanmaken van een nieuwe view die DATA noemt
+                //Jarne aanmaken van een nieuwe view die DATA voor de Visibility van de database button
                 case "DATA":
                     NewRequests = Visibility.Visible;
                     ApproveRequests = Visibility.Visible;
@@ -314,7 +314,7 @@ namespace BarcoPVG.Viewmodels
                     this.ViewModel = new ViewModelDatabaseManagement();
 
                     break;
-                case "DEV":
+                case "DEV": // Developer -> Developer voor dit programma 
                     NewRequests = Visibility.Visible;
                     ApproveRequests = Visibility.Visible;
                     Test = Visibility.Visible;
@@ -324,8 +324,7 @@ namespace BarcoPVG.Viewmodels
                     this.ViewModel = new ViewModelDevelopment();
 
                     break;
-
-                case "TEST":
+                case "TEST": // Test team -> om de geplande JR te plannen voor de test 
                     NewRequests = Visibility.Visible;
                     ApproveRequests = Visibility.Hidden;
                     Test = Visibility.Visible;
@@ -337,7 +336,7 @@ namespace BarcoPVG.Viewmodels
                     this.ViewModel = new ViewModelPlanTestQueue();
 
                     break;
-                case "PLAN":
+                case "PLAN": // Planning -> om plans goed te keuren
                     NewRequests = Visibility.Hidden;
                     ApproveRequests = Visibility.Visible;
                     Test = Visibility.Hidden;
@@ -347,8 +346,7 @@ namespace BarcoPVG.Viewmodels
                     this.ViewModel = new ViewModelApproveJRQueue();
 
                     break;
-
-                default:
+                default: // Normale gebuikers -> die kan enkele JR aan te vragen
                     NewRequests = Visibility.Visible;
                     ApproveRequests = Visibility.Hidden;
                     Test = Visibility.Hidden;
