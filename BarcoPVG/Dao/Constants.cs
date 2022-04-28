@@ -9,6 +9,6 @@ namespace BarcoPVG.Dao
     internal class SQLConnection
     {
         //hier komt je connectiestring
-        internal static string CONNECTION_STRING = @"Server=.\VIVES;Database=Barco;Trusted_Connection=True;";
+        internal static string CONNECTION_STRING = @"Server=.\Vives;Database=Barco;Trusted_Connection=True;";
     }
 }

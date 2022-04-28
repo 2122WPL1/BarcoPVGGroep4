@@ -19,11 +19,14 @@
                     <Button Content="User" 
                             Command="{Binding DisplayDatabaseUserCommand, Mode=OneWay}"
                             Margin="5"/>
-                    <Button Content="Resource" Margin="5"/>
+                    <Button Content="Resource" 
+                            Command="{Binding DisplayDataResourceCommand, Mode=OneWay}"
+                            Margin="5"/>
                     <Button Content="Division" Margin="5"/>
                 </StackPanel>
                 <ScrollViewer Grid.Row="1">
-                    <ContentControl Content="{Binding DataBase}"/>
+                    <ContentControl Content="{Binding DataBase}" Width="591"/>
+
                 </ScrollViewer>
             </Grid>
 
