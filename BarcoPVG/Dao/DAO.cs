@@ -10,7 +10,7 @@ using BarcoPVG.Models.Classes;
 using BarcoPVG;
 using BarcoPVG.Models;
 using BarcoPVG.Models.Db;
-
+using System.Data.SqlClient;
 
 namespace BarcoPVG.Dao
 {
@@ -22,9 +22,9 @@ namespace BarcoPVG.Dao
     {
         // Variables
         private BarcoContext _context;
-        private static readonly DAO _instance = new(); 
+        private static readonly DAO _instance = new();
 
-        public BarcoUser BarcoUser { get; }
+        public BarcoUser BarcoUser { get; private set; }
 
         // Calls an DAO instance
         public static DAO Instance()
@@ -37,14 +37,46 @@ namespace BarcoPVG.Dao
         private DAO()
         {
             this._context = new BarcoContext();
+            //this.BarcoUser = RegistryConnection.GetValueObject<BarcoUser>(@"SOFTWARE\VivesBarco\Test");
             this.BarcoUser = new BarcoUser()
             {
                 Name = "Super-Admin",
-                Division = "Super-Admin", 
-                Function = "DATA" 
+                Division = "Super-Admin",
+                Function = "DATA",
             };
         }
-        
+      
+        //Eakarach
+        //Login
+        public void LoginSucceedded(Person loginPerson)
+        {
+            string name = loginPerson.Voornaam;
+
+            //Put division or to list if they have more than one division
+            //string division = GetAllDivisions().Where(div => "TS" == loginPerson.Afkorting).ToString();
+
+            //Put Function to give right the the user
+            //string func = "";
+            this.BarcoUser = new BarcoUser()
+            {
+                Name = name, 
+                Division = "test Division",
+                Function = "DEV",
+            };
+           
+        }
+
+        public void GetDiv(Person loginPerson)
+        {
+            List<RqBarcoDivision> listDiv = GetAllDivisions();
+            foreach (RqBarcoDivision div in listDiv)
+            {
+                //if (div.Afkorting == loginPerson)
+                //{
+
+                //}
+            }
+        }
 
         /// <summary>
         /// Removes unsaved changed by replacing the context by a new instance
@@ -57,6 +89,13 @@ namespace BarcoPVG.Dao
 
 
         // LISTS
+
+        // Eakarach
+        // Returns list of all user
+        public List<Person> GetAllUser()
+        {
+            return _context.People.ToList();          
+        }
 
         // Returns list of all JRs
         public List<RqRequest> GetAllJobRequests()
@@ -379,7 +418,7 @@ namespace BarcoPVG.Dao
                     InternRequest = selectedRQ.InternRequest,
                     GrossWeight = selectedRQ.GrossWeight,
                     NetWeight = selectedRQ.NetWeight,
-                    Battery = (bool)selectedRQ.Battery
+                    Battery = (bool)selectedRQ.Battery,
                 };
             }
             return selectedJR;

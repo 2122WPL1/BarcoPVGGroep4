@@ -5,8 +5,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:BarcoPVG.Views"
         mc:Ignorable="d"
-        d:DesignHeight="800" d:Background="LightGray" Width="629">
-    <!--xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"-->
+        d:DesignHeight="980" d:Background="LightGray" Width="629">
 
     <!--amy-->
     <StackPanel Margin="10">
@@ -27,6 +26,7 @@
                 </StackPanel>
                 <ScrollViewer Grid.Row="1">
                     <ContentControl Content="{Binding DataBase}" Width="591"/>
+
                 </ScrollViewer>
             </Grid>
 
@@ -41,72 +41,4 @@
             <Button Content="Delete" Margin="10"/>
         </StackPanel>
     </StackPanel>
-
-    <!--<StackPanel>
-                <StackPanel Height="100" Orientation="Horizontal" HorizontalAlignment="Center" Width="auto">
-                    <Button Content="Add User" 
-                        Command="{Binding Path=AddNewUserCommand}"
-                        Margin="5"/>
-                    <Button Content="Remove User" 
-                        Command="{Binding Path=DeleteUserCommand}"
-                        Margin="5"/>
-                    <Button Content="Add Resource" 
-                        Command="{Binding Path=AddNewResourceCommand}"
-                        Margin="5"/>
-                    <Button Content="Remove Resource" 
-                        Command="{Binding Path=DeleteResourceCommand}"
-                        Margin="5"/>
-                    <Button Content="Cancel" 
-                        Command="{Binding Path=ReturnMainWindowCommand}"
-                        Margin="5"/>
-                </StackPanel>
-                <StackPanel Height="284">
-                    <ScrollViewer Height="284">
-                        <ContentControl Content="{Binding}"/>
-                    </ScrollViewer>
-                </StackPanel>
-            </StackPanel>-->
-    <!--<Grid>
-        -->
-    <!--Jarne-->
-    <!--
-        <StackPanel>
-            <GroupBox Header="Database Management" Height="435">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Label x:Name="lblAbbreviation" Content="Abbreviation:" HorizontalAlignment="Left" Margin="20,48,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-                    <TextBox Grid.Row="1" VerticalAlignment="Top" Width="156" Grid.ColumnSpan="2" Margin="105,48,0,0"/>
-                    <Label x:Name="lblFirstname" Content="Firstname:" HorizontalAlignment="Left" Margin="36,84,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.RowSpan="2"/>
-                    <TextBox Grid.Row="1" VerticalAlignment="Top" Width="156" Grid.ColumnSpan="2" Margin="105,84,0,0" Grid.RowSpan="2"/>
-                    <Label x:Name="lblLastname" Content="Lastname:" HorizontalAlignment="Left" Margin="37,22,0,0" Grid.Row="2" VerticalAlignment="Top"/>
-                    <TextBox Grid.Row="2" VerticalAlignment="Top" Width="156" Margin="105,22,0,0" Grid.ColumnSpan="2"/>
-                    <Label Content="USERNAME:" HorizontalAlignment="Left" Margin="123,48,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.Column="1" Grid.ColumnSpan="2"/>
-                    <TextBox Grid.Row="1" VerticalAlignment="Top" Width="156" Grid.Column="2" Margin="45,48,0,0" Grid.ColumnSpan="2"/>
-                    <Label Content="PASSWORD:" HorizontalAlignment="Left" Margin="121,84,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.Column="1" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
-                    <TextBox Grid.Row="1" VerticalAlignment="Top" Width="156" Grid.Column="2" Margin="45,84,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
-                    <Button x:Name="btnAddUser" Content="Add User" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
-                    <Button x:Name="btnRemoveUser" Content="Remove User" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="105,10,0,0" Grid.ColumnSpan="2"/>
-                    <Button x:Name="btnAddResources" Grid.Column="1" Content="Add Resources" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="70,10,0,0" Grid.ColumnSpan="2"/>
-                    <Button x:Name="btnRemoveResources" Grid.Column="2" Content="Remove Resources" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="45,10,0,0" Grid.ColumnSpan="2"/>
-                    <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,26,0,0" Grid.Row="3" Grid.Column="4"/>
-                    <Button x:Name="btnSaveChanges" Content="Save changes" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="27,26,0,0" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2" Width="130"/>
-
-
-
-                </Grid>
-            </GroupBox>
-        </StackPanel>
-    </Grid>-->
 </UserControl>

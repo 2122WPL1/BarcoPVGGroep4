@@ -39,7 +39,7 @@ namespace BarcoPVG.Viewmodels
         public DelegateCommand DisplayDatabaseManagementStartupCommand { get; set; }
         public DelegateCommand DisplayDatabaseUserCommand { get; set; }
         public DelegateCommand DisplayDataResourceCommand { get; set; }
-
+        public DelegateCommand DisplayDatabaseDivisionCommand { get; set; }
 
 
         // Visibility of buttons
@@ -70,6 +70,7 @@ namespace BarcoPVG.Viewmodels
             DisplayDatabaseManagementStartupCommand = new DelegateCommand(DisplayDatabaseManagementStartup);
             DisplayDatabaseUserCommand = new DelegateCommand(DisplayDatabaseUserStartup);
             DisplayDataResourceCommand = new DelegateCommand(DisplayDataBaseResourceStartup);
+            DisplayDatabaseDivisionCommand = new DelegateCommand(DisplayDatabaseDivisionStartup);
 
             SetWindowProperties();
         }
@@ -172,6 +173,10 @@ namespace BarcoPVG.Viewmodels
         public void DisplayDataBaseResourceStartup()
         {
             this.DataBase = new ViewModelDBResource();
+        
+        public void DisplayDatabaseDivisionStartup()
+        {
+            this.DataBase = new ViewModelDBDevision();
         }
 
         // JR CRUD
@@ -286,7 +291,7 @@ namespace BarcoPVG.Viewmodels
             switch (_dao.BarcoUser.Function)
             {
 
-                //Jarne
+                //Jarne aanmaken van een nieuwe view die DATA noemt
                 case "DATA":
                     NewRequests = Visibility.Visible;
                     ApproveRequests = Visibility.Visible;
@@ -344,8 +349,9 @@ namespace BarcoPVG.Viewmodels
             }
         }
 
+        public void InsertUser()
+        {
 
-
-
+        }
     }
 }

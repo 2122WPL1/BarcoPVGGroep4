@@ -21,8 +21,6 @@ namespace BarcoPVG.Views.JobRequest
         public CreateJRQueueUserControl()
         {
             InitializeComponent();
-
         }
-
     }
 }
