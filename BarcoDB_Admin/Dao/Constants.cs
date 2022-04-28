@@ -1,4 +1,4 @@
-﻿namespace BarcoPVG.Dao
+﻿namespace BarcoDB_Admin.Dao
 {
     internal class SQLConnection
     {

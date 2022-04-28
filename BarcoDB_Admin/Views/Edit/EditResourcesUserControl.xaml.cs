@@ -17,7 +17,7 @@ namespace BarcoDB_Admin.Views.Edit
     /// <summary>
     /// Interaction logic for EditResourcesUserControl.xaml
     /// </summary>
-    public partial class EditResourcesUserControl : Window
+    public partial class EditResourcesUserControl : UserControl
     {
         public EditResourcesUserControl()
         {

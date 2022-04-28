@@ -17,7 +17,7 @@ namespace BarcoDB_Admin.Views.Edit
     /// <summary>
     /// Interaction logic for EditDevisionUserControl.xaml
     /// </summary>
-    public partial class EditDevisionUserControl : Window
+    public partial class EditDevisionUserControl : UserControl
     {
         public EditDevisionUserControl()
         {
