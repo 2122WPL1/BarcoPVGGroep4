@@ -58,7 +58,6 @@ namespace BarcoPVG.Dao
                 Division = "EMC",
                 Function = "DEV",
             };
-           
         }
 
         public void GetDiv(Person loginPerson)
@@ -162,7 +161,7 @@ namespace BarcoPVG.Dao
         {
             JR autofilledJR = new()
             {
-             Requester = BarcoUser.Name,
+                Requester = BarcoUser.Name,
                 BarcoDivision = BarcoUser.Division
             };
 
@@ -328,7 +327,6 @@ namespace BarcoPVG.Dao
                 rqrequest.Battery = Jr.Battery;
                 // Matti voorlopig
                 // We create the rqo RqOptionel object to link the user data to the db data and saves the changes in the Barco database
-      
                 RqOptionel rqo = _context.RqOptionels.FirstOrDefault(o => o.IdRequest == Jr.IdRequest);
 
                 if(rqo == null)
@@ -915,7 +913,6 @@ namespace BarcoPVG.Dao
                 (r.RequestDate >= DateTime.Now.AddHours(-24))
             ).ToList();
         }
-         
         //Mati//Kaat//Mohamed
         public void PrintPvg(int idrequest,JR jr)
         { 
