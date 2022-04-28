@@ -13,7 +13,7 @@ xmlns:viewsTestGUI="clr-namespace:BarcoPVG.Views.TestGUI"
 xmlns:viewsDatabaseManagement="clr-namespace:BarcoPVG.Views.DatabaseManagement"
 xmlns:viewModelDatabaseManagement="clr-namespace:BarcoPVG.ViewModels.DatabaseManagement"
 >
-
+    <!--Bindings van de scherment worden naar de gedifineerde viewmodel gedaan-->
     <DataTemplate DataType="{x:Type viewModels:ViewModelMain}">
         <views:MainWindow/>
     </DataTemplate>
@@ -49,7 +49,7 @@ xmlns:viewModelDatabaseManagement="clr-namespace:BarcoPVG.ViewModels.DatabaseMan
         <viewsDatabaseManagement:DataBaseUser/>
     </DataTemplate>
     <!--Jarne-->
-    <DataTemplate DataType="{x:Type viewModelDatabaseManagement:ViewModelDBDevision}">
+    <DataTemplate DataType="{x:Type viewModelDatabaseManagement:ViewModelEditDevisionDB}">
         <viewsDatabaseManagement:DataBaseDevision/>
     </DataTemplate>
 </ResourceDictionary>

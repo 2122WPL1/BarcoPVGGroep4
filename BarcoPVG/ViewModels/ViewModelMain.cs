@@ -36,10 +36,8 @@ namespace BarcoPVG.Viewmodels
         public DelegateCommand TesterReturnCommand { get; set; }
         
         // Amy & Jarne
-        public DelegateCommand DisplayDatabaseManagementStartupCommand { get; set; }
-        public DelegateCommand DisplayDatabaseUserCommand { get; set; }
-        public DelegateCommand DisplayDataResourceCommand { get; set; }
-        public DelegateCommand DisplayDatabaseDivisionCommand { get; set; }
+        public DelegateCommand DisplayDatabaseManagementStartupCommand { get; set; } //button vanboven
+       
 
 
         // Visibility of buttons
@@ -68,9 +66,9 @@ namespace BarcoPVG.Viewmodels
             TesterReturnCommand = new DelegateCommand(TesterReturn);
             //Jarne & Amy
             DisplayDatabaseManagementStartupCommand = new DelegateCommand(DisplayDatabaseManagementStartup);
-            DisplayDatabaseUserCommand = new DelegateCommand(DisplayDatabaseUserStartup);
-            DisplayDataResourceCommand = new DelegateCommand(DisplayDataBaseResourceStartup);
-            DisplayDatabaseDivisionCommand = new DelegateCommand(DisplayDatabaseDivisionStartup);
+           // DisplayDatabaseUserCommand = new DelegateCommand(DisplayDatabaseUserStartup);
+            //DisplayDataResourceCommand = new DelegateCommand(DisplayDataBaseResourceStartup);
+            //DisplayDatabaseDivisionCommand = new DelegateCommand(DisplayDatabaseDivisionStartup);
 
             SetWindowProperties();
         }
@@ -86,15 +84,15 @@ namespace BarcoPVG.Viewmodels
             }
         }
         //Amy
-        public AbstractViewModelBase DataBase
-        {
-            get => _DataBase;
-            set 
-            {
-                _DataBase = value;
-                OnpropertyChanged();
-            }
-        }
+        //public AbstractViewModelBase DataBase
+        //{
+        //    get => _DataBase;
+        //    set 
+        //    {
+        //        _DataBase = value;
+        //        OnpropertyChanged();
+        //    }
+        //}
 
         // Command methods
         // TODO: add method to switch return window based on function
@@ -161,23 +159,19 @@ namespace BarcoPVG.Viewmodels
             this.ViewModel = new ViewModelDevelopment();
         }
         //Amy
+       
         public void DisplayDatabaseManagementStartup()
         {
-            this.ViewModel = new ViewModelDatabaseAddResource();
+            this.ViewModel = new ViewModelDatabaseManagement();
         }
-
-        public void DisplayRemoveResource()
-        {
-            this.ViewModel = new ViewModelDatabaseRemoveResource();
-        }*/
-        public void DisplayDatabaseManagement()
-        {
-            this.DataBase = new ViewModelDBUser();
-        }
-        public void DisplayDataBaseResourceStartup()
-        {
-            this.DataBase = new ViewModelDBResource();
-        
+        //public void DisplayDatabaseManagement()
+        //{
+        //    this.DataBase = new ViewModelDBUser();
+        //}
+        //public void DisplayDataBaseResourceStartup()
+        //{
+        //    this.DataBase = new ViewModelDBResource();
+        //}
         //public void DisplayDatabaseDivisionStartup()
         //{
         //    this.DataBase = new ViewModelDBDevision();
