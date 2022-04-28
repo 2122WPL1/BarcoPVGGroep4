@@ -19,10 +19,8 @@ namespace BarcoPVG.ViewModels.Login
     {
         private ICommand loginCommand, exitCommand;
 
-        private string _username = "username";
-        private string _password = "password";
-
-        bool isClicked = false;
+        private string _username = "";
+        private string _password = "";
 
         public ViewModelLogin() 
         {
@@ -57,25 +55,13 @@ namespace BarcoPVG.ViewModels.Login
             }
         }
 
-        //MouseDown event
         public string Username 
         {
             get => _username;
             set
             {
-                if (!isClicked)
-                {
-                    isClicked = true;
-                    _username.GetType().GetEvent("MouseDown");
-                    _username = string.Empty;
-                    OnpropertyChanged("Username");
-                }
-                else
-                {
-                    _username = value;
-                    OnpropertyChanged("Username");
-                }
-
+                _username = value;
+                OnpropertyChanged("Username");
             }
              
         }
