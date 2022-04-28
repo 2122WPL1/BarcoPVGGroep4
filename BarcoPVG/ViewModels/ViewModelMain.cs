@@ -70,15 +70,9 @@ namespace BarcoPVG.Viewmodels
             ApprovePlanAndReturnCommand = new DelegateCommand(ApprovePlanAndReturn);
             TesterReturnCommand = new DelegateCommand(TesterReturn);
             //Jarne & Amy
-            /*AddUserCommand = new DelegateCommand(DisplayAddUser);
-            RemoveUserCommand = new DelegateCommand(DisplayRemoveUser);
-            AddResourceCommand = new DelegateCommand(DisplayAddResource);
-            RemoveResourceCommand = new DelegateCommand(DisplayRemoveResource);*/
-            DatabaseManagementCommand = new DelegateCommand(DisplayDatabaseManagement);
-            //SaveAddUserCommand = new DelegateCommand(DisplayAddUser);
             DisplayDatabaseManagementStartupCommand = new DelegateCommand(DisplayDatabaseManagementStartup);
             DisplayDatabaseUserCommand = new DelegateCommand(DisplayDatabaseUserStartup);
-            DisplayDatabaseDivisionCommand = new DelegateCommand(DisplayDatabaseDivisionStartup);
+            //DisplayDatabaseDivisionCommand = new DelegateCommand(DisplayDatabaseDivisionStartup);
 
             SetWindowProperties();
         }
@@ -194,10 +188,10 @@ namespace BarcoPVG.Viewmodels
             this.DataBase = new ViewModelDBUser();
         }
         
-        public void DisplayDatabaseDivisionStartup()
-        {
-            this.DataBase = new ViewModelDBDevision();
-        }
+        //public void DisplayDatabaseDivisionStartup()
+        //{
+        //    this.DataBase = new ViewModelDBDevision();
+        //}
 
         // JR CRUD
         // Command functions
