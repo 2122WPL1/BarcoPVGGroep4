@@ -63,7 +63,6 @@ namespace BarcoPVG.ViewModels.Login
                 _username = value;
                 OnpropertyChanged("Username");
             }
-             
         }
         public string Password
         { 
