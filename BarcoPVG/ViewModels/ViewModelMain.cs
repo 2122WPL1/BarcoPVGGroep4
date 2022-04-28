@@ -174,10 +174,10 @@ namespace BarcoPVG.Viewmodels
         {
             this.DataBase = new ViewModelDBResource();
         
-        public void DisplayDatabaseDivisionStartup()
-        {
-            this.DataBase = new ViewModelDBDevision();
-        }
+        //public void DisplayDatabaseDivisionStartup()
+        //{
+        //    this.DataBase = new ViewModelDBDevision();
+        //}
 
         // JR CRUD
         // Command functions
