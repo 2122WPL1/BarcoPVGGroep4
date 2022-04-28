@@ -9,5 +9,6 @@
         public string Name { get; set; }
         public string Function { get; set; }
         public string Division { get; set; }
+        public string Password { get; set; }
     }
 }

@@ -88,7 +88,6 @@ namespace BarcoPVG.Dao
 
 
         // LISTS
-
         // Eakarach
         // Returns list of all user
         public List<Person> GetAllUser()

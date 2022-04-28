@@ -48,8 +48,8 @@ xmlns:viewModelDatabaseManagement="clr-namespace:BarcoPVG.ViewModels.DatabaseMan
     <DataTemplate DataType="{x:Type viewModelDatabaseManagement:ViewModelDBUser}">
         <viewsDatabaseManagement:DataBaseUser/>
     </DataTemplate>
-    <!--Jarne-->
+    <!--Jarne--><!--
     <DataTemplate DataType="{x:Type viewModelDatabaseManagement:ViewModelDBDevision}">
         <viewsDatabaseManagement:DataBaseDevision/>
-    </DataTemplate>
+    </DataTemplate>-->
 </ResourceDictionary>
