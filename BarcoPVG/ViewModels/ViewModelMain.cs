@@ -15,7 +15,7 @@ namespace BarcoPVG.Viewmodels
     class ViewModelMain : AbstractViewModelBase
     {
         private AbstractViewModelBase _viewModel;
-        private AbstractViewModelBase _DataBase; //amy
+  
         public BarcoUser User { get; set; }
 
 
@@ -188,21 +188,89 @@ namespace BarcoPVG.Viewmodels
         // JR CRUD
         // Command functions
         // Adds and stores a job request and switches windows
-        public void InsertJr()
+        public void InsertJr() // aanmaken job request
         {
             var jr = _dao.AddJobRequest(((AbstractViewModelContainer) this.ViewModel)
                 .JR); // SaveChanges included in function
             int count = 0;
-
-            foreach (var thisEUT in ((AbstractViewModelContainer) this.ViewModel).EUTs)
+            
+            if (jr.Requester.Length > 10)
             {
-                count++;
-                _dao.AddEutToRqRequest(jr, thisEUT, count.ToString());
+                MessageBox.Show("Requester is longer than the allowed length(10)");
             }
+            else
+            {
+                if (!(
+                        jr.BarcoDivision == String.Empty || jr.JobNature == String.Empty ||
+                        jr.EutPartnumbers == String.Empty || jr.NetWeight == String.Empty ||
+                        jr.GrossWeight == String.Empty || jr.EutProjectname == String.Empty ||
+                        jr.HydraProjectNr == String.Empty
+                    )
+                  )
+                    if (jr.ExpectedEnddate != null)
+                    {
+                        {
+                            if (((AbstractViewModelContainer)this.ViewModel).EUTs.Count == 0)
+                            {
+                                MessageBox.Show("Er moet tenminste 1 eut zijn");
 
-            // Here we call the SaveChanges method, so that we can link several EUTs to one JR
-            _dao.SaveChanges();
-            DisplayDevStartup();
+                            }
+                            else
+                            {
+
+
+                                foreach (var thisEUT in ((AbstractViewModelContainer)this.ViewModel).EUTs)
+                                {
+                                    count++;
+                                    if (thisEUT.AvailabilityDate != null)
+                                    {
+                                        if (
+                                           (thisEUT.ECO) || 
+                                           (thisEUT.SAV) || 
+                                           (thisEUT.EMC) || 
+                                           (thisEUT.ENV) || 
+                                           (thisEUT.PCK) || 
+                                           (thisEUT.REL) || 
+                                           (thisEUT.SAV)
+                                          )
+                                        {
+                                            _dao.AddEutToRqRequest(jr, thisEUT, count.ToString());
+                                        }
+                                        else
+                                        {
+
+                                            MessageBox.Show("selecteer iets bij de euts");
+                                            goto abc;
+                                            
+                                        }
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("geen datum voor 1 van de eut's geslescteerd");
+                                        goto abc;
+                                        
+                                    }
+                                }
+
+                                // Here we call the SaveChanges method, so that we can link several EUTs to one JR
+                                _dao.SaveChanges();
+                                DisplayDevStartup();
+                            
+                            }
+                        }
+                        
+                    }
+                    else
+                    {
+                        MessageBox.Show("geef een datum in voor de jr");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Alle verplichte gegevens moeten ingevult worden");
+                    }
+
+            }
+        abc:;
         }
 
 
