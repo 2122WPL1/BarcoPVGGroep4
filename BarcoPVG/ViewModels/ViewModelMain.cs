@@ -70,8 +70,8 @@ namespace BarcoPVG.Viewmodels
             ApprovePlanAndReturnCommand = new DelegateCommand(ApprovePlanAndReturn);
             TesterReturnCommand = new DelegateCommand(TesterReturn);
             //Jarne & Amy
-            DisplayDatabaseManagementStartupCommand = new DelegateCommand(DisplayDatabaseManagementStartup);
-            DisplayDatabaseUserCommand = new DelegateCommand(DisplayDatabaseUserStartup);
+           //DisplayDatabaseManagementStartupCommand = new DelegateCommand(DisplayDatabaseManagementStartup);
+           //DisplayDatabaseUserCommand = new DelegateCommand(DisplayDatabaseUserStartup);
             //DisplayDatabaseDivisionCommand = new DelegateCommand(DisplayDatabaseDivisionStartup);
 
             SetWindowProperties();
