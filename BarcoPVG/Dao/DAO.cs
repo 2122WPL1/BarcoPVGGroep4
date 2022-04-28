@@ -24,7 +24,7 @@ namespace BarcoPVG.Dao
         private BarcoContext _context;
         private static readonly DAO _instance = new();
 
-        public BarcoUser BarcoUser { get; private set; }
+        public BarcoUser BarcoUser { get; set; }
 
         // Calls an DAO instance
         public static DAO Instance()
@@ -188,14 +188,14 @@ namespace BarcoPVG.Dao
                 BarcoDivision = Jr.BarcoDivision == null ? string.Empty : Jr.BarcoDivision,
                 JobNature = Jr.JobNature == null ? string.Empty : Jr.JobNature,
                 EutProjectname = Jr.EutProjectname == null ? string.Empty : Jr.EutProjectname,
-               // EutPartnumbers = Jr.EutPartnr == null ? string.Empty : Jr.EutPartnr,
+                // EutPartnumbers = Jr.EutPartnr == null ? string.Empty : Jr.EutPartnr,
                 HydraProjectNr = Jr.HydraProjectnumber == null ? string.Empty : Jr.HydraProjectnumber,
-                
+
                 ExpectedEnddate = Jr.ExpEnddate == null ? DateTime.Now : (DateTime)Jr.ExpEnddate, // Not nullable, so needs to be casted
                 InternRequest = Jr.InternRequest, // Bool, default false
                 Battery = Jr.Battery, // Bool, default false
 
-                NetWeight = Jr.NetWeight == null? string.Empty : Jr.NetWeight,
+                NetWeight = Jr.NetWeight == null ? string.Empty : Jr.NetWeight,
                 GrossWeight = Jr.GrossWeight == null ? string.Empty : Jr.GrossWeight,
                 EutPartnumbers = Jr.EutPartnr == null ? string.Empty : Jr.EutPartnr
             };
@@ -331,9 +331,10 @@ namespace BarcoPVG.Dao
                 rqrequest.Battery = Jr.Battery;
                 // Matti voorlopig
                 // We create the rqo RqOptionel object to link the user data to the db data and saves the changes in the Barco database
+
                 RqOptionel rqo = _context.RqOptionels.FirstOrDefault(o => o.IdRequest == Jr.IdRequest);
 
-                if(rqo == null)
+                if (rqo == null)
                 {
                     rqo = new RqOptionel
                     {
@@ -341,7 +342,7 @@ namespace BarcoPVG.Dao
                         Remarks = Jr.Remarks == null ? string.Empty : Jr.Remarks,
                     };
                 }
-                
+
                 //Sander: wss wanneer er een JR aangepast wordt zodat het wel optionele velden heeft komt er hier een crash
                 //Sander: context heeft geen rqoptional
                 rqo.Link = Jr.Link;
@@ -362,12 +363,12 @@ namespace BarcoPVG.Dao
         // INCOMPLETE
         // Gets existing JR by ID
         // TODO: catch nullRefEx - Currently impossible due to selecting listitem on load
-        
+
         public JR GetJR(int idrequest) //Sander: Optionele JR velden geven geen error als ze inveguld zijn
         {
-                // Find selected RqRequest
-                RqRequest selectedRQ = _context.RqRequests.FirstOrDefault(rq => rq.IdRequest == idrequest);
-                RqOptionel selectedRQO = _context.RqOptionels.FirstOrDefault(rqo => rqo.IdRequest == idrequest);
+            // Find selected RqRequest
+            RqRequest selectedRQ = _context.RqRequests.FirstOrDefault(rq => rq.IdRequest == idrequest);
+            RqOptionel selectedRQO = _context.RqOptionels.FirstOrDefault(rqo => rqo.IdRequest == idrequest);
             JR selectedJR = null;
 
             if (selectedRQO != null)
@@ -389,13 +390,13 @@ namespace BarcoPVG.Dao
                     InternRequest = selectedRQ.InternRequest,
                     GrossWeight = selectedRQ.GrossWeight,
                     NetWeight = selectedRQ.NetWeight,
-                    Battery = (bool)selectedRQ.Battery,
+                    Battery = selectedRQ.Battery,
                     //EutPartnr = selectedRQ.EutPartnumbers,
 
                     // Testing
                     Link = selectedRQO.Link,
                     Remarks = selectedRQO.Remarks,
-                };     
+                };
             }
             else
             {
@@ -454,7 +455,7 @@ namespace BarcoPVG.Dao
         }
 
         // Mohamed, Kaat
-        public List <EUT> GetEut(RqRequest rq)
+        public List<EUT> GetEut(RqRequest rq)
         {
             List<RqRequestDetail> rqDetailsForJR = _context.RqRequestDetails.Where(r => r.IdRequest == rq.IdRequest).ToList();
             List<EUT> EUTObjects = new();
@@ -508,13 +509,33 @@ namespace BarcoPVG.Dao
             // Create a new planning record for each unique division
             foreach (string division in divisions)
             {
-                var planning = CreatePlPlanning(request, division);
+                bool msg = false;
 
-                _context.Add(planning);
+                var planning = CreatePlPlanning(request, division);
+                int id = planning.IdPlanning;
+            jump:
+                try //foutafhandeling
+                {
+
+
+                    _context.Add(planning);
                     _context.SaveChanges(); //Sander: het approven van een job request zorgt voor een probleem met de databank primary key van Planning_PK en pl_Planning
                                             //een dubbele id
-                                            // hij wil een record aanmaken met hetzelfde id 0okal bestaat die al
+                                            // hij wil een record aanmaken met hetzelfde id ook al bestaat die al
+                                            //tijdelijk opgelost met een try catch
+                                            //zie 852
+                    if (msg)
+                    {
+                        MessageBox.Show("Het originele ID was " + id + ", maar omdat deze een dubbel is van iets anders is deze verandered naar " + planning.IdPlanning);
+                    }
+                }
+                catch (/*DbUpdateException kan niet worden gebruikt omdat er dan een conflict is */ Exception)
+                {
+                    msg = true;
+                    planning.IdPlanning = planning.IdPlanning + 1;
 
+                    goto jump;
+                }
             }
         }
 
@@ -583,7 +604,7 @@ namespace BarcoPVG.Dao
                 JrStatus = jr.JrStatus,
                 Omschrijving = test.Description,
                 Startdatum = test.StartDate,
-                Einddatum = test.EndDate is null? test.StartDate : test.EndDate,
+                Einddatum = test.EndDate is null ? test.StartDate : test.EndDate,
                 Testdiv = test.TestDivision,
                 Resources = GetResource(test.Resource).Id,
                 TestStatus = test.Status
@@ -794,7 +815,7 @@ namespace BarcoPVG.Dao
             var newStartDate = test.StartDate;
 
             // If there is no endDate, set startDate as EndDate
-            var newEndDate = test.EndDate == null? newStartDate: test.EndDate;
+            var newEndDate = test.EndDate == null ? newStartDate : test.EndDate;
 
             // get resource number
             int resourceID = GetResource(test.Resource).Id;
@@ -816,7 +837,7 @@ namespace BarcoPVG.Dao
 
             foreach (var item in resourceUses)
             {
-                bool one = item.Einddatum is null? item.Startdatum >= newStartDate: item.Einddatum >= newStartDate;
+                bool one = item.Einddatum is null ? item.Startdatum >= newStartDate : item.Einddatum >= newStartDate;
                 bool two = newEndDate >= item.Startdatum;
 
                 if (one && two)
@@ -832,7 +853,7 @@ namespace BarcoPVG.Dao
         // Stores all data from GUI in DB
         public void SaveChanges()
         {
-            _context.SaveChanges(); //Sander: fout bij het aaanmaken van een JR (database probleem)
+            _context.SaveChanges(); //Sander: fout bij het aaanmaken van een JR (database probleem) (wilt niet een request aanmaken wanneer  de requester "super admin" is
         }
 
         /// <summary>
@@ -880,12 +901,13 @@ namespace BarcoPVG.Dao
         /// Kaat
         private PlPlanning CreatePlPlanning(RqRequest request, string division)
         {
-            var planning = new PlPlanning
+
+            var planning = new PlPlanning // sander: planning id word automatisch 0 manier zoeken om te auto incrementen
             {
                 IdRequest = request.IdRequest,
                 JrNr = request.JrNumber,
                 Requestdate = request.RequestDate,
-                DueDate = request.RequestDate == null? request.RequestDate: ((DateTime)request.RequestDate).AddDays(5),
+                DueDate = request.RequestDate == null ? request.RequestDate : ((DateTime)request.RequestDate).AddDays(5),
                 TestDiv = division,
                 TestDivStatus = "In plan", // use enums?
             };
@@ -912,14 +934,15 @@ namespace BarcoPVG.Dao
         //Mohamed
         public void FindAllJrLast24h()
         {
-            List<RqRequest> rq = _context.RqRequests.Where(r => 
-                r.RequestDate <= DateTime.Now&& 
+            List<RqRequest> rq = _context.RqRequests.Where(r =>
+                r.RequestDate <= DateTime.Now &&
                 (r.RequestDate >= DateTime.Now.AddHours(-24))
             ).ToList();
         }
+      
         //Mati//Kaat//Mohamed
-        public void PrintPvg(int idrequest,JR jr)
-        { 
+        public void PrintPvg(int idrequest, JR jr)
+        {
             // Get the PVGResponsibles for this division combination
             // possibly more than one
             List<RqRequestDetail> listDetail =
