@@ -28,19 +28,6 @@ namespace BarcoPVG.Views
 
             InitializeComponent();
 
-            //if a user is already logged in then the MainWindow pops-up 
-            //else the Login screen pops-up
-            //Jarne
-            //if (IsLoggedIn == true)
-            //{
-            //    //tonen van de mainwindow
-            //    MainWindow;
-            //}
-            //else
-            //{
-            //    //tonen van het login scherm
-            //    Login;
-            //}
         }
     }
 }

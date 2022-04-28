@@ -50,6 +50,7 @@ xmlns:viewModelDatabaseManagement="clr-namespace:BarcoPVG.ViewModels.DatabaseMan
     </DataTemplate>
     <!--Jarne-->
     <DataTemplate DataType="{x:Type viewModelDatabaseManagement:ViewModelEditDevisionDB}">
+
         <viewsDatabaseManagement:DataBaseDevision/>
-    </DataTemplate>
+    </DataTemplate>-->
 </ResourceDictionary>

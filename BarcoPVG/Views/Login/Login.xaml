@@ -4,15 +4,101 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BarcoPVG.Views.Login"
-        xmlns:vm="clr-namespace:BarcoPVG.ViewModels"
+        xmlns:vm="clr-namespace:BarcoPVG.ViewModels" 
+        xmlns:login="clr-namespace:BarcoPVG.ViewModels.Login" d:DataContext="{d:DesignInstance Type=login:ViewModelLogin}"
         mc:Ignorable="d"
-        Title="Login" Height="450" Width="800" Background="LightGray">
+        Title="Login" Height="450" Width="350"
+        AllowsTransparency="true" Background="Transparent"
+        WindowStyle="None" ResizeMode="NoResize">
+
     <Window.Resources>
         <vm:MultiValueConverter x:Key="converter"/>
     </Window.Resources>
     <Grid>
         <!--Amy-->
-        <StackPanel>
+        <!--Eakarach-->
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Border CornerRadius="10" Grid.RowSpan="2">
+            <Border.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="LightGray" Offset="0.3"/>
+                    <GradientStop Color="red" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+
+        <StackPanel VerticalAlignment="Center">
+            <Image Style="{StaticResource BarcoLogo}" Width="200"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" >
+            <StackPanel Orientation="Horizontal">
+                <TextBox x:Name="txtUsername" FontFamily="Helvetica"
+                             FontWeight="Light"
+                             Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
+                             FontSize="20"
+                             HorizontalAlignment="Center"
+                             Foreground="Black"
+                             Background="Transparent"
+                             BorderThickness="0"
+                             Width="230"
+                             HorizontalContentAlignment="Left"
+                             Opacity="0.5"
+                             Height="25"
+                             Margin="50,0,0,0"
+                             />
+                <Image Style="{StaticResource IconUser}" Width="20"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       />
+            </StackPanel>
+            <Border Width="250" Height="2" Background="Black" Opacity="0.5"></Border>
+
+            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                <local:BindablePasswordBox x:Name="pwdPassword" FontFamily="Helvetica"
+                             FontWeight="Light"
+                             Password="{Binding Password}"
+                             FontSize="20"
+                             HorizontalAlignment="Center"
+                             Foreground="Black"
+                             Background="Transparent"
+                             BorderThickness="0"
+                             Width="230"
+                             HorizontalContentAlignment="Left"
+                             Opacity="0.5"
+                             Height="25"
+                             Margin="50,0,0,0"/>
+                
+                <Image Style="{StaticResource IconLock}" Width="20"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       />
+            </StackPanel>
+            <Border Width="250" Height="2" Background="Black" Opacity="0.5"></Border>
+
+            <StackPanel Orientation="Horizontal">
+                <Button  Content="LOGIN" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="95,50,0,0" 
+                            Command="{Binding LoginCommand}" Width="76">
+                    <Button.CommandParameter>
+                        <MultiBinding Converter="{StaticResource converter}">
+                            <Binding ElementName="txtUsername" Path="Text"/>
+                            <Binding ElementName="pwdPassword" Path="Password"/>
+                        </MultiBinding>
+                    </Button.CommandParameter>
+                </Button>
+                <Button Content="EXIT" HorizontalAlignment="Center" Margin="10,50,0,0" Width="74" 
+                        Command="{Binding ExitCommand}"/>
+            </StackPanel>
+            <StackPanel Margin="30,40,0,0">
+                <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="Contact 04 444 44 44" Foreground="White"></Label>
+            </StackPanel>
+        </StackPanel>
+
+        <!--<StackPanel>
             <GroupBox Height="429" Header="Login">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -45,7 +131,7 @@
                     <Button Grid.Column="2" Content="Exit" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Top" Margin="45,16,0,0" />
                 </Grid>
             </GroupBox>
-        </StackPanel>
+        </StackPanel>-->
 
     </Grid>
 </Window>

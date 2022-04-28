@@ -60,10 +60,9 @@ namespace BarcoPVG.Dao
             this.BarcoUser = new BarcoUser()
             {
                 Name = name, 
-                Division = "test Division",
+                Division = "EMC",
                 Function = "DEV",
             };
-           
         }
 
         public void GetDiv(Person loginPerson)
@@ -535,6 +534,7 @@ namespace BarcoPVG.Dao
                     msg = true;
                     planning.IdPlanning = planning.IdPlanning + 1;
 
+
                     goto jump;
                 }
             }
@@ -940,7 +940,7 @@ namespace BarcoPVG.Dao
                 (r.RequestDate >= DateTime.Now.AddHours(-24))
             ).ToList();
         }
-
+      
         //Mati//Kaat//Mohamed
         public void PrintPvg(int idrequest, JR jr)
         {
