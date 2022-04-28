@@ -61,7 +61,7 @@ namespace BarcoPVG.Dao
             {
                 Name = name, 
                 Division = "EMC",
-                Function = "DEV",
+                Function = "DATA",
             };
         }
 
@@ -521,7 +521,7 @@ namespace BarcoPVG.Dao
                     _context.Add(planning);
                     _context.SaveChanges(); //Sander: het approven van een job request zorgt voor een probleem met de databank primary key van Planning_PK en pl_Planning
                                             //een dubbele id
-                                            // hij wilt een record aanmaken met hetzelfde id 0 ookal bestaad die al
+                                            // hij wil een record aanmaken met hetzelfde id ook al bestaat die al
                                             //tijdelijk opgelost met een try catch
                                             //zie 852
                     if (msg)
@@ -533,7 +533,6 @@ namespace BarcoPVG.Dao
                 {
                     msg = true;
                     planning.IdPlanning = planning.IdPlanning + 1;
-
 
                     goto jump;
                 }
