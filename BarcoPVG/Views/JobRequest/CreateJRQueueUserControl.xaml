@@ -24,17 +24,9 @@
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header="JR number" DisplayMemberBinding="{Binding JrNumber}"/>
+                        <GridViewColumn Header="JR number" DisplayMemberBinding="{Binding JrNumber}" />
                         <GridViewColumn Header="Expected Approve Date" DisplayMemberBinding="{Binding RequestDate, StringFormat=d}" />
                         <GridViewColumn Header="Expected End Date" DisplayMemberBinding="{Binding ExpectedEnddate, StringFormat=d}" />
-
-
-                        <!--<GridViewColumn Header="Id" DisplayMemberBinding="{Binding IdRequest}" />
-                        <GridViewColumn Header="Job Request Number" DisplayMemberBinding="{Binding JrNumber}" />
-                        <GridViewColumn Header="Eut Projectname" DisplayMemberBinding="{Binding EutProjectname}" />
-                        <GridViewColumn Header="Hydra Project Number" DisplayMemberBinding="{Binding HydraProjectNr}" />
-                        <GridViewColumn Header="Expected End Date" DisplayMemberBinding="{Binding ExpectedEnddate, StringFormat=d}" />
-                        <GridViewColumn Header="Status" DisplayMemberBinding="{Binding JrStatus}" />-->
                     </GridView>
                 </ListView.View>
             </ListView>

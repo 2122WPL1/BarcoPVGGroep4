@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BarcoPVG.ViewModels.DatabaseManagement
 {
-    internal class ViewModelEditResourceDB
+    internal class ViewModelDBDevision
     {
     }
 }

@@ -35,12 +35,14 @@ namespace BarcoPVG.Viewmodels
         public DelegateCommand ApprovePlanAndReturnCommand { get; set; }
         public DelegateCommand TesterReturnCommand { get; set; }
         // Amy & Jarne
-        public DelegateCommand AddUserCommand { get; set; }
-        public DelegateCommand RemoveUserCommand { get; set; }
-        public DelegateCommand AddResourceCommand { get; set; }
-        public DelegateCommand RemoveResourceCommand { get; set; }
-        public DelegateCommand DatabaseManagementCommand { get; set; }
-        public DelegateCommand SaveAddUserCommand { get; set; }
+        //public DelegateCommand AddUserCommand { get; set; }
+        //public DelegateCommand RemoveUserCommand { get; set; }
+        //public DelegateCommand AddResourceCommand { get; set; }
+        //public DelegateCommand RemoveResourceCommand { get; set; }
+        //public DelegateCommand SaveAddUserCommand { get; set; }
+        public DelegateCommand DisplayDatabaseManagementStartupCommand { get; set; }
+        public DelegateCommand DisplayDatabaseUserCommand { get; set; }
+        public DelegateCommand DisplayDatabaseDivisionCommand { get; set; }
 
 
         // Visibility of buttons
@@ -74,6 +76,9 @@ namespace BarcoPVG.Viewmodels
             RemoveResourceCommand = new DelegateCommand(DisplayRemoveResource);*/
             DatabaseManagementCommand = new DelegateCommand(DisplayDatabaseManagement);
             //SaveAddUserCommand = new DelegateCommand(DisplayAddUser);
+            DisplayDatabaseManagementStartupCommand = new DelegateCommand(DisplayDatabaseManagementStartup);
+            DisplayDatabaseUserCommand = new DelegateCommand(DisplayDatabaseUserStartup);
+            DisplayDatabaseDivisionCommand = new DelegateCommand(DisplayDatabaseDivisionStartup);
 
             SetWindowProperties();
         }
@@ -187,6 +192,11 @@ namespace BarcoPVG.Viewmodels
         public void DisplayDatabaseManagement()
         {
             this.DataBase = new ViewModelDBUser();
+        }
+        
+        public void DisplayDatabaseDivisionStartup()
+        {
+            this.DataBase = new ViewModelDBDevision();
         }
 
         // JR CRUD
