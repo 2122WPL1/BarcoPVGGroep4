@@ -94,7 +94,7 @@
                 <Button Content="EXIT" HorizontalAlignment="Center" Margin="10,50,0,0" Width="74" 
                         Command="{Binding ExitCommand}"/>
             </StackPanel>
-            <StackPanel Margin="0,360,0,100">
+            <StackPanel>
                 <Label VerticalAlignment="Center" HorizontalAlignment="Right" Content="Contact 056 23 32 11" Foreground="White"/>
             </StackPanel>
         </StackPanel>

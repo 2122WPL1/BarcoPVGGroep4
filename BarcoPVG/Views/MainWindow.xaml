@@ -56,9 +56,6 @@
                             Command="{Binding DisplayDevStartupCommand, Mode=OneWay}" 
                             Visibility="{Binding SeeAll}"
                             Margin="10"/>
-                        <Button Content="Database Management"
-                                Command="{Binding DisplayDatabaseManagementStartupCommand, Mode=OneWay}"
-                                Visibility="{Binding Data}"/>
                     </StackPanel>
                     <ScrollViewer Height="910" Margin="0,-0,0,0">
                         <ContentControl Content="{Binding ViewModel}" Height="auto" Margin="0,-10,0,0" ScrollViewer.HorizontalScrollBarVisibility="Auto"/>
