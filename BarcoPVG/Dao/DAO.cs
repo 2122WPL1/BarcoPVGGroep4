@@ -42,7 +42,7 @@ namespace BarcoPVG.Dao
             {
                 Name = "Super-Admin",
                 Division = "Super-Admin",
-                Function = "DATA",
+                Function = "DEV",
             };
         }
       
@@ -61,7 +61,7 @@ namespace BarcoPVG.Dao
             {
                 Name = name, 
                 Division = "EMC",
-                Function = "DATA",
+                Function = "DEV",
             };
         }
 

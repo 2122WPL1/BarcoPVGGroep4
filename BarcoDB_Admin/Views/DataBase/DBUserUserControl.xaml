@@ -12,13 +12,24 @@
             <ListView ItemsSource="{Binding AllUsers}" SelectedItem="{Binding selectedUser, Mode=TwoWay}">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Abbreviation" Width="150" DisplayMemberBinding="{Binding AbbreviationUser}"/>
-                        <GridViewColumn Header="First Name" Width="150" DisplayMemberBinding="{Binding FirstNameUser}"/>
-                        <GridViewColumn Header="Last Name" Width="150" DisplayMemberBinding="{Binding LastNameUser}"/>
-                        <GridViewColumn Header="Password" Width="150" DisplayMemberBinding="{Binding PasswordUser}"/>
+                        <GridViewColumn Header="Abbreviation" Width="150" DisplayMemberBinding="{Binding Afkorting}"/>
+                        <GridViewColumn Header="First Name" Width="150" DisplayMemberBinding="{Binding Voornaam}"/>
+                        <GridViewColumn Header="Last Name" Width="150" DisplayMemberBinding="{Binding Familienaam}"/>
+                        <GridViewColumn Header="Password" Width="150" DisplayMemberBinding="{Binding wachtwoord}"/>
                     </GridView>
                 </ListView.View>
             </ListView>
         </GroupBox>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Edit" 
+                    Command="{Binding DataContext.DisplayEditUserCommand,Mode=OneWay}"
+                    Margin="10"/>
+            <Button Content="Add new" 
+                    Command="{Binding DataContext.DisplayAddUserCommand, Mode=OneWay}"
+                    Margin="10"/>
+            <Button Content="Delete" 
+                    Command="{Binding DeleteUser}"
+                    Margin="10"/>
+        </StackPanel>
     </StackPanel>
 </UserControl>
