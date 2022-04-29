@@ -38,6 +38,9 @@
     <Page Update="DictionaryResources\DataTemplates.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>
+    <Page Update="DictionaryResources\ViewTemplates.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
   </ItemGroup>
 
 </Project>

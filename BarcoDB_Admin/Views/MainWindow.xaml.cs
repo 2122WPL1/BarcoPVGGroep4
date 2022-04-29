@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BarcoDB_Admin.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BarcoDB_Admin
+namespace BarcoDB_Admin.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -22,6 +23,8 @@ namespace BarcoDB_Admin
     {
         public MainWindow()
         {
+            DataContext = new ViewModelMain();
+
             InitializeComponent();
         }
     }
