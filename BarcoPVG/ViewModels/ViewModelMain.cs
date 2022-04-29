@@ -206,8 +206,8 @@ namespace BarcoPVG.Viewmodels
                         jr.GrossWeight == String.Empty || jr.EutProjectname == String.Empty ||
                         jr.HydraProjectNr == String.Empty
                     )
-                  )
-                    if (jr.ExpectedEnddate != null)
+                  ) 
+                    if (jr.ExpectedEnddate.ToLongDateString != DateTime.Now.ToLongDateString) //geeft nooit null | de tijd van vandaag door datetime now te gebruiken | datetime now en enddate 1 milliseconde verschil | nu tijdelijke if clause
                     {
                         {
                             if (((AbstractViewModelContainer)this.ViewModel).EUTs.Count == 0)
