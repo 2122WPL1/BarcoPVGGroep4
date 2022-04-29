@@ -4,19 +4,24 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Height="450" Width="800" Background="LightGray" Foreground="White"
+       
+        Background="LightGray" Foreground="White"
         WindowState="Maximized"
         WindowStyle="ThreeDBorderWindow"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+     MinWidth="330  "
+         Width="800" 
+    >
     <!--amy-->
-    <StackPanel Margin="10">
-        <GroupBox Header="Database Management" Height="376">
+    <!--<ScrollViewer HorizontalScrollBarVisibility="Visible"> dit zorgt ervoor dat de andere scrollviewer niet zichtbaar wordt-->
+        <StackPanel Margin="10" >
+        <GroupBox Header="Database Management" >
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="65*"/>
-                    <RowDefinition Height="289*"/>
+                    <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="263">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Button Content="User" 
                             Command="{Binding DisplayDatabaseUserCommand, Mode=OneWay}"
                             Margin="5"/>
@@ -27,8 +32,8 @@
                             Command="{Binding DisplayDataBaseDivisionCommand, Mode=OneWay}"
                             Margin="5"/>
                 </StackPanel>
-                <ScrollViewer Grid.Row="1">
-                    <ContentControl Content="{Binding ViewModel}" Width="591"/>
+                    <ScrollViewer Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Visible" >
+                    <ContentControl Content="{Binding ViewModel}" Width="auto" HorizontalContentAlignment="Center"  />
 
                 </ScrollViewer>
             </Grid>
@@ -44,4 +49,5 @@
             <Button Content="Delete" Margin="10"/>
         </StackPanel>
     </StackPanel>
+    <!--</ScrollViewer>-->
 </Window>

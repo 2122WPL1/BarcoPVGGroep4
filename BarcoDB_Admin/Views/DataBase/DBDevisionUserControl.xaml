@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BarcoDB_Admin.Views.DataBase"
         mc:Ignorable="d"
-        d:DesignHeight="800" d:Background="LightGray" Width="629">
+        d:DesignHeight="800" d:Background="LightGray" Width="auto">
     <!--amy-->
     <StackPanel Margin="5">
-        <GroupBox Height="420" Header="Resources">
+        <GroupBox MinHeight="200" Header="Resources">
             <ListView>
                 <ListView.View>
                     <GridView>
