@@ -5,28 +5,39 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BarcoPVG.Views"
              xmlns:vm="clr-namespace:BarcoPVG.Viewmodels.JobRequest"
-             mc:Ignorable="d" d:Background="LightGray" Width="1145" Height="435">
+             mc:Ignorable="d" d:Background="LightGray" Width="1820" Height="980">
     <UserControl.Resources>
         <vm:ViewModelCreateJRQueue x:Key="converterToColor"/>
     </UserControl.Resources>
     <StackPanel Margin="10">
-        <GroupBox Header="Open Job Requests TEST" BorderThickness="0.2">
-            <ListView x:Name="gvList" ItemsSource="{Binding IdRequestsOnly}" SelectedItem="{Binding SelectedJR, Mode=TwoWay}" Height="250" Background="White">
-                <ListView.View >
+        <GroupBox Header="Open Job Requests" BorderThickness="0.2">
+            <ListView x:Name="gvList"
+                      ItemsSource="{Binding IdRequestsOnly}" 
+                      SelectedItem="{Binding SelectedJR, Mode=TwoWay}"
+                      VerticalAlignment="Stretch"
+                      Margin="3"
+                      SelectionMode="Single"
+                      SelectedIndex="1"
+                      ScrollViewer.VerticalScrollBarVisibility="Auto"
+                      ScrollViewer.CanContentScroll="True"
+                      ScrollViewer.HorizontalScrollBarVisibility="Auto" 
+                      HorizontalAlignment="Stretch"
+                      HorizontalContentAlignment="Center">
+                <ListView.View>
                     <GridView >
-                        <GridViewColumn  Header="Division" DisplayMemberBinding="{Binding BarcoDivision}" />
-                        <GridViewColumn Header="Requester" DisplayMemberBinding="{Binding Requester}" />
-                        <GridViewColumn Header="EUT Projectname" DisplayMemberBinding="{Binding EutProjectname}" />
-                        <GridViewColumn  Header="Job Nature" >
+                        <GridViewColumn Header="Division" DisplayMemberBinding="{Binding BarcoDivision}" Width="Auto"/>
+                        <GridViewColumn Header="Requester" DisplayMemberBinding="{Binding Requester}" Width="Auto"/>
+                        <GridViewColumn Header="EUT Projectname" DisplayMemberBinding="{Binding EutProjectname}" Width="Auto"/>
+                        <GridViewColumn Header="Job Nature" Width="Auto">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding JobNature}" Background="{Binding JobNature, Converter={StaticResource converterToColor}}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header="JR number" DisplayMemberBinding="{Binding JrNumber}"/>
-                        <GridViewColumn Header="Expected Approve Date" DisplayMemberBinding="{Binding RequestDate, StringFormat=d}" />
-                        <GridViewColumn Header="Expected End Date" DisplayMemberBinding="{Binding ExpectedEnddate, StringFormat=d}" />
+                        <GridViewColumn Header="JR number" DisplayMemberBinding="{Binding JrNumber}" Width="Auto"/>
+                        <GridViewColumn Header="Expected Approve Date" DisplayMemberBinding="{Binding RequestDate, StringFormat=d}" Width="Auto"/>
+                        <GridViewColumn Header="Expected End Date" DisplayMemberBinding="{Binding ExpectedEnddate, StringFormat=d}" Width="Auto"/>
                     </GridView>
                 </ListView.View>
             </ListView>

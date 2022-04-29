@@ -39,5 +39,16 @@ xmlns:viewsTestGUI="clr-namespace:BarcoPVG.Views.TestGUI"
     <DataTemplate DataType="{x:Type viewModelTestGUI:ViewModelUpdateTestQueue}">
         <viewsTestGUI:UpdateTestQueueUserControl/>
     </DataTemplate>
+    <!--Amy & Jarne-->
+    <DataTemplate DataType="{x:Type viewModelDatabaseManagement:ViewModelDatabaseManagement}">
+        <viewsDatabaseManagement:DatabaseManagementUserControl/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type viewModelDatabaseManagement:ViewModelDBUser}">
+        <viewsDatabaseManagement:DataBaseUser/>
+    </DataTemplate>
+    <!--Jarne-->
+    <DataTemplate DataType="{x:Type viewModelDatabaseManagement:ViewModelEditDevisionDB}">
 
+        <viewsDatabaseManagement:DataBaseDevision/>
+    </DataTemplate>
 </ResourceDictionary>

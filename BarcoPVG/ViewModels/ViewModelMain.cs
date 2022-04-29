@@ -212,24 +212,21 @@ namespace BarcoPVG.Viewmodels
                             if (((AbstractViewModelContainer)this.ViewModel).EUTs.Count == 0)
                             {
                                 MessageBox.Show("Er moet tenminste 1 eut zijn");
-
                             }
                             else
                             {
-
-
                                 foreach (var thisEUT in ((AbstractViewModelContainer)this.ViewModel).EUTs)
                                 {
                                     count++;
                                     if (thisEUT.AvailabilityDate != null)
                                     {
                                         if (
-                                           (thisEUT.ECO) || 
-                                           (thisEUT.SAV) || 
-                                           (thisEUT.EMC) || 
-                                           (thisEUT.ENV) || 
-                                           (thisEUT.PCK) || 
-                                           (thisEUT.REL) || 
+                                           (thisEUT.ECO) ||
+                                           (thisEUT.SAV) ||
+                                           (thisEUT.EMC) ||
+                                           (thisEUT.ENV) ||
+                                           (thisEUT.PCK) ||
+                                           (thisEUT.REL) ||
                                            (thisEUT.SAV)
                                           )
                                         {
@@ -240,24 +237,19 @@ namespace BarcoPVG.Viewmodels
 
                                             MessageBox.Show("selecteer iets bij de euts");
                                             goto abc;
-                                            
                                         }
                                     }
                                     else
                                     {
                                         MessageBox.Show("geen datum voor 1 van de eut's geslescteerd");
                                         goto abc;
-                                        
                                     }
                                 }
-
                                 // Here we call the SaveChanges method, so that we can link several EUTs to one JR
                                 _dao.SaveChanges();
                                 DisplayDevStartup();
-                            
                             }
                         }
-                        
                     }
                     else
                     {
@@ -267,14 +259,11 @@ namespace BarcoPVG.Viewmodels
                     {
                         MessageBox.Show("Alle verplichte gegevens moeten ingevult worden");
                     }
-
             }
         abc:;
         }
 
 
-
-        // Change so no JR and no
         public void InsertInternalJr()
         {
             var jr = _dao.AddJobRequest(((AbstractViewModelContainer) this.ViewModel)
