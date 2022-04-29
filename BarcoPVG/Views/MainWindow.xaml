@@ -10,7 +10,9 @@
         WindowStyle="None" 
         WindowStartupLocation="CenterScreen" 
         WindowState="Maximized" 
-        Focusable="True">
+        Focusable="True"
+        Height="{x:Static SystemParameters.PrimaryScreenHeight}" 
+        Width="{x:Static SystemParameters.PrimaryScreenWidth}">
     <StackPanel>
         <StackPanel Margin="10">
             <GroupBox BorderThickness="0.1" Height="1040" >
