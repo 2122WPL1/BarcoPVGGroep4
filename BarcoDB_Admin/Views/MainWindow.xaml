@@ -10,7 +10,9 @@
         WindowStyle="ThreeDBorderWindow"
         WindowStartupLocation="CenterScreen"
      MinWidth="330  "
-         Width="800" 
+         
+        Height="{x:Static SystemParameters.PrimaryScreenHeight}" 
+      Width="{x:Static SystemParameters.PrimaryScreenWidth}" 
     >
     <!--amy-->
     <!--<ScrollViewer HorizontalScrollBarVisibility="Visible"> dit zorgt ervoor dat de andere scrollviewer niet zichtbaar wordt-->
@@ -43,11 +45,17 @@
         <StackPanel>
 
         </StackPanel>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Content="Edit" Margin="10"/>
-            <Button Content="Add new" Margin="10"/>
-            <Button Content="Delete" Margin="10"/>
-        </StackPanel>
+        <!--<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Edit" 
+                    Command="{Binding Path=Edit}"
+                    Margin="10"/>
+            <Button Content="Add new" 
+                    Command="{ Binding DataContext:DisplayAddNew}"
+                    Margin="10"/>
+            <Button Content="Delete" 
+                    Command="{Binding Delete}"
+                    Margin="10"/>
+        </StackPanel>-->
     </StackPanel>
     <!--</ScrollViewer>-->
 </Window>

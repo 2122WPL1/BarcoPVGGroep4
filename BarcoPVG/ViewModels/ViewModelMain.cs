@@ -158,7 +158,6 @@ namespace BarcoPVG.Viewmodels
         }
 
         //Amy
-       
         //public void DisplayDatabaseManagement()
         //{
         //    this.DataBase = new ViewModelDBUser();
@@ -354,7 +353,6 @@ namespace BarcoPVG.Viewmodels
                 //    Data = Visibility.Visible;
                 //
                 //    break;
-
                 case "DEV": // Developer -> Developer voor dit programma 
                     NewRequests = Visibility.Visible;
                     ApproveRequests = Visibility.Visible;
@@ -402,9 +400,9 @@ namespace BarcoPVG.Viewmodels
 
 
 
-        public void InsertUser()
-        {
+        //public void InsertUser()
+        //{
 
-        }
+        //}
     }
 }

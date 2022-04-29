@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BarcoPVG.Views"
-             mc:Ignorable="d" d:Background="LightGray" Width="1435" Height="569">
+             mc:Ignorable="d" d:Background="LightGray" Width="1435" Height="auto"> <!--width niet aanpassen anders word de scrollbar heel fucked-->
     <StackPanel Margin="10" >
         <GroupBox Header="Project Details">
             <DockPanel>
@@ -101,16 +101,25 @@
                                          ScrollViewer.CanContentScroll="True"
                                          ScrollViewer.HorizontalScrollBarVisibility="Auto"
                                          HorizontalContentAlignment="Center">
+
                                     <ListBox.ItemsPanel>
                                         <ItemsPanelTemplate>
-                                            <StackPanel Orientation='Horizontal'/>
+                                            <StackPanel Orientation="Horizontal"/>
                                         </ItemsPanelTemplate>
                                     </ListBox.ItemsPanel>
+                                    <ListBox.Resources>
+                                        <CollectionViewSource x:Key="EUTs" Source="{Binding EUTs}" />
+                                    </ListBox.Resources>
+                                    <ListBox.ItemsSource>
+                                        <CompositeCollection>
+                                            <CollectionContainer Collection="{Binding Source={StaticResource EUTs}}"/>
+                                            <ListBoxItem>
+                                                <Button Command="{Binding Path=AddEUTCommand}" Content="+"/>
+                                            </ListBoxItem>
+                                        </CompositeCollection>
+                                    </ListBox.ItemsSource>
                                 </ListBox>
-                                <StackPanel Orientation="Horizontal">
-                                    <Button Content="Add Part" 
-                                Command="{Binding Path=AddEUTCommand}" 
-                                Margin="10"/>
+                                <StackPanel Orientation="Horizontal"><!--de button wordt uiteindelijk verwijdered wanneer de close button op de eut werkt-->
                                     <Button Content="Remove Part" 
                                 Command="{Binding Path=RemoveEUTCommand}" 
                                 Margin="10"/>

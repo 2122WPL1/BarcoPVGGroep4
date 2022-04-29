@@ -3,7 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:viewModels="clr-namespace:BarcoDB_Admin.ViewModels"
         xmlns:viewModelDataBase="clr-namespace:BarcoDB_Admin.ViewModels.DataBase"
-        xmlns:viewDataBase="clr-namespace:BarcoDB_Admin.Views.DataBase">
+        xmlns:viewDataBase="clr-namespace:BarcoDB_Admin.Views.DataBase"
+        xmlns:viewModelEdit="clr-namespace:BarcoDB_Admin.ViewModels.Edit"
+        xmlns:viewEdit="clr-namespace:BarcoDB_Admin.Views.Edit">
+        
         
         <!-- Amy -->
     <DataTemplate DataType="{x:Type viewModelDataBase:ViewModelDBUser}">
@@ -16,6 +19,10 @@
 
     <DataTemplate DataType="{x:Type viewModelDataBase:ViewModelDBDevision}">
         <viewDataBase:DBDevisionUserControl/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type viewModelEdit:ViewModelEditUser}">
+        <viewEdit:EditUserUserControl/>
     </DataTemplate>
    
 </ResourceDictionary>
