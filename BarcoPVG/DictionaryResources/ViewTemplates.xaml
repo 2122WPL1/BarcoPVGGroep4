@@ -12,6 +12,8 @@ xmlns:viewsPlanning="clr-namespace:BarcoPVG.Views.Planning"
 xmlns:viewsTestGUI="clr-namespace:BarcoPVG.Views.TestGUI"
 xmlns:viewsDatabaseManagement="clr-namespace:BarcoPVG.Views.DatabaseManagement"
 xmlns:viewModelDatabaseManagement="clr-namespace:BarcoPVG.ViewModels.DatabaseManagement"
+xmlns:ViewInternJR="clr-namespace:BarcoPVG.Views.JobRequest"
+xmlns:ViewModelInternJr="clr-namespace:BarcoPVG.Viewmodels.JobRequest"
 >
     <!--Bindings van de scherment worden naar de gedifineerde viewmodel gedaan-->
     <DataTemplate DataType="{x:Type viewModels:ViewModelMain}">
@@ -40,6 +42,9 @@ xmlns:viewModelDatabaseManagement="clr-namespace:BarcoPVG.ViewModels.DatabaseMan
     </DataTemplate>
     <DataTemplate DataType="{x:Type viewModelTestGUI:ViewModelUpdateTestQueue}">
         <viewsTestGUI:UpdateTestQueueUserControl/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type ViewModelInternJr:viewmodel}">
+        <ViewInternJR:CreateInternJRFormUserControl/>
     </DataTemplate>
     
 </ResourceDictionary>
