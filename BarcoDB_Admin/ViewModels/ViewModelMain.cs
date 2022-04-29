@@ -23,6 +23,7 @@ namespace BarcoDB_Admin.ViewModels
         public DelegateCommand DisplayDataBaseDivisionCommand { get; set; }
         public DelegateCommand DisplayAddUserCommand { get; set; }
         public DelegateCommand DisplayEditUserCommand { get; set; }
+        public DelegateCommand SaveUserCommand { get; set; }
 
 
 
@@ -68,7 +69,14 @@ namespace BarcoDB_Admin.ViewModels
 
         public void DisplayEditUserStartup()
         {
+            SaveUserCommand = new DelegateCommand(InsertUser);
             this.ViewModel = new ViewModelEditUser();
         }
+
+        public void InsertUser()
+        {
+
+        }
+       
     }
 }
