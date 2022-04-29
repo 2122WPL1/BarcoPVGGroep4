@@ -55,7 +55,7 @@ namespace BarcoPVG.Viewmodels
         {
             this.User = _dao.BarcoUser;
 
-            DisplayInternalJobRequest = new DelegateCommand();
+            DisplayInternalJobRequest = new DelegateCommand(DisplayNewInternalJR);
             DisplayNewJRCommand = new DelegateCommand(DisplayNewJR);
             DisplayExistingJRCommand = new DelegateCommand(DisplayExistingJR);
             DisplayEmployeeStartupCommand = new DelegateCommand(DisplayEmployeeStartup);
@@ -106,11 +106,6 @@ namespace BarcoPVG.Viewmodels
         {
             SaveJrCommand = new DelegateCommand(InsertJr);
             this.ViewModel = new ViewModelCreateJRForm();
-        }
-        public void DisplayNewInternalJR()
-        {
-            SaveJrCommand = new DelegateCommand(InsertJr);
-            this.ViewModel = new Viewmodelapprove();
         }
 
         public void DisplayNewInternalJR()

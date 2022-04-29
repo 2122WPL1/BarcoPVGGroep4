@@ -54,7 +54,7 @@
                             Mode=OneWay}"
                     Margin="10"/>
             <Button Content="Internal JobRequest"
-                    Command="{Binding DataContext., 
+                    Command="{Binding DataContext.DisplayInternalJobRequest, 
                             RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, 
                             Mode=OneWay}"
                     Margin="10"/>
