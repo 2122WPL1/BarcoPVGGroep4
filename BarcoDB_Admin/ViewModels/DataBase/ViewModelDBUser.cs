@@ -9,6 +9,7 @@ namespace BarcoDB_Admin.ViewModels.DataBase
 {
      class ViewModelDBUser : AbstractViewModelCollectionRQ
     {
+
         public ViewModelDBUser() : base()
         {
             Load();
@@ -16,7 +17,7 @@ namespace BarcoDB_Admin.ViewModels.DataBase
 
         private void Load()
         {
-
+            
         }
     }
 }
