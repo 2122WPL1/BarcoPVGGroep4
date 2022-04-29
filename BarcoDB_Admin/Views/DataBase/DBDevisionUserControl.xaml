@@ -8,23 +8,23 @@
         d:DesignHeight="800" d:Background="LightGray" Width="auto">
     <!--amy-->
     <StackPanel Margin="5">
-        <GroupBox MinHeight="200" Header="Resources">
+        <GroupBox MinHeight="200" Header="Devision">
             <ListView>
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Name" Width="150"/>
-                        <GridViewColumn Header="Color-RGB" Width="150"/>
-                        <GridViewColumn Header="Color-HEX" Width="150"/>
+                        <GridViewColumn Header="Abbreviation" Width="150"/>
+                        <GridViewColumn Header="Alias" Width="150"/>
+                        <GridViewColumn Header="Active" Width="150"/>
                     </GridView>
                 </ListView.View>
             </ListView>
         </GroupBox>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
             <Button Content="Edit" 
-                    Command="{Binding Path=Edit}"
+                    
                     Margin="10"/>
             <Button Content="Add new" 
-                    Command="{ Binding DataContext:DisplayAddNew}"
+                    
                     Margin="10"/>
             <Button Content="Delete" 
                     Command="{Binding Delete}"

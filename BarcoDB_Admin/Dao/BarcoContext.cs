@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using BarcoPVG.Models.Db;
+using BarcoDB_Admin.Dao;
+using BarcoPVG.Dao;
 
 namespace BarcoDB_Admin.Dao
 {
