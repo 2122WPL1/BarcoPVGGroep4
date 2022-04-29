@@ -49,7 +49,7 @@ namespace BarcoPVG.Models.Classes
             {
                 //verwijder EUT ViewModelApproveJRForm
                // geen idee hoe dit gedaan moet worden er is all een multivalueconverter maar is nog niet toegevoegd
-
+               this.DeleteItem(obj);
                 MessageBox.Show(obj.ToString());
             }
             else

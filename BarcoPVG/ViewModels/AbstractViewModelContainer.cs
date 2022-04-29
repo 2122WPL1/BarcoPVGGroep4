@@ -1,8 +1,11 @@
 ﻿using BarcoPVG.Models.Classes;
+using Prism.Commands;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Windows;
+using System.Windows.Input;
 
 namespace BarcoPVG.Viewmodels
 {
@@ -12,11 +15,13 @@ namespace BarcoPVG.Viewmodels
         // Only one getter/setter needs to be made for all changes in GUI
         protected JR _jr;
         protected EUT _eut;
+        protected EUT _selectedEUT;
+
 
         // EUT's
         // Does not necessarily need to be linked to JR? We can retrieve the JR ID and add it in DAO
         public ObservableCollection<EUT> EUTs { get; set; }
-        protected EUT _selectedEUT;
+
 
         public AbstractViewModelContainer()
         {
@@ -42,6 +47,7 @@ namespace BarcoPVG.Viewmodels
                 OnpropertyChanged();
             }
         }
+
         public EUT SelectedEUT
         {
             get { return _selectedEUT; }
@@ -51,5 +57,6 @@ namespace BarcoPVG.Viewmodels
                 OnpropertyChanged();
             }
         }
+
     }
 }

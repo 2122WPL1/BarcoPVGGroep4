@@ -110,7 +110,7 @@ namespace BarcoPVG.Viewmodels
         public void DisplayNewInternalJR()
         {
             SaveJrCommand = new DelegateCommand(InsertInternalJr);
-            this.ViewModel = new ViewModelCreateJRForm(true);
+            //this.ViewModel = new ViewModelCreateJRForm(true);
         }
 
         public void DisplayExistingJR() //Sander: Foutmelding wanneer er niets geselecteerd wordt

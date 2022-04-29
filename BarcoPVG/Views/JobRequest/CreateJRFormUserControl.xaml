@@ -89,23 +89,34 @@
                         <GroupBox Header="Parts and tests" Width="534">
                             <StackPanel>
                                 <ListBox x:Name="ListEUT" Height="300" Background="LightGray"
-                             ItemTemplate="{DynamicResource EUT}" 
-                             ItemsSource="{Binding EUTs}" 
-                             SelectedItem="{Binding SelectedEUT, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }">
+                                            ItemTemplate="{DynamicResource EUT}" 
+                                            SelectedItem="{DynamicResource removeEUT.SelectedEUT }">
+                                    <ListBox.Resources>
+                                        <CollectionViewSource x:Key="EUTs" Source="{Binding EUTs}" />
+                                    </ListBox.Resources>
                                     <ListBox.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <StackPanel Orientation='Horizontal'/>
                                         </ItemsPanelTemplate>
                                     </ListBox.ItemsPanel>
+                                    <ListBox.ItemsSource>
+                                        <CompositeCollection>
+                                            <CollectionContainer Collection="{Binding Source={StaticResource EUTs}}"/>
+                                            <ListBoxItem>
+                                                <Button Command="{Binding AddEUTCommand}" Content="+"/>
+                                            </ListBoxItem>
+                                        </CompositeCollection>
+                                    </ListBox.ItemsSource>
                                 </ListBox>
-                                <StackPanel Orientation="Horizontal">
+                                
+                                <!--<StackPanel Orientation="Horizontal">
                                     <Button Content="Add Part" 
-                                Command="{Binding Path=AddEUTCommand}" 
-                                Margin="10"/>
+                                            Command="{Binding Path=AddEUTCommand}" 
+                                            Margin="10"/>
                                     <Button Content="Remove Part" 
-                                Command="{Binding Path=RemoveEUTCommand}" 
-                                Margin="10"/>
-                                </StackPanel>
+                                            Command="{Binding Path=RemoveEUTCommand}" 
+                                            Margin="10"/>
+                                </StackPanel>-->
                             </StackPanel>
                         </GroupBox>
                     </DockPanel>

@@ -17,6 +17,7 @@ using BarcoPVG.Views;
 using BarcoPVG.Models.Db;
 using BarcoPVG.Models.Classes;
 using BarcoPVG.Dao;
+using BarcoPVG.ViewModels;
 
 namespace BarcoPVG.Viewmodels.JobRequest
 {
@@ -36,18 +37,20 @@ namespace BarcoPVG.Viewmodels.JobRequest
         public ICommand AddEUTCommand { get; set; }
         public ICommand RemoveEUTCommand { get; set; }
         public ICommand RefreshJRCommand { get; set; }
+        public ICommand RemoveSingleEUTCommand { get; set; }
+
 
         // Constructor for new JR
-        public ViewModelCreateJRForm(bool isInternalRequest = false) : base()
-        {
-            Init();
-            Load();
+        //public ViewModelCreateJRForm(bool isInternalRequest = false) : base()
+        //{
+        //    Init();
+        //    Load();
 
-            // JR = new JR
-            RefreshJR();
+        //    // JR = new JR
+        //    RefreshJR();
 
-            _jr.InternRequest = isInternalRequest;
-        }
+        //    _jr.InternRequest = isInternalRequest;
+        //}
 
         // Constructor for existing JR
         public ViewModelCreateJRForm(int idRequest) : base()
@@ -56,11 +59,7 @@ namespace BarcoPVG.Viewmodels.JobRequest
             Load();
 
             // Look for JR with correct ID
-            if (_dao.GetJR(idRequest) == null)
-            {
-
-            }
-            else
+            if (_dao.GetJR(idRequest) != null)
             {
                 this._jr = _dao.GetJR(idRequest);
 
@@ -79,6 +78,11 @@ namespace BarcoPVG.Viewmodels.JobRequest
             }
         }
 
+        public ViewModelCreateJRForm() : base()
+        {
+            Init();           
+        }
+
         // Code reused in both constructors
         private void Init()
         {
@@ -89,7 +93,8 @@ namespace BarcoPVG.Viewmodels.JobRequest
             // Command initialization
             RefreshJRCommand = new DelegateCommand(RefreshJR);
             AddEUTCommand = new DelegateCommand(AddEUT);
-            RemoveEUTCommand = new DelegateCommand(RemoveSelectedEUT);
+            //RemoveEUTCommand = new DelegateCommand(RemoveSelectedEUT);
+            RemoveSingleEUTCommand = new Command((param) => this.RemoveSelectedEUT(param));
         }
 
         // Loads jobNatures, divisions in cbb
@@ -146,10 +151,29 @@ namespace BarcoPVG.Viewmodels.JobRequest
         /// <summary>
         /// deletes selected EUT via _selectedEut variable
         /// </summary>
-        public void RemoveSelectedEUT()
+        //public void RemoveSelectedEUT(EUT eut)
+        //{
+        //    EUTs.Remove(eut);
+        //    MessageBox.Show("EUT is removed");
+        //}
+
+
+        //Eakarach
+        //It runs but apparently they make 2 objects and don't know where to track them in order to remove of add.
+        public void RemoveSelectedEUT(object param)
         {
-            EUTs.Remove(_selectedEUT);
-            MessageBox.Show("test");
+            ListBoxItem selectedEUT2 = (ListBoxItem)param;
+
+            EUT selectedEUT3 = (EUT)selectedEUT2.DataContext;
+
+            _selectedEUT = selectedEUT3;
+
+            if (true)
+            {
+                EUTs.Remove(_selectedEUT);
+                MessageBox.Show("EUT is removed");
+            }
+            
         }
     }
 }
