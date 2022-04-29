@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="800"  d:DesignWidth="800" d:Background="LightGray" >
     <StackPanel Margin="10">
-        <GroupBox Header="Tests to execute" BorderThickness="0.1">
+        <GroupBox Header="Tests to execute" BorderThickness="0.1" Height="auto" Width="auto">
             <StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <ComboBox ItemsSource="{Binding StatusList}" 
@@ -15,7 +15,17 @@
                           Grid.Column="1" Grid.Row="2" Margin="10"/>
                     <Button Content="Save changes" Command="{Binding Path=SaveStatusChangesCommand}" Margin="5"/>
                 </StackPanel>
-                <ListView ItemsSource="{Binding Tests}" SelectedItem="{Binding SelectedTest, Mode=TwoWay}" Height="250">
+                <ListView ItemsSource="{Binding Tests}" 
+                          SelectedItem="{Binding SelectedTest, Mode=TwoWay}"
+                          VerticalAlignment="Stretch"
+                          Margin="3"
+                          SelectionMode="Single"
+                          SelectedIndex="1"
+                          ScrollViewer.VerticalScrollBarVisibility="Auto"
+                          ScrollViewer.CanContentScroll="True"
+                          ScrollViewer.HorizontalScrollBarVisibility="Auto" 
+                          HorizontalAlignment="Stretch"
+                          HorizontalContentAlignment="Center">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Resource" DisplayMemberBinding="{Binding Resource}" />
@@ -24,7 +34,7 @@
                             <GridViewColumn Header="End Date" DisplayMemberBinding="{Binding EndDate, StringFormat=d}" />
                             <GridViewColumn Header="Status" DisplayMemberBinding="{Binding Status}"/>
                         </GridView>
-                    </ListView.View>
+                     </ListView.View>
                 </ListView>
             </StackPanel>
         </GroupBox>
