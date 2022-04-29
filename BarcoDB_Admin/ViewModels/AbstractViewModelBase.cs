@@ -1,4 +1,5 @@
 ﻿using BarcoPVG.Dao;
+using BarcoPVG.ViewModels.DatabaseManagement;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,7 +8,7 @@ using System.Text;
 using System.Windows;
 
 
-namespace BarcoPVG.Viewmodels
+namespace BarcoDB_Admin.Viewmodels
 {
     public abstract class AbstractViewModelBase : INotifyPropertyChanged
     {
@@ -27,6 +28,8 @@ namespace BarcoPVG.Viewmodels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
         }
+
+
         // End boilerplate code
     }
 }
