@@ -10,7 +10,9 @@
         WindowStyle="ThreeDBorderWindow"
         WindowStartupLocation="CenterScreen"
      MinWidth="330  "
-         Width="800" 
+         
+        Height="{x:Static SystemParameters.PrimaryScreenHeight}" 
+      Width="{x:Static SystemParameters.PrimaryScreenWidth}" 
     >
     <!--amy-->
     <!--<ScrollViewer HorizontalScrollBarVisibility="Visible"> dit zorgt ervoor dat de andere scrollviewer niet zichtbaar wordt-->

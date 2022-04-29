@@ -21,7 +21,6 @@
                       ScrollViewer.VerticalScrollBarVisibility="Auto"
                       ScrollViewer.CanContentScroll="True"
                       ScrollViewer.HorizontalScrollBarVisibility="Auto" 
-                      HorizontalAlignment="Stretch"
                       HorizontalContentAlignment="Center">
                 <ListView.View>
                     <GridView>
