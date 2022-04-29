@@ -9,14 +9,14 @@
     <!--amy-->
     <StackPanel Margin="5">
         <GroupBox Height="420" Header="User">
-            <ListView>
+            <ListView ItemsSource="{Binding AllUsers}" SelectedItem="{Binding selectedUser, Mode=TwoWay}">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Abbreviation" Width="150"/>
-                        <GridViewColumn Header="First Name" Width="150"/>
-                        <GridViewColumn Header="Last Name" Width="150"/>
-                        <GridViewColumn Header="E-mail" Width="150"/>
-                        <GridViewColumn Header="Password" Width="150"/>
+                        <GridViewColumn Header="Abbreviation" Width="140" DisplayMemberBinding="{Binding AbbreviationUser}"/>
+                        <GridViewColumn Header="First Name" Width="130" DisplayMemberBinding="{Binding FirstNameUser}"/>
+                        <GridViewColumn Header="Last Name" Width="130" DisplayMemberBinding="{Binding LastNameUser}"/>
+                        <GridViewColumn Header="E-mail" Width="110" DisplayMemberBinding="{Binding EmailUser}"/>
+                        <GridViewColumn Header="Password" Width="130" DisplayMemberBinding="{Binding PasswordUser}"/>
                     </GridView>
                 </ListView.View>
             </ListView>
