@@ -7,9 +7,10 @@
         xmlns:vm="clr-namespace:BarcoPVG.ViewModels" 
         xmlns:login="clr-namespace:BarcoPVG.ViewModels.Login" d:DataContext="{d:DesignInstance Type=login:ViewModelLogin}"
         mc:Ignorable="d"
-        Title="Login" Height="450" Width="350"
+        Title="Login" Height="1080" Width="1920"
         AllowsTransparency="true" Background="Transparent"
-        WindowStyle="None" ResizeMode="NoResize">
+        WindowStyle="None" ResizeMode="NoResize"
+        WindowState="Maximized">
 
     <Window.Resources>
         <vm:MultiValueConverter x:Key="converter"/>
@@ -32,13 +33,13 @@
         </Border>
 
         <StackPanel VerticalAlignment="Center">
-            <Image Style="{StaticResource BarcoLogo}" Width="200"/>
+            <Image Style="{StaticResource BarcoLogo}" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </StackPanel>
 
         <StackPanel Grid.Row="1" >
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <TextBox x:Name="txtUsername" FontFamily="Helvetica"
-                             FontWeight="Light"
+                         FontWeight="Light"
                              Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
                              FontSize="20"
                              HorizontalAlignment="Center"
@@ -58,7 +59,7 @@
             </StackPanel>
             <Border Width="250" Height="2" Background="Black" Opacity="0.5"></Border>
 
-            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+            <StackPanel Orientation="Horizontal" Margin="0,20,0,0" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <local:BindablePasswordBox x:Name="pwdPassword" FontFamily="Helvetica"
                              FontWeight="Light"
                              Password="{Binding Password}"
@@ -80,7 +81,7 @@
             </StackPanel>
             <Border Width="250" Height="2" Background="Black" Opacity="0.5"></Border>
 
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Button  Content="LOGIN" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="95,50,0,0" 
                             Command="{Binding LoginCommand}" Width="76">
                     <Button.CommandParameter>
@@ -94,7 +95,7 @@
                         Command="{Binding ExitCommand}"/>
             </StackPanel>
             <StackPanel Margin="30,40,0,0">
-                <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="Contact 04 444 44 44" Foreground="White"></Label>
+                <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="Contact 056 23 32 11" Foreground="White"></Label>
             </StackPanel>
         </StackPanel>
 
