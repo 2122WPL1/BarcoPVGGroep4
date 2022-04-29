@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 
-namespace BarcoPVG.Viewmodels
+namespace BarcoDB_Admin.Viewmodels
 {
     public abstract class AbstractViewModelContainer : AbstractViewModelBase
     {

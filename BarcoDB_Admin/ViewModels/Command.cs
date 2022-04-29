@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace BarcoPVG.ViewModels
+namespace BarcoDB_Admin.ViewModels
 {
     internal class Command : ICommand
     {

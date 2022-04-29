@@ -17,7 +17,7 @@ namespace BarcoDB_Admin.Views.DataBase
     /// <summary>
     /// Interaction logic for DBResourcesUserControl.xaml
     /// </summary>
-    public partial class DBResourcesUserControl : Window
+    public partial class DBResourcesUserControl : UserControl
     {
         public DBResourcesUserControl()
         {

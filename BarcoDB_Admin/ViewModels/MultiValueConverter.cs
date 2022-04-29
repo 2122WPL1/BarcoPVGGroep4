@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
 
-namespace BarcoPVG.ViewModels
+namespace BarcoDB_Admin.ViewModels
 {
     internal class MultiValueConverter : IMultiValueConverter
     {

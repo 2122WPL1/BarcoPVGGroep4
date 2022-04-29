@@ -29,21 +29,21 @@ namespace BarcoPVG.ViewModels.DatabaseManagement
         public ViewModelDatabaseManagement() : base()
         {
 
-            DisplayDataResourceCommand = new DelegateCommand(DisplayDataBaseResourceStartup);
+            //DisplayDataResourceCommand = new DelegateCommand(DisplayDataBaseResourceStartup);
 
             //DisplayDatabaseManagementStartupCommand = new DelegateCommand(DisplayDatabaseManagementStartup);
             //DisplayDatabaseUserCommand = new DelegateCommand(DisplayDatabaseUserStartup);
             //DisplayDatabaseDivisionCommand = new DelegateCommand(DisplayDatabaseDivisionStartup);
             //functie of delegatecommand niet gevonden
         }
-        public void DisplayDatabaseManagement()
-        {
-            this.DataBase = new ViewModelDBUser();
-        }
-        public void DisplayDataBaseResourceStartup()
-        {
-            this.DataBase = new ViewModelDBResource();
-        }
+        //public void DisplayDatabaseManagement()
+        //{
+        //    this.DataBase = new ViewModelDBUser();
+        //}
+        //public void DisplayDataBaseResourceStartup()
+        //{
+        //    this.DataBase = new ViewModelDBResource();
+        //}
         //public void DisplayDatabaseDivisionStartup()
         //{
         //    this.DataBase = new ViewModelDBDevision();
