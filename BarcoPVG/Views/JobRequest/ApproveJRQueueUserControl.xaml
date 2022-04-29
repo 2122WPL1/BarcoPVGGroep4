@@ -9,7 +9,18 @@
     <StackPanel Margin="10">
         <GroupBox Header="Approval queue" BorderThickness="0.1">
             <StackPanel>
-                <ListView Height="auto" ItemsSource="{Binding IdRequestsOnly}" SelectedItem="{Binding SelectedJR, Mode=TwoWay}" >
+                <ListView ItemsSource="{Binding IdRequestsOnly}" 
+                          SelectedItem="{Binding SelectedJR, Mode=TwoWay}" 
+                          VerticalAlignment="Stretch"
+                          Margin="3"
+                          SelectionMode="Single"
+                          SelectedIndex="1"
+                          ScrollViewer.VerticalScrollBarVisibility="Auto"
+                          ScrollViewer.CanContentScroll="True"
+                          ScrollViewer.HorizontalScrollBarVisibility="Auto" 
+                          HorizontalAlignment="Stretch"
+                          HorizontalContentAlignment="Center"
+                          MaxHeight="700">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Id" DisplayMemberBinding="{Binding IdRequest}" />
