@@ -4,13 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Height="1080" Width="1920" Background="LightGray" Foreground="White"
+        Background="LightGray" Foreground="White"
         WindowState="Maximized"
-        WindowStyle="ThreeDBorderWindow"
+        MaxHeight="1080"
+        MaxWidth="1080"
+        MinWidth="1920"
+        MinHeight="1080"
+        WindowStyle="ToolWindow"
         WindowStartupLocation="CenterScreen">
     <StackPanel>
         <StackPanel Margin="10">
-            <GroupBox BorderThickness="0.1" Height="980" >
+            <GroupBox BorderThickness="0.1" Height="1040" >
                 <GroupBox.Header>
                     <!-- This could be done more efficiently? -->
                     <Grid Background="#FFF10000">
@@ -55,8 +59,8 @@
                                 Command="{Binding DisplayDatabaseManagementStartupCommand, Mode=OneWay}"
                                 Visibility="{Binding Data}"/>
                     </StackPanel>
-                    <ScrollViewer Height="980" >
-                        <ContentControl Content="{Binding ViewModel}" Height="980"/>
+                    <ScrollViewer Height="910" Margin="0,-0,0,0">
+                        <ContentControl Content="{Binding ViewModel}" Height="908" Margin="0,-10,0,0"/>
                     </ScrollViewer>
                 </StackPanel>
             </GroupBox>

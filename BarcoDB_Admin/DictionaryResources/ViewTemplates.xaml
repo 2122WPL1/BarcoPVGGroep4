@@ -1,0 +1,21 @@
+﻿<!-- Datatemplates to connect viewmodels to views -->
+        <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:viewModels="clr-namespace:BarcoDB_Admin.ViewModels"
+        xmlns:viewModelDataBase="clr-namespace:BarcoDB_Admin.ViewModels.DataBase"
+        xmlns:viewDataBase="clr-namespace:BarcoDB_Admin.Views.DataBase">
+        
+        <!-- Amy -->
+    <DataTemplate DataType="{x:Type viewModelDataBase:ViewModelDBUser}">
+        <viewDataBase:DBUserUserControl/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type viewModelDataBase:ViewModelDBResources}">
+        <viewDataBase:DBResourcesUserControl/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type viewModelDataBase:ViewModelDBDevision}">
+        <viewDataBase:DBDevisionUserControl/>
+    </DataTemplate>
+   
+</ResourceDictionary>

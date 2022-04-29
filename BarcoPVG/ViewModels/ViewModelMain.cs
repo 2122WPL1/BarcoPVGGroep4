@@ -15,7 +15,7 @@ namespace BarcoPVG.Viewmodels
     class ViewModelMain : AbstractViewModelBase
     {
         private AbstractViewModelBase _viewModel;
-        private AbstractViewModelBase _DataBase; //amy
+  
         public BarcoUser User { get; set; }
 
 
@@ -36,10 +36,8 @@ namespace BarcoPVG.Viewmodels
         public DelegateCommand TesterReturnCommand { get; set; }
 
         // Amy & Jarne
-        public DelegateCommand DisplayDatabaseManagementStartupCommand { get; set; }
-        public DelegateCommand DisplayDatabaseUserCommand { get; set; }
-        public DelegateCommand DisplayDataResourceCommand { get; set; }
-        public DelegateCommand DisplayDatabaseDivisionCommand { get; set; }
+        public DelegateCommand DisplayDatabaseManagementStartupCommand { get; set; } //button vanboven
+       
 
 
         // Visibility of buttons
@@ -70,8 +68,9 @@ namespace BarcoPVG.Viewmodels
             TesterReturnCommand = new DelegateCommand(TesterReturn);
             //Jarne & Amy
             DisplayDatabaseManagementStartupCommand = new DelegateCommand(DisplayDatabaseManagementStartup);
-            DisplayDatabaseUserCommand = new DelegateCommand(DisplayDatabaseUserStartup);
-            DisplayDataResourceCommand = new DelegateCommand(DisplayDataBaseResourceStartup);
+            //DisplayDatabaseUserCommand = new DelegateCommand(DisplayDatabaseUserStartup);
+            //DisplayDataResourceCommand = new DelegateCommand(DisplayDataBaseResourceStartup);
+
             //DisplayDatabaseDivisionCommand = new DelegateCommand(DisplayDatabaseDivisionStartup);
 
             SetWindowProperties();
@@ -89,15 +88,15 @@ namespace BarcoPVG.Viewmodels
         }
 
         //Amy
-        public AbstractViewModelBase DataBase
-        {
-            get => _DataBase;
-            set
-            {
-                _DataBase = value;
-                OnpropertyChanged();
-            }
-        }
+        //public AbstractViewModelBase DataBase
+        //{
+        //    get => _DataBase;
+        //    set 
+        //    {
+        //        _DataBase = value;
+        //        OnpropertyChanged();
+        //    }
+        //}
 
         // Command methods
         // TODO: add method to switch return window based on function
@@ -167,21 +166,19 @@ namespace BarcoPVG.Viewmodels
         }
 
         //Amy
+       
         public void DisplayDatabaseManagementStartup()
         {
             this.ViewModel = new ViewModelDatabaseManagement();
         }
-
-        public void DisplayDatabaseUserStartup()
-        {
-            this.DataBase = new ViewModelDBUser();
-        }
-
-        public void DisplayDataBaseResourceStartup()
-        {
-            this.DataBase = new ViewModelDBResource();
-        }
-        
+        //public void DisplayDatabaseManagement()
+        //{
+        //    this.DataBase = new ViewModelDBUser();
+        //}
+        //public void DisplayDataBaseResourceStartup()
+        //{
+        //    this.DataBase = new ViewModelDBResource();
+        //}
         //public void DisplayDatabaseDivisionStartup()
         //{
         //    this.DataBase = new ViewModelDBDevision();
@@ -191,26 +188,83 @@ namespace BarcoPVG.Viewmodels
         // JR CRUD
         // Command functions
         // Adds and stores a job request and switches windows
-        public void InsertJr()
+        public void InsertJr() // aanmaken job request
         {
             var jr = _dao.AddJobRequest(((AbstractViewModelContainer) this.ViewModel)
                 .JR); // SaveChanges included in function
             int count = 0;
-
-            foreach (var thisEUT in ((AbstractViewModelContainer) this.ViewModel).EUTs)
+            
+            if (jr.Requester.Length > 10)
             {
-                count++;
-                _dao.AddEutToRqRequest(jr, thisEUT, count.ToString());
+                MessageBox.Show("Requester is longer than the allowed length(10)");
             }
+            else
+            {
+                if (!(
+                        jr.BarcoDivision == String.Empty || jr.JobNature == String.Empty ||
+                        jr.EutPartnumbers == String.Empty || jr.NetWeight == String.Empty ||
+                        jr.GrossWeight == String.Empty || jr.EutProjectname == String.Empty ||
+                        jr.HydraProjectNr == String.Empty
+                    )
+                  )
+                    if (jr.ExpectedEnddate != null)
+                    {
+                        {
+                            if (((AbstractViewModelContainer)this.ViewModel).EUTs.Count == 0)
+                            {
+                                MessageBox.Show("Er moet tenminste 1 eut zijn");
+                            }
+                            else
+                            {
+                                foreach (var thisEUT in ((AbstractViewModelContainer)this.ViewModel).EUTs)
+                                {
+                                    count++;
+                                    if (thisEUT.AvailabilityDate != null)
+                                    {
+                                        if (
+                                           (thisEUT.ECO) ||
+                                           (thisEUT.SAV) ||
+                                           (thisEUT.EMC) ||
+                                           (thisEUT.ENV) ||
+                                           (thisEUT.PCK) ||
+                                           (thisEUT.REL) ||
+                                           (thisEUT.SAV)
+                                          )
+                                        {
+                                            _dao.AddEutToRqRequest(jr, thisEUT, count.ToString());
+                                        }
+                                        else
+                                        {
 
-            // Here we call the SaveChanges method, so that we can link several EUTs to one JR
-            _dao.SaveChanges();
-            DisplayDevStartup();
+                                            MessageBox.Show("selecteer iets bij de euts");
+                                            goto abc;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("geen datum voor 1 van de eut's geslescteerd");
+                                        goto abc;
+                                    }
+                                }
+                                // Here we call the SaveChanges method, so that we can link several EUTs to one JR
+                                _dao.SaveChanges();
+                                DisplayDevStartup();
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("geef een datum in voor de jr");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Alle verplichte gegevens moeten ingevult worden");
+                    }
+            }
+        abc:;
         }
 
 
-
-        // Change so no JR and no
         public void InsertInternalJr()
         {
             var jr = _dao.AddJobRequest(((AbstractViewModelContainer) this.ViewModel)
@@ -358,6 +412,8 @@ namespace BarcoPVG.Viewmodels
                     break;
             }
         }
+
+
 
         public void InsertUser()
         {
