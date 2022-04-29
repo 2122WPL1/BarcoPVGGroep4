@@ -104,6 +104,12 @@
                              ScrollViewer.HorizontalScrollBarVisibility="Auto"
                              HorizontalContentAlignment="Center">
                         <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation='Horizontal'/>
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                        </ListBox>
+                        <!--<ListBox.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <StackPanel Orientation="Horizontal"/>
                             </ItemsPanelTemplate>
@@ -119,16 +125,7 @@
                                 </ListBoxItem>
                             </CompositeCollection>
                         </ListBox.ItemsSource>
-                    </ListBox>
-
-                    <StackPanel Orientation="Horizontal" >
-                        <!--<Button Content="Add Part" 
-                                Command="{Binding Path=AddEUTCommand}" 
-                                Margin="10"/>-->
-                        <Button Content="Remove Part"
-                                Command="{Binding Path= RemoveEUTCommand}" 
-                                Margin="10"/>
-                    </StackPanel>
+                    </ListBox>-->
 
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
