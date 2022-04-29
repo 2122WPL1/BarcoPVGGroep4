@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:BarcoPVG.Views"
              mc:Ignorable="d" 
              d:DesignHeight="900" d:DesignWidth="1600" d:Background="LightGray">
-    <GroupBox>
+    <GroupBox VerticalAlignment="Top">
         <GroupBox.Header>
             <StackPanel Orientation="Horizontal">
                 <TextBlock FontSize="16" Text="Planning "/>
@@ -57,7 +57,8 @@
                       ScrollViewer.HorizontalScrollBarVisibility="Auto" 
                       HorizontalAlignment="Stretch"
                       HorizontalContentAlignment="Center"
-                      MaxHeight="700">
+                      MaxHeight="500"
+                      ><!--Maxheight changes per device????????-->
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Resource" DisplayMemberBinding="{Binding Resource}" />
