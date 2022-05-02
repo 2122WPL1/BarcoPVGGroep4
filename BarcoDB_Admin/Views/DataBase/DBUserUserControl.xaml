@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:BarcoDB_Admin.Views.DataBase"
+        xmlns:local="clr-namespace:BarcoDB_Admin.Views"
         mc:Ignorable="d"
         d:DesignHeight="800" d:Background="LightGray" Width="auto">
     <!--amy-->
@@ -15,18 +15,27 @@
             <ListView ItemsSource="{Binding AllUsers}" SelectedItem="{Binding selectedUser, Mode=TwoWay}" Height="60" VerticalAlignment="Top" >
                 
                 <ListView.View>
-
-                    <GridView AllowsColumnReorder="False">
-
-                        <GridViewColumn Header="Abbreviation" Width="150" DisplayMemberBinding="{Binding AbbreviationUser}"/>
-                            <GridViewColumn Header="First Name" Width="150" DisplayMemberBinding="{Binding FirstNameUser}"/>
-                        <GridViewColumn Header="Last Name" Width="150" DisplayMemberBinding="{Binding LastNameUser}"/>
-                        <GridViewColumn Header="Password" Width="150" DisplayMemberBinding="{Binding PasswordUser}"/>
+                    <GridView>
+                        <GridViewColumn Header="Abbreviation" Width="150" DisplayMemberBinding="{Binding Afkorting}"/>
+                        <GridViewColumn Header="First Name" Width="150" DisplayMemberBinding="{Binding Voornaam}"/>
+                        <GridViewColumn Header="Last Name" Width="150" DisplayMemberBinding="{Binding Familienaam}"/>
+                        <GridViewColumn Header="Password" Width="150" DisplayMemberBinding="{Binding wachtwoord}"/>
                     </GridView>
 
                 </ListView.View>
             </ListView>
         </GroupBox>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Edit" 
+                    Command="{Binding DataContext.DisplayEditUserCommand,Mode=OneWay}"
+                    Margin="10"/>
+            <Button Content="Add new" 
+                    Command="{Binding DataContext.DisplayAddUserCommand, Mode=OneWay}"
+                    Margin="10"/>
+            <Button Content="Delete" 
+                    Command="{Binding DeleteUser}"
+                    Margin="10"/>
+        </StackPanel>
     </StackPanel>
     
 </UserControl>

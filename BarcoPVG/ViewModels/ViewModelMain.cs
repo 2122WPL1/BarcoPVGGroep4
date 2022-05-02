@@ -2,7 +2,6 @@
 using BarcoPVG.Viewmodels.JobRequest;
 using BarcoPVG.Viewmodels.Planning;
 using BarcoPVG.Viewmodels.TestGUI;
-using BarcoPVG.ViewModels.DatabaseManagement;
 using Prism.Commands;
 using System;
 using System.Windows;
@@ -68,13 +67,6 @@ namespace BarcoPVG.Viewmodels
             SaveTestsAndReturnCommand = new DelegateCommand(SaveTestsAndReturn);
             ApprovePlanAndReturnCommand = new DelegateCommand(ApprovePlanAndReturn);
             TesterReturnCommand = new DelegateCommand(TesterReturn);
-            //Jarne & Amy
-            DisplayDatabaseManagementStartupCommand = new DelegateCommand(DisplayDatabaseManagementStartup);
-            //DisplayDatabaseUserCommand = new DelegateCommand(DisplayDatabaseUserStartup);
-            //DisplayDataResourceCommand = new DelegateCommand(DisplayDataBaseResourceStartup);
-
-            //DisplayDatabaseDivisionCommand = new DelegateCommand(DisplayDatabaseDivisionStartup);
-
             SetWindowProperties();
         }
 
@@ -168,7 +160,6 @@ namespace BarcoPVG.Viewmodels
         }
 
         //Amy
-
         public void DisplayDatabaseManagementStartup()
         {
             this.ViewModel = new ViewModelDatabaseManagement();
@@ -359,17 +350,15 @@ namespace BarcoPVG.Viewmodels
         {
             switch (_dao.BarcoUser.Function)
             {
-                //Jarne aanmaken van een nieuwe view die DATA voor de Visibility van de database button
-                case "DATA":
-                    NewRequests = Visibility.Visible;
-                    ApproveRequests = Visibility.Visible;
-                    Test = Visibility.Visible;
-                    SeeAll = Visibility.Visible;
-                    Data = Visibility.Visible;
-
-                    this.ViewModel = new ViewModelDatabaseManagement();
-
-                    break;
+                ////Jarne aanmaken van een nieuwe view die DATA voor de Visibility van de database button
+                //case "DATA":
+                //    NewRequests = Visibility.Visible;
+                //    ApproveRequests = Visibility.Visible;
+                //    Test = Visibility.Visible;
+                //    SeeAll = Visibility.Visible;
+                //    Data = Visibility.Visible;
+                //
+                //    break;
                 case "DEV": // Developer -> Developer voor dit programma 
                     NewRequests = Visibility.Visible;
                     ApproveRequests = Visibility.Visible;
@@ -417,9 +406,9 @@ namespace BarcoPVG.Viewmodels
 
 
 
-        public void InsertUser()
-        {
+        //public void InsertUser()
+        //{
 
-        }
+        //}
     }
 }

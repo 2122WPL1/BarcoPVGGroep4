@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:BarcoDB_Admin.Views.Edit"
+        xmlns:local="clr-namespace:BarcoDB_Admin.Views"
         mc:Ignorable="d"
         Height="450" Width="800" d:Background="LightGray">
     <!--amy-->
@@ -19,9 +19,17 @@
 
 
                 <Label Content="Password:" HorizontalAlignment="Left" Margin="153,208,0,0" VerticalAlignment="Top"/>
-                <TextBox Margin="430,208,198,0" Text="" VerticalAlignment="Top" Width="150"/>
-                <Button Content="Save" HorizontalAlignment="Left" Margin="574,313,0,0" VerticalAlignment="Top"/>
-                <Button Content="Cancel" HorizontalAlignment="Left" Margin="667,313,0,0" VerticalAlignment="Top"/>
+                <TextBox Margin="233,208,0,0" Text="" VerticalAlignment="Top" Width="150"/>
+                <Button Content="Save" HorizontalAlignment="Left" 
+                         Command="{Binding DataContext.SaveUserCommand, 
+                            RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, 
+                            Mode=OneWay}"
+                        Margin="574,313,0,0" VerticalAlignment="Top"/>
+                <Button Content="Cancel" HorizontalAlignment="Left" 
+                        Command="{Binding DataContext.DisplayDatabaseUserCommand, 
+                            RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, 
+                            Mode=OneWay}"
+                        Margin="667,313,0,0" VerticalAlignment="Top"/>
             </Grid>
         </GroupBox>
 

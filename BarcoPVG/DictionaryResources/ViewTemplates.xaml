@@ -41,5 +41,4 @@ xmlns:ViewModelInternJr="clr-namespace:BarcoPVG.Viewmodels.JobRequest"
     <DataTemplate DataType="{x:Type viewModelTestGUI:ViewModelUpdateTestQueue}">
         <viewsTestGUI:UpdateTestQueueUserControl/>
     </DataTemplate>
-
 </ResourceDictionary>

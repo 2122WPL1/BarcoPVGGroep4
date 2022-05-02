@@ -47,7 +47,6 @@
             </StackPanel>
             <ListView ItemsSource="{Binding Tests}" 
                       SelectedItem="{Binding SelectedTest, Mode=TwoWay}" 
-                      Height="auto"
                       VerticalAlignment="Stretch"
                       Margin="3"
                       SelectionMode="Single"

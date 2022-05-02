@@ -2,6 +2,7 @@
 //using BarcoPVG.ViewModels.DatabaseManagement;
 using BarcoDB_Admin.Viewmodels;
 using BarcoDB_Admin.ViewModels.DataBase;
+using BarcoDB_Admin.ViewModels.Edit;
 using Prism.Commands;
 using System;
 using System.Collections.Generic;
@@ -20,12 +21,19 @@ namespace BarcoDB_Admin.ViewModels
         public DelegateCommand DisplayDatabaseUserCommand { get; set; }
         public DelegateCommand DisplayDataResourceCommand { get; set; }
         public DelegateCommand DisplayDataBaseDivisionCommand { get; set; }
+        public DelegateCommand DisplayAddUserCommand { get; set; }
+        public DelegateCommand DisplayEditUserCommand { get; set; }
+        public DelegateCommand SaveUserCommand { get; set; }
+
+
 
         public ViewModelMain()
         {
             DisplayDatabaseUserCommand = new DelegateCommand(DisplayDatabaseUserStartup);
             DisplayDataResourceCommand = new DelegateCommand(DisplayDataResourceStartup);
             DisplayDataBaseDivisionCommand = new DelegateCommand(DisplayDataBaseDivisionStartup);
+            DisplayAddUserCommand = new DelegateCommand(DisplayAddUserStartup);
+            DisplayEditUserCommand = new DelegateCommand(DisplayEditUserStartup);
         }
 
 
@@ -53,5 +61,22 @@ namespace BarcoDB_Admin.ViewModels
         {
             this.ViewModel = new ViewModelDBDevision();
         }
+
+        public void DisplayAddUserStartup()
+        {
+            this.ViewModel = new ViewModelEditUser();
+        }
+
+        public void DisplayEditUserStartup()
+        {
+            SaveUserCommand = new DelegateCommand(InsertUser);
+            this.ViewModel = new ViewModelEditUser();
+        }
+
+        public void InsertUser()
+        {
+
+        }
+       
     }
 }

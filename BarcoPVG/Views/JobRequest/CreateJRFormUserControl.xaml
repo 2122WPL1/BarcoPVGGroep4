@@ -85,13 +85,23 @@
                 </Grid>
                 <Grid Width="auto" HorizontalAlignment="left">
                     <DockPanel LastChildFill="False">
-                        <GroupBox Header="Parts and tests" Width="auto" MinWidth="720">
+                        <GroupBox Header="Parts and tests" Width="716">
                             <StackPanel>
-                                <!--ItemsSource="{Binding EUTs}"-->
-                                <ListBox x:Name="ListEUT" Height="auto" MinHeight="300" Background="LightGray"
-                             ItemTemplate="{DynamicResource EUT}" 
-                              
-                             SelectedItem="{Binding SelectedEUT, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }">
+                                <ListBox x:Name="ListEUT"
+                                         MinHeight="300"
+                                         Background="#363636"
+                                         ItemTemplate="{DynamicResource EUT}" 
+                                         ItemsSource="{Binding EUTs}" 
+                                         SelectedItem="{Binding SelectedEUT, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Height="auto"
+                                         Margin="3"
+                                         SelectionMode="Multiple"
+                                         SelectedIndex="1"
+                                         ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                         ScrollViewer.CanContentScroll="True"
+                                         ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                                         HorizontalContentAlignment="Center">
+
                                     <ListBox.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <StackPanel Orientation="Horizontal"/>
