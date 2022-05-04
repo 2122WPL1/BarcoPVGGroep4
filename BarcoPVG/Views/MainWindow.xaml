@@ -20,12 +20,14 @@
                     <!-- This could be done more efficiently? -->
                     <Grid Background="#FFF10000">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="8.667"/>
-                            <ColumnDefinition Width="141.333"/>
-                            <ColumnDefinition/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="7*"/>
+                            <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Image Style="{StaticResource BarcoLogo}" Grid.Column="1"/>
-                        <StackPanel Orientation="Horizontal" Grid.Column="2" >
+                        <Button x:Name="X" Content="X" Background="LightGray" BorderBrush="#FFF44336" Grid.Column="3" Command="{Binding Exit}"/>
+                        <Image Style="{StaticResource BarcoLogo}" Grid.Column="0" Margin="16,0,25,0"/>
+                        <StackPanel Orientation="Horizontal" Grid.Column="1" >
                             <TextBlock FontSize="14" Text="Welcome "/>
                             <TextBlock FontSize="14" FontWeight="Bold" Text="{Binding User.Name}"/>
                             <TextBlock FontSize="14" Text=" ("/>
