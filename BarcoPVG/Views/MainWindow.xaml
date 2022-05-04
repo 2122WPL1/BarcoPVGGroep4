@@ -19,6 +19,7 @@
                 <GroupBox.Header>
                     <!-- This could be done more efficiently? -->
                     <Grid Background="#FFF10000">
+                        <Button x:Name="X" Background="LightGray" BorderBrush="#FFF44336" Grid.Column="2" Margin="1700,0,0,0"/>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="8.667"/>
                             <ColumnDefinition Width="141.333"/>
