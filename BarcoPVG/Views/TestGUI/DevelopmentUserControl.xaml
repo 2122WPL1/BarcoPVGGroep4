@@ -14,6 +14,7 @@
         <GroupBox Header="Planned JobRequests" BorderThickness="0.1" Height="auto" Width="auto">
             <ListView ItemsSource="{Binding IdRequestsOnly}"
                       SelectedItem="{Binding SelectedJR, Mode=TwoWay}"
+                      MaxHeight="400"
                       VerticalAlignment="Stretch"
                       Margin="3"
                       SelectionMode="Single"

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using BarcoPVG.Models.Db;
 
-namespace BarcoPVG.Dao
+namespace BarcoDB_Admin.Dao
 {
     public partial class BarcoContext : DbContext
     {

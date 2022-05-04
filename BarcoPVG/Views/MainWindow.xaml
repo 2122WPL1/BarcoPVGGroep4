@@ -15,7 +15,7 @@
         Width="{x:Static SystemParameters.PrimaryScreenWidth}">
     <StackPanel>
         <StackPanel Margin="10">
-            <GroupBox BorderThickness="0.1" Height="1040" >
+            <GroupBox BorderThickness="0.1" Height="auto" >
                 <GroupBox.Header>
                     <!-- This could be done more efficiently? -->
                     <Grid Background="#FFF10000">

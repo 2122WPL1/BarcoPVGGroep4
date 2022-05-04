@@ -141,6 +141,9 @@ namespace BarcoPVG.Viewmodels
             this.ViewModel = new ViewModelDevelopment();
         }
 
+
+
+
         // JR CRUD
         // Command functions
         // Adds and stores a job request and switches windows
@@ -322,7 +325,6 @@ namespace BarcoPVG.Viewmodels
                 //    Data = Visibility.Visible;
                 //
                 //    break;
-
                 case "DEV": // Developer -> Developer voor dit programma 
                     NewRequests = Visibility.Visible;
                     ApproveRequests = Visibility.Visible;
@@ -363,9 +365,9 @@ namespace BarcoPVG.Viewmodels
                     Data = Visibility.Hidden;
 
                     this.ViewModel = new ViewModelCreateJRQueue();
+        }
+        }
 
-                    break;
-            }
         }
     }
 }

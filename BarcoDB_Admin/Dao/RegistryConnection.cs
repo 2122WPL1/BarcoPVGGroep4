@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Win32;
 
-namespace BarcoPVG.Dao
+namespace BarcoDB_Admin.Dao
 {
     /// <summary>
     /// Gets all values from a registry key and stores them in an object

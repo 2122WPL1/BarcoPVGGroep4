@@ -171,6 +171,12 @@
                                                   Source="{Binding EUTs}" />
                         </ListBox.Resources>
                         <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation='Horizontal'/>
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                        </ListBox>
+                        <!--<ListBox.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <StackPanel Orientation="Horizontal"/>
                             </ItemsPanelTemplate>

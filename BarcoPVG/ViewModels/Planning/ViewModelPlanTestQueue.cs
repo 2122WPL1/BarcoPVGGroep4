@@ -17,15 +17,15 @@ namespace BarcoPVG.Viewmodels.Planning
         public ViewModelPlanTestQueue() : base()
         {
             // Collection initialization
-            PlansToApprove = new ObservableCollection<PlPlanning>();
+            //PlansToApprove = new ObservableCollection<PlPlanning>();
 
-            foreach (var item in _dao.GetPlPlannings().Where(pl => pl.TestDivStatus == "In plan"))
-            {
-                PlansToApprove.Add(item);
-            }
+            //foreach (var item in _dao.GetPlPlannings().Where(pl => pl.TestDivStatus == "In plan"))
+            //{
+            //    PlansToApprove.Add(item);
+            //}
 
-            // empty jr selected by default
-            _selectedPlan = new PlPlanning();
+            //// empty jr selected by default
+            //_selectedPlan = new PlPlanning();
         }
 
         // Getters/Setters
