@@ -23,7 +23,8 @@
                       ScrollViewer.HorizontalScrollBarVisibility="Auto" 
                       HorizontalAlignment="Stretch"
                       HorizontalContentAlignment="Center"
-                      MaxHeight="700">
+                      MaxHeight="700" 
+                      Height="auto">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn  Header="Division" DisplayMemberBinding="{Binding BarcoDivision}" />
