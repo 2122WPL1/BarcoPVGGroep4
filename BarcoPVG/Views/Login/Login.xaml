@@ -10,7 +10,7 @@
         Title="Login" Height="1080" Width="1920"
         AllowsTransparency="true" Background="Transparent"
         WindowStyle="None" ResizeMode="NoResize"
-        WindowState="Maximized">
+        WindowState="Maximized" WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
         <vm:MultiValueConverter x:Key="converter"/>
@@ -40,7 +40,7 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <TextBox x:Name="txtUsername" FontFamily="Helvetica"
                          FontWeight="Light"
-                             Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
+                             Text="{Binding Username}"
                              FontSize="20"
                              HorizontalAlignment="Center"
                              Foreground="Black"
@@ -73,7 +73,7 @@
                              Opacity="0.5"
                              Height="25"
                              Margin="50,0,0,0"/>
-                
+
                 <Image Style="{StaticResource IconLock}" Width="20"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
@@ -95,7 +95,16 @@
                         Command="{Binding ExitCommand}"/>
             </StackPanel>
             <StackPanel>
-                <Label VerticalAlignment="Center" HorizontalAlignment="Right" Content="Contact 056 23 32 11" Foreground="White"/>
+                <Label HorizontalAlignment="Right" Content="Contact 056 23 32 11" Foreground="White" Height="379" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Bottom" VerticalContentAlignment="Bottom">
+                    <Label.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform AngleX="0.583"/>
+                            <RotateTransform/>
+                            <TranslateTransform X="2.411"/>
+                        </TransformGroup>
+                    </Label.RenderTransform>
+                </Label>
             </StackPanel>
         </StackPanel>
 

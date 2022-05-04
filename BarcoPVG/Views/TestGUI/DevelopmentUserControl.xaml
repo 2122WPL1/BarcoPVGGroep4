@@ -6,12 +6,12 @@
              xmlns:local="clr-namespace:BarcoPVG.Views"
              xmlns:vm="clr-namespace:BarcoPVG.Viewmodels.JobRequest"
              mc:Ignorable="d" 
-             d:DesignHeight="900" d:Background="LightGray" Width="1600">
+             Height="auto" d:Background="LightGray" Width="auto">
     <UserControl.Resources>
         <vm:ViewModelCreateJRQueue x:Key="converterToColor"/>
     </UserControl.Resources>
     <StackPanel Margin="10">
-        <GroupBox Header="Planned JobRequests" BorderThickness="0.1" Height="auto">
+        <GroupBox Header="Planned JobRequests" BorderThickness="0.1" Height="auto" Width="auto">
             <ListView ItemsSource="{Binding IdRequestsOnly}"
                       SelectedItem="{Binding SelectedJR, Mode=TwoWay}"
                       VerticalAlignment="Stretch"

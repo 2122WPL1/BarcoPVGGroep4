@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BarcoPVG.Views"
-             mc:Ignorable="d" d:Background="LightGray" Width="1435" Height="auto"> <!--width niet aanpassen anders word de scrollbar heel fucked-->
+             mc:Ignorable="d" d:Background="LightGray" Height="auto" Width="auto">
     <StackPanel Margin="10" >
         <GroupBox Header="Project Details">
             <DockPanel>
@@ -85,7 +85,7 @@
                 </Grid>
                 <Grid Width="auto" HorizontalAlignment="left">
                     <DockPanel LastChildFill="False">
-                        <GroupBox Header="Parts and tests" Width="716">
+                        <GroupBox Header="Parts and tests" Width="1205">
                             <StackPanel>
                                 <ListBox x:Name="ListEUT"
                                          MinHeight="300"
@@ -93,9 +93,6 @@
                                          ItemTemplate="{DynamicResource EUT}" 
                                          
                                          SelectedItem="{Binding SelectedEUT, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                         Height="auto"
-                                         Margin="3"
-                                         SelectionMode="Multiple"
                                          SelectedIndex="1"
                                          ScrollViewer.VerticalScrollBarVisibility="Auto"
                                          ScrollViewer.CanContentScroll="True"
@@ -119,9 +116,12 @@
                                         </CompositeCollection>
                                     </ListBox.ItemsSource>
                                 </ListBox>
-                                <StackPanel Orientation="Horizontal"><!--de button wordt uiteindelijk verwijdered wanneer de close button op de eut werkt-->
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Content="Add Part" 
+                                Command="{Binding AddEUTCommand}" 
+                                Margin="10"/>
                                     <Button Content="Remove Part" 
-                                Command="{Binding Path=RemoveEUTCommand}" 
+                                Command="{Binding RemoveEUTCommand}" 
                                 Margin="10"/>
                                 </StackPanel>
                             </StackPanel>

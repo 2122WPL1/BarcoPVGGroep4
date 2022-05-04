@@ -5,12 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BarcoPVG.Views"
              xmlns:vm="clr-namespace:BarcoPVG.Viewmodels.JobRequest"
-             mc:Ignorable="d" d:Background="LightGray" Width="1820" Height="980">
+             mc:Ignorable="d" d:Background="LightGray" Width="auto" Height="auto">
     <UserControl.Resources>
         <vm:ViewModelCreateJRQueue x:Key="converterToColor"/>
     </UserControl.Resources>
     <StackPanel Margin="10">
         <GroupBox Header="Open Job Requests" BorderThickness="0.2">
+            <!--Jarne-->
             <ListView x:Name="gvList"
                       ItemsSource="{Binding IdRequestsOnly}" 
                       SelectedItem="{Binding SelectedJR, Mode=TwoWay}"
