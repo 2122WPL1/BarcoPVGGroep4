@@ -10,6 +10,8 @@ xmlns:views="clr-namespace:BarcoPVG.Views"
 xmlns:viewsJR="clr-namespace:BarcoPVG.Views.JobRequest"
 xmlns:viewsPlanning="clr-namespace:BarcoPVG.Views.Planning"
 xmlns:viewsTestGUI="clr-namespace:BarcoPVG.Views.TestGUI"
+xmlns:ViewInternJR="clr-namespace:BarcoPVG.Views.JobRequest"
+xmlns:ViewModelInternJr="clr-namespace:BarcoPVG.Viewmodels.JobRequest"
 >
     <!--Bindings van de scherment worden naar de gedifineerde viewmodel gedaan-->
     <DataTemplate DataType="{x:Type viewModels:ViewModelMain}">

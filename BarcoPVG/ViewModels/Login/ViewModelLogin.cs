@@ -92,7 +92,7 @@ namespace BarcoPVG.ViewModels.Login
 
             foreach (Person person in allUser)
             {
-                if (person.Voornaam == (string)listParameter[0] && person.wachtwoord == (string)listParameter[1])
+                if (person.Afkorting == ((string)listParameter[0]).ToUpper() && person.wachtwoord == (string)listParameter[1])
                 {
                     //MessageBox.Show("OK");
                     loginPerson = person;

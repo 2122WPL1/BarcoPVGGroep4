@@ -91,7 +91,7 @@
                                          MinHeight="300"
                                          Background="#363636"
                                          ItemTemplate="{DynamicResource EUT}" 
-                                         ItemsSource="{Binding EUTs}" 
+                                         
                                          SelectedItem="{Binding SelectedEUT, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                          SelectedIndex="1"
                                          ScrollViewer.VerticalScrollBarVisibility="Auto"
