@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace BarcoPVG.Models.Db
+namespace BarcoDB_Admin.Models.Db
 {
     public partial class Person
     {

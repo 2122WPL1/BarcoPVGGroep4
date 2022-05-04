@@ -17,7 +17,7 @@
     <!--amy-->
     <!--<ScrollViewer HorizontalScrollBarVisibility="Visible"> dit zorgt ervoor dat de andere scrollviewer niet zichtbaar wordt-->
         <StackPanel Margin="10" >
-        <GroupBox Header="Database Management" >
+        <GroupBox BorderThickness="0.1" Height="auto">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
