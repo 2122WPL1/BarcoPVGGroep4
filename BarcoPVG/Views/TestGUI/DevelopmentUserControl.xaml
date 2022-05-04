@@ -14,7 +14,6 @@
         <GroupBox Header="Planned JobRequests" BorderThickness="0.1" Height="auto" Width="auto">
             <ListView ItemsSource="{Binding IdRequestsOnly}"
                       SelectedItem="{Binding SelectedJR, Mode=TwoWay}"
-                      MaxHeight="400"
                       VerticalAlignment="Stretch"
                       Margin="3"
                       SelectionMode="Single"
@@ -24,7 +23,8 @@
                       ScrollViewer.HorizontalScrollBarVisibility="Auto" 
                       HorizontalAlignment="Stretch"
                       HorizontalContentAlignment="Center"
-                      MaxHeight="700">
+                      MaxHeight="700" 
+                      Height="auto">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn  Header="Division" DisplayMemberBinding="{Binding BarcoDivision}" />
