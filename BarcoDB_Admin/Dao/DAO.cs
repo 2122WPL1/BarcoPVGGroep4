@@ -6,13 +6,13 @@ using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Windows;
-using BarcoPVG.Models.Classes;
-using BarcoPVG;
-using BarcoPVG.Models;
-using BarcoPVG.Models.Db;
+using BarcoDB_Admin.Models.Classes;
+using BarcoDB_Admin;
+using BarcoDB_Admin.Models;
+using BarcoDB_Admin.Models.Db;
 using System.Data.SqlClient;
 
-namespace BarcoPVG.Dao
+namespace BarcoDB_Admin.Dao
 {
     // SINGLETON PATTERN
     // Private constructor, static instance
