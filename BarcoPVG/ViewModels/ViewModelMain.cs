@@ -20,7 +20,7 @@ namespace BarcoPVG.Viewmodels
         public BarcoUser User { get; set; }
 
         // TODO: check if ICommand also works
-
+        public DelegateCommand Exit { get; set; }
         public DelegateCommand DisplayInternalJobRequest { get; set; }
         public DelegateCommand DisplayNewJRCommand { get; set; }
         public DelegateCommand DisplayExistingJRCommand { get; set; }
@@ -66,9 +66,13 @@ namespace BarcoPVG.Viewmodels
             SaveTestsAndReturnCommand = new DelegateCommand(SaveTestsAndReturn);
             ApprovePlanAndReturnCommand = new DelegateCommand(ApprovePlanAndReturn);
             TesterReturnCommand = new DelegateCommand(TesterReturn);
+            Exit = new DelegateCommand(exit);
             SetWindowProperties();
         }
-
+        public void exit()
+        {
+            Environment.Exit(0);
+        }
         // Getters/Setters
         public AbstractViewModelBase ViewModel
         {
