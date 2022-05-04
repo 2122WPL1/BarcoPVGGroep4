@@ -21,7 +21,6 @@ namespace BarcoPVG.Viewmodels
 
         // TODO: check if ICommand also works
         public DelegateCommand Exit { get; set; }
-        public DelegateCommand DisplayInternalJobRequest { get; set; }
         public DelegateCommand DisplayNewJRCommand { get; set; }
         public DelegateCommand DisplayExistingJRCommand { get; set; }
         public DelegateCommand DisplayEmployeeStartupCommand { get; set; }
@@ -53,7 +52,6 @@ namespace BarcoPVG.Viewmodels
         {
             this.User = _dao.BarcoUser;
 
-            DisplayInternalJobRequest = new DelegateCommand(DisplayNewInternalJR);
             DisplayNewJRCommand = new DelegateCommand(DisplayNewJR);
             DisplayExistingJRCommand = new DelegateCommand(DisplayExistingJR);
             DisplayEmployeeStartupCommand = new DelegateCommand(DisplayEmployeeStartup);
@@ -90,12 +88,6 @@ namespace BarcoPVG.Viewmodels
         {
             SaveJrCommand = new DelegateCommand(InsertJr);
             this.ViewModel = new ViewModelCreateJRForm();
-        }
-
-        public void DisplayNewInternalJR()
-        {
-            SaveJrCommand = new DelegateCommand(InsertInternalJr);
-            this.ViewModel = new ViewModelCreateJRForm(true);
         }
 
         public void DisplayExistingJR() //Sander: Foutmelding wanneer er niets geselecteerd wordt
@@ -398,8 +390,6 @@ namespace BarcoPVG.Viewmodels
                     Test = Visibility.Visible;
                     SeeAll = Visibility.Hidden;
                     Data = Visibility.Hidden;
-
-                    DisplayNewJRCommand = new DelegateCommand(DisplayNewInternalJR);
 
                     this.ViewModel = new ViewModelPlanTestQueue();
 

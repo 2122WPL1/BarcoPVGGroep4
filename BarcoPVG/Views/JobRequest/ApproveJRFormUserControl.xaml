@@ -4,10 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BarcoPVG.Views"
-             mc:Ignorable="d" d:Background="LightGray" Height="auto" Width="auto">
+             mc:Ignorable="d" d:Background="LightGray" Height="auto" Width="1927" VerticalAlignment="Top" HorizontalAlignment="Center">
     <StackPanel Margin="10" Orientation="Horizontal">
         <GroupBox Header="Project Details" Margin="10" Width="auto" Height="483" >
-            <Grid>
+            <Grid Width="673" HorizontalAlignment="Center">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
@@ -147,7 +147,7 @@
                 <TextBox Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="4" Text="{Binding JR.Remarks,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Height="50" Margin="8,1,2,5" HorizontalAlignment="Stretch" Width="Auto" Grid.RowSpan="2"/>
             </Grid>
         </GroupBox>
-        <GroupBox Header="Parts and tests" Width="899" Height="483">
+        <GroupBox Header="Parts and tests" Width="1194" Height="483">
             <StackPanel Width="auto" Height="auto">
                 <StackPanel>
                     <ContentControl ContentTemplate="{DynamicResource PVGRes}"
@@ -172,11 +172,11 @@
                                                   Source="{Binding EUTs}" />
                         </ListBox.Resources>
                         <ListBox.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <StackPanel Orientation='Horizontal'/>
-                                </ItemsPanelTemplate>
-                            </ListBox.ItemsPanel>
-                        </ListBox>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation='Horizontal'/>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                    </ListBox>
                     <!--<ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <StackPanel Orientation="Horizontal"/>
