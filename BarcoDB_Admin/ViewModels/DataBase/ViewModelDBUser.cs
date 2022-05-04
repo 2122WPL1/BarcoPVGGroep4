@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BarcoDB_Admin.Models.Db;
 using BarcoDB_Admin.Viewmodels;
+using BarcoPVG.Models.Db;
 
 namespace BarcoDB_Admin.ViewModels.DataBase
 {
@@ -13,10 +14,10 @@ namespace BarcoDB_Admin.ViewModels.DataBase
     {
         private List<Person> _AllUsers;
 
-        public List<Person> AllUsers
+        public List<Person> AllUsers 
         { 
             get => _AllUsers; 
-            set =>_AllUsers = value; 
+            set => _AllUsers = value; 
         }
 
         public ViewModelDBUser() : base()
@@ -24,7 +25,7 @@ namespace BarcoDB_Admin.ViewModels.DataBase
             Load();
         }
 
-        public void Load()
+       public Person SelectedUser
         {
             _AllUsers = _dao.GetAllUser();
         }

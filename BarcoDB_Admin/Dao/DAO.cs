@@ -12,15 +12,9 @@ using System.Data.SqlClient;
 
 namespace BarcoDB_Admin.Dao
 {
-    public class DAO
+    internal class DAO
     {
-        // Variables
-        private BarcoContext _context;
-        private static readonly DAO _instance = new();
 
-
-
-        public BarcoUser BarcoUser { get; private set; }
         // Calls an DAO instance
         public static DAO Instance()
         {
