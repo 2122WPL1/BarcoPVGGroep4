@@ -895,7 +895,7 @@ namespace BarcoPVG.Dao
         private PlPlanning CreatePlPlanning(RqRequest request, string division)
         {
 
-            var planning = new PlPlanning // sander: planning id word automatisch 0 manier zoeken om te auto incrementen
+            var planning = new PlPlanning //clustered?
             {
                 IdRequest = request.IdRequest,
                 JrNr = request.JrNumber,

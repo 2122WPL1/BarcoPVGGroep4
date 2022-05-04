@@ -172,11 +172,11 @@
                                                   Source="{Binding EUTs}" />
                         </ListBox.Resources>
                         <ListBox.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <StackPanel Orientation='Horizontal'/>
-                                </ItemsPanelTemplate>
-                            </ListBox.ItemsPanel>
-                        </ListBox>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation='Horizontal'/>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                    </ListBox>
                     <!--<ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <StackPanel Orientation="Horizontal"/>
@@ -206,7 +206,6 @@
                         Height="40" Margin="5"/>
                 </StackPanel>
             </StackPanel>
-
         </GroupBox>
     </StackPanel>
 </UserControl>
