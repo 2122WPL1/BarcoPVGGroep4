@@ -1,4 +1,4 @@
-﻿using BarcoPVG.Dao;
+﻿using BarcoDB_Admin.Dao;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,7 +11,8 @@ namespace BarcoDB_Admin.Viewmodels
 {
     public abstract class AbstractViewModelBase : INotifyPropertyChanged
     {
-        protected DAO _dao = DAO.Instance();
+        //protected DAO _dao = DAO.Instance();
+        protected BarcoDB_Admin.Dao.DAO _dao = BarcoDB_Admin.Dao.DAO.Instance();
 
         // Constructor
         public AbstractViewModelBase()

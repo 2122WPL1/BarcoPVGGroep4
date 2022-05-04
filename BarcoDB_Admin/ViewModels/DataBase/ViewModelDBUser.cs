@@ -4,38 +4,29 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BarcoDB_Admin.Models.Db;
 using BarcoDB_Admin.Viewmodels;
-using BarcoPVG.Models.Db;
 
 namespace BarcoDB_Admin.ViewModels.DataBase
 {
-    //Amy
      class ViewModelDBUser : AbstractViewModelBase
     {
-        public ObservableCollection<Person> allUsers { get; set; }
-        protected Person _selectedUser;
+        private List<Person> _AllUsers;
+
+        public List<Person> AllUsers
+        { 
+            get => _AllUsers; 
+            set =>_AllUsers = value; 
+        }
 
         public ViewModelDBUser() : base()
         {
-            allUsers = new ObservableCollection<Person>();
-            List<Person> users = _dao.GetAllUser();
-
-            foreach (Person person in users)
-            {
-                allUsers.Add(person);
-            }
-
-            _selectedUser = new Person();
+            Load();
         }
 
-       public Person SelectedUser
+        public void Load()
         {
-            get => _selectedUser;
-            set
-            {
-                _selectedUser = value;
-                OnpropertyChanged();
-            }
+            _AllUsers = _dao.GetAllUser();
         }
     }
 }
