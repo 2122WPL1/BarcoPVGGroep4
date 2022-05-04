@@ -35,14 +35,13 @@ namespace BarcoPVG.Viewmodels.JobRequest
       
         public ViewModelApproveJRForm(int idRequest) : base()
         {
-            
-
             // Fill in dropdown menu's
             JobNatures = new ObservableCollection<string>();
             Divisions = new ObservableCollection<string>();
 
             Load();
             AddEUTCommand = new DelegateCommand(AddEUT);
+            RemoveEUTCommand = new DelegateCommand(RemoveSelectedEUT);
             
 
             // Look for JR with correct ID
@@ -59,7 +58,6 @@ namespace BarcoPVG.Viewmodels.JobRequest
                 request = _context.RqRequests.FirstOrDefault(e => e.IdRequest == id.IdRequest);
 
             }
-
             FillEUT(request);
 
             _dao.PrintPvg(idRequest, _jr);
@@ -113,12 +111,7 @@ namespace BarcoPVG.Viewmodels.JobRequest
         public void RemoveSelectedEUT()
         {
             //note: zorgen dat de eut hemzelf select 
-            EUTs.Remove(SelectedEUT); 
-
-
-
+            EUTs.Remove(SelectedEUT);
         }
-
-
     }
 }

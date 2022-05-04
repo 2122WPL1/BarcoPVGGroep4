@@ -19,7 +19,6 @@ namespace BarcoPVG.Viewmodels
 
         public BarcoUser User { get; set; }
 
-
         // TODO: check if ICommand also works
 
         public DelegateCommand DisplayInternalJobRequest { get; set; }
@@ -39,8 +38,6 @@ namespace BarcoPVG.Viewmodels
 
         // Amy & Jarne
         public DelegateCommand DisplayDatabaseManagementStartupCommand { get; set; } //button vanboven
-
-
 
         // Visibility of buttons
         public Visibility NewRequests { get; set; }
@@ -83,17 +80,6 @@ namespace BarcoPVG.Viewmodels
             }
         }
 
-        //Amy
-        //public AbstractViewModelBase DataBase
-        //{
-        //    get => _DataBase;
-        //    set 
-        //    {
-        //        _DataBase = value;
-        //        OnpropertyChanged();
-        //    }
-        //}
-
         // Command methods
         // TODO: add method to switch return window based on function
         public void DisplayNewJR()
@@ -125,14 +111,12 @@ namespace BarcoPVG.Viewmodels
                 }
                 else
                 {
-
                     this.ViewModel = new ViewModelCreateJRForm(ExistingJrId);
                 }
             }
             else
             {
                 MessageBox.Show("Geen JR geselecteerd");
-
             }
         }
 
@@ -160,26 +144,6 @@ namespace BarcoPVG.Viewmodels
         {
             this.ViewModel = new ViewModelDevelopment();
         }
-
-        //Amy
-        // public void DisplayDatabaseManagementStartup()
-        // {
-        //     this.ViewModel = new ViewModelDatabaseManagement();
-        // }
-        //public void DisplayDatabaseManagement()
-        //{
-        //    this.DataBase = new ViewModelDBUser();
-        //}
-        //public void DisplayDataBaseResourceStartup()
-        //{
-        //    this.DataBase = new ViewModelDBResource();
-        //}
-        //public void DisplayDatabaseDivisionStartup()
-        //{
-        //    this.DataBase = new ViewModelDBDevision();
-        //}
-
-
         // JR CRUD
         // Command functions
         // Adds and stores a job request and switches windows
@@ -220,6 +184,7 @@ namespace BarcoPVG.Viewmodels
                                 else
                                 {
                                     passed = true;
+
                                 }
 
                                 eUts2.Add(eUT);
@@ -420,7 +385,8 @@ namespace BarcoPVG.Viewmodels
         {
             switch (_dao.BarcoUser.Function)
             {
-                ////Jarne aanmaken van een nieuwe view die DATA voor de Visibility van de database button
+                ////Jarne
+                ////aanmaken van een nieuwe view die DATA voor de Visibility van de database button
                 //case "DATA":
                 //    NewRequests = Visibility.Visible;
                 //    ApproveRequests = Visibility.Visible;
@@ -469,16 +435,9 @@ namespace BarcoPVG.Viewmodels
                     Data = Visibility.Hidden;
 
                     this.ViewModel = new ViewModelCreateJRQueue();
-
-                    break;
-            }
+        }
         }
 
-
-
-        //public void InsertUser()
-        //{
-
-        //}
+        }
     }
 }

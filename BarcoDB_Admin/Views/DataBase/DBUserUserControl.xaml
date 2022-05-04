@@ -27,10 +27,14 @@
         </GroupBox>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
             <Button Content="Edit" 
-                    Command="{Binding DataContext.DisplayEditUserCommand,Mode=OneWay}"
+                    Command="{Binding DataContext.DisplayEditUserCommand, 
+                    RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}},
+                    Mode=OneWay}"
                     Margin="10"/>
             <Button Content="Add new" 
-                    Command="{Binding DataContext.DisplayAddUserCommand, Mode=OneWay}"
+                    Command="{Binding DataContext.DisplayAddUserCommand, 
+                    RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}},
+                    Mode=OneWay}"
                     Margin="10"/>
             <Button Content="Delete" 
                     Command="{Binding DeleteUser}"
