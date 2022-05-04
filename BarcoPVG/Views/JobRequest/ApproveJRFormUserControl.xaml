@@ -126,6 +126,7 @@
 
                 <TextBox Grid.Column="4" 
                          Grid.Row="6"
+                         Text="{Binding JR.JrNumber}"
                          IsEnabled="False"/>
 
                 <Label Content="Expected end date:" 
