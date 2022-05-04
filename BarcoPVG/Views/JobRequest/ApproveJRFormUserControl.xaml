@@ -4,9 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BarcoPVG.Views"
-             mc:Ignorable="d" d:Background="LightGray" Height="auto" Width="1600">
+             mc:Ignorable="d" d:Background="LightGray" Height="auto" Width="auto">
     <StackPanel Margin="10" Orientation="Horizontal">
-        <GroupBox Header="Project Details" Margin="10" Width="auto" >
+        <GroupBox Header="Project Details" Margin="10" Width="auto" Height="483" >
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -29,12 +29,12 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                
+
                 <Label Content="Requester initials:"/>
-                
+
                 <TextBox Text="{Binding JR.Requester, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                          Grid.Column="1"/>
-                
+
                 <Label Content="Division:"
                        Grid.Row="1"/>
 
@@ -59,24 +59,24 @@
                 <TextBox Grid.Column="1" 
                          Grid.Row="5" 
                          Text="{Binding JR.EutPartnr, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-               
+
                 <Label Grid.Row="6" 
                        Content="Net Weight(s) (kg):"/>
-                
+
                 <TextBox Grid.Row="6" 
                          Grid.Column="1" 
                          Text="{Binding JR.NetWeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                
+
                 <Label Grid.Row="7" 
                        Content="Gross Weight(s) (kg):" 
                        Height="25" 
                        VerticalAlignment="Top"/>
-                
+
                 <TextBox Grid.Row="7" Grid.Column="1"  
                          Text="{Binding JR.GrossWeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                
+
                 <Label Content="" Grid.Row="9"/>
-                
+
                 <Label Content="Link to testplan (optional):"
                        Grid.Row="8" 
                        Grid.ColumnSpan="2" 
@@ -106,7 +106,7 @@
                 <CheckBox IsChecked="{Binding JR.Battery, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                           Content="Batteries inside" Grid.Column="5" Grid.Row="2"/>
                 <!--Disabled for user: this item will be filled in automatically at acceptance of request-->
-                
+
                 <Label Content="" 
                        Grid.Row="4"></Label>
 
@@ -119,7 +119,7 @@
                              IsEnabled="False" />
                 <!--Disabled for user: this item will be filled in automatically  
                 at acceptance of request-->
-                
+
                 <Label Content="JR Number:" 
                        Grid.Column="3" 
                        Grid.Row="6"/>
@@ -146,8 +146,8 @@
                 <TextBox Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="4" Text="{Binding JR.Remarks,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Height="50" Margin="8,1,2,5" HorizontalAlignment="Stretch" Width="Auto" Grid.RowSpan="2"/>
             </Grid>
         </GroupBox>
-        <GroupBox Header="Parts and tests" Width="auto">
-            <StackPanel Width="893">
+        <GroupBox Header="Parts and tests" Width="899" Height="483">
+            <StackPanel Width="auto" Height="auto">
                 <StackPanel>
                     <ContentControl ContentTemplate="{DynamicResource PVGRes}"
                                     Content="{Binding JR}" 
@@ -157,7 +157,8 @@
                              Background="#363636" 
                              ItemTemplate="{DynamicResource EUT}"
                              SelectedItem="{Binding SelectedEUT, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                             Height="auto"
+                             Height="344"
+                             Width="auto"
                              Margin="3"
                              SelectionMode="Single"
                              SelectedIndex="1"

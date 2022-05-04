@@ -9,13 +9,13 @@
         WindowState="Maximized"
         WindowStyle="ThreeDBorderWindow"
         WindowStartupLocation="CenterScreen"
-     MinWidth="330  "
-         Width="800" 
-    >
+        MinWidth="330"
+        Width="800">
+
     <!--amy-->
     <!--<ScrollViewer HorizontalScrollBarVisibility="Visible"> dit zorgt ervoor dat de andere scrollviewer niet zichtbaar wordt-->
-        <StackPanel Margin="10" >
-        <GroupBox Header="Database Management" >
+        <StackPanel Margin="10">
+        <GroupBox Header="Database Management">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -32,17 +32,11 @@
                             Command="{Binding DisplayDataBaseDivisionCommand, Mode=OneWay}"
                             Margin="5"/>
                 </StackPanel>
-                    <ScrollViewer Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Visible" >
+                <ScrollViewer Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Visible" >
                     <ContentControl Content="{Binding ViewModel}" Width="auto" HorizontalContentAlignment="Center"  />
-
                 </ScrollViewer>
             </Grid>
-
         </GroupBox>
-
-        <StackPanel>
-
-        </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
             <Button Content="Edit" Margin="10"/>
             <Button Content="Add new" Margin="10"/>
