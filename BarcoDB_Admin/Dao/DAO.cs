@@ -96,21 +96,21 @@ namespace BarcoDB_Admin.Dao
         }
 
         // Returns list of all JRs
-        public List<RqRequest> GetAllJobRequests()
-        {
-            return _context.RqRequests
-                .Include(r => r.IdRequest)
-                .ToList();
+        //public List<RqRequest> GetAllJobRequests()
+        //{
+        //    return _context.RqRequests
+        //        .Include(r => r.IdRequest)
+        //        .ToList();
 
-            //indien geen JR aanwezig in databanke moet je null sturen, an-ders bovenstaande query
-            //return null;
-        }
+        //    //indien geen JR aanwezig in databanke moet je null sturen, an-ders bovenstaande query
+        //    //return null;
+        //}
 
         // Returns list of all jobNatures
-        public List<RqJobNature> GetAllJobNatures()
-        {
-            return _context.RqJobNatures.ToList();
-        }
+        //public List<RqJobNature> GetAllJobNatures()
+        //{
+        //    return _context.RqJobNatures.ToList();
+        //}
 
         // Returns list of all BarcoDivisions
         public List<RqBarcoDivision> GetAllDivisions()
