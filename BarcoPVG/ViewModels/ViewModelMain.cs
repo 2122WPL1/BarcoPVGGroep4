@@ -160,10 +160,10 @@ namespace BarcoPVG.Viewmodels
         }
 
         //Amy
-        public void DisplayDatabaseManagementStartup()
-        {
-            this.ViewModel = new ViewModelDatabaseManagement();
-        }
+       // public void DisplayDatabaseManagementStartup()
+       // {
+       //     this.ViewModel = new ViewModelDatabaseManagement();
+       // }
         //public void DisplayDatabaseManagement()
         //{
         //    this.DataBase = new ViewModelDBUser();

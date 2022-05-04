@@ -175,17 +175,17 @@
                                 </ItemsPanelTemplate>
                             </ListBox.ItemsPanel>
                         </ListBox>
-                        <!--<ListBox.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <StackPanel Orientation="Horizontal"/>
-                            </ItemsPanelTemplate>
+                    <!--<ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
                         </ListBox.ItemsPanel>
                         <ListBox.ItemsSource>
                             <CompositeCollection>
                                 <CollectionContainer Collection="{Binding Source={StaticResource EUTs}}"/>
                             </CompositeCollection>
                         </ListBox.ItemsSource>
-                    </ListBox>
+                        </ListBox>-->
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" 
                             HorizontalAlignment="Center">
