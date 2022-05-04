@@ -274,32 +274,37 @@ namespace BarcoPVG.Viewmodels
             }
             return passed;
         }
+        private string CreateJRNummer(RqRequest jr)
+        {
+            string JrNumber = "JR";
+            if (true) //dit is voor Jr nummer "JRDEV00004" ik niet weet of het JR + DEV + ID (JR + functie + id) of JRDEV + id (JRDEV + id) moet gebruikt worden
+            {
+                JrNumber += _dao.BarcoUser.Function;
+            }
+            else
+            {
+                JrNumber += "DEV";
+            }
+            for (int i = jr.IdRequest.ToString().Length; i <= 5; i++)
+            {
+                JrNumber += "0";
+            }
+            JrNumber += jr.IdRequest;
 
+            return JrNumber;
+        }
 
         public void InsertJr() // aanmaken job request
         {
-            var jr = _dao.AddJobRequest(((AbstractViewModelContainer)this.ViewModel)
+            var jr = _dao.AddJobRequest(((AbstractViewModelContainer)this.ViewModel) //ID request wordt automatisch 0 voor een of andere reden
                 .JR); // SaveChanges included in function
             int count = 0;
 
 
 
             {
-                string JrNumber = "JR";
-                if (true) //dit is voor Jr nummer "JRDEV00004" ik niet weet of het JR + DEV + ID (JR + functie + id) of JRDEV + id (JRDEV + id) moet gebruikt worden
-                {
-                    JrNumber += _dao.BarcoUser.Function;
-                }
-                else
-                {
-                    JrNumber += "DEV";
-                }
-                for (int i = jr.IdRequest.ToString().Length; i <= 5; i++)
-                {
-                    JrNumber += "0";
-                }
-                JrNumber += jr.IdRequest;
-                jr.JrNumber = JrNumber;
+
+                //jr.JrNumber = CreateJRNummer(jr); //jr ID wordt automatisch toegeoved bij savecnages waardoor deze niet ka nwerken
 
                 List<EUT> euts = new List<EUT>();
                 if (CheckCreateRequirements(jr, out euts))
@@ -307,6 +312,7 @@ namespace BarcoPVG.Viewmodels
                     foreach (EUT eut in euts)
                     {
                         _dao.AddEutToRqRequest(jr, eut, count.ToString());
+                        count++;
                        
                     }
                     _dao.SaveChanges();
