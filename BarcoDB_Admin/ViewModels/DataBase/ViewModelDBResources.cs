@@ -12,18 +12,20 @@ namespace BarcoDB_Admin.ViewModels.DataBase
     {
 
         List<PlResource> _Resouces;
+        PlResource _SelectedResouce;
 
-        public List<PlResource> Resouces 
+        public List<PlResource> AllResources
         {
-            get
-            {
-                return _Resouces;
-            }
-            set
-            {
-                _Resouces = value;
-            }
+            get { return _Resouces; }
+            set { _Resouces = value; }
         }
+
+        public PlResource SelectedResouce
+        { 
+            get => _SelectedResouce; 
+            set => _SelectedResouce = value; 
+        }
+
         public ViewModelDBResources() : base()
         {
             Load();

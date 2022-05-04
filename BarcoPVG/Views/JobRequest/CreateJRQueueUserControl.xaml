@@ -5,16 +5,19 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BarcoPVG.Views"
              xmlns:vm="clr-namespace:BarcoPVG.Viewmodels.JobRequest"
-             mc:Ignorable="d" d:Background="LightGray" Width="1820" Height="980">
+             mc:Ignorable="d" d:Background="LightGray">
     <UserControl.Resources>
         <vm:ViewModelCreateJRQueue x:Key="converterToColor"/>
     </UserControl.Resources>
     <StackPanel Margin="10">
         <GroupBox Header="Open Job Requests" BorderThickness="0.2">
+            <!--Jarne-->
             <ListView x:Name="gvList"
                       ItemsSource="{Binding IdRequestsOnly}" 
                       SelectedItem="{Binding SelectedJR, Mode=TwoWay}"
                       VerticalAlignment="Stretch"
+                      MinHeight="300"
+                      MaxHeight="700"
                       Margin="3"
                       SelectionMode="Single"
                       SelectedIndex="1"
@@ -50,6 +53,11 @@
                         Margin="10"/>
             <Button Content="Open JR details"
                     Command="{Binding DataContext.DisplayExistingJRCommand, 
+                            RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, 
+                            Mode=OneWay}"
+                    Margin="10"/>
+            <Button Content="Internal JobRequest"
+                    Command="{Binding DataContext.DisplayInternalJobRequest, 
                             RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, 
                             Mode=OneWay}"
                     Margin="10"/>
