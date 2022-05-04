@@ -206,7 +206,6 @@
                         Height="40" Margin="5"/>
                 </StackPanel>
             </StackPanel>
-
         </GroupBox>
     </StackPanel>
 </UserControl>

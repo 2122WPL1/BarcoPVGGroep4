@@ -59,8 +59,8 @@
                             Visibility="{Binding SeeAll}"
                             Margin="10"/>
                     </StackPanel>
-                    <ScrollViewer Height="910" Margin="0,-0,0,0">
-                        <ContentControl x:Name="ctnView" Content="{Binding ViewModel}" Height="auto" Margin="0,-10,0,0" ScrollViewer.HorizontalScrollBarVisibility="Auto"/>
+                    <ScrollViewer Margin="0,-0,0,0">
+                        <ContentControl x:Name="ctnView" Content="{Binding ViewModel}" Height="700" Margin="0,-10,0,0" ScrollViewer.HorizontalScrollBarVisibility="Auto"/>
                     </ScrollViewer>
                 </StackPanel>
             </GroupBox>

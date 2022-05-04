@@ -29,6 +29,8 @@ namespace BarcoPVG.Viewmodels.JobRequest
             var requestIds = _dao.GetAllJobRequests().Where(rq => rq.Requester == _dao.BarcoUser.Name);
             IdRequestsOnly.Clear();
 
+
+
             foreach (var requestId in requestIds)
             {
                 IdRequestsOnly.Add(requestId);
