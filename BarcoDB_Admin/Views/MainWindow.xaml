@@ -28,7 +28,7 @@
                             Margin="5"/>
                 </StackPanel>
                 <ScrollViewer Grid.Row="1">
-                    <ContentControl Content="{Binding ViewModel}" Width="591"/>
+                    <ContentControl Content="{Binding ViewModel}" />
 
                 </ScrollViewer>
             </Grid>

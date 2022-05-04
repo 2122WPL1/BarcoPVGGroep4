@@ -14,8 +14,8 @@
 *.userprefs
 
 #Barco connectie
-BarcoPVG/Dao/Constants.cs
-BarcoDB_Admin/Dao/Constants.cs
+/BarcoPVG/Dao/Constants.cs
+/BarcoDB_Admin/Dao/Constants.cs
 
 # Mono auto generated files
 mono_crash.*

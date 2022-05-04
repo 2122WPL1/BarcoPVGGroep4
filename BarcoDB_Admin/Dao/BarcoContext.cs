@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using BarcoPVG.Models.Db;
+using BarcoDB_Admin.Models.Db;
 using BarcoDB_Admin.Dao;
 
-namespace BarcoPVG.Dao
+namespace BarcoDB_Admin.Dao
 {
     public partial class BarcoContext : DbContext
     {

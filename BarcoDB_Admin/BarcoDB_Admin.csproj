@@ -8,13 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Models\**" />
-    <EmbeddedResource Remove="Models\**" />
-    <None Remove="Models\**" />
-    <Page Remove="Models\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Remove="DictionaryResources\barco-logo.png" />
     <None Remove="DictionaryResources\lock.png" />
     <None Remove="DictionaryResources\user.png" />
