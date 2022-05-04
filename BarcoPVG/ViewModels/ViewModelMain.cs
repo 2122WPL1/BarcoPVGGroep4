@@ -435,9 +435,9 @@ namespace BarcoPVG.Viewmodels
                     Data = Visibility.Hidden;
 
                     this.ViewModel = new ViewModelCreateJRQueue();
+                    break;
         }
         }
 
         }
     }
-}
