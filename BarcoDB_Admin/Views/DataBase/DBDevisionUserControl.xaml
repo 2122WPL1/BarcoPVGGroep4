@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:BarcoDB_Admin.Views.DataBase"
+        xmlns:local="clr-namespace:BarcoDB_Admin.Views"
         mc:Ignorable="d"
         d:DesignHeight="800" d:Background="LightGray" Width="auto">
     <!--amy-->
@@ -21,10 +21,14 @@
         </GroupBox>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
             <Button Content="Edit" 
-                    
+                    Command="{Binding DataContext.DisplayEditDivisionCommand,
+                    RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}},
+                    Mode=OneWay}"
                     Margin="10"/>
             <Button Content="Add new" 
-                    
+                    Command="{Binding DataContext.DisplayAddDivisionCommand,
+                    RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}},
+                    Mode=OneWay}"
                     Margin="10"/>
             <Button Content="Delete" 
                     Command="{Binding Delete}"

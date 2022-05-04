@@ -1,32 +1,48 @@
 ﻿<!-- Datatemplates to connect viewmodels to views -->
-        <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:viewModels="clr-namespace:BarcoDB_Admin.ViewModels"
-        xmlns:views="clr-namespace:BarcoDB_Admin.Views"
-        xmlns:viewModelDataBase="clr-namespace:BarcoDB_Admin.ViewModels.DataBase"
-        xmlns:viewDataBase="clr-namespace:BarcoDB_Admin.Views.DataBase"
-        xmlns:viewModelEdit="clr-namespace:BarcoDB_Admin.ViewModels.Edit"
-        xmlns:viewEdit="clr-namespace:BarcoDB_Admin.Views.Edit">
+    
+    <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                        xmlns:viewModels="clr-namespace:BarcoDB_Admin.ViewModels"
+                        xmlns:views="clr-namespace:BarcoDB_Admin.Views"
+                        xmlns:viewModelDataBase="clr-namespace:BarcoDB_Admin.ViewModels.DataBase"
+                        xmlns:viewDataBase="clr-namespace:BarcoDB_Admin.Views.DataBase"
+                        xmlns:viewModelEdit="clr-namespace:BarcoDB_Admin.ViewModels.Edit"
+                        xmlns:viewEdit="clr-namespace:BarcoDB_Admin.Views.Edit">
         
         
-        <!-- Amy -->
-    <DataTemplate DataType="{x:Type viewModels:ViewModelMain}">
-        <views:MainWindow/>
-    </DataTemplate>
-    <DataTemplate DataType="{x:Type viewModelDataBase:ViewModelDBUser}">
-        <viewDataBase:DBUserUserControl/>
-    </DataTemplate>
+            <!-- Amy -->
+   
+            <DataTemplate DataType="{x:Type viewModels:ViewModelMain}">
+                <views:MainWindow/>
+            </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type viewModelDataBase:ViewModelDBUser}">
+                <viewDataBase:DBUserUserControl/>
+            </DataTemplate>
 
-    <DataTemplate DataType="{x:Type viewModelDataBase:ViewModelDBResources}">
-        <viewDataBase:DBResourcesUserControl/>
-    </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModelDataBase:ViewModelDBResources}">
+                <viewDataBase:DBResourcesUserControl/>
+            </DataTemplate>
 
-    <DataTemplate DataType="{x:Type viewModelDataBase:ViewModelDBDevision}">
-        <viewDataBase:DBDevisionUserControl/>
-    </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModelDataBase:ViewModelDBDevision}">
+                <viewDataBase:DBDevisionUserControl/>
+            </DataTemplate>
 
-    <DataTemplate DataType="{x:Type viewModelEdit:ViewModelEditUser}">
-        <viewEdit:EditUserUserControl/>
-    </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModelEdit:ViewModelEditUser}">
+                <viewEdit:EditUserUserControl/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModelEdit:ViewModelEditResources}">
+                <viewEdit:EditResourcesUserControl/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModelEdit:ViewModelEditDevision}">
+                <viewEdit:EditDevisionUserControl/>
+            </DataTemplate>
+            
+            
+   
+            
+   
    
 </ResourceDictionary>
