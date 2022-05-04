@@ -8,7 +8,7 @@
     <StackPanel Margin="10" >
         <GroupBox Header="Project Details">
             <DockPanel>
-                <Grid Width="673" HorizontalAlignment="Left">
+                <Grid Width="673" HorizontalAlignment="Center">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
@@ -98,7 +98,6 @@
                                          ScrollViewer.CanContentScroll="True"
                                          ScrollViewer.HorizontalScrollBarVisibility="Auto"
                                          HorizontalContentAlignment="Center">
-
                                     <ListBox.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <StackPanel Orientation="Horizontal"/>
