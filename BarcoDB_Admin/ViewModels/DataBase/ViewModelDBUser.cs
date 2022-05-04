@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BarcoDB_Admin.Models.Db;
 using BarcoDB_Admin.Viewmodels;
+using BarcoPVG.Models.Db;
 
 namespace BarcoDB_Admin.ViewModels.DataBase
 {
@@ -21,10 +23,9 @@ namespace BarcoDB_Admin.ViewModels.DataBase
         public ViewModelDBUser() : base()
         {
             Load();
-
         }
 
-        private void Load()
+       public Person SelectedUser
         {
             _AllUsers = _dao.GetAllUser();
         }

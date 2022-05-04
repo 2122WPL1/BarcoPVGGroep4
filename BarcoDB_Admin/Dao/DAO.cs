@@ -1,7 +1,5 @@
 ﻿using System;
-using System.CodeDom;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -14,17 +12,8 @@ using System.Data.SqlClient;
 
 namespace BarcoDB_Admin.Dao
 {
-    // SINGLETON PATTERN
-    // Private constructor, static instance
-    // Ensures only one DBconnection is opened at a time
-    // Ensures connection is closed when not in use
-    public class DAO
+    internal class DAO
     {
-        // Variables
-        private BarcoContext _context;
-        private static readonly DAO _instance = new();
-
-        public BarcoUser BarcoUser { get; private set; }
 
         // Calls an DAO instance
         public static DAO Instance()

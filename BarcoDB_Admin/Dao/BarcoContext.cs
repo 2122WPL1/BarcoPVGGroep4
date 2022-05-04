@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using BarcoDB_Admin.Models.Db;
 using BarcoDB_Admin.Dao;
+using BarcoPVG.Dao;
 
 namespace BarcoDB_Admin.Dao
 {

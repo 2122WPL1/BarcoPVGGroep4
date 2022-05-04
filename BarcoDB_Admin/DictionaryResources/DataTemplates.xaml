@@ -3,7 +3,16 @@
                     xmlns:JobRequest="clr-namespace:BarcoPVG.Views.JobRequest" 
                     xmlns:Viewmodels="clr-namespace:BarcoPVG.Viewmodels">
 
-
+    <DataTemplate x:Key="myCellTemplateMonth">
+        <DockPanel>
+            <TextBlock Foreground="DarkBlue" HorizontalAlignment="Center">
+                <TextBlock.Text>
+                    <Binding Path="Month"/>
+                </TextBlock.Text>
+            </TextBlock>
+        </DockPanel>
+    </DataTemplate>
+    
     <DataTemplate x:Key="AddEUT">
         <StackPanel>
             <Button Content="Voeg EUT toe" Command="{Binding AddEUTCommand}"></Button>

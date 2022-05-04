@@ -4,17 +4,18 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
+        Title="MainWindow"
         Background="LightGray" Foreground="White"
-        WindowState="Maximized"
-        MaxHeight="1080"
-        MaxWidth="1080"
-        MinWidth="1920"
-        MinHeight="1080"
-        WindowStyle="ToolWindow"
-        WindowStartupLocation="CenterScreen">
+        ResizeMode="NoResize" 
+        WindowStyle="None" 
+        WindowStartupLocation="CenterScreen" 
+        WindowState="Maximized" 
+        Focusable="True"
+        Height="{x:Static SystemParameters.PrimaryScreenHeight}" 
+        Width="{x:Static SystemParameters.PrimaryScreenWidth}">
     <StackPanel>
         <StackPanel Margin="10">
-            <GroupBox BorderThickness="0.1" Height="1040" >
+            <GroupBox BorderThickness="0.1" Height="auto" >
                 <GroupBox.Header>
                     <!-- This could be done more efficiently? -->
                     <Grid Background="#FFF10000">
@@ -60,7 +61,7 @@
                                 Visibility="{Binding Data}"/>
                     </StackPanel>
                     <ScrollViewer Height="910" Margin="0,-0,0,0">
-                        <ContentControl Content="{Binding ViewModel}" Height="908" Margin="0,-10,0,0"/>
+                        <ContentControl Content="{Binding ViewModel}" Height="auto" Margin="0,-10,0,0" ScrollViewer.HorizontalScrollBarVisibility="Auto"/>
                     </ScrollViewer>
                 </StackPanel>
             </GroupBox>
