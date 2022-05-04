@@ -23,7 +23,10 @@ namespace BarcoDB_Admin.ViewModels
         public DelegateCommand DisplayDataBaseDivisionCommand { get; set; }
         public DelegateCommand DisplayAddUserCommand { get; set; }
         public DelegateCommand DisplayEditUserCommand { get; set; }
-        public DelegateCommand SaveUserCommand { get; set; }
+        public DelegateCommand DisplayAddResourcesCommand { get; set; }
+        public DelegateCommand DisplayEditResourcesCommand { get; set; }
+        public DelegateCommand DisplayAddDivisionCommand { get; set; }
+        public DelegateCommand DisplayEditDivisionCommand { get; set; }
 
 
 
@@ -34,6 +37,10 @@ namespace BarcoDB_Admin.ViewModels
             DisplayDataBaseDivisionCommand = new DelegateCommand(DisplayDataBaseDivisionStartup);
             DisplayAddUserCommand = new DelegateCommand(DisplayAddUserStartup);
             DisplayEditUserCommand = new DelegateCommand(DisplayEditUserStartup);
+            DisplayAddResourcesCommand = new DelegateCommand(DisplayAddResourcesStartup);
+            DisplayEditResourcesCommand = new DelegateCommand(DisplayEditResourcesStartup);
+            DisplayAddDivisionCommand = new DelegateCommand(DisplayAddDivisionStartup);
+            DisplayEditDivisionCommand = new DelegateCommand(DisplayEditDivisionStartup);
         }
 
 
@@ -69,14 +76,28 @@ namespace BarcoDB_Admin.ViewModels
 
         public void DisplayEditUserStartup()
         {
-            SaveUserCommand = new DelegateCommand(InsertUser);
             this.ViewModel = new ViewModelEditUser();
         }
 
-        public void InsertUser()
+        public void DisplayAddResourcesStartup()
         {
-
+            this.ViewModel = new ViewModelEditResources();
         }
-       
+
+        public void DisplayEditResourcesStartup()
+        {
+            this.ViewModel = new ViewModelEditResources();
+        }
+
+        public void DisplayAddDivisionStartup()
+        {
+            this.ViewModel = new ViewModelEditDevision();
+        }
+
+        public void DisplayEditDivisionStartup()
+        {
+            this.ViewModel = new ViewModelEditDevision();
+        }
+
     }
 }
