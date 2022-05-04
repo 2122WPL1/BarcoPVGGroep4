@@ -12,11 +12,17 @@ namespace BarcoDB_Admin.ViewModels.DataBase
      class ViewModelDBUser : AbstractViewModelBase
     {
         private List<Person> _AllUsers;
+        private Person _SelectedPerson;
 
         public List<Person> AllUsers
         { 
             get => _AllUsers; 
             set =>_AllUsers = value; 
+        }
+        public Person SelectedUser
+        { 
+            get => _SelectedPerson; 
+            set => _SelectedPerson = value; 
         }
 
         public ViewModelDBUser() : base()

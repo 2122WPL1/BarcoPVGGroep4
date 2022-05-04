@@ -8,11 +8,10 @@
         d:DesignHeight="800" d:Background="LightGray">
     <!--amy-->
 
-    <StackPanel Margin="0,5,0,10" 
-        >
-        <GroupBox Header="User" Height="250" Width="auto">
+    <StackPanel Margin="0,5,0,10">
+        <GroupBox Header="User" Height="500" Width="auto">
 
-            <ListView ItemsSource="{Binding AllUsers}" SelectedItem="{Binding selectedUser, Mode=TwoWay}" Height="204" VerticalAlignment="Top" >
+            <ListView ItemsSource="{Binding AllUsers}" SelectedItem="{Binding SelectedUser, Mode=OneWay}" Height="300" VerticalAlignment="Top" >
 
                 <ListView.View>
                     <GridView>
