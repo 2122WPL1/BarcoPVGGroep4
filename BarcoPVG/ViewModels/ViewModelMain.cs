@@ -224,6 +224,22 @@ namespace BarcoPVG.Viewmodels
                                            (thisEUT.SAV)
                                           )
                                         {
+                                            string JrNumber = "JR";
+                                            if (true) //dit is voor Jr nummer "JRDEV00004" ik niet weet of het JR + DEV + ID (JR + functie + id) of JRDEV + id (JRDEV + id) moet gebruikt worden
+                                            {
+                                                JrNumber += _dao.BarcoUser.Function;
+                                            }
+                                            else
+                                            {
+                                                JrNumber += "DEV";
+                                            }
+                                            for(int i = jr.IdRequest.ToString().Length; i <= 5; i++ )
+                                            {
+                                                JrNumber += "0";
+                                            }
+                                            JrNumber += jr.IdRequest;
+                                            jr.JrNumber = JrNumber;
+
                                             _dao.AddEutToRqRequest(jr, thisEUT, count.ToString());
                                         }
                                         else
