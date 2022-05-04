@@ -6,7 +6,7 @@
         mc:Ignorable="d"
         Title="MainWindow"
         Background="LightGray" Foreground="White"
-        ResizeMode="NoResize" 
+        ResizeMode="CanMinimize" 
         WindowStyle="None" 
         WindowStartupLocation="CenterScreen" 
         WindowState="Maximized" 
@@ -58,7 +58,7 @@
                             Margin="10"/>
                     </StackPanel>
                     <ScrollViewer Height="910" Margin="0,-0,0,0">
-                        <ContentControl Content="{Binding ViewModel}" Height="auto" Margin="0,-10,0,0" ScrollViewer.HorizontalScrollBarVisibility="Auto"/>
+                        <ContentControl x:Name="ctnView" Content="{Binding ViewModel}" Height="auto" Margin="0,-10,0,0" ScrollViewer.HorizontalScrollBarVisibility="Auto"/>
                     </ScrollViewer>
                 </StackPanel>
             </GroupBox>
