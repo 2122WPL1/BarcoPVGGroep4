@@ -41,9 +41,13 @@ namespace BarcoDB_Admin.ViewModels
             DisplayEditResourcesCommand = new DelegateCommand(DisplayEditResourcesStartup);
             DisplayAddDivisionCommand = new DelegateCommand(DisplayAddDivisionStartup);
             DisplayEditDivisionCommand = new DelegateCommand(DisplayEditDivisionStartup);
+            Exit = new DelegateCommand(exit);
         }
 
-
+        public void exit()
+        {
+            Environment.Exit(0);
+        }
         public AbstractViewModelBase ViewModel
         {
             get => _viewModel;

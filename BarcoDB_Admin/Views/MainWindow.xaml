@@ -18,6 +18,26 @@
     <!--<ScrollViewer HorizontalScrollBarVisibility="Visible"> dit zorgt ervoor dat de andere scrollviewer niet zichtbaar wordt-->
         <StackPanel Margin="10" >
         <GroupBox BorderThickness="0.1" Height="auto">
+            <GroupBox.Header>
+                <!-- This could be done more efficiently? -->
+                <Grid Background="#FFF10000">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="7*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="X" Content="X" Background="LightGray" BorderBrush="#FFF44336" Grid.Column="3" Command="{Binding Exit}"/>
+                    <Image Style="{StaticResource BarcoLogo}" Grid.Column="0" Margin="16,0,25,0"/>
+                    <StackPanel Orientation="Horizontal" Grid.Column="1" >
+                        <TextBlock FontSize="14" Text="Welcome "/>
+                        <TextBlock FontSize="14" FontWeight="Bold" Text="{Binding User.Name}"/>
+                        <TextBlock FontSize="14" Text=" ("/>
+                        <TextBlock FontSize="14" Text="{Binding User.Division}"/>
+                        <TextBlock FontSize="14" Text=")"/>
+                    </StackPanel>
+                </Grid>
+            </GroupBox.Header>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
