@@ -7,13 +7,13 @@
         mc:Ignorable="d"
         d:DesignHeight="800" d:Background="LightGray" Width="auto" Height="auto">
     <StackPanel Margin="5">
-        <GroupBox MinHeight="200" Header="Resources">
-            <ListView>
+        <GroupBox Height="500" Width="auto" Header="Resources">
+            <ListView ItemsSource="{Binding AllResources}" SelectedItem="{Binding SelectedResouce , Mode=OneWay}" Height="204" VerticalAlignment="top">
                 <ListView.View>
                     <GridView >
-                        <GridViewColumn Header="Name" Width="150"/>
-                        <GridViewColumn Header="Color-RGB" Width="150"/>
-                        <GridViewColumn Header="Color-HEX" Width="150"/>
+                        <GridViewColumn Header="Name" Width="150" DisplayMemberBinding="{Binding Naam}"/>
+                        <GridViewColumn Header="Color-RGB" Width="150" DisplayMemberBinding="{Binding KleurRgb}"/>
+                        <GridViewColumn Header="Color-HEX" Width="150" DisplayMemberBinding="{Binding KleurHex}"/>
                     </GridView>
                 </ListView.View>
             </ListView>

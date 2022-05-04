@@ -8,13 +8,13 @@
         d:DesignHeight="800" d:Background="LightGray" Width="auto">
     <!--amy-->
     <StackPanel Margin="5">
-        <GroupBox MinHeight="200" Header="Devision">
-            <ListView>
+        <GroupBox MinHeight="500" Header="Devision">
+            <ListView ItemsSource="{Binding AllDivisions}" SelectedItem="{Binding SelectedDivision, Mode=OneWay}" Height="204" VerticalAlignment="Top" >
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Abbreviation" Width="150"/>
-                        <GridViewColumn Header="Alias" Width="150"/>
-                        <GridViewColumn Header="Active" Width="150"/>
+                        <GridViewColumn Header="Abbreviation" Width="150" DisplayMemberBinding="{Binding Afkorting}"/>
+                        <GridViewColumn Header="Alias" Width="150" DisplayMemberBinding="{Binding Alias}"/>
+                        <GridViewColumn Header="Active" Width="150" DisplayMemberBinding="{Binding Actief}"/>
                     </GridView>
                 </ListView.View>
             </ListView>
