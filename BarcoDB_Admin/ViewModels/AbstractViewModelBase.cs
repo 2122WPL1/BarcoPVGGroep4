@@ -1,5 +1,4 @@
 ﻿using BarcoPVG.Dao;
-using BarcoPVG.ViewModels.DatabaseManagement;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
