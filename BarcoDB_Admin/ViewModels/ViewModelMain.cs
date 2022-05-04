@@ -17,7 +17,7 @@ namespace BarcoDB_Admin.ViewModels
     {
         private AbstractViewModelBase _viewModel;
 
-
+        public DelegateCommand Exit { get; set; }
         public DelegateCommand DisplayDatabaseUserCommand { get; set; }
         public DelegateCommand DisplayDataResourceCommand { get; set; }
         public DelegateCommand DisplayDataBaseDivisionCommand { get; set; }
