@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:BarcoPVG.Views"
              x:Class="BarcoPVG.Views.TestGUI.UpdateTestQueueUserControl"
              mc:Ignorable="d" 
-             d:DesignHeight="900"  d:DesignWidth="1600" d:Background="LightGray" >
+             d:DesignHeight="700"  d:DesignWidth="1600" d:Background="LightGray" >
     <StackPanel Margin="10">
         <GroupBox Header="Tests to execute" BorderThickness="0.1" Height="auto" Width="auto">
             <StackPanel>
@@ -32,7 +32,7 @@
                           ScrollViewer.HorizontalScrollBarVisibility="Auto" 
                           HorizontalAlignment="Stretch"
                           HorizontalContentAlignment="Center"
-                          MaxHeight="700">
+                          MaxHeight="500">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn DisplayMemberBinding="{Binding Resource}" Header="Resource"/>

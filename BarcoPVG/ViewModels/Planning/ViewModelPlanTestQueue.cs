@@ -16,7 +16,7 @@ namespace BarcoPVG.Viewmodels.Planning
         //Constructor
         public ViewModelPlanTestQueue() : base()
         {
-             Collection initialization
+
             PlansToApprove = new ObservableCollection<PlPlanning>();
 
             foreach (var item in _dao.GetPlPlannings().Where(pl => pl.TestDivStatus == "In plan"))

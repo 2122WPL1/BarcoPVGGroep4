@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BarcoPVG.Views"
-             mc:Ignorable="d" d:Background="LightGray" Height="auto" Width="auto">
+             d:DesignHeight="700"
+             mc:Ignorable="d" d:Background="LightGray">
     <StackPanel Margin="10" Orientation="Horizontal">
         <GroupBox Header="Project Details" Margin="10" Width="auto" Height="483" >
             <Grid>
