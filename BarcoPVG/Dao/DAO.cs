@@ -846,7 +846,7 @@ namespace BarcoPVG.Dao
         // Stores all data from GUI in DB
         public void SaveChanges()
         {
-            _context.SaveChanges(); //Sander: fout bij het aaanmaken van een JR (database probleem) (wilt niet een request aanmaken wanneer  de requester "super admin" is
+            _context.SaveChanges();
         }
 
         /// <summary>
