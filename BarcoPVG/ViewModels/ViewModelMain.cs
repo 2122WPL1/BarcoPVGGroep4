@@ -1,9 +1,11 @@
 ﻿using BarcoPVG.Models.Classes;
+using BarcoPVG.Models.Db;
 using BarcoPVG.Viewmodels.JobRequest;
 using BarcoPVG.Viewmodels.Planning;
 using BarcoPVG.Viewmodels.TestGUI;
 using Prism.Commands;
 using System;
+using System.Collections.Generic;
 using System.Windows;
 
 
@@ -160,10 +162,10 @@ namespace BarcoPVG.Viewmodels
         }
 
         //Amy
-       // public void DisplayDatabaseManagementStartup()
-       // {
-       //     this.ViewModel = new ViewModelDatabaseManagement();
-       // }
+        // public void DisplayDatabaseManagementStartup()
+        // {
+        //     this.ViewModel = new ViewModelDatabaseManagement();
+        // }
         //public void DisplayDatabaseManagement()
         //{
         //    this.DataBase = new ViewModelDBUser();
@@ -181,15 +183,15 @@ namespace BarcoPVG.Viewmodels
         // JR CRUD
         // Command functions
         // Adds and stores a job request and switches windows
-        public void InsertJr() // aanmaken job request
+        private bool CheckCreateRequirements(RqRequest jr, out List<EUT> eUTs1)
         {
-            var jr = _dao.AddJobRequest(((AbstractViewModelContainer)this.ViewModel)
-                .JR); // SaveChanges included in function
-            int count = 0;
+            List<EUT> eUts2 = new List<EUT>();
 
+            bool passed = false;
             if (jr.Requester.Length > 10)
             {
                 MessageBox.Show("Requester is longer than the allowed length(10)");
+
             }
             else
             {
@@ -198,66 +200,29 @@ namespace BarcoPVG.Viewmodels
                         jr.EutPartnumbers == String.Empty || jr.NetWeight == String.Empty ||
                         jr.GrossWeight == String.Empty || jr.EutProjectname == String.Empty ||
                         jr.HydraProjectNr == String.Empty
-                    )
-                  )
-                    if (jr.ExpectedEnddate.ToLongDateString != DateTime.Now.ToLongDateString) //geeft nooit null | de tijd van vandaag door datetime now te gebruiken | datetime now en enddate 1 milliseconde verschil | nu tijdelijke if clause
+                    ))
+                {
+                    if (jr.ExpectedEnddate.Date != DateTime.Now.Date) //geeft nooit null | de tijd van vandaag door datetime now te gebruiken | datetime now en enddate 1 milliseconde verschil | nu tijdelijke if clause
                     {
+                        if (((AbstractViewModelContainer)this.ViewModel).EUTs.Count == 0)
                         {
-                            if (((AbstractViewModelContainer)this.ViewModel).EUTs.Count == 0)
+                            MessageBox.Show("Er moet tenminste 1 eut zijn");
+                        }
+                        else
+                        {
+                            foreach (EUT eUT in ((AbstractViewModelContainer)this.ViewModel).EUTs)
                             {
-                                MessageBox.Show("Er moet tenminste 1 eut zijn");
-                            }
-                            else
-                            {
-                                foreach (var thisEUT in ((AbstractViewModelContainer)this.ViewModel).EUTs)
+                                if (!CheckEUTRequirements(eUT))
                                 {
-                                    count++;
-                                    if (thisEUT.AvailabilityDate != null)
-                                    {
-                                        if (
-                                           (thisEUT.ECO) ||
-                                           (thisEUT.SAV) ||
-                                           (thisEUT.EMC) ||
-                                           (thisEUT.ENV) ||
-                                           (thisEUT.PCK) ||
-                                           (thisEUT.REL) ||
-                                           (thisEUT.SAV)
-                                          )
-                                        {
-                                            string JrNumber = "JR";
-                                            if (true) //dit is voor Jr nummer "JRDEV00004" ik niet weet of het JR + DEV + ID (JR + functie + id) of JRDEV + id (JRDEV + id) moet gebruikt worden
-                                            {
-                                                JrNumber += _dao.BarcoUser.Function;
-                                            }
-                                            else
-                                            {
-                                                JrNumber += "DEV";
-                                            }
-                                            for(int i = jr.IdRequest.ToString().Length; i <= 5; i++ )
-                                            {
-                                                JrNumber += "0";
-                                            }
-                                            JrNumber += jr.IdRequest;
-                                            jr.JrNumber = JrNumber;
-
-                                            _dao.AddEutToRqRequest(jr, thisEUT, count.ToString());
-                                        }
-                                        else
-                                        {
-
-                                            MessageBox.Show("selecteer iets bij de euts");
-                                            goto abc;
-                                        }
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("geen datum voor 1 van de eut's geslescteerd");
-                                        goto abc;
-                                    }
+                                    passed = false;
+                                    break;
                                 }
-                                // Here we call the SaveChanges method, so that we can link several EUTs to one JR
-                                _dao.SaveChanges();
-                                DisplayDevStartup();
+                                else
+                                {
+                                    passed = true;
+                                }
+
+                                eUts2.Add(eUT);
                             }
                         }
                     }
@@ -265,13 +230,96 @@ namespace BarcoPVG.Viewmodels
                     {
                         MessageBox.Show("geef een datum in voor de jr");
                     }
+                }
                 else
                 {
                     MessageBox.Show("Alle verplichte gegevens moeten ingevult worden");
                 }
             }
-        abc:;
+            eUTs1 = eUts2;
+            return passed;
         }
+        private bool CheckEUTRequirements(EUT eut)
+        {
+            bool passed = false;
+            foreach (var thisEUT in ((AbstractViewModelContainer)this.ViewModel).EUTs)
+            {
+                if (thisEUT.AvailabilityDate != null)
+                {
+                    if (
+                       (thisEUT.ECO) ||
+                       (thisEUT.SAV) ||
+                       (thisEUT.EMC) ||
+                       (thisEUT.ENV) ||
+                       (thisEUT.PCK) ||
+                       (thisEUT.REL) ||
+                       (thisEUT.SAV)
+                      )
+                    {
+
+                        passed = true;
+
+                    }
+                    else
+                    {
+
+                        MessageBox.Show("selecteer een devision bij alle de euts");
+
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("geen datum voor 1 van de eut's geslescteerd");
+                }
+            }
+            return passed;
+        }
+
+
+        public void InsertJr() // aanmaken job request
+        {
+            var jr = _dao.AddJobRequest(((AbstractViewModelContainer)this.ViewModel)
+                .JR); // SaveChanges included in function
+            int count = 0;
+
+
+
+            {
+                string JrNumber = "JR";
+                if (true) //dit is voor Jr nummer "JRDEV00004" ik niet weet of het JR + DEV + ID (JR + functie + id) of JRDEV + id (JRDEV + id) moet gebruikt worden
+                {
+                    JrNumber += _dao.BarcoUser.Function;
+                }
+                else
+                {
+                    JrNumber += "DEV";
+                }
+                for (int i = jr.IdRequest.ToString().Length; i <= 5; i++)
+                {
+                    JrNumber += "0";
+                }
+                JrNumber += jr.IdRequest;
+                jr.JrNumber = JrNumber;
+
+                List<EUT> euts = new List<EUT>();
+                if (CheckCreateRequirements(jr, out euts))
+                {
+                    foreach (EUT eut in euts)
+                    {
+                        _dao.AddEutToRqRequest(jr, eut, count.ToString());
+                       
+                    }
+                    _dao.SaveChanges();
+                    DisplayDevStartup();
+                }
+
+
+
+                // Here we call the SaveChanges method, so that we can link several EUTs to one JR
+                
+            }
+        }
+
 
 
         public void InsertInternalJr()
