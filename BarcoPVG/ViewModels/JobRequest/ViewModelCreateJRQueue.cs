@@ -26,12 +26,15 @@ namespace BarcoPVG.Viewmodels.JobRequest
         // Loads all JR IDs in LB
         public void Load()
         {
-            var requestIds = _dao.GetAllJobRequests().Where(rq => rq.Requester == _dao.BarcoUser.Name);
+            //var requestIds = _dao.GetAllJobRequests().Where(rq => rq.Requester == _dao.BarcoUser.Name);
+            //IdRequestsOnly.Clear();
+
+            var requestIds = _dao.GetAllJobRequests();
             IdRequestsOnly.Clear();
 
             foreach (var requestId in requestIds)
             {
-                //IdRequestsOnly.Add(requestId);
+                IdRequestsOnly.Add(requestId);
             }
         }
     }

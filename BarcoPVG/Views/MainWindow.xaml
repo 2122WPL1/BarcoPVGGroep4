@@ -19,13 +19,12 @@
                 <GroupBox.Header>
                     <!-- This could be done more efficiently? -->
                     <Grid Background="#FFF10000">
-                        <Button x:Name="X" Background="LightGray" BorderBrush="#FFF44336" Grid.Column="2" Margin="1700,0,0,0"/>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="8.667"/>
                             <ColumnDefinition Width="141.333"/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <Image Style="{StaticResource BarcoLogo}" Grid.Column="1" Margin="16,0,25,0"/>
+                        <Image Style="{StaticResource BarcoLogo}" Grid.Column="1"/>
                         <StackPanel Orientation="Horizontal" Grid.Column="2" >
                             <TextBlock FontSize="14" Text="Welcome "/>
                             <TextBlock FontSize="14" FontWeight="Bold" Text="{Binding User.Name}"/>
