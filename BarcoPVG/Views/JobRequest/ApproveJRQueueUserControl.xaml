@@ -5,22 +5,22 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BarcoPVG.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="700" d:DesignWidth="1600" d:Background="LightGray">
+             d:DesignHeight="880" d:DesignWidth="1882" d:Background="LightGray">
     <StackPanel Margin="10">
         <GroupBox Header="Approval queue" BorderThickness="0.1">
             <StackPanel>
+                <!--Jarne-->
                 <ListView ItemsSource="{Binding IdRequestsOnly}" 
                           SelectedItem="{Binding SelectedJR, Mode=TwoWay}" 
                           VerticalAlignment="Stretch"
+                          Height="auto"
                           Margin="3"
                           SelectionMode="Single"
-                          SelectedIndex="1"
                           ScrollViewer.VerticalScrollBarVisibility="Auto"
                           ScrollViewer.CanContentScroll="True"
                           ScrollViewer.HorizontalScrollBarVisibility="Auto" 
                           HorizontalAlignment="Stretch"
-                          HorizontalContentAlignment="Center"
-                          MaxHeight="500">
+                          HorizontalContentAlignment="Center">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Id" DisplayMemberBinding="{Binding IdRequest}" />
