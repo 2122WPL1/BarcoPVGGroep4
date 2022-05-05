@@ -33,7 +33,31 @@ namespace BarcoDB_Admin.ViewModels.DataBase
 
         private void Load()
         {
-            _Resouces = _dao.GetResources();
+            AllResources = _dao.GetResources();
+        }
+        private void DeleteResourceFromDB()
+        {
+            if (SelectedResouce != null)
+            {
+                if (MessageBox.Show( "Are you sure you want to delete this Resource?", "Delete Resource", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                {
+
+                    _dao.RemoveResource(SelectedResouce);
+                    Load();
+                    OnpropertyChanged("AllResources");
+                }
+                else
+                {
+                    MessageBox.Show("This resource has not been deleted");
+                }
+                
+
+            }
+            else
+            {
+                MessageBox.Show("No user selected");
+            }
+            
         }
     }
 }
