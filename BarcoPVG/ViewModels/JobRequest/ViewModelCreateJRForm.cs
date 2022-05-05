@@ -139,7 +139,9 @@ namespace BarcoPVG.Viewmodels.JobRequest
         /// </summary>
         private void RefreshJR()
         {
+      
             this.JR = _dao.GetNewJR();
+       
             EUTs.Clear();
         }
 

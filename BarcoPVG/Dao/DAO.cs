@@ -306,8 +306,10 @@ namespace BarcoPVG.Dao
             // JR Number not empty?
             if (Jr.BarcoDivision != null)
             {
-                RqRequest rqrequest = _context.RqRequests.FirstOrDefault(r => r.IdRequest == Jr.IdRequest);
-
+                RqRequest rqrequest;
+                
+                    rqrequest = _context.RqRequests.FirstOrDefault(r => r.IdRequest == Jr.IdRequest);
+                
                 rqrequest.JrNumber = Jr.JrNumber;
                 rqrequest.JrStatus = Jr.JrStatus;
                 rqrequest.RequestDate = (DateTime)Jr.RequestDate;

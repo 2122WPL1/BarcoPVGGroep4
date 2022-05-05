@@ -188,7 +188,8 @@
                     Height="40" Margin="5"/>
             <Button Content="Empty All Fields"
                         Command="{Binding Path=RefreshJRCommand}"
-                        Height="40" Margin="5"/>
+                        Height="40" Margin="5"
+                        />
             <Button Content="Cancel"
                         Command="{Binding DataContext.DisplayDevStartupCommand, 
                             RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, 
