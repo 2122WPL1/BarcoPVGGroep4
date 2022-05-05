@@ -16,7 +16,7 @@ namespace BarcoDB_Admin.ViewModels.DataBase
         public DelegateCommand DeleteUser { get; set; }
 
         private List<Person> _AllUsers;
-        private Person _SelectedPerson;
+        private Person _SelectedUser;
 
         public List<Person> AllUsers
         { 
@@ -24,9 +24,9 @@ namespace BarcoDB_Admin.ViewModels.DataBase
             set =>_AllUsers = value; 
         }
         public Person SelectedUser
-        { 
-            get => _SelectedPerson; 
-            set => _SelectedPerson = value; 
+        {
+            get => _SelectedUser;
+            set => _SelectedUser = value;
         }
 
         public ViewModelDBUser() : base()

@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace BarcoDB_Admin.ViewModels
 {
@@ -75,12 +76,20 @@ namespace BarcoDB_Admin.ViewModels
 
         public void DisplayAddUserStartup()
         {
-            this.ViewModel = new ViewModelEditUser();
+            this.ViewModel = new ViewModelAddUser();
         }
 
         public void DisplayEditUserStartup()
         {
-            this.ViewModel = new ViewModelEditUser();
+            var user = ((ViewModelDBUser)this.ViewModel).SelectedUser;
+            if (user != null)
+            {
+                this.ViewModel = new ViewModelEditUser(user);
+            }
+            else
+            {
+                MessageBox.Show("No user selected!");
+            }
         }
 
         public void DisplayAddResourcesStartup()
