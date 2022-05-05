@@ -49,6 +49,16 @@ namespace BarcoDB_Admin.Dao
             _context.Remove(person);
             _context.SaveChanges();
         }
+        public void RemoveResource(PlResource req)
+        {
+            _context.Remove(req);
+            _context.SaveChanges();
+        }
+        public void RemoveDivision(RqBarcoDivision div)
+        {
+            _context.Remove(div);
+            _context.SaveChanges();
+        }
 
         public void GetDiv(Person loginPerson)
         {   
