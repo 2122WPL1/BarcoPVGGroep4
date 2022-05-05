@@ -15,18 +15,17 @@ namespace BarcoDB_Admin.ViewModels.DataBase
     {
         public DelegateCommand DeleteUser { get; set; }
 
-        private List<Person> _AllUsers;
-        private Person _SelectedUser;
+        
+        
 
         public List<Person> AllUsers
         { 
-            get => _AllUsers; 
-            set =>_AllUsers = value; 
+            get;
+            set;
         }
         public Person SelectedUser
         {
-            get => _SelectedUser;
-            set => _SelectedUser = value;
+            get; set;
         }
 
         public ViewModelDBUser() : base()
@@ -37,13 +36,16 @@ namespace BarcoDB_Admin.ViewModels.DataBase
 
         public void Load()
         {
-            _AllUsers = _dao.GetAllUser();
+            AllUsers = _dao.GetAllUser();
         }
         public void deleteUserFromDB()
         {
             if (SelectedUser != null)
             {
                 _dao.RemoveUser(SelectedUser);
+                Load();
+                OnpropertyChanged("AllUsers");
+                
             }
             else
             {
