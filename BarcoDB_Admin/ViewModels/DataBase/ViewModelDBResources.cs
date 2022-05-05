@@ -41,14 +41,23 @@ namespace BarcoDB_Admin.ViewModels.DataBase
         {
             if (SelectedResouce != null)
             {
-                _dao.RemoveResource(SelectedResouce);
-                Load();
-                OnpropertyChanged("AllResources");
+                if (MessageBox.Show( "Are you sure you want to delete this Resource?", "Delete Resource", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                {
+
+                    _dao.RemoveResource(SelectedResouce);
+                    Load();
+                    OnpropertyChanged("AllResources");
+                }
+                else
+                {
+                    MessageBox.Show("This resource has not been deleted");
+                }
+                
 
             }
             else
             {
-                MessageBox.Show("Geen gebruiker geselecteerd");
+                MessageBox.Show("No user selected");
             }
             
         }
