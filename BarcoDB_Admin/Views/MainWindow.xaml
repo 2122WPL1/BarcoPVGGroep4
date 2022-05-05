@@ -54,8 +54,8 @@
                             Command="{Binding DisplayDataBaseDivisionCommand, Mode=OneWay}"
                             Margin="5"/>
                 </StackPanel>
-                <ScrollViewer Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Visible" >
-                    <ContentControl Content="{Binding ViewModel}" Width="auto" HorizontalContentAlignment="Center"  />
+                <ScrollViewer Grid.Row="1">
+                    <ContentControl Content="{Binding ViewModel}" HorizontalContentAlignment="Center"  />
                 </ScrollViewer>
             </Grid>
         </GroupBox>
