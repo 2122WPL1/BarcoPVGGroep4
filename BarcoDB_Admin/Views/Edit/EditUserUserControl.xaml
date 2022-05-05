@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BarcoDB_Admin.Views"
-        mc:Ignorable="d" d:DesignWidth="1000"
+        mc:Ignorable="d" Width="500"
        d:Background="LightGray">
     <!--amy-->
     <StackPanel Margin="5">
