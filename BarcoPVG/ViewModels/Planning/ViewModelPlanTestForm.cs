@@ -9,7 +9,7 @@ using BarcoPVG.Models.Classes;
 using BarcoPVG.Models;
 using BarcoPVG.Models.Db;
 
-namespace BarcoPVG.Viewmodels.Planning
+namespace BarcoPVG.ViewModels.Planning
 {
     // Kaat
     class ViewModelPlanTestForm : AbstractViewModelBase

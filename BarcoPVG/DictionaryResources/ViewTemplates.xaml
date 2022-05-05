@@ -2,16 +2,16 @@
 <!-- Datatemplates to connect viewmodels to views -->
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-xmlns:viewModels="clr-namespace:BarcoPVG.Viewmodels"
-xmlns:viewModelJR="clr-namespace:BarcoPVG.Viewmodels.JobRequest"
-xmlns:viewModelPlanning="clr-namespace:BarcoPVG.Viewmodels.Planning"
-xmlns:viewModelTestGUI="clr-namespace:BarcoPVG.Viewmodels.TestGUI"
+xmlns:viewModels="clr-namespace:BarcoPVG.ViewModels"
+xmlns:viewModelJR="clr-namespace:BarcoPVG.ViewModels.JobRequest"
+xmlns:viewModelPlanning="clr-namespace:BarcoPVG.ViewModels.Planning"
+xmlns:viewModelTestGUI="clr-namespace:BarcoPVG.ViewModels.TestGUI"
 xmlns:views="clr-namespace:BarcoPVG.Views"
 xmlns:viewsJR="clr-namespace:BarcoPVG.Views.JobRequest"
 xmlns:viewsPlanning="clr-namespace:BarcoPVG.Views.Planning"
 xmlns:viewsTestGUI="clr-namespace:BarcoPVG.Views.TestGUI"
 xmlns:ViewInternJR="clr-namespace:BarcoPVG.Views.JobRequest"
-xmlns:ViewModelInternJr="clr-namespace:BarcoPVG.Viewmodels.JobRequest"
+xmlns:ViewModelInternJr="clr-namespace:BarcoPVG.ViewModels.JobRequest"
 >
     <!--Bindings van de scherment worden naar de gedifineerde viewmodel gedaan-->
     <DataTemplate DataType="{x:Type viewModels:ViewModelMain}">
@@ -29,6 +29,9 @@ xmlns:ViewModelInternJr="clr-namespace:BarcoPVG.Viewmodels.JobRequest"
     <DataTemplate DataType="{x:Type viewModelJR:ViewModelCreateJRForm}">
         <viewsJR:CreateJRFormUserControl/>
     </DataTemplate>
+    <DataTemplate DataType="{x:Type viewModelInternJR:ViewModelCreateInternFRForm}">
+        <viewsJR:CreateInternJRFormUserControl/>
+    </DataTemplate>
     <DataTemplate DataType="{x:Type viewModelJR:ViewModelCreateJRQueue}">
         <viewsJR:CreateJRQueueUserControl/>
     </DataTemplate>
@@ -41,4 +44,5 @@ xmlns:ViewModelInternJr="clr-namespace:BarcoPVG.Viewmodels.JobRequest"
     <DataTemplate DataType="{x:Type viewModelTestGUI:ViewModelUpdateTestQueue}">
         <viewsTestGUI:UpdateTestQueueUserControl/>
     </DataTemplate>
+    
 </ResourceDictionary>

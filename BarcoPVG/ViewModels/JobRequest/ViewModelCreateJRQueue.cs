@@ -12,7 +12,7 @@ using BarcoPVG.Views.JobRequest;
 using System.Windows.Media;
 using System.Windows.Data;
 
-namespace BarcoPVG.Viewmodels.JobRequest
+namespace BarcoPVG.ViewModels.JobRequest
 {
     public class ViewModelCreateJRQueue : AbstractViewModelCollectionRQ
     {
