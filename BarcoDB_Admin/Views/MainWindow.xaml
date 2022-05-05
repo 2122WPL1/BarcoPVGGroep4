@@ -55,7 +55,7 @@
                             Margin="5"/>
                 </StackPanel>
                 <ScrollViewer Grid.Row="1">
-                    <ContentControl Content="{Binding ViewModel}" HorizontalContentAlignment="Center"  />
+                    <ContentControl Content="{Binding ViewModel}" HorizontalContentAlignment="Center" Width="auto"  />
                 </ScrollViewer>
             </Grid>
         </GroupBox>
