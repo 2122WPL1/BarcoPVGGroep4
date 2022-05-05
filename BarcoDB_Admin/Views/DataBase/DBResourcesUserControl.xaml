@@ -8,7 +8,7 @@
         d:DesignHeight="800" d:Background="LightGray" Width="auto" Height="auto">
     <StackPanel Margin="5">
         <GroupBox Height="500" Width="auto" Header="Resources">
-            <ListView ItemsSource="{Binding AllResources}" SelectedItem="{Binding SelectedResouce , Mode=OneWay}" Height="204" VerticalAlignment="top">
+            <ListView ItemsSource="{Binding AllResources}" SelectedItem="{Binding SelectedResouce , Mode=TwoWay}" Height="204" VerticalAlignment="top">
                 <ListView.View>
                     <GridView >
                         <GridViewColumn Header="Name" Width="150" DisplayMemberBinding="{Binding Naam}"/>

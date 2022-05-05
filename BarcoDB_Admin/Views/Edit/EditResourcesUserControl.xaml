@@ -13,9 +13,12 @@
                 <Label Content="Name:" HorizontalAlignment="Left" Margin="171,112,0,0" VerticalAlignment="Top"/>
                 <Label Content="Color-RGB:" HorizontalAlignment="Left" Margin="147,160,0,0" VerticalAlignment="Top"/>
                 <Label Content="Color-HEX:" HorizontalAlignment="Left" Margin="148,212,0,0" VerticalAlignment="Top"/>
-                <TextBox Margin="264,112,0,0" Text="" VerticalAlignment="Top" Width="150"/>
-                <TextBox Margin="264,160,0,0" Text="" VerticalAlignment="Top" Width="150"/>
-                <TextBox Margin="264,212,0,0" Text="" VerticalAlignment="Top" Width="150"/>
+                <TextBox Margin="264,112,0,0" Text="{Binding PlResource.Naam, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                         VerticalAlignment="Top" Width="150"/>
+                <TextBox Margin="264,160,0,0" Text="{Binding PlResource.KleurRgb, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                         VerticalAlignment="Top" Width="150"/>
+                <TextBox Margin="264,212,0,0" Text="{Binding PlResource.KleurHex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                         VerticalAlignment="Top" Width="150"/>
                 <Button Content="Save" HorizontalAlignment="Left" Margin="565,309,0,0" VerticalAlignment="Top"/>
                 <Button Content="Cancel" HorizontalAlignment="Left" 
                         Command="{Binding DataContext.DisplayDataResourceCommand, 

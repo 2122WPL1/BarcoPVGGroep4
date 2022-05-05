@@ -12,7 +12,7 @@ namespace BarcoDB_Admin.ViewModels.DataBase
      class ViewModelDBUser : AbstractViewModelBase
     {
         private List<Person> _AllUsers;
-        private Person _SelectedUser;
+        private Person _SelectedUser;//Amy
 
         public List<Person> AllUsers
         { 

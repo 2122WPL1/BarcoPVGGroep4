@@ -11,15 +11,17 @@
         <GroupBox Header="User" Height="413">
             <Grid>
                 <Label Content="Abbreviation:" HorizontalAlignment="Left" Margin="134,52,0,0" VerticalAlignment="Top"/>
-                <TextBox Margin="233,52,0,0" Text="" VerticalAlignment="Top" Width="150"/>
+                <TextBox Margin="233,52,0,0" Text="{Binding Person.Afkorting, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                         VerticalAlignment="Top" Width="150"/>
                 <Label Content="First Name:" HorizontalAlignment="Left" Margin="145,104,0,0" VerticalAlignment="Top"/>
-                <TextBox Margin="233,104,0,0" Text="" VerticalAlignment="Top" Width="150"/>
+                <TextBox Margin="233,104,0,0" Text="{Binding Person.Voornaam, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                         VerticalAlignment="Top" Width="150"/>
                 <Label Content="Last Name:" HorizontalAlignment="Left" Margin="146,156,0,0" VerticalAlignment="Top"/>
-                <TextBox Margin="233,156,0,0" Text="" VerticalAlignment="Top" Width="150"/>
-
-
+                <TextBox Margin="233,156,0,0" Text="{Binding Person.Familienaam, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                         VerticalAlignment="Top" Width="150"/>
                 <Label Content="Password:" HorizontalAlignment="Left" Margin="153,208,0,0" VerticalAlignment="Top"/>
-                <TextBox Margin="233,208,0,0" Text="" VerticalAlignment="Top" Width="150"/>
+                <TextBox Margin="233,208,0,0" Text="{Binding Person.wachtwoord, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                         VerticalAlignment="Top" Width="150"/>
                 <Button Content="Save" HorizontalAlignment="Left" 
                          Command="{Binding DataContext.SaveUserCommand, 
                             RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, 

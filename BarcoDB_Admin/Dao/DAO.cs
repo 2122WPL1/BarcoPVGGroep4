@@ -40,7 +40,7 @@ namespace BarcoDB_Admin.Dao
                 Function = "DATA",
             };
         }
-      
+
         //Eakarach
         //Login
         public void LoginSucceedded(Person loginPerson)
@@ -54,7 +54,7 @@ namespace BarcoDB_Admin.Dao
             //string func = "";
             this.BarcoUser = new BarcoUser()
             {
-                Name = name, 
+                Name = name,
                 Division = "EMC",
                 Function = "DATA",
             };
@@ -87,7 +87,7 @@ namespace BarcoDB_Admin.Dao
         // Returns list of all user
         public List<Person> GetAllUser()
         {
-            return _context.People.ToList();          
+            return _context.People.ToList();
         }
 
         // Returns list of all JRs
@@ -183,14 +183,14 @@ namespace BarcoDB_Admin.Dao
                 BarcoDivision = Jr.BarcoDivision == null ? string.Empty : Jr.BarcoDivision,
                 JobNature = Jr.JobNature == null ? string.Empty : Jr.JobNature,
                 EutProjectname = Jr.EutProjectname == null ? string.Empty : Jr.EutProjectname,
-               // EutPartnumbers = Jr.EutPartnr == null ? string.Empty : Jr.EutPartnr,
+                // EutPartnumbers = Jr.EutPartnr == null ? string.Empty : Jr.EutPartnr,
                 HydraProjectNr = Jr.HydraProjectnumber == null ? string.Empty : Jr.HydraProjectnumber,
-                
+
                 ExpectedEnddate = Jr.ExpEnddate == null ? DateTime.Now : (DateTime)Jr.ExpEnddate, // Not nullable, so needs to be casted
                 InternRequest = Jr.InternRequest, // Bool, default false
                 Battery = Jr.Battery, // Bool, default false
 
-                NetWeight = Jr.NetWeight == null? string.Empty : Jr.NetWeight,
+                NetWeight = Jr.NetWeight == null ? string.Empty : Jr.NetWeight,
                 GrossWeight = Jr.GrossWeight == null ? string.Empty : Jr.GrossWeight,
                 EutPartnumbers = Jr.EutPartnr == null ? string.Empty : Jr.EutPartnr
             };
@@ -328,7 +328,7 @@ namespace BarcoDB_Admin.Dao
                 // We create the rqo RqOptionel object to link the user data to the db data and saves the changes in the Barco database
                 RqOptionel rqo = _context.RqOptionels.FirstOrDefault(o => o.IdRequest == Jr.IdRequest);
 
-                if(rqo == null)
+                if (rqo == null)
                 {
                     rqo = new RqOptionel
                     {
@@ -336,7 +336,7 @@ namespace BarcoDB_Admin.Dao
                         Remarks = Jr.Remarks == null ? string.Empty : Jr.Remarks,
                     };
                 }
-                
+
                 //Sander: wss wanneer er een JR aangepast wordt zodat het wel optionele velden heeft komt er hier een crash
                 //Sander: context heeft geen rqoptional
                 rqo.Link = Jr.Link;
@@ -357,12 +357,12 @@ namespace BarcoDB_Admin.Dao
         // INCOMPLETE
         // Gets existing JR by ID
         // TODO: catch nullRefEx - Currently impossible due to selecting listitem on load
-        
+
         public JR GetJR(int idrequest) //Sander: Optionele JR velden geven geen error als ze inveguld zijn
         {
-                // Find selected RqRequest
-                RqRequest selectedRQ = _context.RqRequests.FirstOrDefault(rq => rq.IdRequest == idrequest);
-                RqOptionel selectedRQO = _context.RqOptionels.FirstOrDefault(rqo => rqo.IdRequest == idrequest);
+            // Find selected RqRequest
+            RqRequest selectedRQ = _context.RqRequests.FirstOrDefault(rq => rq.IdRequest == idrequest);
+            RqOptionel selectedRQO = _context.RqOptionels.FirstOrDefault(rqo => rqo.IdRequest == idrequest);
             JR selectedJR = null;
 
             if (selectedRQO != null)
@@ -390,7 +390,7 @@ namespace BarcoDB_Admin.Dao
                     // Testing
                     Link = selectedRQO.Link,
                     Remarks = selectedRQO.Remarks,
-                };     
+                };
             }
             else
             {
@@ -449,11 +449,11 @@ namespace BarcoDB_Admin.Dao
         }
 
         // Mohamed, Kaat
-        public List <EUT> GetEut(RqRequest rq)
+        public List<EUT> GetEut(RqRequest rq)
         {
             List<RqRequestDetail> rqDetailsForJR = _context.RqRequestDetails.Where(r => r.IdRequest == rq.IdRequest).ToList();
             List<EUT> EUTObjects = new();
-            
+
             foreach (var detail in rqDetailsForJR)
             {
                 List<Eut> eutsForDetail = _context.Euts.Where(e => e.IdRqDetail == detail.IdRqDetail).ToList(); ;
@@ -506,9 +506,9 @@ namespace BarcoDB_Admin.Dao
                 var planning = CreatePlPlanning(request, division);
 
                 _context.Add(planning);
-                    _context.SaveChanges(); //Sander: het approven van een job request zorgt voor een probleem met de databank primary key van Planning_PK en pl_Planning
-                                            //een dubbele id
-                                            // hij wilt een record aanmaken met hetzelfde id 0 ookal bestaad die al
+                _context.SaveChanges(); //Sander: het approven van een job request zorgt voor een probleem met de databank primary key van Planning_PK en pl_Planning
+                                        //een dubbele id
+                                        // hij wilt een record aanmaken met hetzelfde id 0 ookal bestaad die al
 
             }
         }
@@ -578,7 +578,7 @@ namespace BarcoDB_Admin.Dao
                 JrStatus = jr.JrStatus,
                 Omschrijving = test.Description,
                 Startdatum = test.StartDate,
-                Einddatum = test.EndDate is null? test.StartDate : test.EndDate,
+                Einddatum = test.EndDate is null ? test.StartDate : test.EndDate,
                 Testdiv = test.TestDivision,
                 Resources = GetResource(test.Resource).Id,
                 TestStatus = test.Status
@@ -789,7 +789,7 @@ namespace BarcoDB_Admin.Dao
             var newStartDate = test.StartDate;
 
             // If there is no endDate, set startDate as EndDate
-            var newEndDate = test.EndDate == null? newStartDate: test.EndDate;
+            var newEndDate = test.EndDate == null ? newStartDate : test.EndDate;
 
             // get resource number
             int resourceID = GetResource(test.Resource).Id;
@@ -811,7 +811,7 @@ namespace BarcoDB_Admin.Dao
 
             foreach (var item in resourceUses)
             {
-                bool one = item.Einddatum is null? item.Startdatum >= newStartDate: item.Einddatum >= newStartDate;
+                bool one = item.Einddatum is null ? item.Startdatum >= newStartDate : item.Einddatum >= newStartDate;
                 bool two = newEndDate >= item.Startdatum;
 
                 if (one && two)
@@ -880,7 +880,7 @@ namespace BarcoDB_Admin.Dao
                 IdRequest = request.IdRequest,
                 JrNr = request.JrNumber,
                 Requestdate = request.RequestDate,
-                DueDate = request.RequestDate == null? request.RequestDate: ((DateTime)request.RequestDate).AddDays(5),
+                DueDate = request.RequestDate == null ? request.RequestDate : ((DateTime)request.RequestDate).AddDays(5),
                 TestDiv = division,
                 TestDivStatus = "In plan", // use enums?
             };
@@ -907,14 +907,14 @@ namespace BarcoDB_Admin.Dao
         //Mohamed
         public void FindAllJrLast24h()
         {
-            List<RqRequest> rq = _context.RqRequests.Where(r => 
-                r.RequestDate <= DateTime.Now&& 
+            List<RqRequest> rq = _context.RqRequests.Where(r =>
+                r.RequestDate <= DateTime.Now &&
                 (r.RequestDate >= DateTime.Now.AddHours(-24))
             ).ToList();
         }
         //Mati//Kaat//Mohamed
-        public void PrintPvg(int idrequest,JR jr)
-        { 
+        public void PrintPvg(int idrequest, JR jr)
+        {
             // Get the PVGResponsibles for this division combination
             // possibly more than one
             List<RqRequestDetail> listDetail =
@@ -929,5 +929,68 @@ namespace BarcoDB_Admin.Dao
                 }
             }
         }
+
+        //Amy
+        //edit user
+        public string EditUser(Person user)
+        {
+            string message = null;
+
+            if (user != null)
+            {
+                Person person = _context.People.FirstOrDefault(u => u.Afkorting == user.Afkorting);
+
+                person.Afkorting = user.Afkorting;
+                person.Voornaam = user.Voornaam;
+                person.Familienaam = user.Familienaam;
+                person.wachtwoord = user.wachtwoord;
+
+                _context.People.Update(person);
+            }
+            else
+            {
+                message = "Please fill in all the fields!";
+            }
+            return message;
+        }
+
+        //Amy
+        //Get selected user info
+        public Person GetUser(string name)
+        {
+            Person SelectedUser = _context.People.FirstOrDefault();
+
+                SelectedUser = new()
+                {
+                    Afkorting = SelectedUser.Afkorting,
+                    Voornaam = SelectedUser.Voornaam,
+                    Familienaam = SelectedUser.Familienaam,
+                    wachtwoord = SelectedUser.wachtwoord,
+                };
+            
+
+            return SelectedUser;
+        }
+
+        //Amy
+        //Get selected resource info
+        public PlResource GetResource()
+        {
+            PlResource SelectedResouce = _context.PlResources.FirstOrDefault();
+
+           
+                SelectedResouce = new()
+                {
+                    Naam = SelectedResouce.Naam,
+                    KleurRgb = SelectedResouce.KleurRgb,
+                    KleurHex = SelectedResouce.KleurHex,
+                };
+            
+
+
+            return SelectedResouce;
+        }
+
+
     }
 }

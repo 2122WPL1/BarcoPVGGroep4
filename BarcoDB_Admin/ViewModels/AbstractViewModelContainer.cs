@@ -1,4 +1,5 @@
 ﻿using BarcoDB_Admin.Models.Classes;
+using BarcoDB_Admin.Models.Db;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -51,5 +52,6 @@ namespace BarcoDB_Admin.Viewmodels
                 OnpropertyChanged();
             }
         }
+
     }
 }

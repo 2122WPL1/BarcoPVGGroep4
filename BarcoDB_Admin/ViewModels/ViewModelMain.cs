@@ -1,6 +1,4 @@
-﻿//using BarcoPVG.Viewmodels;
-//using BarcoPVG.ViewModels.DatabaseManagement;
-using BarcoDB_Admin.Viewmodels;
+﻿using BarcoDB_Admin.Viewmodels;
 using BarcoDB_Admin.ViewModels.DataBase;
 using BarcoDB_Admin.ViewModels.Edit;
 using Prism.Commands;
@@ -81,8 +79,8 @@ namespace BarcoDB_Admin.ViewModels
 
         public void DisplayEditUserStartup()
         {
-            var user = ((ViewModelDBUser)this.ViewModel).SelectedUser;
-            if (user != null)
+            var user = ((ViewModelDBUser)this.ViewModel).SelectedUser.Afkorting;
+            if (user != null)//EditUserUserControl can only be opened when there is a User selected
             {
                 this.ViewModel = new ViewModelEditUser(user);
             }
@@ -94,22 +92,39 @@ namespace BarcoDB_Admin.ViewModels
 
         public void DisplayAddResourcesStartup()
         {
-            this.ViewModel = new ViewModelEditResources();
+            this.ViewModel = new ViewModelAddResources();
         }
 
         public void DisplayEditResourcesStartup()
         {
-            this.ViewModel = new ViewModelEditResources();
+            var resource = ((ViewModelDBResources)this.ViewModel).SelectedResouce;
+            if (resource != null) //EditResourcesUserControl can only be opened when there is a resource selected
+            {
+                this.ViewModel = new ViewModelEditResources(resource);
+            }
+            else
+            {
+                MessageBox.Show("No Resource selected!");
+            }
         }
 
         public void DisplayAddDivisionStartup()
         {
-            this.ViewModel = new ViewModelEditDevision();
+            this.ViewModel = new ViewModelAddDevision();
         }
 
         public void DisplayEditDivisionStartup()
         {
-            this.ViewModel = new ViewModelEditDevision();
+            var devision = ((ViewModelDBDevision)this.ViewModel).SelectedDivision;
+            if (devision != null)//EditDevisionUserControl can only be opened when there is a devision selected
+            {
+                this.ViewModel = new ViewModelEditDevision(devision);
+            }
+            else
+            {
+                MessageBox.Show("No Devision selected!");
+
+            }
         }
 
     }
