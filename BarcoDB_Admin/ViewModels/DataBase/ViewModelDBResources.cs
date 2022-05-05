@@ -1,39 +1,56 @@
 ﻿using BarcoDB_Admin.Models.Db;
 using BarcoDB_Admin.Viewmodels;
+using Prism.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace BarcoDB_Admin.ViewModels.DataBase
 {
     class ViewModelDBResources : AbstractViewModelBase
     {
 
-        List<PlResource> _Resouces;
-        PlResource _SelectedResouce;
-
+       
+        
+        public DelegateCommand DeleteResource { get; set; }
         public List<PlResource> AllResources
         {
-            get { return _Resouces; }
-            set { _Resouces = value; }
+            get;
+            set;
         }
 
         public PlResource SelectedResouce
-        { 
-            get => _SelectedResouce; 
-            set => _SelectedResouce = value; 
+        {
+            get; set;
         }
 
         public ViewModelDBResources() : base()
         {
+            DeleteResource = new DelegateCommand(DeleteResourceFromDB);
             Load();
         }
 
         private void Load()
         {
-            _Resouces = _dao.GetResources();
+            AllResources = _dao.GetResources();
+        }
+        private void DeleteResourceFromDB()
+        {
+            if (SelectedResouce != null)
+            {
+                _dao.RemoveResource(SelectedResouce);
+                Load();
+                OnpropertyChanged("AllResources");
+
+            }
+            else
+            {
+                MessageBox.Show("Geen gebruiker geselecteerd");
+            }
+            
         }
     }
 }

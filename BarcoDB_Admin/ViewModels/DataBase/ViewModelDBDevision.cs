@@ -5,24 +5,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BarcoDB_Admin.Models.Db;
+using System.Windows;
 
 namespace BarcoDB_Admin.ViewModels.DataBase
 {
     class ViewModelDBDevision : AbstractViewModelBase
     {
-        private List<RqBarcoDivision> _AllDivisions;
-        private RqBarcoDivision _SelectedDivision;
+        
 
         public List<RqBarcoDivision> AllDivisions
         {
-            get { return _AllDivisions; }
-            set { _AllDivisions = value; }
+            get; set;
         }
 
         public RqBarcoDivision SelectedDivision
-        { 
-            get => _SelectedDivision; 
-            set => _SelectedDivision = value; 
+        {
+            get; set;
         }
 
         public ViewModelDBDevision() : base()
@@ -32,7 +30,22 @@ namespace BarcoDB_Admin.ViewModels.DataBase
 
         private void Load()
         {
-            _AllDivisions = _dao.GetAllDivisions();
+            AllDivisions = _dao.GetAllDivisions();
+        }
+        private void DeleteResourceFromDB()
+        {
+            if (SelectedDivision != null)
+            {
+                _dao.RemoveDivision(SelectedDivision);
+                Load();
+                OnpropertyChanged("AllResources");
+
+            }
+            else
+            {
+                MessageBox.Show("Geen gebruiker geselecteerd");
+            }
+
         }
     }
 }
