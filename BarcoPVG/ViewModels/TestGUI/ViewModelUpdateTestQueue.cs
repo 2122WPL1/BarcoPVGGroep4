@@ -40,7 +40,7 @@ namespace BarcoPVG.ViewModels.TestGUI
             {
                 Tests.Add(item);
             }
-
+                
             SaveStatusChangesCommand = new DelegateCommand(SaveStatusChanges);
 
             selectedTest = new Test();

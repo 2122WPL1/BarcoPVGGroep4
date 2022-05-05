@@ -5,22 +5,20 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BarcoPVG.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="900" d:DesignWidth="1600" d:Background="LightGray">
+             d:DesignHeight="880" d:DesignWidth="1882" d:Background="LightGray">
     <StackPanel Margin="10">
-        <GroupBox Header="Tests to plan" BorderThickness="0.1" Height="336">
+        <GroupBox Header="Tests to plan" BorderThickness="0.1" Height="auto">
             <ListView ItemsSource="{Binding PlansToApprove}" 
                       SelectedItem="{Binding SelectedPlan, Mode=TwoWay}"
                       Height="auto"
                       VerticalAlignment="Stretch"
                       Margin="3"
                       SelectionMode="Single"
-                      SelectedIndex="1"
                       ScrollViewer.VerticalScrollBarVisibility="Auto"
                       ScrollViewer.CanContentScroll="True"
                       ScrollViewer.HorizontalScrollBarVisibility="Auto" 
                       HorizontalAlignment="Stretch"
-                      HorizontalContentAlignment="Center"
-                      MaxHeight="700">
+                      HorizontalContentAlignment="Center">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header=" idplanning" DisplayMemberBinding="{Binding IdPlanning}"/>

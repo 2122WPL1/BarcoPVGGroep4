@@ -19,8 +19,8 @@ namespace BarcoPVG.ViewModels.Login
     {
         private ICommand loginCommand, exitCommand;
 
-        private string _username = "";
-        private string _password = "";
+        private string _username = "bas";
+        private string _password = "aaa";
 
         public ViewModelLogin() 
         {

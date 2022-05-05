@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:BarcoPVG.Views"
              xmlns:vm="clr-namespace:BarcoPVG.ViewModels.JobRequest"
              mc:Ignorable="d" 
-             Height="auto" d:Background="LightGray" Width="auto">
+             d:DesignHeight="700" d:Background="LightGray" Width="auto"
+             VerticalAlignment="Top">
     <UserControl.Resources>
         <vm:ViewModelCreateJRQueue x:Key="converterToColor"/>
     </UserControl.Resources>
@@ -23,7 +24,7 @@
                       ScrollViewer.HorizontalScrollBarVisibility="Auto" 
                       HorizontalAlignment="Stretch"
                       HorizontalContentAlignment="Center"
-                      MaxHeight="700" 
+                      MaxHeight="500" 
                       Height="auto">
                 <ListView.View>
                     <GridView>

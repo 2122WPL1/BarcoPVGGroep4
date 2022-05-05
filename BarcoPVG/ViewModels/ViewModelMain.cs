@@ -310,18 +310,38 @@ namespace BarcoPVG.ViewModels
         // Updates existing job request and switches windows
         public void UpdateJr()
         {
-            string error =
-                _dao.UpdateJobRequest(((AbstractViewModelContainer) this.ViewModel)
-                    .JR); // SaveChanges included in function
+            var jr = _dao.AddJobRequest(
+               ((AbstractViewModelContainer)this.ViewModel) //ID request wordt automatisch 0 voor een of andere reden
+               .JR); // SaveChanges included in function
+            int count = 0;
 
-            if (error == null)
             {
-                DisplayDevStartup();
+                //jr.JrNumber = CreateJRNummer(jr); //jr ID wordt automatisch toegevoegd bij savecnages waardoor deze niet ka nwerken
+
+                List<EUT> euts = new List<EUT>();
+                if (CheckCreateRequirements(jr, out euts))
+                {
+                    foreach (EUT eut in euts)
+                    {
+                        _dao.AddEutToRqRequest(jr, eut, count.ToString());
+                        count++;
+                    }
+                    string error = _dao.UpdateJobRequest(((AbstractViewModelContainer)this.ViewModel).JR); // SaveChanges included in function
+
+                    if (error == null)
+                    {
+                        DisplayDevStartup();
+                    }
+                    else
+                    {
+                        MessageBox.Show(error);
+                    }
+
+                }
+                // Here we call the SaveChanges method, so that we can link several EUTs to one JR
             }
-            else
-            {
-                MessageBox.Show(error);
-            }
+
+            
         }
 
         // Switch screen for planner

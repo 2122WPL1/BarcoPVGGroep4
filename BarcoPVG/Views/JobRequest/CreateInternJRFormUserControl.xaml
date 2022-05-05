@@ -1,11 +1,11 @@
-﻿<UserControl x:Class="BarcoPVG.Views.JobRequest.CreateInternJRFormUserControl"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:BarcoPVG.Views.JobRequest"
-             mc:Ignorable="d" d:Background="LightGray" Height="auto" Width="auto">
-
+<UserControl x:Class="BarcoPVG.Views.JobRequest.CreateInternJRFormUserControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:local="clr-namespace:BarcoPVG.Views.JobRequest"
+    mc:Ignorable="d" d:Background="LightGray" Height="auto" Width="auto">
+  
     <StackPanel>
         <GroupBox Header="Intern JR Form" Height="353">
             <Grid>
@@ -23,7 +23,7 @@
                 <Label Grid.Column="1" Content="Give project name:" HorizontalAlignment="Center" Margin="0,30,0,0" Grid.Row="1" VerticalAlignment="Top"/>
                 <TextBox Grid.Column="2" Margin="0,30,0,0" Grid.Row="1" Text="" VerticalAlignment="Top" Width="150" HorizontalAlignment="Center"/>
                 <ComboBox ItemsSource="{Binding Divisions}" Text="{Binding JR.BarcoDivision, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
-                                  Grid.Column="2" Margin="0,102,0,0" VerticalAlignment="Top" Width="150" HorizontalAlignment="Center" TextElement.Foreground="Black"/>
+                  Grid.Column="2" Margin="0,102,0,0" VerticalAlignment="Top" Width="150" HorizontalAlignment="Center" TextElement.Foreground="Black"/>
             </Grid>
         </GroupBox>
         <DockPanel Height="100" LastChildFill="False">
@@ -39,7 +39,8 @@
                                 Command="{Binding Datacontext.DisplayDevStartupCommand, Mode=OneWay}"
                                 Margin="46,18,0,0" VerticalAlignment="Top"/>
             </Grid>
-
         </DockPanel>
     </StackPanel>
+
+
 </UserControl>

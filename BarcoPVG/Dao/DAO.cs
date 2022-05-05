@@ -1,16 +1,10 @@
 ﻿using System;
-using System.CodeDom;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
-using System.Net;
-using System.Net.Mail;
 using System.Windows;
 using BarcoPVG.Models.Classes;
-using BarcoPVG;
-using BarcoPVG.Models;
 using BarcoPVG.Models.Db;
-using System.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 
 namespace BarcoPVG.Dao
 {
@@ -34,7 +28,7 @@ namespace BarcoPVG.Dao
 
         // DAO Constructor - PRIVATE
         // Calls an instance from the Barco2021Context and stores this context in the current context
-        private DAO()
+        protected DAO()
         {
             this._context = new BarcoContext();
         }
@@ -306,8 +300,10 @@ namespace BarcoPVG.Dao
             // JR Number not empty?
             if (Jr.BarcoDivision != null)
             {
-                RqRequest rqrequest = _context.RqRequests.FirstOrDefault(r => r.IdRequest == Jr.IdRequest);
-
+                RqRequest rqrequest;
+                
+                    rqrequest = _context.RqRequests.FirstOrDefault(r => r.IdRequest == Jr.IdRequest);
+                
                 rqrequest.JrNumber = Jr.JrNumber;
                 rqrequest.JrStatus = Jr.JrStatus;
                 rqrequest.RequestDate = (DateTime)Jr.RequestDate;
@@ -895,7 +891,7 @@ namespace BarcoPVG.Dao
         private PlPlanning CreatePlPlanning(RqRequest request, string division)
         {
 
-            var planning = new PlPlanning // sander: planning id word automatisch 0 manier zoeken om te auto incrementen
+            var planning = new PlPlanning //clustered?
             {
                 IdRequest = request.IdRequest,
                 JrNr = request.JrNumber,
