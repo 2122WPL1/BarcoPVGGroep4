@@ -74,12 +74,6 @@ namespace BarcoPVG.ViewModels
             SetWindowProperties();
         }
 
-        //Eakarach
-        private void DisplayNewInternJR()
-        {
-            this.ViewModel = new ViewModelCreateInternJRForm();
-        }
-
         public void exit()
         {
             Environment.Exit(0);
@@ -132,6 +126,12 @@ namespace BarcoPVG.ViewModels
         public void DisplayEmployeeStartup()
         {
             this.ViewModel = new ViewModelCreateJRQueue();
+        }
+
+        //Eakarach
+        private void DisplayNewInternJR()
+        {
+            this.ViewModel = new ViewModelCreateInternJRForm();
         }
 
         public void DisplayPlannerStartup()
