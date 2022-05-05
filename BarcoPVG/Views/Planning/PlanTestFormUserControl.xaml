@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BarcoPVG.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="700" d:DesignWidth="1600" d:Background="LightGray">
+             d:DesignHeight="880" d:DesignWidth="1882" d:Background="LightGray">
     <GroupBox VerticalAlignment="Top">
         <GroupBox.Header>
             <StackPanel Orientation="Horizontal">
@@ -16,24 +16,14 @@
             </StackPanel>
         </GroupBox.Header>
         <StackPanel Margin="10">
-            <!-- Change to grid?-->
             <StackPanel Orientation="Horizontal">
                 <ComboBox ItemsSource="{Binding Resources}" 
                           DisplayMemberPath="Naam"
                           Text="{Binding EditingTest.Resource, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                          Margin="10"
-                          >
-                    <!--
-                    <ComboBox.ItemContainerStyle>
-                        <Style TargetType="{x:Type ComboBoxItem}">
-                            <Setter Property="Background" Value="{StaticResource ResourceColor}"/>
-                        </Style>
-                    </ComboBox.ItemContainerStyle> 
-                    -->
+                          Margin="10">
                 </ComboBox>
 
                 <TextBox Text="{Binding EditingTest.Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="10"/>
-                <!--Currently two datepickers for start/end, looking into using one to get an array? -->
                 <DatePicker SelectedDate="{Binding StartDate}" IsTodayHighlighted="True" Margin="5"/>
                 <DatePicker SelectedDate="{Binding EndDate}" IsTodayHighlighted="True" Margin="5"/>
                 <TextBlock Text="ITEM ALREADY IN USE ON SELECTED DATES" 
@@ -48,16 +38,14 @@
             <ListView ItemsSource="{Binding Tests}" 
                       SelectedItem="{Binding SelectedTest, Mode=TwoWay}" 
                       VerticalAlignment="Stretch"
+                      Height="auto"
                       Margin="3"
                       SelectionMode="Single"
-                      SelectedIndex="1"
                       ScrollViewer.VerticalScrollBarVisibility="Auto"
                       ScrollViewer.CanContentScroll="True"
                       ScrollViewer.HorizontalScrollBarVisibility="Auto" 
                       HorizontalAlignment="Stretch"
-                      HorizontalContentAlignment="Center"
-                      MaxHeight="500"
-                      ><!--Maxheight changes per device????????-->
+                      HorizontalContentAlignment="Center">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Resource" DisplayMemberBinding="{Binding Resource}" />
