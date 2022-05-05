@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BarcoDB_Admin.Models.Db;
-using BarcoDB_Admin.Viewmodels;
+using BarcoDB_Admin.ViewModels;
 
 namespace BarcoDB_Admin.ViewModels.DataBase
 {

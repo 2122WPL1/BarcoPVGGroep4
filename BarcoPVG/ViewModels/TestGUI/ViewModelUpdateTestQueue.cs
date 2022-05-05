@@ -9,7 +9,7 @@ using BarcoPVG.Models.Classes;
 using BarcoPVG.Models;
 using BarcoPVG.ViewModels;
 
-namespace BarcoPVG.Viewmodels.TestGUI
+namespace BarcoPVG.ViewModels.TestGUI
 {
     class ViewModelUpdateTestQueue : AbstractViewModelBase
     {

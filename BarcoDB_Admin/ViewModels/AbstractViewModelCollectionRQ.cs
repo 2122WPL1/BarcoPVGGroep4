@@ -8,7 +8,7 @@ using System.Windows.Media;
 using BarcoPVG.Models;
 using BarcoPVG.Models.Db;
 
-namespace BarcoDB_Admin.Viewmodels
+namespace BarcoDB_Admin.ViewModels
 {
     public abstract class AbstractViewModelCollectionRQ : AbstractViewModelBase, IValueConverter
     {
