@@ -1,11 +1,11 @@
-﻿<UserControl x:Class="BarcoPVG.Views.JobRequest.CreateJRQueueUserControl"
+<UserControl x:Class="BarcoPVG.Views.JobRequest.CreateJRQueueUserControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BarcoPVG.Views"
-             xmlns:vm="clr-namespace:BarcoPVG.Viewmodels.JobRequest"
-             d:DesignHeight="880" d:DesignWidth="1882"
+
+             xmlns:vm="clr-namespace:BarcoPVG.ViewModels.JobRequest"
              mc:Ignorable="d" d:Background="LightGray">
     <UserControl.Resources>
         <vm:ViewModelCreateJRQueue x:Key="converterToColor"/>
@@ -47,6 +47,11 @@
         <StackPanel Orientation="Horizontal" Margin="10">
             <Button Content="New JR" 
                     Command="{Binding DataContext.DisplayNewJRCommand, 
+                            RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, 
+                            Mode=OneWay}" 
+                        Margin="10"/>
+            <Button Content="New Intern JR" 
+                    Command="{Binding DataContext.DisplayNewInternJRCommand, 
                             RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, 
                             Mode=OneWay}" 
                         Margin="10"/>

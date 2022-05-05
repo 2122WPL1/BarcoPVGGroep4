@@ -18,7 +18,7 @@ using BarcoPVG.Models.Db;
 using BarcoPVG.Models.Classes;
 using BarcoPVG.Dao;
 
-namespace BarcoPVG.Viewmodels.JobRequest
+namespace BarcoPVG.ViewModels.JobRequest
 {
     public class ViewModelCreateJRForm : AbstractViewModelContainer
     {

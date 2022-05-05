@@ -13,7 +13,7 @@ using BarcoPVG.Models.Classes;
 using BarcoPVG.Dao;
 using System.Windows;
 
-namespace BarcoPVG.Viewmodels.JobRequest
+namespace BarcoPVG.ViewModels.JobRequest
 {
     class ViewModelApproveJRForm : AbstractViewModelContainer
     {

@@ -7,8 +7,9 @@ using System.Text;
 using System.Windows.Input;
 using BarcoPVG.Models.Classes;
 using BarcoPVG.Models;
+using BarcoPVG.ViewModels;
 
-namespace BarcoPVG.Viewmodels.TestGUI
+namespace BarcoPVG.ViewModels.TestGUI
 {
     class ViewModelUpdateTestQueue : AbstractViewModelBase
     {

@@ -1,5 +1,5 @@
-﻿using BarcoPVG.Viewmodels;
-using BarcoPVG.Viewmodels.JobRequest;
+﻿using BarcoPVG.ViewModels;
+using BarcoPVG.ViewModels.JobRequest;
 using Microsoft.Toolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;

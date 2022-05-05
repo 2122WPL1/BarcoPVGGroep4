@@ -1,6 +1,6 @@
-﻿//using BarcoPVG.Viewmodels;
+﻿//using BarcoPVG.ViewModels;
 //using BarcoPVG.ViewModels.DatabaseManagement;
-using BarcoDB_Admin.Viewmodels;
+using BarcoDB_Admin.ViewModels;
 using BarcoDB_Admin.ViewModels.DataBase;
 using BarcoDB_Admin.ViewModels.Edit;
 using Prism.Commands;

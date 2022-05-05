@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -6,8 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using BarcoDB_Admin.Models.Db;
-using BarcoDB_Admin.Viewmodels;
+using BarcoDB_Admin.ViewModels;
 using Prism.Commands;
+
 
 
 namespace BarcoDB_Admin.ViewModels.DataBase
