@@ -32,7 +32,31 @@ namespace BarcoDB_Admin.ViewModels.DataBase
 
         private void Load()
         {
-            _AllDivisions = _dao.GetAllDivisions();
+            AllDivisions = _dao.GetAllDivisions();
+        }
+        private void DeleteResourceFromDB()
+        {
+            if (SelectedDivision != null)
+            {
+                if (MessageBox.Show( "Are you sure you want to delete this division?", "Delete division", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                {
+                    _dao.RemoveDivision(SelectedDivision);
+                    Load();
+                    OnpropertyChanged("AllDivisions");
+
+                }
+                else
+                {
+                    MessageBox.Show("This division has not been deleted");
+                }
+               
+
+            }
+            else
+            {
+                MessageBox.Show("No division selected");
+            }
+
         }
     }
 }

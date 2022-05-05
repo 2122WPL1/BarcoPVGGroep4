@@ -9,6 +9,7 @@ using BarcoDB_Admin.Models.Db;
 using BarcoDB_Admin.Viewmodels;
 using Prism.Commands;
 
+
 namespace BarcoDB_Admin.ViewModels.DataBase
 {
      class ViewModelDBUser : AbstractViewModelBase
@@ -40,16 +41,27 @@ namespace BarcoDB_Admin.ViewModels.DataBase
         }
         public void deleteUserFromDB()
         {
+
             if (SelectedUser != null)
             {
-                _dao.RemoveUser(SelectedUser);
-                Load();
-                OnpropertyChanged("AllUsers");
                 
+                    if (MessageBox.Show( "Are you sure you want to delete this user?", "Delete User", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                {
+                    _dao.RemoveUser(SelectedUser);
+                    Load();
+                    OnpropertyChanged("AllUsers");
+                    
+
+
+                }
+                else
+                {
+                    MessageBox.Show("This user has not been deleted");
+                }
             }
             else
             {
-                MessageBox.Show("Geen gebruiker geselecteerd");
+                MessageBox.Show("No user selecteerd");
             }
         }
     }
