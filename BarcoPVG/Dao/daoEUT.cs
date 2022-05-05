@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BarcoPVG.Dao
+﻿namespace BarcoPVG.Dao
 {
-    public class daoEUT
+    public class DaoEUT : DAO
     {
         //Jarne
         //here comes all the data from EUT

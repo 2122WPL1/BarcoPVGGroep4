@@ -15,8 +15,8 @@ namespace BarcoDB_Admin.Dao
     public class DAO
     {
         // Variables
-        private BarcoContext _context;
-        private static readonly DAO _instance = new();
+        protected BarcoContext _context;
+        protected static readonly DAO _instance = new();
 
 
 
@@ -29,7 +29,7 @@ namespace BarcoDB_Admin.Dao
 
         // DAO Constructor - PRIVATE
         // Calls an instance from the Barco2021Context and stores this context in the current context
-        private DAO()
+        protected DAO()
         {
             this._context = new BarcoContext();
             //this.BarcoUser = RegistryConnection.GetValueObject<BarcoUser>(@"SOFTWARE\VivesBarco\Test");

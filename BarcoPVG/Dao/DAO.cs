@@ -1,16 +1,10 @@
 ﻿using System;
-using System.CodeDom;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
-using System.Net;
-using System.Net.Mail;
 using System.Windows;
 using BarcoPVG.Models.Classes;
-using BarcoPVG;
-using BarcoPVG.Models;
 using BarcoPVG.Models.Db;
-using System.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 
 namespace BarcoPVG.Dao
 {
@@ -34,7 +28,7 @@ namespace BarcoPVG.Dao
 
         // DAO Constructor - PRIVATE
         // Calls an instance from the Barco2021Context and stores this context in the current context
-        private DAO()
+        protected DAO()
         {
             this._context = new BarcoContext();
         }
