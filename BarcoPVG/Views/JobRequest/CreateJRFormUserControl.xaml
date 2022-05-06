@@ -160,7 +160,7 @@
                                         <CompositeCollection>
                                             <CollectionContainer Collection="{Binding Source={StaticResource EUTs}}"/>
                                             <ListBoxItem>
-                                                <Button Command="{Binding EUTCommand}" Content="+"/>
+                                                <Button Command="{Binding AddEUTCommand}" Content="+"/>
                                             </ListBoxItem>
                                         </CompositeCollection>
                                     </ListBox.ItemsSource>
