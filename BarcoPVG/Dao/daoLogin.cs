@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using BarcoPVG.Models.Classes;
 using BarcoPVG.Models.Db;
 
@@ -28,21 +29,28 @@ namespace BarcoPVG.Dao
             this.BarcoUser = new BarcoUser()
             {
                 Name = name,
-                Division = "DEV",
+                Division = GetDiv(loginPerson).Pvggroup,
                 Function = "DEV",
             };
         }
 
-        public void GetDiv(Person loginPerson)
+        public List<RqTestDevision> GetAllDivForPerson()
         {
-            List<RqBarcoDivision> listDiv = GetAllDivisions();
-            foreach (RqBarcoDivision div in listDiv)
+            List<RqTestDevision> listDiv = _context.RqTestDevisions.ToList();
+            return listDiv;
+        }
+        public RqBarcoDivisionPerson GetDiv(Person loginperson)
+        {
+            RqBarcoDivisionPerson output = null;
+
+            List<RqBarcoDivisionPerson> list = _context.RqBarcoDivisionPeople.Where(p => p.AfkPerson== loginperson.Afkorting).ToList();
+
+            foreach (RqBarcoDivisionPerson result in list)
             {
-                //if (div.Afkorting == loginPerson)
-                //{
-                    
-                //}
+                if (GetAllDivForPerson().FirstOrDefault(x => x.Afkorting == result.Pvggroup))
             }
+
+            return output;
         }
     }
 }
