@@ -21,13 +21,13 @@ namespace BarcoPVG.ViewModels.Planning
         public PlPlanning SelectedPlan { get; set; }
 
         public ObservableCollection<Test> Tests { get; set; }
-        private Visibility doubleBooked;
-        private Test selectedTest;
-        private Test editingTest; 
+        protected Visibility doubleBooked;
+        protected Test selectedTest;
+        protected Test editingTest;
 
         // Used to triigger check for dates
-        private DateTime? startDate;
-        private DateTime? endDate;
+        protected DateTime? startDate;
+        protected DateTime? endDate;
 
         public ICommand AddNewTestCommand { get; set; }
         public ICommand ClearTestCommand { get; set; }
@@ -234,9 +234,9 @@ namespace BarcoPVG.ViewModels.Planning
             return true;
         }
 
-        private void SetVisibility()
+        public void SetVisibility()
         {
-            bool isDoubleBooked = _dao.IsResourceDoubleBooked(editingTest);
+            bool isDoubleBooked = _daoPlanning.IsResourceDoubleBooked(editingTest);
 
             if (isDoubleBooked)
             {

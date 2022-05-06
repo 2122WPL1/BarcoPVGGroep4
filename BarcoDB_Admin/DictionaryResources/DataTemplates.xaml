@@ -12,13 +12,7 @@
             </TextBlock>
         </DockPanel>
     </DataTemplate>
-    
-    <DataTemplate x:Key="AddEUT">
-        <StackPanel>
-            <Button Content="Voeg EUT toe" Command="{Binding AddEUTCommand}"></Button>
-            <!-- note: weet niet hoe het in de listbox als item verschijnt-->
-        </StackPanel>
-    </DataTemplate>
+
 
     <!-- DataTemplate to display EUT's in listboxes/listviews - Kaat-->
     <DataTemplate x:Key="EUT">
