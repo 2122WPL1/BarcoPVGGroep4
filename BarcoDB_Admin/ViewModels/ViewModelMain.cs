@@ -1,4 +1,5 @@
-﻿using BarcoDB_Admin.Viewmodels;
+﻿using BarcoDB_Admin.Models.Db;
+using BarcoDB_Admin.Viewmodels;
 using BarcoDB_Admin.ViewModels.DataBase;
 using BarcoDB_Admin.ViewModels.Edit;
 using Prism.Commands;
@@ -80,6 +81,7 @@ namespace BarcoDB_Admin.ViewModels
         public void DisplayEditUserStartup()
         {
             var user = ((ViewModelDBUser)this.ViewModel).SelectedUser.Afkorting;
+
             if (user != null)//EditUserUserControl can only be opened when there is a User selected
             {
                 this.ViewModel = new ViewModelEditUser(user);
@@ -97,10 +99,12 @@ namespace BarcoDB_Admin.ViewModels
 
         public void DisplayEditResourcesStartup()
         {
-            var resource = ((ViewModelDBResources)this.ViewModel).SelectedResouce;
+
+            var resource = ((ViewModelDBResources)this.ViewModel).SelectedResouce.Id;
+
             if (resource != null) //EditResourcesUserControl can only be opened when there is a resource selected
             {
-                this.ViewModel = new ViewModelEditResources(resource);
+                 this.ViewModel = new ViewModelEditResources(resource);
             }
             else
             {
@@ -115,7 +119,7 @@ namespace BarcoDB_Admin.ViewModels
 
         public void DisplayEditDivisionStartup()
         {
-            var devision = ((ViewModelDBDevision)this.ViewModel).SelectedDivision;
+            var devision = ((ViewModelDBDevision)this.ViewModel).SelectedDivision.Afkorting;
             if (devision != null)//EditDevisionUserControl can only be opened when there is a devision selected
             {
                 this.ViewModel = new ViewModelEditDevision(devision);

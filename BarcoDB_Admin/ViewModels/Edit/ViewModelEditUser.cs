@@ -15,10 +15,10 @@ namespace BarcoDB_Admin.ViewModels.Edit
         private Person _Person;
 
         public Person SelectedUser { get; set; }
-        public ViewModelEditUser(string name) : base()
+        public ViewModelEditUser(string Afkorting) : base()
         {
             //SelectedUser = user;
-            this._Person = _dao.GetUser(name);
+            this._Person = _dao.GetUser(Afkorting);
         }
 
         public Person Person

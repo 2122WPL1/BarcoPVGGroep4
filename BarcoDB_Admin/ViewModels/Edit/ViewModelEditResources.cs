@@ -14,10 +14,10 @@ namespace BarcoDB_Admin.ViewModels.Edit
         private PlResource _PlResource;
         public PlResource SelectedResouce { get; set; }
 
-        public ViewModelEditResources(PlResource resource) : base()
+        public ViewModelEditResources(int Id) : base()
         {
-            SelectedResouce = resource;
-            this._PlResource = _dao.GetResource();
+            //SelectedResouce = resource;
+            this._PlResource = _dao.GetResource(Id);
         }
 
         public PlResource PlResource

@@ -139,10 +139,10 @@ namespace BarcoDB_Admin.Dao
 
         // Gets a resource by id
         // Kaat
-        public PlResource GetResource(int id)
-        {
-            return _context.PlResources.SingleOrDefault(r => r.Id == id);
-        }
+        //public PlResource GetResource(int id)
+        //{
+        //    return _context.PlResources.SingleOrDefault(r => r.Id == id);
+        //}
 
         // Gets a resource by name
         public PlResource GetResource(string name)
@@ -956,9 +956,9 @@ namespace BarcoDB_Admin.Dao
 
         //Amy
         //Get selected user info
-        public Person GetUser(string name)
+        public Person GetUser(string Afkorting)
         {
-            Person SelectedUser = _context.People.FirstOrDefault();
+            Person SelectedUser = _context.People.FirstOrDefault(u => u.Afkorting == Afkorting);
 
                 SelectedUser = new()
                 {
@@ -974,9 +974,9 @@ namespace BarcoDB_Admin.Dao
 
         //Amy
         //Get selected resource info
-        public PlResource GetResource()
+        public PlResource GetResource(int Id)
         {
-            PlResource SelectedResouce = _context.PlResources.FirstOrDefault();
+            PlResource SelectedResouce = _context.PlResources.FirstOrDefault(r => r.Id == Id);
 
            
                 SelectedResouce = new()
@@ -989,6 +989,20 @@ namespace BarcoDB_Admin.Dao
 
 
             return SelectedResouce;
+        }
+
+        public RqBarcoDivision GetDevision(string Afkorting)
+        {
+            RqBarcoDivision SelectedDivision = _context.RqBarcoDivisions.FirstOrDefault(d => d.Afkorting == Afkorting);
+
+            SelectedDivision = new()
+            {
+                Afkorting = SelectedDivision.Afkorting,
+                Alias = SelectedDivision.Alias,
+                Actief =SelectedDivision.Actief,
+            };
+
+            return SelectedDivision;
         }
 
 
