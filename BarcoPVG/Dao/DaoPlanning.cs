@@ -10,14 +10,21 @@ namespace BarcoPVG.Dao
     {
         //Jarne
         //here comes all the data from Planning
+
+        protected DaoJR daoJR = new();
         protected DaoResources _daoResources = new();
 
         //copies the data from DAO
         public DaoPlanning() : base()
         {
-
+            
         }
+        protected static readonly DaoPlanning _instancePlanning = new();
 
+        public static DaoPlanning InstancePlanning()
+        {
+            return _instancePlanning;
+        }
         // Returns list of all Plannings in database
         // Kaat
         public List<PlPlanning> GetPlPlannings()
@@ -36,7 +43,7 @@ namespace BarcoPVG.Dao
         // Kaat
         public void CreateNewTest(Test test)
         {
-            var jr = GetJR(test.RQId);
+            var jr = daoJR.GetJR(test.RQId);
 
             var planningsKalender = new PlPlanningsKalender
             {

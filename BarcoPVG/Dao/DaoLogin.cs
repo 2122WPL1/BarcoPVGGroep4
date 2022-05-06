@@ -10,7 +10,12 @@ namespace BarcoPVG.Dao
         //Jarne
         //here comes all the data from Login
         protected DaoPerson _daoPerson = new();
+        protected static readonly DaoLogin _instanceLogin = new();
 
+        public static DaoLogin InstanceLogin()
+        {
+            return _instanceLogin;
+        }
         ///copies the data from DAO
         public DaoLogin() : base()
         {
@@ -26,10 +31,10 @@ namespace BarcoPVG.Dao
 
             //Put Function to give right the the user
             //string func = "";
-            this.BarcoUser = new BarcoUser()
+           BarcoUser = new Person()
             {
                 Name = loginPerson.Voornaam,
-                Division = GetAllDivForPerson(loginPerson)[0].Pvggroup,
+                //Division = "DEV",//GetAllDivForPerson(loginPerson)[0].Pvggroup,
                 Function = "DEV",
             };
         }

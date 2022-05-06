@@ -13,6 +13,12 @@ namespace BarcoPVG.Dao
         //here comes all the data from JR
 
         //copies the data from DAO
+        protected static readonly DaoJR _instanceJR = new();
+        
+        public static DaoJR InstanceJR()
+        {
+            return _instanceJR;
+        }
         public DaoJR() : base()
         {
 
@@ -253,7 +259,7 @@ namespace BarcoPVG.Dao
         public List<RqRequest> GetAllJobRequests()
         {
             return _context.RqRequests
-                .Include(r => r.IdRequest)
+                //.Include(r => r.IdRequest)
                 .ToList();
 
             //indien geen JR aanwezig in databanke moet je null sturen, an-ders bovenstaande query

@@ -17,7 +17,12 @@ namespace BarcoPVG.Dao
         {
 
         }
+        protected static readonly DaoResources _instanceResources = new();
 
+        public static DaoResources InstanceResources()
+        {
+            return _instanceResources;
+        }
         // Returns list of all Equipment
         // Kaat
         public List<PlResource> GetResources()

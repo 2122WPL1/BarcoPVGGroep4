@@ -14,17 +14,24 @@ namespace BarcoPVG.Dao
         //Jarne
         //here comes all the data from Person
         protected DaoPlanning _daoPlanning = new();
+        protected DaoJR daoJR = new();
         //copies the data from DAO
         public DaoApproval() : base()
         {
 
+        }
+        protected static readonly DaoApproval _instanceApproval = new();
+
+        public static DaoApproval InstanceApproval()
+        {
+            return _instanceApproval;
         }
 
         // Approved items will be displayed in the queue for the respective teams
         // Creates a record in the Pl_planning table.
         public void ApproveRequest(int jrId)
         {
-            var DetailList = RqDetail(jrId);
+            var DetailList = daoJR.RqDetail(jrId);
             var request = _context.RqRequests.SingleOrDefault(rq => rq.IdRequest == jrId);
 
             // List of unique test divisions checked in this JR
@@ -67,7 +74,7 @@ namespace BarcoPVG.Dao
 
         public void ApproveInternalRequest(int jrId)
         {
-            var DetailList = RqDetail(jrId);
+            var DetailList = daoJR.RqDetail(jrId);
             var request = _context.RqRequests.SingleOrDefault(rq => rq.IdRequest == jrId);
 
             // List of unique test divisions checked in this JR

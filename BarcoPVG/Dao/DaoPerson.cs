@@ -19,6 +19,12 @@ namespace BarcoPVG.Dao
         // LISTS
         // Eakarach
         // Returns list of all user
+        protected static readonly DaoPerson _instancePerson = new();
+
+        public static DaoPerson InstancePerson()
+        {
+            return _instancePerson;
+        }
         public List<Person> GetAllUser()
         {
             return _context.People.ToList();
