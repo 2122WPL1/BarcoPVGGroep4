@@ -86,7 +86,7 @@ namespace BarcoPVG.Dao
         public List<RqRequest> GetAllJobRequests()
         {
             return _context.RqRequests
-                .Include(r => r.IdRequest)
+                //.Include(r => r.IdRequest)
                 .ToList();
 
             //indien geen JR aanwezig in databanke moet je null sturen, an-ders bovenstaande query
