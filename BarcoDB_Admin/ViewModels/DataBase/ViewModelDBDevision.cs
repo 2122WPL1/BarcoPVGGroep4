@@ -6,13 +6,21 @@ using System.Text;
 using System.Threading.Tasks;
 using BarcoDB_Admin.Models.Db;
 using System.Windows;
+using BarcoDB_Admin.Dao;
 
 namespace BarcoDB_Admin.ViewModels.DataBase
 {
     class ViewModelDBDevision : AbstractViewModelBase
     {
+        DaoDivision _dao = new DaoDivision();
         
 
+        
+
+        public ViewModelDBDevision() : base()
+        {
+            Load();
+        }
         public List<RqBarcoDivision> AllDivisions
         {
             get; set;
@@ -21,11 +29,6 @@ namespace BarcoDB_Admin.ViewModels.DataBase
         public RqBarcoDivision SelectedDivision
         {
             get; set;
-        }
-
-        public ViewModelDBDevision() : base()
-        {
-            Load();
         }
 
         private void Load()

@@ -58,27 +58,38 @@ namespace BarcoDB_Admin.ViewModels
                 OnpropertyChanged();
             }
         }
-
         public void DisplayDatabaseUserStartup()
         {
             this.ViewModel = new ViewModelDBUser();
         }
-
         public void DisplayDataResourceStartup()
         {
             this.ViewModel = new ViewModelDBResources();
         }
-
         public void DisplayDataBaseDivisionStartup()
         {
             this.ViewModel = new ViewModelDBDevision();
         }
-
         public void DisplayAddUserStartup()
         {
             this.ViewModel = new ViewModelAddUser();
         }
-
+        public void DisplayAddResourcesStartup()
+        {
+            this.ViewModel = new ViewModelEditResources();
+        }
+        public void DisplayEditResourcesStartup()
+        {
+            this.ViewModel = new ViewModelEditResources();
+        }
+        public void DisplayAddDivisionStartup()
+        {
+            this.ViewModel = new ViewModelEditDevision();
+        }
+        public void DisplayEditDivisionStartup()
+        {
+            this.ViewModel = new ViewModelEditDevision();
+        }
         public void DisplayEditUserStartup()
         {
             var user = ((ViewModelDBUser)this.ViewModel).SelectedUser;
@@ -92,25 +103,7 @@ namespace BarcoDB_Admin.ViewModels
             }
         }
 
-        public void DisplayAddResourcesStartup()
-        {
-            this.ViewModel = new ViewModelEditResources();
-        }
-
-        public void DisplayEditResourcesStartup()
-        {
-            this.ViewModel = new ViewModelEditResources();
-        }
-
-        public void DisplayAddDivisionStartup()
-        {
-            this.ViewModel = new ViewModelEditDevision();
-        }
-
-        public void DisplayEditDivisionStartup()
-        {
-            this.ViewModel = new ViewModelEditDevision();
-        }
+       
 
     }
 }

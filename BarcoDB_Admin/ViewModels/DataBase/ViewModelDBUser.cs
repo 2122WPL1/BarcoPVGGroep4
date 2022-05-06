@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using BarcoDB_Admin.Dao;
 using BarcoDB_Admin.Models.Db;
 using BarcoDB_Admin.Viewmodels;
 using Prism.Commands;
@@ -14,11 +15,8 @@ namespace BarcoDB_Admin.ViewModels.DataBase
 {
      class ViewModelDBUser : AbstractViewModelBase
     {
+        DaoUser _dao = new DaoUser();
         public DelegateCommand DeleteUser { get; set; }
-
-        
-        
-
         public List<Person> AllUsers
         { 
             get;

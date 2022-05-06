@@ -1,4 +1,5 @@
-﻿using BarcoDB_Admin.Models.Db;
+﻿using BarcoDB_Admin.Dao;
+using BarcoDB_Admin.Models.Db;
 using BarcoDB_Admin.Viewmodels;
 using Prism.Commands;
 using System;
@@ -12,27 +13,22 @@ namespace BarcoDB_Admin.ViewModels.DataBase
 {
     class ViewModelDBResources : AbstractViewModelBase
     {
-
-       
-        
+        DaoResource _dao = new DaoResource();
         public DelegateCommand DeleteResource { get; set; }
         public List<PlResource> AllResources
         {
             get;
             set;
         }
-
         public PlResource SelectedResouce
         {
             get; set;
         }
-
         public ViewModelDBResources() : base()
         {
             DeleteResource = new DelegateCommand(DeleteResourceFromDB);
             Load();
         }
-
         private void Load()
         {
             AllResources = _dao.GetResources();
@@ -52,14 +48,11 @@ namespace BarcoDB_Admin.ViewModels.DataBase
                 {
                     MessageBox.Show("This resource has not been deleted");
                 }
-                
-
             }
             else
             {
                 MessageBox.Show("No user selected");
             }
-            
         }
     }
 }
