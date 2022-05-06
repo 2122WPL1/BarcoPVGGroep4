@@ -22,7 +22,26 @@ namespace BarcoDB_Admin.Dao
                 Function = "DATA",
             };
         }
-        /// Kaat
+
+        public List<string> GetDiv(Person loginPerson)
+        {
+            List<string> output = new List<String>();
+            List<RqBarcoDivisionPerson> listDiv = _context.RqBarcoDivisionPeople.ToList();
+            foreach (RqBarcoDivisionPerson div in listDiv)
+            {
+                if (loginPerson.Afkorting == div.AfkPerson)
+                {
+                    output.Add(div.AfkDevision);
+                    
+                }
+            }
+            return output;
+        }
+
+        // <summary>
+        // Removes unsaved changed by replacing the context by a new instance
+        // </summary>
+        // Kaat
         public void RemoveChanges()
         {
             _context = new BarcoContext();
