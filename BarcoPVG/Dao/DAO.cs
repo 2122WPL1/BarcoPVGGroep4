@@ -42,8 +42,8 @@ namespace BarcoPVG.Dao
             this.BarcoUser = new BarcoUser()
             {
                 Name = "Test-Okie",
-                Division = "DEV",
-                Function = "DEV",
+                //Division = "DEV",
+                Function = "TEST",
             };
         }
       

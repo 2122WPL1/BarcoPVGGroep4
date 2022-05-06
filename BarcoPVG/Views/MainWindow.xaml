@@ -30,9 +30,9 @@
                         <StackPanel Orientation="Horizontal" Grid.Column="1" >
                             <TextBlock FontSize="14" Text="Welcome "/>
                             <TextBlock FontSize="14" FontWeight="Bold" Text="{Binding User.Name}"/>
-                            <TextBlock FontSize="14" Text=" ("/>
+                            <!--<TextBlock FontSize="14" Text=" ("/>
                             <TextBlock FontSize="14" Text="{Binding User.Division}"/>
-                            <TextBlock FontSize="14" Text=")"/>
+                            <TextBlock FontSize="14" Text=")"/>-->
                         </StackPanel>
                     </Grid>
                 </GroupBox.Header>
