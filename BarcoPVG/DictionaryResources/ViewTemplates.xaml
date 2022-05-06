@@ -1,44 +1,46 @@
 ﻿<!-- Kaat -->
-<!-- Datatemplates to connect viewmodels to views -->
+<!-- Datatemplates to connect ViewModels to views -->
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-xmlns:viewModels="clr-namespace:BarcoPVG.Viewmodels"
-xmlns:viewModelJR="clr-namespace:BarcoPVG.Viewmodels.JobRequest"
-xmlns:viewModelPlanning="clr-namespace:BarcoPVG.Viewmodels.Planning"
-xmlns:viewModelTestGUI="clr-namespace:BarcoPVG.Viewmodels.TestGUI"
-xmlns:views="clr-namespace:BarcoPVG.Views"
-xmlns:viewsJR="clr-namespace:BarcoPVG.Views.JobRequest"
-xmlns:viewsPlanning="clr-namespace:BarcoPVG.Views.Planning"
-xmlns:viewsTestGUI="clr-namespace:BarcoPVG.Views.TestGUI"
-xmlns:ViewInternJR="clr-namespace:BarcoPVG.Views.JobRequest"
-xmlns:ViewModelInternJr="clr-namespace:BarcoPVG.Viewmodels.JobRequest"
->
-    <!--Bindings van de scherment worden naar de gedifineerde viewmodel gedaan-->
-    <DataTemplate DataType="{x:Type viewModels:ViewModelMain}">
-        <views:MainWindow/>
+xmlns:ViewModels="clr-namespace:BarcoPVG.ViewModels"
+xmlns:ViewModelJR="clr-namespace:BarcoPVG.ViewModels.JobRequest"
+xmlns:ViewModelPlanning="clr-namespace:BarcoPVG.ViewModels.Planning"
+xmlns:ViewModelTestGUI="clr-namespace:BarcoPVG.ViewModels.TestGUI"
+xmlns:Views="clr-namespace:BarcoPVG.Views"
+xmlns:ViewsJR="clr-namespace:BarcoPVG.Views.JobRequest"
+xmlns:ViewsPlanning="clr-namespace:BarcoPVG.Views.Planning"
+xmlns:ViewsTestGUI="clr-namespace:BarcoPVG.Views.TestGUI">
+    
+    <!--Bindings van de scherment worden naar de gedifineerde viewModel gedaan-->
+    <DataTemplate DataType="{x:Type ViewModels:ViewModelMain}">
+        <Views:MainWindow/>
     </DataTemplate>
-    <DataTemplate DataType="{x:Type viewModelTestGUI:ViewModelDevelopment}">
-        <viewsTestGUI:DevelopmentUserControl/>
+    <DataTemplate DataType="{x:Type ViewModelTestGUI:ViewModelDevelopment}">
+        <ViewsTestGUI:DevelopmentUserControl/>
     </DataTemplate>
-    <DataTemplate DataType="{x:Type viewModelJR:ViewModelApproveJRForm}">
-        <viewsJR:ApproveJRFormUserControl/>
+    <DataTemplate DataType="{x:Type ViewModelJR:ViewModelApproveJRForm}">
+        <ViewsJR:ApproveJRFormUserControl/>
     </DataTemplate>
-    <DataTemplate DataType="{x:Type viewModelJR:ViewModelApproveJRQueue}">
-        <viewsJR:ApproveJRQueueUserControl/>
+    <DataTemplate DataType="{x:Type ViewModelJR:ViewModelApproveJRQueue}">
+        <ViewsJR:ApproveJRQueueUserControl/>
     </DataTemplate>
-    <DataTemplate DataType="{x:Type viewModelJR:ViewModelCreateJRForm}">
-        <viewsJR:CreateJRFormUserControl/>
+    <DataTemplate DataType="{x:Type ViewModelJR:ViewModelCreateJRForm}">
+        <ViewsJR:CreateJRFormUserControl/>
     </DataTemplate>
-    <DataTemplate DataType="{x:Type viewModelJR:ViewModelCreateJRQueue}">
-        <viewsJR:CreateJRQueueUserControl/>
+    <DataTemplate DataType="{x:Type ViewModelJR:ViewModelCreateInternJRForm}">
+        <ViewsJR:CreateInternJRFormUserControl/>
     </DataTemplate>
-    <DataTemplate DataType="{x:Type viewModelPlanning:ViewModelPlanTestForm}">
-        <viewsPlanning:PlanTestFormUserControl/>
+    <DataTemplate DataType="{x:Type ViewModelJR:ViewModelCreateJRQueue}">
+        <ViewsJR:CreateJRQueueUserControl/>
     </DataTemplate>
-    <DataTemplate DataType="{x:Type viewModelPlanning:ViewModelPlanTestQueue}">
-        <viewsPlanning:PlanTestQueueUserControl/>
+    <DataTemplate DataType="{x:Type ViewModelPlanning:ViewModelPlanTestForm}">
+        <ViewsPlanning:PlanTestFormUserControl/>
     </DataTemplate>
-    <DataTemplate DataType="{x:Type viewModelTestGUI:ViewModelUpdateTestQueue}">
-        <viewsTestGUI:UpdateTestQueueUserControl/>
+    <DataTemplate DataType="{x:Type ViewModelPlanning:ViewModelPlanTestQueue}">
+        <ViewsPlanning:PlanTestQueueUserControl/>
     </DataTemplate>
+    <DataTemplate DataType="{x:Type ViewModelTestGUI:ViewModelUpdateTestQueue}">
+        <ViewsTestGUI:UpdateTestQueueUserControl/>
+    </DataTemplate>
+    
 </ResourceDictionary>

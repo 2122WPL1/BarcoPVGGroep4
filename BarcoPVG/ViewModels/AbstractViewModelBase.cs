@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows;
 
 
-namespace BarcoPVG.Viewmodels
+namespace BarcoPVG.ViewModels
 {
     public abstract class AbstractViewModelBase : INotifyPropertyChanged
     {

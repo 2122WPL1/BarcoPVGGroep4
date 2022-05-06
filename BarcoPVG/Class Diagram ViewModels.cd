@@ -1,62 +1,62 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="BarcoPVG.Viewmodels.JobRequest.ViewModelApproveJRForm">
+  <Class Name="BarcoPVG.ViewModels.JobRequest.ViewModelApproveJRForm">
     <Position X="20.75" Y="7.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAgAAAAAAABAAAACAABAAAABAAEQAAAAAAWAABAAA=</HashCode>
       <FileName>ViewModels\JobRequest\ViewModelApproveJRForm.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BarcoPVG.Viewmodels.JobRequest.ViewModelApproveJRQueue">
+  <Class Name="BarcoPVG.ViewModels.JobRequest.ViewModelApproveJRQueue">
     <Position X="14" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ViewModels\JobRequest\ViewModelApproveJRQueue.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BarcoPVG.Viewmodels.JobRequest.ViewModelCreateJRForm">
+  <Class Name="BarcoPVG.ViewModels.JobRequest.ViewModelCreateJRForm">
     <Position X="23.5" Y="7.5" Width="2" />
     <TypeIdentifier>
       <HashCode>QAAAgQBAAAAABAAAACAAAAAAABAAEQAAAAACWAABAAA=</HashCode>
       <FileName>ViewModels\JobRequest\ViewModelCreateJRForm.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BarcoPVG.Viewmodels.JobRequest.ViewModelCreateJRQueue">
+  <Class Name="BarcoPVG.ViewModels.JobRequest.ViewModelCreateJRQueue">
     <Position X="18.5" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ViewModels\JobRequest\ViewModelCreateJRQueue.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BarcoPVG.Viewmodels.Planning.ViewModelPlanTestForm">
+  <Class Name="BarcoPVG.ViewModels.Planning.ViewModelPlanTestForm">
     <Position X="9.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>UACAAAEAIAAAUAAFQCEAAEAhQAAAAAACQAAAAEAAgAA=</HashCode>
       <FileName>ViewModels\Planning\ViewModelPlanTestForm.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BarcoPVG.Viewmodels.Planning.ViewModelPlanTestQueue">
+  <Class Name="BarcoPVG.ViewModels.Planning.ViewModelPlanTestQueue">
     <Position X="11.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAQAAAAAAAAAAAAAAAAAABAAAAQAAAAAAAAAAAAAA=</HashCode>
       <FileName>ViewModels\Planning\ViewModelPlanTestQueue.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BarcoPVG.Viewmodels.TestGUI.ViewModelDevelopment">
+  <Class Name="BarcoPVG.ViewModels.TestGUI.ViewModelDevelopment">
     <Position X="16.25" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>ViewModels\TestGUI\ViewmodelDevelopment.cs</FileName>
+      <FileName>ViewModels\TestGUI\ViewModelDevelopment.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BarcoPVG.Viewmodels.TestGUI.ViewModelUpdateTestQueue">
+  <Class Name="BarcoPVG.ViewModels.TestGUI.ViewModelUpdateTestQueue">
     <Position X="26.25" Y="3.75" Width="2.5" />
     <TypeIdentifier>
       <HashCode>EACAAAAAAAAAAAAAAAAACAAAAAAAAAAAAgBAAAAAgAA=</HashCode>
       <FileName>ViewModels\TestGUI\ViewModelUpdateTestQueue.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BarcoPVG.Viewmodels.AbstractViewModelBase" HideInheritanceLine="true">
+  <Class Name="BarcoPVG.ViewModels.AbstractViewModelBase" HideInheritanceLine="true">
     <Position X="19.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAIAAABAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
@@ -64,21 +64,21 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="BarcoPVG.Viewmodels.AbstractViewModelCollectionRQ">
+  <Class Name="BarcoPVG.ViewModels.AbstractViewModelCollectionRQ">
     <Position X="16.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAgAAAAAAAAAAEAAAAAAAABAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ViewModels\AbstractViewModelCollectionRQ.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BarcoPVG.Viewmodels.AbstractViewModelContainer">
+  <Class Name="BarcoPVG.ViewModels.AbstractViewModelContainer">
     <Position X="22.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAABAAAAQEAIAAAAAAAAAAAAAEAgAAAAAAAAAAAABAA=</HashCode>
       <FileName>ViewModels\AbstractViewModelContainer.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BarcoPVG.Viewmodels.ViewModelMain">
+  <Class Name="BarcoPVG.ViewModels.ViewModelMain">
     <Position X="29.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>gBAJAAgwBEDUAIgUEACgBAAQEgYAAAAUAAACCAAAAGA=</HashCode>
