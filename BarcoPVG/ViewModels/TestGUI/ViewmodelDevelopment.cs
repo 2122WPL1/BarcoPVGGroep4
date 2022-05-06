@@ -11,7 +11,7 @@ using BarcoPVG.Dao;
 using BarcoPVG.Models;
 using BarcoPVG.Views;
 
-namespace BarcoPVG.Viewmodels.TestGUI
+namespace BarcoPVG.ViewModels.TestGUI
 {
     // TEMPORARY SCREEN
     // Proof of concept: loading list of JR's from database

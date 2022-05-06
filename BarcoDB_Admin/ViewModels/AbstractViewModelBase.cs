@@ -8,7 +8,7 @@ using System.Windows;
 
 
 
-namespace BarcoDB_Admin.Viewmodels
+namespace BarcoDB_Admin.ViewModels
 {
     public abstract class AbstractViewModelBase : INotifyPropertyChanged
     {

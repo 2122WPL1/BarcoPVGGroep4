@@ -1,6 +1,6 @@
 ﻿using BarcoPVG.Models.Classes;
 using BarcoPVG.Models.Db;
-using BarcoPVG.Viewmodels;
+using BarcoPVG.ViewModels;
 using BarcoPVG.Views;
 using Prism.Commands;
 using System;

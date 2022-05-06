@@ -7,7 +7,7 @@ using BarcoPVG.Models;
 using BarcoPVG.Models.Db;
 using Microsoft.VisualBasic;
 
-namespace BarcoPVG.Viewmodels.Planning
+namespace BarcoPVG.ViewModels.Planning
 {
     class ViewModelPlanTestQueue : AbstractViewModelBase
     {
