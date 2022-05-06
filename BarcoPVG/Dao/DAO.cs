@@ -41,7 +41,7 @@ namespace BarcoPVG.Dao
         {
             _context = new BarcoContext();
         }
-
+      
         // Stores all data from GUI in DB
         public void SaveChanges()
         {
