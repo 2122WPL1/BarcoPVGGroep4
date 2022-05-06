@@ -73,7 +73,6 @@ namespace BarcoDB_Admin.Dao
                 }
             }
             return output;
-            
         }
 
         /// <summary>
