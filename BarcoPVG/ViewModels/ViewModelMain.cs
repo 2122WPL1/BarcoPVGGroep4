@@ -7,7 +7,7 @@ using Prism.Commands;
 using System;
 using System.Collections.Generic;
 using System.Windows;
-
+using BarcoPVG.Dao;
 
 
 namespace BarcoPVG.ViewModels
@@ -15,6 +15,8 @@ namespace BarcoPVG.ViewModels
     // Kaat
     class ViewModelMain : AbstractViewModelBase
     {
+        //protected DAO _dao = DAO.Instance();
+
         private AbstractViewModelBase _viewModel;
 
         public BarcoUser User { get; set; }
@@ -261,7 +263,7 @@ namespace BarcoPVG.ViewModels
 
         public void InsertJr() // aanmaken job request
         {
-            var jr = _dao.AddJobRequest(
+            var jr = _daoJR.AddJobRequest(
                 ((AbstractViewModelContainer) this.ViewModel) //ID request wordt automatisch 0 voor een of andere reden
                 .JR); // SaveChanges included in function
             int count = 0;

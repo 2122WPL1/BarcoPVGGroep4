@@ -15,8 +15,10 @@ namespace BarcoPVG.Dao
     public class DAO
     {
         // Variables
-        private BarcoContext _context;
-        private static readonly DAO _instance = new();
+        protected BarcoContext _context;
+        protected static readonly DAO _instance = new();
+        protected DaoPerson _daoPerson = new();
+        protected DaoJR _daoJR = new();
 
         public BarcoUser BarcoUser { get; set; }
 
@@ -32,10 +34,12 @@ namespace BarcoPVG.Dao
         {
             this._context = new BarcoContext();
         }
-      
+
+        #region moved to DaoLogin
+        /* 
         //Eakarach
         //Login
-        public void LoginSucceedded(Person loginPerson)
+        public void LoginSucceeded(Person loginPerson)
         {
             string name = loginPerson.Voornaam;
 
@@ -63,17 +67,18 @@ namespace BarcoPVG.Dao
                 //}
             }
         }
+        */
+        #endregion
 
-        /// <summary>
-        /// Removes unsaved changed by replacing the context by a new instance
-        /// </summary>
-        /// Kaat
+        // Removes unsaved changed by replacing the context by a new instance
+        // Kaat
         public void RemoveChanges()
         {
             _context = new BarcoContext();
         }
 
-
+        #region  moved to daoPerson
+        /*
         // LISTS
         // Eakarach
         // Returns list of all user
@@ -81,6 +86,8 @@ namespace BarcoPVG.Dao
         {
             return _context.People.ToList();          
         }
+        */
+        #endregion
 
         // Returns list of all JRs
         public List<RqRequest> GetAllJobRequests()
@@ -93,18 +100,28 @@ namespace BarcoPVG.Dao
             //return null;
         }
 
+        #region moved to daoJR
+        /*
         // Returns list of all jobNatures
         public List<RqJobNature> GetAllJobNatures()
         {
             return _context.RqJobNatures.ToList();
         }
+        */
+        #endregion
 
+        #region moved to daoPerson
+        /*
         // Returns list of all BarcoDivisions
         public List<RqBarcoDivision> GetAllDivisions()
         {
             return _context.RqBarcoDivisions.ToList();
         }
+        */
+        #endregion
 
+        #region moved to daoResources
+        /*
         // Returns list of all Equipment
         // Kaat
         public List<PlResource> GetResources()
@@ -141,13 +158,14 @@ namespace BarcoPVG.Dao
         {
             return _context.PlResources.SingleOrDefault(r => r.Naam == name);
         }
+        */
+        #endregion
 
+        #region moved to DaoJR
+        /*
         // JR CHANGES
-
-        /// <summary>
-        /// Gets a JR with user data autofilled
-        /// Kaat
-        /// </summary>
+        // Gets a JR with user data autofilled
+        // Kaat
         public JR GetNewJR()
         {
             JR autofilledJR = new()
@@ -199,7 +217,6 @@ namespace BarcoPVG.Dao
             // We combine the rqo object with the rqrequest object and return the combined object
             rqrequest.RqOptionels.Add(rqo);
 
-
             return rqrequest;
         }
 
@@ -221,20 +238,18 @@ namespace BarcoPVG.Dao
 
             return newDate;
         }
-
+        */
+        #endregion
 
         //MOHAMED
         //Matti
-        /// <summary>
-        /// This function adds the input from the EUT part to the request object
-        /// We create local variables to address the fields of the corresponding tables
-        /// The combined object is eventually given to the context
-        /// </summary>
-        /// <param name="request"></param>
-        /// <param name="eut"></param>
+        // This function adds the input from the EUT part to the request object
+        // We create local variables to address the fields of the corresponding tables
+        // The combined object is eventually given to the context
+        // <param name="request"></param>
+        // <param name="eut"></param>
         public void AddEutToRqRequest(RqRequest request, EUT eut, string EutNr)
         {
-
             List<string> testDivision = new();
 
             //request.GrossWeight = request.GrossWeight == null ? string.Empty : request.GrossWeight;
@@ -270,7 +285,7 @@ namespace BarcoPVG.Dao
                     detail = new RqRequestDetail();
 
                     detail.Testdivisie = testeut;
-                    detail.Pvgresp = GetPVGResp(testeut, request.BarcoDivision);
+                    detail.Pvgresp = _daoPerson.GetPVGResp(testeut, request.BarcoDivision);
 
                     request.RqRequestDetails.Add(detail);
                 }
@@ -281,10 +296,7 @@ namespace BarcoPVG.Dao
                     // TODO: Dynamic linking
                     OmschrijvingEut = "EUT" + EutNr,
                     AvailableDate = ((DateTime)eut.AvailabilityDate).Date
-
                 });
-
-
             };
             _context.RqRequests.Add(request);
         }
@@ -292,7 +304,6 @@ namespace BarcoPVG.Dao
         // INCOMPLETE
         // Finds RqRequest by ID, updates based on JR, and saves changes
         // Sends error message
-        // TODO: update data stored in other tables
         public string UpdateJobRequest(JR Jr)
         {
             string message = null; // message is null on success
@@ -351,8 +362,6 @@ namespace BarcoPVG.Dao
 
         // INCOMPLETE
         // Gets existing JR by ID
-        // TODO: catch nullRefEx - Currently impossible due to selecting listitem on load
-
         public JR GetJR(int idrequest) //Sander: Optionele JR velden geven geen error als ze inveguld zijn
         {
             // Find selected RqRequest
@@ -476,12 +485,11 @@ namespace BarcoPVG.Dao
             return EUTObjects;
         }
 
+        #region moved to DaoApproval
+        /*
         // Approval
-
-        /// <summary>
-        /// Approved items will be displayed in the queue for the respective teams
-        /// Creates a record in the Pl_planning table.
-        /// </summary>
+        // Approved items will be displayed in the queue for the respective teams
+        // Creates a record in the Pl_planning table.
         public void ApproveRequest(int jrId)
         {
             var DetailList = RqDetail(jrId);
@@ -505,20 +513,17 @@ namespace BarcoPVG.Dao
             jump:
                 try //foutafhandeling
                 {
-
-
                     _context.Add(planning);
-                    _context.SaveChanges(); //Sander: het approven van een job request zorgt voor een probleem met de databank primary key van Planning_PK en pl_Planning
-                                            //een dubbele id
-                                            // hij wil een record aanmaken met hetzelfde id ook al bestaat die al
-                                            //tijdelijk opgelost met een try catch
-                                            //zie 852
+                    _context.SaveChanges(); 
+                    //TODO //Sander: het approven van een job request zorgt voor een probleem met de databank primary key van Planning_PK en pl_Planning
+                    //TODO een dubbele id. hij wil een record aanmaken met hetzelfde id ook al bestaat die al tijdelijk opgelost met een try catch
                     if (msg)
                     {
                         MessageBox.Show("Het originele ID was " + id + ", maar omdat deze een dubbel is van iets anders is deze verandered naar " + planning.IdPlanning);
                     }
                 }
-                catch (/*DbUpdateException kan niet worden gebruikt omdat er dan een conflict is */ Exception)
+                //DbUpdateException kan niet worden gebruikt omdat er dan een conflict is
+                catch (Exception)
                 {
                     msg = true;
                     planning.IdPlanning = planning.IdPlanning + 1;
@@ -557,28 +562,26 @@ namespace BarcoPVG.Dao
                 _context.SaveChanges();
             }
         }
+        */
+        #endregion
 
-
+        #region moved to DaoPlanning
+        /*
         // Planning
 
-        /// <summary>
-        /// Returns list of all Plannings in database
-        /// </summary>
-        /// Kaat
+        // Returns list of all Plannings in database
+        // Kaat
         public List<PlPlanning> GetPlPlannings()
         {
             return _context.PlPlannings.ToList();
         }
 
-        /// <summary>
-        /// Returns list of all Plannings for a division
-        /// </summary>
-        /// Kaat
+        // Returns list of all Plannings for a division
+        // Kaat
         public List<PlPlanning> GetPlPlannings(string division)
         {
             return _context.PlPlannings.Where(pl => pl.TestDiv == division).ToList();
         }
-
 
         // Creates and saves Plplanningskalender based on Test
         // Kaat
@@ -696,7 +699,6 @@ namespace BarcoPVG.Dao
                 Where(pk => pk.IdRequest == jrId).
                 ToList();
 
-
             foreach (var item in planningsKalenders)
             {
                 var newTest = GetTest(item);
@@ -715,7 +717,6 @@ namespace BarcoPVG.Dao
             var planningsKalenders = _context.PlPlanningsKalenders.
                 Where(pk => pk.IdRequest == jrId && pk.Testdiv == testDivision).
                 ToList();
-
 
             foreach (var item in planningsKalenders)
             {
@@ -757,10 +758,8 @@ namespace BarcoPVG.Dao
             return uiTests;
         }
 
-        /// <summary>
-        /// Set JR status to Finished if all related plans are finished
-        /// </summary>
-        /// <param name="rqId"></param>
+        // Set JR status to Finished if all related plans are finished
+        // <param name="rqId"></param>
         public void SetRqStatusIfComplete(int rqId)
         {
             // Get all planning
@@ -778,7 +777,6 @@ namespace BarcoPVG.Dao
 
             SaveChanges();
         }
-
 
         public List<Test> GetAllTestsForDivision(string testDivision)
         {
@@ -836,7 +834,8 @@ namespace BarcoPVG.Dao
             }
             return false;
         }
-
+        */
+        #endregion
 
         // SAVING
         // Stores all data from GUI in DB
@@ -845,22 +844,18 @@ namespace BarcoPVG.Dao
             _context.SaveChanges();
         }
 
-        /// <summary>
-        /// This function creates a list of rqRequestDetails objects that are linked to the given idRequest via the parameter
-        /// </summary>
-        /// <param name="idrequest"></param>
-        /// <returns></returns>
+        // This function creates a list of rqRequestDetails objects that are linked to the given idRequest via the parameter
+        // <param name="idrequest"></param>
+        // <returns></returns>
         public List<RqRequestDetail> RqDetail(int idrequest)
         {
             List<RqRequestDetail> DetailRQ = _context.RqRequestDetails.Where(rq => rq.IdRequest == idrequest).ToList();
             return DetailRQ;
         }
 
-        /// <summary>
-        /// This function checks which of the testdivision are checked via the user input
-        /// If a test division is selected, we store this data in the test division list
-        /// The user input is given via the eut object as a parameter
-        /// </summary>
+        // This function checks which of the testdivision are checked via the user input
+        // If a test division is selected, we store this data in the test division list
+        // The user input is given via the eut object as a parameter
         private void TestDivisionEutIsChecked(EUT eut, List<string> testDivision)
         {
             // Kaat
@@ -881,16 +876,15 @@ namespace BarcoPVG.Dao
             }
         }
 
-        /// <summary>
-        /// Returns a PlPlanning for the given job request and division
-        /// </summary>
-        /// <param name="request">Job Request</param>
-        /// <param name="division">Test team division</param>
-        /// <returns>PlPlanning with request and division data</returns>
-        /// Kaat
+        #region moved to daoPlanning
+        /*
+        // Returns a PlPlanning for the given job request and division
+        // <param name="request">Job Request</param>
+        // <param name="division">Test team division</param>
+        // <returns>PlPlanning with request and division data</returns>
+        // Kaat
         private PlPlanning CreatePlPlanning(RqRequest request, string division)
         {
-
             var planning = new PlPlanning //clustered?
             {
                 IdRequest = request.IdRequest,
@@ -902,10 +896,12 @@ namespace BarcoPVG.Dao
             };
             return planning;
         }
+        */
+        #endregion
 
-        /// <summary>
-        /// Returns a string with the PVGResponsible(s)
-        /// </summary>
+        #region moved to daoPerson
+        /*
+        // Returns a string with the PVGResponsible(s)
         // Kaat
         private string GetPVGResp(string testDivision, string barcoDivision)
         {
@@ -920,6 +916,10 @@ namespace BarcoPVG.Dao
 
             return responsiblesString;
         }
+        */
+        #endregion
+
+        /*
         //Mohamed
         public void FindAllJrLast24h()
         {
@@ -928,6 +928,7 @@ namespace BarcoPVG.Dao
                 (r.RequestDate >= DateTime.Now.AddHours(-24))
             ).ToList();
         }
+        */
       
         //Mati//Kaat//Mohamed
         public void PrintPvg(int idrequest, JR jr)
