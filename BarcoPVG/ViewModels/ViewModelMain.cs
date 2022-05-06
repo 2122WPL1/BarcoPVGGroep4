@@ -250,7 +250,7 @@ namespace BarcoPVG.Viewmodels
 
         public void InsertJr() // aanmaken job request
         {
-            var jr = _dao.AddJobRequest(
+            var jr = _daoJR.AddJobRequest(
                 ((AbstractViewModelContainer) this.ViewModel) //ID request wordt automatisch 0 voor een of andere reden
                 .JR); // SaveChanges included in function
             int count = 0;
