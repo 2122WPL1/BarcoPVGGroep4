@@ -18,7 +18,7 @@ namespace BarcoPVG.Dao
         protected BarcoContext _context;
         protected static readonly DAO _instance = new();
         protected DaoPerson _daoPerson = new();
-        
+        protected DaoJR _daoJR = new();
 
         public BarcoUser BarcoUser { get; set; }
 
