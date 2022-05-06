@@ -31,7 +31,7 @@
                     Mode=OneWay}"
                     Margin="10"/>
             <Button Content="Delete" 
-                    Command="{Binding Delete}"
+                    Command="{Binding DeleteDivision}"
                     Margin="10"/>
         </StackPanel>
     </StackPanel>

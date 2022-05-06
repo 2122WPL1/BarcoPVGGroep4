@@ -6,36 +6,30 @@ using System.Text;
 using System.Threading.Tasks;
 using BarcoDB_Admin.Models.Db;
 using System.Windows;
+using BarcoDB_Admin.Dao;
+using Prism.Commands;
 
 namespace BarcoDB_Admin.ViewModels.DataBase
 {
     class ViewModelDBDevision : AbstractViewModelBase
     {
-        private List<RqBarcoDivision> _AllDivisions;
-        private RqBarcoDivision _SelectedDivision;
-
-        public List<RqBarcoDivision> AllDivisions
-        {
-            get { return _AllDivisions; }
-            set { _AllDivisions = value; }
-        }
-
-        public RqBarcoDivision SelectedDivision
-        { 
-            get => _SelectedDivision; 
-            set => _SelectedDivision = value; 
-        }
-
+        DaoDivision _dao = new DaoDivision();
         public ViewModelDBDevision() : base()
         {
+            DeleteDivision = new DelegateCommand(DeleteDivisionFromDB);
             Load();
         }
+        #region properties
+        public List<RqBarcoDivision> AllDivisions{ get; set; }
+        public RqBarcoDivision SelectedDivision { get; set; }
+        public DelegateCommand DeleteDivision { get; set; }
+        #endregion
 
         private void Load()
         {
             AllDivisions = _dao.GetAllDivisions();
         }
-        private void DeleteResourceFromDB()
+        private void DeleteDivisionFromDB()
         {
             if (SelectedDivision != null)
             {
@@ -44,14 +38,11 @@ namespace BarcoDB_Admin.ViewModels.DataBase
                     _dao.RemoveDivision(SelectedDivision);
                     Load();
                     OnpropertyChanged("AllDivisions");
-
                 }
                 else
                 {
                     MessageBox.Show("This division has not been deleted");
                 }
-               
-
             }
             else
             {
