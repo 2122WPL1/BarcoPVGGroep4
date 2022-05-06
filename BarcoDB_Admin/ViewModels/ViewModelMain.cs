@@ -1,5 +1,4 @@
-﻿using BarcoDB_Admin.Viewmodels;
-using BarcoDB_Admin.ViewModels.DataBase;
+﻿using BarcoDB_Admin.ViewModels.DataBase;
 using BarcoDB_Admin.ViewModels.Edit;
 using Prism.Commands;
 using System;

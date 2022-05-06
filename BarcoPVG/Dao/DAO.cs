@@ -85,7 +85,7 @@ namespace BarcoPVG.Dao
         // Returns list of all JRs
         public List<RqRequest> GetAllJobRequests()
         {
-            return _context.RqRequests
+            return _context.RqRequests 
                 //.Include(r => r.IdRequest)
                 .ToList();
 
