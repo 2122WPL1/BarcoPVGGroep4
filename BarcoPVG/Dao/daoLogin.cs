@@ -22,7 +22,7 @@ namespace BarcoPVG.Dao
         public void LoginSucceeded(Person loginPerson)
         {
             string name = loginPerson.Voornaam;
-            
+
             //Put division or to list if they have more than one division
             //string division = GetAllDivisions().Where(div => "TS" == loginPerson.Afkorting).ToString();
 
@@ -45,7 +45,7 @@ namespace BarcoPVG.Dao
         {
             RqBarcoDivisionPerson output = null;
 
-            List<RqBarcoDivisionPerson> list = _context.RqBarcoDivisionPeople.Where(p => p.AfkPerson== loginperson.Afkorting).ToList();
+            List<RqBarcoDivisionPerson> list = _context.RqBarcoDivisionPeople.Where(p => p.AfkPerson == loginperson.Afkorting).ToList();
 
             foreach (RqBarcoDivisionPerson result in list)
             {

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using BarcoPVG.Models.Classes;
 using BarcoPVG.Models.Db;
 
 namespace BarcoPVG.Dao
@@ -91,6 +92,24 @@ namespace BarcoPVG.Dao
                 };
                 _context.Add(planning);
                 _context.SaveChanges();
+            }
+        }
+
+        //Mati//Kaat//Mohamed
+        public void PrintPvg(int idrequest, JR jr)
+        {
+            // Get the PVGResponsibles for this division combination
+            // possibly more than one
+            List<RqRequestDetail> listDetail =
+                _context.RqRequestDetails.Where(rqdetail => rqdetail.IdRequest == idrequest).ToList();
+            foreach (var item in listDetail)
+            {
+                var property = typeof(JR).GetProperty(item.Testdivisie + "pvg");
+
+                if (property != null)
+                {
+                    property.SetValue(jr, item.Pvgresp);
+                }
             }
         }
     }
