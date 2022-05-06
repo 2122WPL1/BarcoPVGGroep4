@@ -60,16 +60,20 @@ namespace BarcoDB_Admin.Dao
             _context.SaveChanges();
         }
 
-        public void GetDiv(Person loginPerson)
-        {   
-            List<RqBarcoDivision> listDiv = GetAllDivisions();
-            foreach (RqBarcoDivision div in listDiv)
+        public List<string> GetDiv(Person loginPerson)
+        {
+            List<string> output = new List<String>();
+            List<RqBarcoDivisionPerson> listDiv = _context.RqBarcoDivisionPeople.ToList();
+            foreach (RqBarcoDivisionPerson div in listDiv)
             {
-                //if (div.Afkorting == loginPerson)
-                //{
-
-                //}
+                if (loginPerson.Afkorting == div.AfkPerson)
+                {
+                    output.Add(div.AfkDevision);
+                    break;
+                }
             }
+            return output;
+            
         }
 
         /// <summary>
