@@ -8,12 +8,14 @@ namespace BarcoPVG.Dao
     {
         //Jarne
         //here comes all the data from Login
+        protected DaoPerson _daoPerson = new();
 
-        //kopieert de context van DAO
+        ///copies the data from DAO
         public DaoLogin() : base()
         {
-                
+
         }
+
         //Eakarach
         //Login
         public void LoginSucceeded(Person loginPerson)
@@ -35,7 +37,7 @@ namespace BarcoPVG.Dao
 
         public void GetDiv(Person loginPerson)
         {
-            List<RqBarcoDivision> listDiv = GetAllDivisions();
+            List<RqBarcoDivision> listDiv = _daoPerson.GetAllDivisions();
             foreach (RqBarcoDivision div in listDiv)
             {
                 //if (div.Afkorting == loginPerson)

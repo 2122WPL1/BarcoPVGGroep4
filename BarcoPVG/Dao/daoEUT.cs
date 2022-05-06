@@ -4,5 +4,13 @@
     {
         //Jarne
         //here comes all the data from EUT
+
+        //copies the data from DAO
+        public DaoEUT() : base()
+        {
+
+        }
+
+
     }
 }

@@ -1,14 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Mail;
-using System.Windows;
 using BarcoDB_Admin.Models.Classes;
-using BarcoDB_Admin;
-using BarcoDB_Admin.Models;
 using BarcoDB_Admin.Models.Db;
-using System.Data.SqlClient;
 
 namespace BarcoDB_Admin.Dao
 {
@@ -904,6 +898,8 @@ namespace BarcoDB_Admin.Dao
 
             return responsiblesString;
         }
+
+        /*
         //Mohamed
         public void FindAllJrLast24h()
         {
@@ -912,6 +908,8 @@ namespace BarcoDB_Admin.Dao
                 (r.RequestDate >= DateTime.Now.AddHours(-24))
             ).ToList();
         }
+        */
+
         //Mati//Kaat//Mohamed
         public void PrintPvg(int idrequest,JR jr)
         { 

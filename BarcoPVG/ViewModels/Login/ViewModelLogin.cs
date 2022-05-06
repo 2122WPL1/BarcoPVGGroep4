@@ -19,6 +19,7 @@ namespace BarcoPVG.ViewModels.Login
     public class ViewModelLogin : AbstractViewModelBase
     {
         private DaoLogin _daoLogin = new();
+        private DaoPerson _daoPerson = new();
         private ICommand loginCommand, exitCommand;
         private string _username = "bas";
         private string _password = "aaa";
@@ -88,7 +89,7 @@ namespace BarcoPVG.ViewModels.Login
         private void DisplayLogin(object param)
         {
             ObservableCollection<object> listParameter = (ObservableCollection<object>)param;
-            List<Person> allUser = _daoLogin.GetAllUser();
+            List<Person> allUser = _daoPerson.GetAllUser();
             Person loginPerson = null;
 
             foreach (Person person in allUser)

@@ -3,10 +3,8 @@ using Microsoft.Win32;
 
 namespace BarcoPVG.Dao
 {
-    /// <summary>
-    /// Gets all values from a registry key and stores them in an object
-    /// Kaat
-    /// </summary>
+    // Gets all values from a registry key and stores them in an object
+    // Kaat
     //public static class RegistryConnection
     //{
     /// <summary>
