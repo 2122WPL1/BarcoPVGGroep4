@@ -69,7 +69,7 @@ namespace BarcoDB_Admin.Dao
                 if (loginPerson.Afkorting == div.AfkPerson)
                 {
                     output.Add(div.AfkDevision);
-                    break;
+                    
                 }
             }
             return output;
