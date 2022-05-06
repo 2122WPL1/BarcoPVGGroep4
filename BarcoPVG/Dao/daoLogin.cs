@@ -49,7 +49,7 @@ namespace BarcoPVG.Dao
 
             foreach (RqBarcoDivisionPerson result in list)
             {
-                if (GetAllDivForPerson().FirstOrDefault(x => x.Afkorting == result.Pvggroup))
+                //if (GetAllDivForPerson().FirstOrDefault(x => x.Afkorting == result.Pvggroup))
             }
 
             return output;
