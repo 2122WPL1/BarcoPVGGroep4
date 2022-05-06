@@ -17,8 +17,9 @@ using BarcoPVG.Views;
 using BarcoPVG.Models.Db;
 using BarcoPVG.Models.Classes;
 using BarcoPVG.Dao;
+using BarcoPVG.ViewModels;
 
-namespace BarcoPVG.Viewmodels.JobRequest
+namespace BarcoPVG.ViewModels.JobRequest
 {
     public class ViewModelCreateJRForm : AbstractViewModelContainer
     {
@@ -36,6 +37,7 @@ namespace BarcoPVG.Viewmodels.JobRequest
         public ICommand AddEUTCommand { get; set; }
         public ICommand RemoveEUTCommand { get; set; }
         public ICommand RefreshJRCommand { get; set; }
+
 
         // Constructor for new JR
         public ViewModelCreateJRForm(bool isInternalRequest = false) : base()
@@ -89,7 +91,7 @@ namespace BarcoPVG.Viewmodels.JobRequest
             // Command initialization
             RefreshJRCommand = new DelegateCommand(RefreshJR);
             AddEUTCommand = new DelegateCommand(AddEUT);
-            RemoveEUTCommand = new DelegateCommand(RemoveSelectedEUT);
+            RemoveEUTCommand = new Command((param) => RemoveSelectedEUT(param));
         }
 
         // Loads jobNatures, divisions in cbb
@@ -139,16 +141,20 @@ namespace BarcoPVG.Viewmodels.JobRequest
         /// </summary>
         private void RefreshJR()
         {
+      
             this.JR = _dao.GetNewJR();
+       
             EUTs.Clear();
         }
 
         /// <summary>
         /// deletes selected EUT via _selectedEut variable
         /// </summary>
-        public void RemoveSelectedEUT()
+        public void RemoveSelectedEUT(object obj)
         {
             EUTs.Remove(_selectedEUT);
         }
+
+   
     }
 }

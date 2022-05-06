@@ -184,6 +184,9 @@
                         <ListBox.ItemsSource>
                             <CompositeCollection>
                                 <CollectionContainer Collection="{Binding Source={StaticResource EUTs}}"/>
+                                <ListBoxItem>
+                                    <Button Command="{DynamicResource AddEUT}" Content="+"/>
+                                </ListBoxItem>
                             </CompositeCollection>
                         </ListBox.ItemsSource>
                         </ListBox>-->

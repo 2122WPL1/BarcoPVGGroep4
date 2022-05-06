@@ -1,14 +1,8 @@
-﻿//using BarcoPVG.Viewmodels;
-//using BarcoPVG.ViewModels.DatabaseManagement;
-using BarcoDB_Admin.Viewmodels;
-using BarcoDB_Admin.ViewModels.DataBase;
+﻿using BarcoDB_Admin.ViewModels.DataBase;
 using BarcoDB_Admin.ViewModels.Edit;
 using Prism.Commands;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
 
 namespace BarcoDB_Admin.ViewModels
 {
@@ -16,7 +10,7 @@ namespace BarcoDB_Admin.ViewModels
     internal class ViewModelMain : AbstractViewModelBase
     {
         private AbstractViewModelBase _viewModel;
-
+        #region Commands
         public DelegateCommand Exit { get; set; }
         public DelegateCommand DisplayDatabaseUserCommand { get; set; }
         public DelegateCommand DisplayDataResourceCommand { get; set; }
@@ -27,9 +21,7 @@ namespace BarcoDB_Admin.ViewModels
         public DelegateCommand DisplayEditResourcesCommand { get; set; }
         public DelegateCommand DisplayAddDivisionCommand { get; set; }
         public DelegateCommand DisplayEditDivisionCommand { get; set; }
-
-
-
+        #endregion
         public ViewModelMain()
         {
             DisplayDatabaseUserCommand = new DelegateCommand(DisplayDatabaseUserStartup);
@@ -43,8 +35,7 @@ namespace BarcoDB_Admin.ViewModels
             DisplayEditDivisionCommand = new DelegateCommand(DisplayEditDivisionStartup);
             Exit = new DelegateCommand(exit);
         }
-
-        public void exit()
+        public void exit() //sluiten project
         {
             Environment.Exit(0);
         }
@@ -57,51 +48,51 @@ namespace BarcoDB_Admin.ViewModels
                 OnpropertyChanged();
             }
         }
-
+        #region Schermen
         public void DisplayDatabaseUserStartup()
         {
             this.ViewModel = new ViewModelDBUser();
         }
-
         public void DisplayDataResourceStartup()
         {
             this.ViewModel = new ViewModelDBResources();
         }
-
         public void DisplayDataBaseDivisionStartup()
         {
             this.ViewModel = new ViewModelDBDevision();
         }
-
         public void DisplayAddUserStartup()
         {
-            this.ViewModel = new ViewModelEditUser();
+            this.ViewModel = new ViewModelAddUser();
         }
-
-        public void DisplayEditUserStartup()
-        {
-            this.ViewModel = new ViewModelEditUser();
-        }
-
         public void DisplayAddResourcesStartup()
         {
             this.ViewModel = new ViewModelEditResources();
         }
-
         public void DisplayEditResourcesStartup()
         {
             this.ViewModel = new ViewModelEditResources();
         }
-
         public void DisplayAddDivisionStartup()
         {
             this.ViewModel = new ViewModelEditDevision();
         }
-
         public void DisplayEditDivisionStartup()
         {
             this.ViewModel = new ViewModelEditDevision();
         }
-
+        public void DisplayEditUserStartup()
+        {
+            var user = ((ViewModelDBUser)this.ViewModel).SelectedUser;
+            if (user != null)
+            {
+                this.ViewModel = new ViewModelEditUser(user);
+            }
+            else
+            {
+                MessageBox.Show("No user selected!");
+            }
+        }
+        #endregion
     }
 }

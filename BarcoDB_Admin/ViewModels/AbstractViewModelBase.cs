@@ -8,12 +8,12 @@ using System.Windows;
 
 
 
-namespace BarcoDB_Admin.Viewmodels
+namespace BarcoDB_Admin.ViewModels
 {
     public abstract class AbstractViewModelBase : INotifyPropertyChanged
     {
         //protected DAO _dao = DAO.Instance();
-        protected BarcoDB_Admin.Dao.DAO _dao = BarcoDB_Admin.Dao.DAO.Instance();
+        //protected BarcoDB_Admin.Dao.DAO _dao = BarcoDB_Admin.Dao.DAO.Instance(); //dao's apart in de viewmodels gedefineerd
 
         // Constructor
         public AbstractViewModelBase()

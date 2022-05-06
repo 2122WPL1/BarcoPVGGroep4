@@ -32,6 +32,10 @@
                 <viewEdit:EditUserUserControl/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type viewModelEdit:ViewModelAddUser}">
+                <viewEdit:EditUserUserControl/>
+            </DataTemplate>
+
             <DataTemplate DataType="{x:Type viewModelEdit:ViewModelEditResources}">
                 <viewEdit:EditResourcesUserControl/>
             </DataTemplate>

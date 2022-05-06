@@ -1,8 +1,8 @@
 ﻿using BarcoPVG.Models.Classes;
 using BarcoPVG.Models.Db;
-using BarcoPVG.Viewmodels.JobRequest;
-using BarcoPVG.Viewmodels.Planning;
-using BarcoPVG.Viewmodels.TestGUI;
+using BarcoPVG.ViewModels.Planning;
+using BarcoPVG.ViewModels.TestGUI;
+using BarcoPVG.ViewModels.JobRequest;
 using Prism.Commands;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Windows;
 using BarcoPVG.Dao;
 
 
-namespace BarcoPVG.Viewmodels
+namespace BarcoPVG.ViewModels
 {
     // Kaat
     class ViewModelMain : AbstractViewModelBase
@@ -24,6 +24,8 @@ namespace BarcoPVG.Viewmodels
         // TODO: check if ICommand also works
         public DelegateCommand Exit { get; set; }
         public DelegateCommand DisplayNewJRCommand { get; set; }
+
+        public DelegateCommand DisplayNewInternJRCommand { get; set; }  // Eakarch
         public DelegateCommand DisplayExistingJRCommand { get; set; }
         public DelegateCommand DisplayEmployeeStartupCommand { get; set; }
         public DelegateCommand DisplayPlannerStartupCommand { get; set; }
@@ -37,8 +39,10 @@ namespace BarcoPVG.Viewmodels
         public DelegateCommand ApprovePlanAndReturnCommand { get; set; }
         public DelegateCommand TesterReturnCommand { get; set; }
 
-        // Amy & Jarne
-        public DelegateCommand DisplayDatabaseManagementStartupCommand { get; set; } //button vanboven
+
+        //// Amy & Jarne
+        //// Eakarach Dit wordt naar een nieuw programma verplaatst.
+        //public DelegateCommand DisplayDatabaseManagementStartupCommand { get; set; } //button vanboven
 
         // Visibility of buttons
         public Visibility NewRequests { get; set; }
@@ -55,6 +59,7 @@ namespace BarcoPVG.Viewmodels
             this.User = _dao.BarcoUser;
 
             DisplayNewJRCommand = new DelegateCommand(DisplayNewJR);
+            DisplayNewInternJRCommand = new DelegateCommand(DisplayNewInternJR);
             DisplayExistingJRCommand = new DelegateCommand(DisplayExistingJR);
             DisplayEmployeeStartupCommand = new DelegateCommand(DisplayEmployeeStartup);
             DisplayPlannerStartupCommand = new DelegateCommand(DisplayPlannerStartup);
@@ -67,8 +72,10 @@ namespace BarcoPVG.Viewmodels
             ApprovePlanAndReturnCommand = new DelegateCommand(ApprovePlanAndReturn);
             TesterReturnCommand = new DelegateCommand(TesterReturn);
             Exit = new DelegateCommand(exit);
+
             SetWindowProperties();
         }
+
         public void exit()
         {
             Environment.Exit(0);
@@ -121,6 +128,12 @@ namespace BarcoPVG.Viewmodels
         public void DisplayEmployeeStartup()
         {
             this.ViewModel = new ViewModelCreateJRQueue();
+        }
+
+        //Eakarach
+        private void DisplayNewInternJR()
+        {
+            this.ViewModel = new ViewModelCreateInternJRForm();
         }
 
         public void DisplayPlannerStartup()
@@ -299,18 +312,38 @@ namespace BarcoPVG.Viewmodels
         // Updates existing job request and switches windows
         public void UpdateJr()
         {
-            string error =
-                _dao.UpdateJobRequest(((AbstractViewModelContainer) this.ViewModel)
-                    .JR); // SaveChanges included in function
+            var jr = _dao.AddJobRequest(
+               ((AbstractViewModelContainer)this.ViewModel) //ID request wordt automatisch 0 voor een of andere reden
+               .JR); // SaveChanges included in function
+            int count = 0;
 
-            if (error == null)
             {
-                DisplayDevStartup();
+                //jr.JrNumber = CreateJRNummer(jr); //jr ID wordt automatisch toegevoegd bij savecnages waardoor deze niet ka nwerken
+
+                List<EUT> euts = new List<EUT>();
+                if (CheckCreateRequirements(jr, out euts))
+                {
+                    foreach (EUT eut in euts)
+                    {
+                        _dao.AddEutToRqRequest(jr, eut, count.ToString());
+                        count++;
+                    }
+                    string error = _dao.UpdateJobRequest(((AbstractViewModelContainer)this.ViewModel).JR); // SaveChanges included in function
+
+                    if (error == null)
+                    {
+                        DisplayDevStartup();
+                    }
+                    else
+                    {
+                        MessageBox.Show(error);
+                    }
+
+                }
+                // Here we call the SaveChanges method, so that we can link several EUTs to one JR
             }
-            else
-            {
-                MessageBox.Show(error);
-            }
+
+            
         }
 
         // Switch screen for planner
