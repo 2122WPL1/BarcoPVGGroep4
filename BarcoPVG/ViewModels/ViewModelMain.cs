@@ -131,6 +131,7 @@ namespace BarcoPVG.ViewModels
         //Eakarach
         private void DisplayNewInternJR()
         {
+            
             this.ViewModel = new ViewModelCreateInternJRForm();
         }
 

@@ -21,9 +21,10 @@
                 </Grid.ColumnDefinitions>
                 <Label Grid.Column="1" Content="Choose division:" HorizontalAlignment="Center" Margin="0,100,0,0" VerticalAlignment="Top"/>
                 <Label Grid.Column="1" Content="Give project name:" HorizontalAlignment="Center" Margin="0,30,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-                <TextBox Grid.Column="2" Margin="0,30,0,0" Grid.Row="1" Text="" VerticalAlignment="Top" Width="150" HorizontalAlignment="Center"/>
+                <TextBox Grid.Column="2" Margin="0,30,0,0" Grid.Row="1" VerticalAlignment="Top" Width="150" HorizontalAlignment="Center"
+                         Text="{Binding JR.EutProjectname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <ComboBox ItemsSource="{Binding Divisions}" Text="{Binding JR.BarcoDivision, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
-                                  Grid.Column="2" Margin="0,102,0,0" VerticalAlignment="Top" Width="150" HorizontalAlignment="Center" TextElement.Foreground="Black"/>
+                         Grid.Column="2" Margin="0,102,0,0" VerticalAlignment="Top" Width="150" HorizontalAlignment="Center" TextElement.Foreground="Black"/>
             </Grid>
         </GroupBox>
         <DockPanel Height="100" LastChildFill="False">

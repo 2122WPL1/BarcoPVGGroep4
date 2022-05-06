@@ -37,6 +37,14 @@ namespace BarcoPVG.Dao
         private DAO()
         {
             this._context = new BarcoContext();
+
+            //Eakarach To Test
+            this.BarcoUser = new BarcoUser()
+            {
+                Name = "Test-Okie",
+                Division = "DEV",
+                Function = "DEV",
+            };
         }
       
         //Eakarach
@@ -54,7 +62,7 @@ namespace BarcoPVG.Dao
             {
                 Name = name, 
                 Division = "DEV",
-                Function = "DEV",
+                Function = "TEST",
             };
         }
 
@@ -175,7 +183,7 @@ namespace BarcoPVG.Dao
             RqRequest rqrequest = new()
             {
                 JrStatus = Jr.JrStatus == null ? "To approve" : Jr.JrStatus,
-                RequestDate = Add5Datum(), // the JR has to be accepted within 5 non-holiday days.
+                RequestDate = DateTime.Now, 
                 //RequestDate = (DateTime)Jr.ExpEnddate, // Nullable
                 Requester = Jr.Requester == null ? string.Empty : Jr.Requester,
                 BarcoDivision = Jr.BarcoDivision == null ? string.Empty : Jr.BarcoDivision,
@@ -209,6 +217,7 @@ namespace BarcoPVG.Dao
             return rqrequest;
         }
 
+        // the JR has to be accepted within 5 non-holiday days.
         private DateTime Add5Datum()
         {
             // Still have to look at holidays in Belgium****
