@@ -11,7 +11,7 @@ using BarcoPVG.Models.Db;
 
 namespace BarcoPVG.ViewModels.Planning
 {
-    // Kaat
+    //Kaat
     class ViewModelPlanTestForm : AbstractViewModelBase
     {
         // Listbox with equipment
