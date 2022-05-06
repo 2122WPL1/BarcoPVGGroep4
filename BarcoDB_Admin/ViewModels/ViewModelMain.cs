@@ -27,6 +27,7 @@ namespace BarcoDB_Admin.ViewModels
         public DelegateCommand DisplayEditResourcesCommand { get; set; }
         public DelegateCommand DisplayAddDivisionCommand { get; set; }
         public DelegateCommand DisplayEditDivisionCommand { get; set; }
+        public DelegateCommand SaveUserCommand { get; set; }
 
 
 
@@ -41,6 +42,8 @@ namespace BarcoDB_Admin.ViewModels
             DisplayEditResourcesCommand = new DelegateCommand(DisplayEditResourcesStartup);
             DisplayAddDivisionCommand = new DelegateCommand(DisplayAddDivisionStartup);
             DisplayEditDivisionCommand = new DelegateCommand(DisplayEditDivisionStartup);
+            SaveUserCommand = new DelegateCommand(InsertUser);
+
             Exit = new DelegateCommand(exit);
         }
 
@@ -81,6 +84,7 @@ namespace BarcoDB_Admin.ViewModels
         public void DisplayEditUserStartup()
         {
             var user = ((ViewModelDBUser)this.ViewModel).SelectedUser.Afkorting;
+            SaveUserCommand = new DelegateCommand(UpdateUser);
 
             if (user != null)//EditUserUserControl can only be opened when there is a User selected
             {
@@ -130,6 +134,30 @@ namespace BarcoDB_Admin.ViewModels
 
             }
         }
+
+        public void InsertUser()
+        {
+            Person user = ((AbstractViewModelContainer)this.ViewModel).Person;
+
+            _dao.AddUser(user);
+            //this.ViewModel = new ViewModelAddUser();
+            DisplayDatabaseUserStartup();
+
+        }
+
+        public void UpdateUser()
+        {
+            var person = ((ViewModelEditUser)this.ViewModel).SelectedUser;
+            
+            _dao.EditUser(person);
+
+
+            
+
+
+        }
+
+
 
     }
 }

@@ -930,28 +930,45 @@ namespace BarcoDB_Admin.Dao
             }
         }
 
+        //User
         //Amy
         //edit user
-        public string EditUser(Person user)
+        public void EditUser(Person SelectedUser)
         {
-            string message = null;
+            //Person SelectedUser = _context.People.FirstOrDefault();
 
-            if (user != null)
+            Person person = new()
             {
-                Person person = _context.People.FirstOrDefault(u => u.Afkorting == user.Afkorting);
+                Afkorting = SelectedUser.Afkorting,
+                Voornaam = SelectedUser.Voornaam,
+                Familienaam = SelectedUser.Familienaam,
+                wachtwoord = SelectedUser.wachtwoord
+            };
 
-                person.Afkorting = user.Afkorting;
-                person.Voornaam = user.Voornaam;
-                person.Familienaam = user.Familienaam;
-                person.wachtwoord = user.wachtwoord;
-
-                _context.People.Update(person);
-            }
-            else
+            _context.People.Update(person);
+            SaveChanges();
+            
+        }
+        //Amy
+        public Person AddUser(Person Person)
+        {
+            Person person = new()
             {
-                message = "Please fill in all the fields!";
-            }
-            return message;
+                Afkorting = Person.Afkorting,
+                Voornaam = Person.Voornaam,
+                Familienaam= Person.Familienaam,
+                wachtwoord = Person.wachtwoord
+
+                //Afkorting = Person.Afkorting ,
+                //Voornaam = Person.Voornaam,
+                //Familienaam = Person.Familienaam ,
+                //wachtwoord = Person.wachtwoord 
+            };
+
+            _context.People.Add(person);
+            SaveChanges();
+
+            return person;
         }
 
         //Amy
@@ -972,6 +989,9 @@ namespace BarcoDB_Admin.Dao
             return SelectedUser;
         }
 
+
+        //Resource
+
         //Amy
         //Get selected resource info
         public PlResource GetResource(int Id)
@@ -991,6 +1011,10 @@ namespace BarcoDB_Admin.Dao
             return SelectedResouce;
         }
 
+
+        //Devision
+
+        //Get selected Devision info
         public RqBarcoDivision GetDevision(string Afkorting)
         {
             RqBarcoDivision SelectedDivision = _context.RqBarcoDivisions.FirstOrDefault(d => d.Afkorting == Afkorting);
