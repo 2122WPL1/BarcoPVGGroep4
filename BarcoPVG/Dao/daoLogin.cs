@@ -20,9 +20,7 @@ namespace BarcoPVG.Dao
         //Eakarach
         //Login
         public void LoginSucceeded(Person loginPerson)
-        {
-            string name = loginPerson.Voornaam;
-
+        {           
             //Put division or to list if they have more than one division
             //string division = GetAllDivisions().Where(div => "TS" == loginPerson.Afkorting).ToString();
 
@@ -30,26 +28,28 @@ namespace BarcoPVG.Dao
             //string func = "";
             this.BarcoUser = new BarcoUser()
             {
-                Name = name,
-                Division = GetDiv(loginPerson).Pvggroup,
+                Name = loginPerson.Voornaam,
+                Division = GetAllDivForPerson(loginPerson)[0].Pvggroup,
                 Function = "DEV",
             };
         }
 
-        public List<RqTestDevision> GetAllDivForPerson()
+        public List<RqBarcoDivisionPerson> GetAllDivForPerson(Person loginperson)
         {
-            List<RqTestDevision> listDiv = _context.RqTestDevisions.ToList();
-            return listDiv;
-        }
-        public RqBarcoDivisionPerson GetDiv(Person loginperson)
-        {
-            RqBarcoDivisionPerson output = null;
+            List<RqBarcoDivisionPerson> output = new List<RqBarcoDivisionPerson>();
+            string text = null;
 
             List<RqBarcoDivisionPerson> list = _context.RqBarcoDivisionPeople.Where(p => p.AfkPerson == loginperson.Afkorting).ToList();
 
             foreach (RqBarcoDivisionPerson result in list)
             {
                 //if (GetAllDivForPerson().FirstOrDefault(x => x.Afkorting == result.Pvggroup))
+                text = result.Pvggroup;
+
+                if (output.FirstOrDefault(x => x.Pvggroup == text) == null)
+                {
+                    output.Add(result);
+                }
             }
 
             return output;
@@ -67,5 +67,6 @@ namespace BarcoPVG.Dao
             }
         }
         */
+
     }
 }

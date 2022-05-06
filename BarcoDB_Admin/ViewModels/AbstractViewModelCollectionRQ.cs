@@ -8,25 +8,30 @@ using System.Windows.Media;
 using BarcoDB_Admin.Models;
 using BarcoDB_Admin.Models.Db;
 
-namespace BarcoDB_Admin.Viewmodels
+namespace BarcoDB_Admin.ViewModels
 {
-    public abstract class AbstractViewModelCollectionRQ : AbstractViewModelBase/*, IValueConverter*/
+    public abstract class AbstractViewModelCollectionRQ : AbstractViewModelBase, IValueConverter
     {
-        private Person _selectedUser;
-        public AbstractViewModelCollectionRQ() : base()
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            _selectedUser = new Person();
+            throw new NotImplementedException();
         }
 
-        public Person selectedUser
-        {
-            get => _selectedUser;
-            set
-            {
-                _selectedUser = value;
-                OnpropertyChanged();
-            }
-        }
+        //private Person _SelectedUser;
+        //public AbstractViewModelCollectionRQ() : base()
+        //{
+        //    _SelectedUser = new Person();
+        //}
+
+        //public Person SelectedUser
+        //{
+        //    get => _SelectedUser;
+        //    set
+        //    {
+        //        _SelectedUser = value;
+        //        OnpropertyChanged();
+        //    }
+        //}
 
         //protected RqRequest _selectedJR;
         //protected SolidColorBrush jobNatureColor;

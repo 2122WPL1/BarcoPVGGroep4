@@ -9,11 +9,10 @@
         WindowState="Maximized"
         WindowStyle="ThreeDBorderWindow"
         WindowStartupLocation="CenterScreen"
-     MinWidth="330  "
+        MinWidth="330"
          
         Height="{x:Static SystemParameters.PrimaryScreenHeight}" 
-      Width="{x:Static SystemParameters.PrimaryScreenWidth}" 
-    >
+        Width="{x:Static SystemParameters.PrimaryScreenWidth}" >
     <!--amy-->
     <!--<ScrollViewer HorizontalScrollBarVisibility="Visible"> dit zorgt ervoor dat de andere scrollviewer niet zichtbaar wordt-->
     <StackPanel Margin="10" >
@@ -43,7 +42,7 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="top">
                     <Button Content="User" 
                             Command="{Binding DisplayDatabaseUserCommand, Mode=OneWay}"
                             Margin="5"/>
@@ -54,8 +53,8 @@
                             Command="{Binding DisplayDataBaseDivisionCommand, Mode=OneWay}"
                             Margin="5"/>
                 </StackPanel>
-                <ScrollViewer Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Visible" >
-                    <ContentControl Content="{Binding ViewModel}" Width="auto" HorizontalContentAlignment="Center"  />
+                <ScrollViewer Grid.Row="1">
+                    <ContentControl Content="{Binding ViewModel}" HorizontalContentAlignment="Center" Width="auto"  />
                 </ScrollViewer>
             </Grid>
         </GroupBox>
