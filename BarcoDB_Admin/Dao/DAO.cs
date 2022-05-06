@@ -1,7 +1,4 @@
 ﻿using BarcoDB_Admin.Models.Classes;
-using BarcoDB_Admin.Models.Db;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace BarcoDB_Admin.Dao
 {

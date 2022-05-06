@@ -14,16 +14,11 @@ namespace BarcoDB_Admin.ViewModels.DataBase
     class ViewModelDBResources : AbstractViewModelBase
     {
         DaoResource _dao = new DaoResource();
+        #region properties
         public DelegateCommand DeleteResource { get; set; }
-        public List<PlResource> AllResources
-        {
-            get;
-            set;
-        }
-        public PlResource SelectedResouce
-        {
-            get; set;
-        }
+        public List<PlResource> AllResources { get; set; }
+        public PlResource SelectedResouce { get; set; }
+        #endregion
         public ViewModelDBResources() : base()
         {
             DeleteResource = new DelegateCommand(DeleteResourceFromDB);
@@ -39,7 +34,6 @@ namespace BarcoDB_Admin.ViewModels.DataBase
             {
                 if (MessageBox.Show( "Are you sure you want to delete this Resource?", "Delete Resource", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
-
                     _dao.RemoveResource(SelectedResouce);
                     Load();
                     OnpropertyChanged("AllResources");
