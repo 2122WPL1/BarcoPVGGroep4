@@ -11,14 +11,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using BarcoPVG.Dao;
 
 namespace BarcoPVG.ViewModels.Login
 {
     //Eakarach
     public class ViewModelLogin : AbstractViewModelBase
     {
+        private DaoLogin _daoLogin = new();
         private ICommand loginCommand, exitCommand;
-
         private string _username = "bas";
         private string _password = "aaa";
 
@@ -87,7 +88,7 @@ namespace BarcoPVG.ViewModels.Login
         private void DisplayLogin(object param)
         {
             ObservableCollection<object> listParameter = (ObservableCollection<object>)param;
-            List<Person> allUser = _dao.GetAllUser();
+            List<Person> allUser = _daoLogin.GetAllUser();
             Person loginPerson = null;
 
             foreach (Person person in allUser)
@@ -101,7 +102,7 @@ namespace BarcoPVG.ViewModels.Login
 
             if (loginPerson != null)
             {
-                _dao.LoginSucceedded(loginPerson);
+                _daoLogin.LoginSucceeded(loginPerson);
                 foreach (Window item in Application.Current.Windows)
                 {
                     item.Hide();

@@ -32,10 +32,12 @@ namespace BarcoPVG.Dao
         {
             this._context = new BarcoContext();
         }
-      
+
+        #region verplaatst naar DaoLogin
+        /* 
         //Eakarach
         //Login
-        public void LoginSucceedded(Person loginPerson)
+        public void LoginSucceeded(Person loginPerson)
         {
             string name = loginPerson.Voornaam;
 
@@ -63,6 +65,8 @@ namespace BarcoPVG.Dao
                 //}
             }
         }
+        */
+        #endregion
 
         /// <summary>
         /// Removes unsaved changed by replacing the context by a new instance
@@ -72,7 +76,6 @@ namespace BarcoPVG.Dao
         {
             _context = new BarcoContext();
         }
-
 
         // LISTS
         // Eakarach

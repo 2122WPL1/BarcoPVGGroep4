@@ -19,13 +19,13 @@
                 <GroupBox.Header>
                     <Grid Background="#FFF10000">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="7*"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="94*"/>
+                            <ColumnDefinition Width="94*"/>
+                            <ColumnDefinition Width="728*"/>
+                            <ColumnDefinition Width="25*"/>
                         </Grid.ColumnDefinitions>
-                        <Button x:Name="X" Content="X" Background="LightGray" BorderBrush="#FFF44336" Grid.Column="3" Command="{Binding Exit}"/>
-                        <Image Style="{StaticResource BarcoLogo}" Grid.Column="0" Margin="16,0,25,0"/>
+                        <Button Content="X" BorderBrush="Black" Grid.Column="3" Command="{Binding Exit}" HorizontalAlignment="Center" VerticalAlignment="Center" Height="32" Width="50" Foreground="#FFF10000" Background="#FFD5DFE5"/>
+                        <Image Style="{StaticResource BarcoLogo}" Grid.Column="0" Margin="40,0,48,0"/>
                         <StackPanel Orientation="Horizontal" Grid.Column="1" >
                             <TextBlock FontSize="14" Text="Welcome "/>
                             <TextBlock FontSize="14" FontWeight="Bold" Text="{Binding User.Name}"/>

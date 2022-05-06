@@ -7,7 +7,7 @@ using Prism.Commands;
 using System;
 using System.Collections.Generic;
 using System.Windows;
-
+using BarcoPVG.Dao;
 
 
 namespace BarcoPVG.Viewmodels
@@ -15,6 +15,8 @@ namespace BarcoPVG.Viewmodels
     // Kaat
     class ViewModelMain : AbstractViewModelBase
     {
+        //protected DAO _dao = DAO.Instance();
+
         private AbstractViewModelBase _viewModel;
 
         public BarcoUser User { get; set; }
