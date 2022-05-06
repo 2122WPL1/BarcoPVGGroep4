@@ -33,6 +33,14 @@ namespace BarcoPVG.Dao
         protected DAO()
         {
             this._context = new BarcoContext();
+
+            //Eakarach To Test
+            this.BarcoUser = new BarcoUser()
+            {
+                Name = "Test-Okie",
+                //Division = "DEV",
+                Function = "TEST",
+            };
         }
 
         // Removes unsaved changed by replacing the context by a new instance
