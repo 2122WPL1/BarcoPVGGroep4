@@ -36,7 +36,7 @@ namespace BarcoPVG.ViewModels.TestGUI
 
             Tests = new ObservableCollection<Test>();
 
-            foreach (var item in _dao.GetAllTests().Where(t => t.Status != "Unconfirmed"))
+            foreach (var item in _daoPlanning.GetAllTests().Where(t => t.Status != "Unconfirmed"))
             {
                 Tests.Add(item);
             }
@@ -59,7 +59,7 @@ namespace BarcoPVG.ViewModels.TestGUI
         {
             foreach (var item in Tests)
             {
-                _dao.UpdateTestStatus(item);
+                _daoPlanning.UpdateTestStatus(item);
             }
         }
     }
