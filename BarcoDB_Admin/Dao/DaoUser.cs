@@ -1,7 +1,6 @@
 ﻿using BarcoDB_Admin.Models.Db;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Media.TextFormatting;
 
 namespace BarcoDB_Admin.Dao
 {
