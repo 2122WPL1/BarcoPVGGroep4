@@ -41,6 +41,8 @@ namespace BarcoPVG.Dao
             BarcoUser.Division = division != null ? division : "";
             BarcoUser.Function = GetFuntion(division);
 
+            //BarcoUser.Function = "DEV"; log in as Developer
+
 
         }
 
