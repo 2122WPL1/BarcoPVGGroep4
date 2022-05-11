@@ -6,6 +6,8 @@ namespace BarcoDB_Admin.Dao
 {
     public class DaoResource : DAO
     {
+        //Jarne
+
         //copies the data from DAO
         public DaoResource() : base()
         {
@@ -54,10 +56,9 @@ namespace BarcoDB_Admin.Dao
             _context.SaveChanges();
         }
 
-        public void AddResource(string resource)
+        public PlResource AddResource(PlResource resource)
         {
-
+            return resource;
         }
-
     }
 }

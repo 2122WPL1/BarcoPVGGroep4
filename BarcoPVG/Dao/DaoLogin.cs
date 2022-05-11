@@ -33,12 +33,12 @@ namespace BarcoPVG.Dao
             //Put Function to give right the the user
             //string func = "";
 
-            //Jarne getting the info from the login details to get the right view display
+            //Jarne
+            //getting the info from the login details to get the right view display
             BarcoUser = new BarcoUser();
             BarcoUser.Name = loginPerson.Voornaam;
             BarcoUser.Function = "DEV";
             BarcoUser.Division = _daoPerson.GetAllDivisions().Where(div => "TS" == loginPerson.Afkorting).ToString();
-
         }
 
         public List<RqBarcoDivisionPerson> GetAllDivForPerson(Person loginperson)

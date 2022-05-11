@@ -8,12 +8,12 @@ namespace BarcoDB_Admin.ViewModels.DataBase
 {
     public class ViewModelDBUser : AbstractViewModelBase
     {
-        DaoUser _dao = new DaoUser();
+        public DaoUser _dao = new DaoUser();
 
         #region properties
         protected DelegateCommand DeleteUser { get; set; }
         protected List<Person> AllUsers { get => _allUsers; set => _allUsers = value; }
-        protected Person SelectedUser { get; set; }
+        public Person SelectedUser { get => _SelectedUser; set => _SelectedUser = value; }
         #endregion
 
         public ViewModelDBUser() : base()
@@ -22,8 +22,8 @@ namespace BarcoDB_Admin.ViewModels.DataBase
             Load();
         }
 
-        protected List<Person> _allUsers;
-        //protected Person _SelectedUser;//Amy
+        private List<Person> _allUsers;
+        private Person _SelectedUser;//Amy
 
         public void Load()
         {
@@ -47,7 +47,7 @@ namespace BarcoDB_Admin.ViewModels.DataBase
             }
             else
             {
-                MessageBox.Show("No user selecteerd");
+                MessageBox.Show("No user selected");
             }
         }
     }

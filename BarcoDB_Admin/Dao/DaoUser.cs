@@ -8,6 +8,7 @@ namespace BarcoDB_Admin.Dao
     {
         //Jarne
         //here comes all the data from Person
+        public List<Person> users = new List<Person>();
 
         //copies the data from DAO
         public DaoUser() : base()
@@ -31,19 +32,44 @@ namespace BarcoDB_Admin.Dao
             _context.SaveChanges();
         }
 
-        public string AddUser(string person)
-        {
-            return person;
-        }
-
-        public void EditUser(string person)
-        {
-
-        }
-
         public List<Person> GetAllUser()
         {
             return _context.People.ToList();
+        }
+
+        //Jarne
+        public Person EditUser(Person person)
+        {
+            users.Remove(person);
+            person = new Person()
+            {
+                Afkorting = person.Afkorting,
+                Voornaam = person.Voornaam,
+                Familienaam = person.Familienaam,
+                wachtwoord = person.wachtwoord
+            };
+
+            users.Add(person);
+            _context.Add(person);
+            _context.SaveChanges();
+            return person;
+        }
+
+        //Amy & Jarne
+        public Person AddUser(Person person)
+        {
+            person = new Person()
+            {
+                Afkorting = person.Afkorting,
+                Voornaam = person.Voornaam,
+                Familienaam = person.Familienaam,
+                wachtwoord = person.wachtwoord
+            };
+            
+            users.Add(person);
+            _context.Add(person);
+            _context.SaveChanges();
+            return person;
         }
     }
 }

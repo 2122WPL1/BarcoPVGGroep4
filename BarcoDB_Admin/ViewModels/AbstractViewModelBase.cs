@@ -15,6 +15,7 @@ namespace BarcoDB_Admin.ViewModels
         //Jarne
         protected DaoUser _daoUser = DaoUser.InstanceUser();
         protected DaoResource _daoResource = DaoResource.InstanceResource();
+        protected DaoDivision _daoDivision = DaoDivision.InstanceDivision();
 
         protected DAO _dao = DAO.Instance();
         //protected BarcoDB_Admin.Dao.DAO _dao = BarcoDB_Admin.Dao.DAO.Instance(); //dao's apart in de viewmodels gedefineerd
