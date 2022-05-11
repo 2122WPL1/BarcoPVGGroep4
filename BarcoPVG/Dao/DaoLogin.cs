@@ -20,7 +20,7 @@ namespace BarcoPVG.Dao
         //Eakarach
         //Login
         public void LoginSucceeded(Person loginPerson)
-        {           
+        {
             //Put division or to list if they have more than one division
             //string division = GetAllDivisions().Where(div => "TS" == loginPerson.Afkorting).ToString();
 

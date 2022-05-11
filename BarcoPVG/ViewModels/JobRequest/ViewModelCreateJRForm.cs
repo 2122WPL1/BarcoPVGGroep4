@@ -97,8 +97,8 @@ namespace BarcoPVG.ViewModels.JobRequest
         // Loads jobNatures, divisions in cbb
         public void Load()
         {
-            var jobNatures = _dao.GetAllJobNatures();
-            var divisions = _dao.GetAllDivisions();
+            var jobNatures = _daoJR.GetAllJobNatures();
+            var divisions = _daoPerson.GetAllDivisions();
             JobNatures.Clear();
             Divisions.Clear();
 
@@ -142,7 +142,7 @@ namespace BarcoPVG.ViewModels.JobRequest
         private void RefreshJR()
         {
       
-            this.JR = _dao.GetNewJR();
+            this.JR = _daoJR.GetNewJR();
        
             EUTs.Clear();
         }

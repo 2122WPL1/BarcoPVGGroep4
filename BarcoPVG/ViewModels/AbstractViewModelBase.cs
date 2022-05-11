@@ -12,6 +12,11 @@ namespace BarcoPVG.ViewModels
     public abstract class AbstractViewModelBase : INotifyPropertyChanged
     {
         protected DAO _dao = DAO.Instance();
+        protected DaoJR _daoJR = new DaoJR();
+        protected DaoApproval _daoApproval = new DaoApproval();
+        protected DaoPlanning _daoPlanning = new DaoPlanning();
+        protected DaoResources _daoResources = new DaoResources();
+        protected DaoPerson _daoPerson = new DaoPerson();
 
         // Constructor
         public AbstractViewModelBase()
