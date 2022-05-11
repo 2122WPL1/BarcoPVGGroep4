@@ -31,12 +31,12 @@ namespace BarcoPVG.Dao
 
             //Put Function to give right the the user
             //string func = "";
-           BarcoUser = new Person()
-            {
-                Name = loginPerson.Voornaam,
-                //Division = "DEV",//GetAllDivForPerson(loginPerson)[0].Pvggroup,
-                Function = "DEV",
-            };
+
+            BarcoUser = new BarcoUser();
+            BarcoUser.Name = loginPerson.Voornaam;
+            BarcoUser.Function = "DEV";
+            BarcoUser.Division = "DEV";
+            
         }
 
         public List<RqBarcoDivisionPerson> GetAllDivForPerson(Person loginperson)

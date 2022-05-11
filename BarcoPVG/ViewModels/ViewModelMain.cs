@@ -57,7 +57,7 @@ namespace BarcoPVG.ViewModels
         public ViewModelMain()
         {
             
-            this.User = _dao.BarcoUser;
+            this.User = _daoPerson.BarcoUser;
 
             DisplayNewJRCommand = new DelegateCommand(DisplayNewJR);
             DisplayNewInternJRCommand = new DelegateCommand(DisplayNewInternJR);
@@ -399,8 +399,8 @@ namespace BarcoPVG.ViewModels
 
         private void SetWindowProperties()
         {
-            
-            switch (_daoLogin.BarcoUser.Function)
+            string i = _daoLogin.BarcoUser.Function;
+            switch (i)
             {
                 ////Jarne
                 ////aanmaken van een nieuwe view die DATA voor de Visibility van de database button

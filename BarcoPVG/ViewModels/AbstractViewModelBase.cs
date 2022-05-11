@@ -25,7 +25,7 @@ namespace BarcoPVG.ViewModels
         {
             
         }
-
+            
         // Implement propertyChanged
         // Start boilerplate code
         public event PropertyChangedEventHandler PropertyChanged;
