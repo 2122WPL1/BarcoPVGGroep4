@@ -18,8 +18,10 @@ namespace BarcoPVG.ViewModels.Login
     //Eakarach
     public class ViewModelLogin : AbstractViewModelBase
     {
-        private DaoLogin _daoLogin = new();
-        private DaoPerson _daoPerson = new();
+
+
+        
+
         private ICommand loginCommand, exitCommand;
         private string _username = "bas";
         private string _password = "aaa";

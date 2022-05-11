@@ -9,6 +9,7 @@ using System.Windows;
 
 namespace BarcoPVG.ViewModels
 {
+    
     public abstract class AbstractViewModelBase : INotifyPropertyChanged
     {
         protected DAO _dao = DAO.Instance();
