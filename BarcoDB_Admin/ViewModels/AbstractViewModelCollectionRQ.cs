@@ -17,21 +17,7 @@ namespace BarcoDB_Admin.ViewModels
             throw new NotImplementedException();
         }
 
-        //private Person _SelectedUser;
-        //public AbstractViewModelCollectionRQ() : base()
-        //{
-        //    _SelectedUser = new Person();
-        //}
 
-        //public Person SelectedUser
-        //{
-        //    get => _SelectedUser;
-        //    set
-        //    {
-        //        _SelectedUser = value;
-        //        OnpropertyChanged();
-        //    }
-        //}
 
         //protected RqRequest _selectedJR;
         //protected SolidColorBrush jobNatureColor;

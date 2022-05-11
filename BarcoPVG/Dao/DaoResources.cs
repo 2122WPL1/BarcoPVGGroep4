@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using BarcoPVG.Models.Db;
 
 namespace BarcoPVG.Dao
@@ -16,6 +13,13 @@ namespace BarcoPVG.Dao
         public DaoResources() : base()
         {
 
+        }
+
+        protected static readonly DaoResources _instanceResources = new();
+
+        public static DaoResources InstanceResources()
+        {
+            return _instanceResources;
         }
 
         // Returns list of all Equipment

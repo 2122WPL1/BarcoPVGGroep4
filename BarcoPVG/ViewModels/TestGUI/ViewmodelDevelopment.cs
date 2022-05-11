@@ -28,7 +28,7 @@ namespace BarcoPVG.ViewModels.TestGUI
         // Loads all JR IDs in LB
         public void Load()
         {
-            var requestIds = _dao.GetAllJobRequests();
+            var requestIds = _daoJR.GetAllJobRequests();
             IdRequestsOnly.Clear();
 
             foreach (var requestId in requestIds)

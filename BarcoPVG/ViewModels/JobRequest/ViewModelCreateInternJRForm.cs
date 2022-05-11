@@ -29,7 +29,7 @@ namespace BarcoPVG.ViewModels.JobRequest
 
         private void Load()
         {
-            var allDivisions = _dao.GetAllDivisions();
+            var allDivisions = _daoPerson.GetAllDivisions();
 
             Divisions.Clear();
 

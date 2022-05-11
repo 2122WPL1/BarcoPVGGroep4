@@ -18,7 +18,7 @@ namespace BarcoPVG.ViewModels.JobRequest
         public void Load()
         {
             // Get unapproved JR's
-            var requestIds = _dao.GetAllJobRequests().Where(rq => rq.JrStatus == "To approve");
+            var requestIds = _daoJR.GetAllJobRequests().Where(rq => rq.JrStatus == "To approve");
             IdRequestsOnly.Clear();
 
             foreach (var requestId in requestIds)
