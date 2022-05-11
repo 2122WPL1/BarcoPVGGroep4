@@ -29,11 +29,11 @@ namespace BarcoPVG.Dao
             this._context = new BarcoContext();
 
             //Eakarach To Test
-            this.BarcoUser = new BarcoUser()
-            {
-                Name = "Bart",
-                Function = "DEV",
-            };
+            //this.BarcoUser = new BarcoUser()
+            //{
+            //    Name = "Bart",
+            //    Function = "DEV",
+            //};
         }
 
         // Removes unsaved changed by replacing the context by a new instance
