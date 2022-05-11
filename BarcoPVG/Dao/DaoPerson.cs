@@ -11,7 +11,7 @@ namespace BarcoPVG.Dao
         //here comes all the data from Person
 
         //copies the data from DAO
-        public DaoPerson() : DAO
+        public DaoPerson() : base()
         {
 
         }
