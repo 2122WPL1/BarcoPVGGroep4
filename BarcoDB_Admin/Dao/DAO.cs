@@ -932,50 +932,47 @@ namespace BarcoDB_Admin.Dao
 
         //User
         //Amy
-        //edit user
-        public void EditUser(Person SelectedUser)
+        //edit the selected user
+        public Person EditUser(Person person)
         {
-            //Person SelectedUser = _context.People.FirstOrDefault();
+                Person SelectedUser = _context.People.FirstOrDefault(u => u.Afkorting == person.Afkorting);
 
-            Person person = new()
-            {
-                Afkorting = SelectedUser.Afkorting,
-                Voornaam = SelectedUser.Voornaam,
-                Familienaam = SelectedUser.Familienaam,
-                wachtwoord = SelectedUser.wachtwoord
-            };
+                SelectedUser.Afkorting = person.Afkorting;
+                SelectedUser.Voornaam = person.Voornaam;
+                SelectedUser.Familienaam = person.Familienaam;
+                SelectedUser.wachtwoord = person.wachtwoord;
 
-            _context.People.Update(person);
-            SaveChanges();
+                _context.Update(person);
+                SaveChanges();
             
+ 
+             
+
+            return person; 
         }
         //Amy
+        //Add a new user
         public Person AddUser(Person Person)
         {
-            Person person = new()
+            Person = new Person()
             {
                 Afkorting = Person.Afkorting,
                 Voornaam = Person.Voornaam,
                 Familienaam= Person.Familienaam,
                 wachtwoord = Person.wachtwoord
-
-                //Afkorting = Person.Afkorting ,
-                //Voornaam = Person.Voornaam,
-                //Familienaam = Person.Familienaam ,
-                //wachtwoord = Person.wachtwoord 
             };
 
-            _context.People.Add(person);
+            _context.People.Add(Person);
             SaveChanges();
 
-            return person;
+            return Person;
         }
 
         //Amy
         //Get selected user info
-        public Person GetUser(string Afkorting)
+        public Person GetUser(string afkorting)
         {
-            Person SelectedUser = _context.People.FirstOrDefault(u => u.Afkorting == Afkorting);
+            Person SelectedUser = _context.People.FirstOrDefault(u => u.Afkorting == afkorting);
 
                 SelectedUser = new()
                 {

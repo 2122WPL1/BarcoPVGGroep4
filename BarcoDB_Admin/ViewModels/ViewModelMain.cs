@@ -140,9 +140,10 @@ namespace BarcoDB_Admin.ViewModels
 
         public void InsertUser()
         {
-            Person user = ((AbstractViewModelContainer)this.ViewModel).Person;
+            Person person = ((AbstractViewModelContainer)this.ViewModel).Person;
 
-            _dao.AddUser(user);
+
+            _dao.AddUser(person);
             //this.ViewModel = new ViewModelAddUser();
             DisplayDatabaseUserStartup();
 
@@ -150,8 +151,12 @@ namespace BarcoDB_Admin.ViewModels
 
         public void UpdateUser()
         {
-            var person = ((ViewModelEditUser)this.ViewModel).SelectedUser;
+                //_dao.EditUser(((ViewModelEditUser)this.ViewModel).Person);
+            Person person = ((AbstractViewModelContainer)this.ViewModel).Person;
+
+            //var person = ((ViewModelEditUser)this.ViewModel).SelectedUser;
             
+
             _dao.EditUser(person);
         }
 
