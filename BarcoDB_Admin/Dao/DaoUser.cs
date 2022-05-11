@@ -21,5 +21,23 @@ namespace BarcoDB_Admin.Dao
         {
             return _context.People.ToList();
         }
+
+        public Person AddUser(Person person)
+        {
+            person = new Person()
+            {
+                Afkorting = person.Afkorting,
+                Voornaam = person.Voornaam,
+                Familienaam = person.Familienaam,
+                wachtwoord = person.wachtwoord
+            };
+            
+            List<Person> users = new List<Person>();
+            users.Add(person);
+
+            _context.Add(person);
+
+            return person;
+        }
     }
 }

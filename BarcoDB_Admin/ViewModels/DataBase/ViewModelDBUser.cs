@@ -21,18 +21,23 @@ namespace BarcoDB_Admin.ViewModels.DataBase
         {
             DeleteUser = new DelegateCommand(deleteUserFromDB);
             Load();
+        }
+
         private List<Person> _AllUsers;
         private Person _SelectedUser;//Amy
-
+    
         public List<Person> AllUsers
         { 
             get => _AllUsers; 
             set =>_AllUsers = value; 
         }
+
+     
         public void Load()
         {
             AllUsers = _dao.GetAllUser();
         }
+
         public void deleteUserFromDB()
         {
             if (SelectedUser != null)

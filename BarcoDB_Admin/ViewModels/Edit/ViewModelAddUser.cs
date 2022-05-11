@@ -1,5 +1,5 @@
 ﻿using BarcoDB_Admin.Models.Db;
-using BarcoDB_Admin.Viewmodels;
+using BarcoDB_Admin.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
