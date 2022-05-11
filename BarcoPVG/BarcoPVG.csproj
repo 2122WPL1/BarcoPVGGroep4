@@ -11,6 +11,7 @@
     <None Remove="DictionaryResources\barco-logo.png" />
     <None Remove="DictionaryResources\lock.png" />
     <None Remove="DictionaryResources\user.png" />
+    <None Remove="Views\Login\Background.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -44,6 +45,7 @@
     <Resource Include="DictionaryResources\user.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Views\Login\Background.jpg" />
   </ItemGroup>
 
 </Project>

@@ -86,8 +86,7 @@ namespace BarcoPVG.ViewModels.Planning
         { 
             get => startDate;
             set
-            {
-                
+            {              
                 startDate = value;
                 if(editingTest == null)
                 {
@@ -129,12 +128,12 @@ namespace BarcoPVG.ViewModels.Planning
                 MessageBox.Show("Select a Resource");
                 return;
             }
-            if (startDate > endDate)
+            if (startDate >= endDate)
             {
-                MessageBox.Show("End Date Can't be before Start Date");
+                MessageBox.Show("End Date Can't be before or the same as Start Date");
                 return;
             }
-            if(startDate ==null || endDate == null)
+            if(startDate == null || endDate == null)
             {
                 MessageBox.Show("End Date and Start Date must be selected");
                 return;
