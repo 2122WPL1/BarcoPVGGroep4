@@ -9,7 +9,7 @@
     <StackPanel Margin="10">
         <GroupBox Header="Project Details">
             <DockPanel>
-                <Grid Width="673" HorizontalAlignment="Center">
+                <Grid HorizontalAlignment="Center">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
@@ -133,21 +133,22 @@
                              HorizontalAlignment="Stretch"
                              Width="Auto"/>
                 </Grid>
-                <Grid Width="auto" HorizontalAlignment="left">
+                <Grid MaxWidth="900" HorizontalAlignment="left">
                     <DockPanel LastChildFill="False">
-                        <GroupBox Header="Parts and tests" Width="1164">
+                        <GroupBox Header="Parts and tests">
                             <StackPanel>
                                 <!--Jarne-->
                                 <ListBox x:Name="ListEUT"
                                          MinHeight="300"
-                                         HorizontalAlignment="left"
+                                         MinWidth="850"
+                                         HorizontalAlignment="Stretch"
                                          Background="#363636"
                                          ItemTemplate="{DynamicResource EUT}" 
                                          SelectedItem="{Binding SelectedEUT, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                          ScrollViewer.VerticalScrollBarVisibility="Auto"
                                          ScrollViewer.CanContentScroll="True"
                                          ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                                         HorizontalContentAlignment="Center" Width="1144">
+                                         HorizontalContentAlignment="Center" >
                                     <ListBox.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <StackPanel Orientation="Horizontal"/>
@@ -160,7 +161,7 @@
                                         <CompositeCollection>
                                             <CollectionContainer Collection="{Binding Source={StaticResource EUTs}}"/>
                                             <ListBoxItem>
-                                                <Button Command="{Binding EUTCommand}" Content="+"/>
+                                                <Button Command="{Binding AddEUTCommand}" Content="+"/>
                                             </ListBoxItem>
                                         </CompositeCollection>
                                     </ListBox.ItemsSource>

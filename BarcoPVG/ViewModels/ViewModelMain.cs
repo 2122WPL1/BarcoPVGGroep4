@@ -289,8 +289,8 @@ namespace BarcoPVG.ViewModels
         }
 
         public void InsertInternalJr()
-        {
-            var jr = _dao.AddJobRequest(((AbstractViewModelContainer) this.ViewModel)
+        { 
+            var jr = _daoJR.AddJobRequest(((AbstractViewModelContainer) this.ViewModel)
                 .JR); // SaveChanges included in function
 
             jr.JrStatus = "In Plan";
@@ -305,7 +305,7 @@ namespace BarcoPVG.ViewModels
             // Here we call the SaveChanges method, so that we can link several EUTs to one JR
             _dao.SaveChanges();
 
-            _dao.ApproveInternalRequest(jr.IdRequest);
+            _daoApproval.ApproveInternalRequest(jr.IdRequest);
 
             DisplayDevStartup();
         }
@@ -313,7 +313,7 @@ namespace BarcoPVG.ViewModels
         // Updates existing job request and switches windows
         public void UpdateJr()
         {
-            var jr = _dao.AddJobRequest(
+            var jr = _daoJR.AddJobRequest(
                ((AbstractViewModelContainer)this.ViewModel) //ID request wordt automatisch 0 voor een of andere reden
                .JR); // SaveChanges included in function
             int count = 0;
@@ -353,7 +353,7 @@ namespace BarcoPVG.ViewModels
         {
             int jrId = ((AbstractViewModelContainer) this.ViewModel).JR.IdRequest;
 
-            _dao.ApproveRequest(jrId);
+            _daoApproval.ApproveRequest(jrId);
 
             this.ViewModel = new ViewModelApproveJRQueue();
         }

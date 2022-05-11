@@ -40,12 +40,12 @@ namespace BarcoPVG.ViewModels.Planning
             Resources = new ObservableCollection<PlResource>();
             Tests = new ObservableCollection<Test>();
 
-            foreach (var item in _dao.GetResources(planning.TestDiv))
+            foreach (var item in _daoResources.GetResources(planning.TestDiv))
             {
                 Resources.Add(item);
             }
 
-            foreach (var item in _dao.GetTestsForJRAndDivision(SelectedPlan.IdRequest, SelectedPlan.TestDiv))
+            foreach (var item in _daoPlanning.GetTestsForJRAndDivision(SelectedPlan.IdRequest, SelectedPlan.TestDiv))
             {
                 Tests.Add(item);
             }
@@ -169,7 +169,7 @@ namespace BarcoPVG.ViewModels.Planning
 
             if (selectedTest.DbTestId != null)
             {
-                _dao.DeleteTest((int)selectedTest.DbTestId);
+                _daoPlanning.DeleteTest((int)selectedTest.DbTestId);
             }
             
             Tests.Remove(SelectedTest);
@@ -183,11 +183,11 @@ namespace BarcoPVG.ViewModels.Planning
             {
                 if (test.DbTestId == null)
                 {
-                    _dao.CreateNewTest(test);
+                    _daoPlanning.CreateNewTest(test);
                 }
                 else
                 {
-                    _dao.UpdateTest((int)test.DbTestId, test);
+                    _daoPlanning.UpdateTest((int)test.DbTestId, test);
                 }
             }
 
@@ -228,7 +228,7 @@ namespace BarcoPVG.ViewModels.Planning
             // includes savechanges
             SaveTests();
 
-            _dao.SetRqStatusIfComplete(SelectedPlan.IdRequest);
+            _daoPlanning.SetRqStatusIfComplete(SelectedPlan.IdRequest);
 
             return true;
         }
