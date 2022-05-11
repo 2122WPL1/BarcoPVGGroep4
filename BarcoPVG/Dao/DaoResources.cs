@@ -14,6 +14,7 @@ namespace BarcoPVG.Dao
         {
 
         }
+
         protected static readonly DaoResources _instanceResources = new();
 
         public static DaoResources InstanceResources()

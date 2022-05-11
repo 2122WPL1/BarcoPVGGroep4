@@ -1,22 +1,21 @@
 ﻿using BarcoDB_Admin.Dao;
 using BarcoDB_Admin.Models.Db;
-using BarcoDB_Admin.ViewModels;
 using Prism.Commands;
 using System.Collections.Generic;
 using System.Windows;
 
-
-
 namespace BarcoDB_Admin.ViewModels.DataBase
 {
-    class ViewModelDBUser : AbstractViewModelBase
+    public class ViewModelDBUser : AbstractViewModelBase
     {
         DaoUser _dao = new DaoUser();
+
         #region properties
-        public DelegateCommand DeleteUser { get; set; }
-        public List<Person> AllUsers { get; set; }
-        public Person SelectedUser { get; set; }
+        protected DelegateCommand DeleteUser { get; set; }
+        protected List<Person> AllUsers { get => _allUsers; set => _allUsers = value; }
+        protected Person SelectedUser { get; set; }
         #endregion
+
         public ViewModelDBUser() : base()
         {
             DeleteUser = new DelegateCommand(deleteUserFromDB);
