@@ -19,7 +19,10 @@
                          VerticalAlignment="Top" Width="150"/>
                 <TextBox Margin="264,212,0,0" Text="{Binding PlResource.KleurHex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                          VerticalAlignment="Top" Width="150"/>
-                <Button Content="Save" HorizontalAlignment="Left" Margin="565,309,0,0" VerticalAlignment="Top"/>
+                <Button Content="Save" HorizontalAlignment="Left" 
+                        Command="{Binding DataContext.SaveResourcesCommand,
+                        RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, Mode=OneWay}"
+                        Margin="565,309,0,0" VerticalAlignment="Top"/>
                 <Button Content="Cancel" HorizontalAlignment="Left" 
                         Command="{Binding DataContext.DisplayDataResourceCommand, 
                             RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, 

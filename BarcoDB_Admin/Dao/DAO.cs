@@ -1011,6 +1011,21 @@ namespace BarcoDB_Admin.Dao
             return SelectedResouce;
         }
 
+        public PlResource AddResource(PlResource resource)
+        {
+
+            resource = new()
+            {
+                Naam = resource.Naam,
+                KleurRgb = resource.KleurRgb,
+                KleurHex = resource.KleurHex,
+            };
+
+            _context.PlResources.Add(resource);
+
+            SaveChanges();
+            return resource;
+        }
 
         //Devision
 
@@ -1028,7 +1043,5 @@ namespace BarcoDB_Admin.Dao
 
             return SelectedDivision;
         }
-
-
     }
 }

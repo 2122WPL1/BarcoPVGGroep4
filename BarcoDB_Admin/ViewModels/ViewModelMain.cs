@@ -28,6 +28,7 @@ namespace BarcoDB_Admin.ViewModels
         public DelegateCommand DisplayAddDivisionCommand { get; set; }
         public DelegateCommand DisplayEditDivisionCommand { get; set; }
         public DelegateCommand SaveUserCommand { get; set; }
+        public DelegateCommand SaveResourcesCommand { get; set; }
 
 
 
@@ -42,7 +43,7 @@ namespace BarcoDB_Admin.ViewModels
             DisplayEditResourcesCommand = new DelegateCommand(DisplayEditResourcesStartup);
             DisplayAddDivisionCommand = new DelegateCommand(DisplayAddDivisionStartup);
             DisplayEditDivisionCommand = new DelegateCommand(DisplayEditDivisionStartup);
-            SaveUserCommand = new DelegateCommand(InsertUser);
+ 
 
             Exit = new DelegateCommand(exit);
         }
@@ -78,6 +79,7 @@ namespace BarcoDB_Admin.ViewModels
 
         public void DisplayAddUserStartup()
         {
+            SaveUserCommand = new DelegateCommand(InsertUser);
             this.ViewModel = new ViewModelAddUser();
         }
 
@@ -98,6 +100,7 @@ namespace BarcoDB_Admin.ViewModels
 
         public void DisplayAddResourcesStartup()
         {
+            SaveResourcesCommand = new DelegateCommand(InsertResources);
             this.ViewModel = new ViewModelAddResources();
         }
 
@@ -150,14 +153,14 @@ namespace BarcoDB_Admin.ViewModels
             var person = ((ViewModelEditUser)this.ViewModel).SelectedUser;
             
             _dao.EditUser(person);
-
-
-            
-
-
         }
 
+        public void InsertResources()
+        {
+            //var resource = ((ViewModelAddResources)this.ViewModel);
 
+            //_dao.AddResource(resource);
+        }
 
     }
 }
