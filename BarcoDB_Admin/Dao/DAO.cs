@@ -10,20 +10,21 @@ namespace BarcoDB_Admin.Dao
     {
         protected BarcoContext _context;
         protected static readonly DAO _instance = new();
-        public BarcoUser BarcoUser { get; private set; }
+
+        public BarcoUser BarcoUser { get; set; }
+
         public static DAO Instance()
         {
             return _instance;
         }
+
         protected DAO()
         {
             this._context = new BarcoContext();
-            //this.BarcoUser = RegistryConnection.GetValueObject<BarcoUser>(@"SOFTWARE\VivesBarco\Test");
             this.BarcoUser = new BarcoUser()
             {
-                Name = "Super-Admin",
-                Division = "Super-Admin",
-                Function = "DATA",
+                Name = "Bart",
+                Function = "DEV",
             };
         }
 
@@ -36,15 +37,12 @@ namespace BarcoDB_Admin.Dao
                 if (loginPerson.Afkorting == div.AfkPerson)
                 {
                     output.Add(div.AfkDevision);
-                    
                 }
             }
             return output;
         }
 
-        // <summary>
         // Removes unsaved changed by replacing the context by a new instance
-        // </summary>
         // Kaat
         public void RemoveChanges()
         {

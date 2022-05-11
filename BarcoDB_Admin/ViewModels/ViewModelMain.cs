@@ -1,5 +1,4 @@
 ﻿using BarcoDB_Admin.Models.Db;
-using BarcoDB_Admin.Viewmodels;
 using BarcoDB_Admin.ViewModels.DataBase;
 using BarcoDB_Admin.ViewModels.Edit;
 using Prism.Commands;
@@ -12,7 +11,8 @@ namespace BarcoDB_Admin.ViewModels
     internal class ViewModelMain : AbstractViewModelBase
     {
         private AbstractViewModelBase _viewModel;
-        #region Commands
+
+        #region DelegateCommand
         public DelegateCommand Exit { get; set; }
         public DelegateCommand DisplayDatabaseUserCommand { get; set; }
         public DelegateCommand DisplayDataResourceCommand { get; set; }
@@ -25,7 +25,7 @@ namespace BarcoDB_Admin.ViewModels
         public DelegateCommand DisplayEditDivisionCommand { get; set; }
         public DelegateCommand SaveUserCommand { get; set; }
         public DelegateCommand SaveResourcesCommand { get; set; }
-
+        #endregion
 
 
         public ViewModelMain()
@@ -39,14 +39,15 @@ namespace BarcoDB_Admin.ViewModels
             DisplayEditResourcesCommand = new DelegateCommand(DisplayEditResourcesStartup);
             DisplayAddDivisionCommand = new DelegateCommand(DisplayAddDivisionStartup);
             DisplayEditDivisionCommand = new DelegateCommand(DisplayEditDivisionStartup);
- 
-
+            
             Exit = new DelegateCommand(exit);
         }
+
         public void exit() //sluiten project
         {
             Environment.Exit(0);
         }
+
         public AbstractViewModelBase ViewModel
         {
             get => _viewModel;
@@ -56,24 +57,29 @@ namespace BarcoDB_Admin.ViewModels
                 OnpropertyChanged();
             }
         }
-        #region Schermen
+
+        #region views
         public void DisplayDatabaseUserStartup()
         {
             this.ViewModel = new ViewModelDBUser();
         }
+
         public void DisplayDataResourceStartup()
         {
             this.ViewModel = new ViewModelDBResources();
         }
+
         public void DisplayDataBaseDivisionStartup()
         {
             this.ViewModel = new ViewModelDBDevision();
         }
+
         public void DisplayAddUserStartup()
         {
             SaveUserCommand = new DelegateCommand(InsertUser);
             this.ViewModel = new ViewModelAddUser();
         }
+        #endregion
 
         public void DisplayEditUserStartup()
         {
@@ -131,8 +137,7 @@ namespace BarcoDB_Admin.ViewModels
         {
             Person person = ((AbstractViewModelContainer)this.ViewModel).Person;
 
-
-            _dao.AddUser(person);
+            _daoUser.AddUser(person);
             //this.ViewModel = new ViewModelAddUser();
             DisplayDatabaseUserStartup();
 
@@ -140,20 +145,19 @@ namespace BarcoDB_Admin.ViewModels
 
         public void UpdateUser()
         {
-                //_dao.EditUser(((ViewModelEditUser)this.ViewModel).Person);
+            //_dao.EditUser(((ViewModelEditUser)this.ViewModel).Person);
             Person person = ((AbstractViewModelContainer)this.ViewModel).Person;
 
             //var person = ((ViewModelEditUser)this.ViewModel).SelectedUser;
-            
 
-            _dao.EditUser(person);
+            _daoUser.EditUser(person);
         }
 
         public void InsertResources()
         {
-            //var resource = ((ViewModelAddResources)this.ViewModel);
+            var resource = ((ViewModelAddResources)this.ViewModel);
 
-            //_dao.AddResource(resource);
+            _daoResource.AddResource(resource);
         }
 
     }

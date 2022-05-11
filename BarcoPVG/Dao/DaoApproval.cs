@@ -18,6 +18,7 @@ namespace BarcoPVG.Dao
         {
 
         }
+
         protected static readonly DaoApproval _instanceApproval = new();
 
         public static DaoApproval InstanceApproval()
