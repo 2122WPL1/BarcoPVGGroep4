@@ -11,6 +11,7 @@
             <ListView ItemsSource="{Binding PlansToApprove}" 
                       SelectedItem="{Binding SelectedPlan, Mode=TwoWay}"
                       Height="auto"
+                      MaxHeight="600"
                       VerticalAlignment="Stretch"
                       Margin="3"
                       SelectionMode="Single"

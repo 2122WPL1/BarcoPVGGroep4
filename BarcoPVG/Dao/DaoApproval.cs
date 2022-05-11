@@ -34,7 +34,7 @@ namespace BarcoPVG.Dao
 
             // List of unique test divisions checked in this JR
             var divisions = DetailList.Select(d => d.Testdivisie).Distinct().ToList(); // OVERBODIG
-
+            
             // On approval, set JR number and request date
             request.JrNumber = $"JRDEV{request.IdRequest:D5}";
             request.RequestDate = DateTime.Now;
@@ -50,7 +50,7 @@ namespace BarcoPVG.Dao
             jump:
                 try //foutafhandeling
                 {
-                    _context.Add(planning);
+                    _context.PlPlannings.Add(planning);
                     _context.SaveChanges();
                     //TODO Sander: het approven van een job request zorgt voor een probleem met de databank primary key van Planning_PK en pl_Planning
                     //TODO een dubbele id. hij wil een record aanmaken met hetzelfde id ook al bestaat die al tijdelijk opgelost met een try catch
