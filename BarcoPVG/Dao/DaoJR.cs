@@ -79,6 +79,7 @@ namespace BarcoPVG.Dao
                 Remarks = Jr.Remarks == null ? string.Empty : Jr.Remarks,
             };
             // We combine the rqo object with the rqrequest object and return the combined object
+            _context.RqRequests.Add(rqrequest);
             rqrequest.RqOptionels.Add(rqo);
             return rqrequest;
         }

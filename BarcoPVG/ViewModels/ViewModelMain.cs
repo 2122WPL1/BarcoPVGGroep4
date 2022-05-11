@@ -277,7 +277,7 @@ namespace BarcoPVG.ViewModels
                         _daoEUT.AddEutToRqRequest(jr, eut, count.ToString());
                         count++;
                     }
-                    _dao._context.Add(jr);
+                    
                     _daoJR.SaveChanges();
                     DisplayDevStartup();
                 }
