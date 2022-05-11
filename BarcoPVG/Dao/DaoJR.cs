@@ -13,7 +13,8 @@ namespace BarcoPVG.Dao
 
         //copies the data from DAO
         protected static readonly DaoJR _instanceJR = new();
-        
+        DaoLogin _instanceLogin = DaoLogin.InstanceLogin();
+
         public static DaoJR InstanceJR()
         {
             return _instanceJR;
@@ -34,11 +35,11 @@ namespace BarcoPVG.Dao
         // Kaat
         public JR GetNewJR()
         {
-            JR autofilledJR = new()
-            {
-                Requester = BarcoUser.Name,
-                BarcoDivision = BarcoUser.Division
-            };
+            JR autofilledJR = new();
+
+            autofilledJR.Requester = _instanceLogin.BarcoUser.Name;
+            autofilledJR.BarcoDivision = _instanceLogin.BarcoUser.Division;
+            
 
             return autofilledJR;
         }
@@ -78,8 +79,8 @@ namespace BarcoPVG.Dao
                 Remarks = Jr.Remarks == null ? string.Empty : Jr.Remarks,
             };
             // We combine the rqo object with the rqrequest object and return the combined object
+            _context.RqRequests.Add(rqrequest);
             rqrequest.RqOptionels.Add(rqo);
-
             return rqrequest;
         }
 

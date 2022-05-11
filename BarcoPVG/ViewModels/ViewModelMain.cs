@@ -54,7 +54,7 @@ namespace BarcoPVG.ViewModels
         public ViewModelMain()
         {
             
-            this.User = _daoPerson.BarcoUser;
+            this.User = _daoLogin.BarcoUser;
 
             DisplayNewJRCommand = new DelegateCommand(DisplayNewJR);
             DisplayNewInternJRCommand = new DelegateCommand(DisplayNewInternJR);
@@ -247,7 +247,8 @@ namespace BarcoPVG.ViewModels
         //aanmaken van een JRNummer zodat deze ingevuld kan worden 
         private string CreateJRNummer(RqRequest jr)
         {
-            string JrNumber = "JR" + _dao.BarcoUser.Function;
+            //
+            string JrNumber = "JR" + _daoLogin.BarcoUser.Function;
 
             for (int i = jr.IdRequest.ToString().Length; i <= 5; i++)
             {
@@ -276,8 +277,8 @@ namespace BarcoPVG.ViewModels
                         _daoEUT.AddEutToRqRequest(jr, eut, count.ToString());
                         count++;
                     }
-
-                    _dao.SaveChanges();
+                    
+                    _daoJR.SaveChanges();
                     DisplayDevStartup();
                 }
                 // Here we call the SaveChanges method, so that we can link several EUTs to one JR
