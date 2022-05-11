@@ -10,6 +10,12 @@ namespace BarcoPVG.Dao
         //Jarne
         //here comes all the data from Login
         protected DaoPerson _daoPerson = new();
+        protected static readonly DaoLogin _instanceLogin = new();
+
+        public static DaoLogin InstanceLogin()
+        {
+            return _instanceLogin;
+        }
 
         ///copies the data from DAO
         public DaoLogin() : base()
@@ -26,12 +32,13 @@ namespace BarcoPVG.Dao
 
             //Put Function to give right the the user
             //string func = "";
-            this.BarcoUser = new BarcoUser()
-            {
-                Name = loginPerson.Voornaam,
-                Division = GetAllDivForPerson(loginPerson)[0].Pvggroup,
-                Function = "DEV",
-            };
+
+            //Jarne getting the info from the login details to get the right view display
+            BarcoUser = new BarcoUser();
+            BarcoUser.Name = loginPerson.Voornaam;
+            BarcoUser.Function = "DEV";
+            BarcoUser.Division = _daoPerson.GetAllDivisions().Where(div => "TS" == loginPerson.Afkorting).ToString();
+
         }
 
         public List<RqBarcoDivisionPerson> GetAllDivForPerson(Person loginperson)
@@ -51,22 +58,7 @@ namespace BarcoPVG.Dao
                     output.Add(result);
                 }
             }
-
             return output;
         }
-        /*
-        public void GetDiv(Person loginPerson)
-        {
-            List<RqBarcoDivision> listDiv = _daoPerson.GetAllDivisions();
-            foreach (RqBarcoDivision div in listDiv)
-            {
-                //if (div.Afkorting == loginPerson)
-                //{
-
-                //}
-            }
-        }
-        */
-
     }
 }

@@ -9,22 +9,23 @@ using System.Threading.Tasks;
 
 namespace BarcoDB_Admin.ViewModels.Edit
 {
+    //Amy
      class ViewModelEditUser : AbstractViewModelBase
     {
+        private Person _Person;
+
         public Person SelectedUser { get; set; }
-        public ViewModelEditUser(Person user) : base()
+        public ViewModelEditUser(string Afkorting) : base()
         {
-            SelectedUser = user;
+            //SelectedUser = user;
+            _Person = _dao.GetUser(Afkorting);
+            
         }
 
-        //public Person SelectedUser
-        //{
-        //    get => _SelectedUser;
-        //    set
-        //    {
-        //        _SelectedUser = value;
-        //        OnpropertyChanged();
-        //    }
-        //}
+        public Person Person
+        { 
+            get { return _Person; } 
+            set { _Person = value; OnpropertyChanged(); }
+        }
     }
 }

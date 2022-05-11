@@ -12,11 +12,17 @@ namespace BarcoPVG.Dao
         //here comes all the data from EUT
 
         //copies the data from DAO
+        protected DaoPerson _daoPerson = new();
         public DaoEUT() : base()
         {
 
         }
+        protected static readonly DaoEUT _instanceEUT = new();
 
+        public static DaoEUT InstanceEUT()
+        {
+            return _instanceEUT;
+        }
         //MOHAMED
         //Matti
         // This function adds the input from the EUT part to the request object

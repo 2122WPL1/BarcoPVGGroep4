@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security;
-using System.Windows;
-using BarcoPVG.Models.Classes;
-using BarcoPVG.Models.Db;
-using Microsoft.EntityFrameworkCore;
+﻿using BarcoPVG.Models.Classes;
 
 namespace BarcoPVG.Dao
 {
@@ -18,7 +11,6 @@ namespace BarcoPVG.Dao
         // Variables
         protected BarcoContext _context;
         protected static readonly DAO _instance = new();
-        protected DaoPerson _daoPerson = new();
 
         public BarcoUser BarcoUser { get; set; }
 
@@ -37,9 +29,8 @@ namespace BarcoPVG.Dao
             //Eakarach To Test
             this.BarcoUser = new BarcoUser()
             {
-                Name = "Test-Okie",
-                //Division = "DEV",
-                Function = "TEST",
+                Name = "Bart",
+                Function = "DEV",
             };
         }
 

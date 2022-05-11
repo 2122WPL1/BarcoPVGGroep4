@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using BarcoPVG.Models.Classes;
 using BarcoPVG.Models.Db;
-using Microsoft.EntityFrameworkCore;
 
 namespace BarcoPVG.Dao
 {
@@ -13,6 +12,12 @@ namespace BarcoPVG.Dao
         //here comes all the data from JR
 
         //copies the data from DAO
+        protected static readonly DaoJR _instanceJR = new();
+        
+        public static DaoJR InstanceJR()
+        {
+            return _instanceJR;
+        }
         public DaoJR() : base()
         {
 
@@ -38,7 +43,6 @@ namespace BarcoPVG.Dao
             return autofilledJR;
         }
 
-        // INCOMPLETE
         // Creates and saves RqRequest based on JR
         // TODO: save data stored in other tables
         public RqRequest AddJobRequest(JR Jr)
@@ -66,14 +70,12 @@ namespace BarcoPVG.Dao
                 EutPartnumbers = Jr.EutPartnr == null ? string.Empty : Jr.EutPartnr
             };
 
-
-            //Matti voorlopig
+            //Matti
             // We create a rqo object of the RqOptionel class to save the following fields in the database with the user input
             RqOptionel rqo = new()
             {
                 Link = Jr.Link == null ? string.Empty : Jr.Link,
                 Remarks = Jr.Remarks == null ? string.Empty : Jr.Remarks,
-
             };
             // We combine the rqo object with the rqrequest object and return the combined object
             rqrequest.RqOptionels.Add(rqo);
@@ -96,7 +98,6 @@ namespace BarcoPVG.Dao
                     fiveDays -= 1;
                 }
             }
-
             return newDate;
         }
 
@@ -253,16 +254,16 @@ namespace BarcoPVG.Dao
         public List<RqRequest> GetAllJobRequests()
         {
             return _context.RqRequests
-                .Include(r => r.IdRequest)
+                //.Include(r => r.IdRequest)
                 .ToList();
 
             //indien geen JR aanwezig in databanke moet je null sturen, an-ders bovenstaande query
             //return null;
         }
 
-        // This function creates a list of rqRequestDetails objects that are linked to the given idRequest via the parameter
-        // <param name="idrequest"></param>
-        // <returns></returns>
+        /// This function creates a list of rqRequestDetails objects that are linked to the given idRequest via the parameter
+        /// <param name="idrequest"></param>
+        /// <returns></returns>
         public List<RqRequestDetail> RqDetail(int idrequest)
         {
             List<RqRequestDetail> DetailRQ = _context.RqRequestDetails.Where(rq => rq.IdRequest == idrequest).ToList();

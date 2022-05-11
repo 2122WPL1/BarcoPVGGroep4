@@ -11,7 +11,7 @@ namespace BarcoPVG.Dao
         //here comes all the data from Person
 
         //copies the data from DAO
-        public DaoPerson() : DAO
+        public DaoPerson() : base()
         {
 
         }
@@ -19,14 +19,18 @@ namespace BarcoPVG.Dao
         // LISTS
         // Eakarach
         // Returns list of all user
+        protected static readonly DaoPerson _instancePerson = new();
+
+        public static DaoPerson InstancePerson()
+        {
+            return _instancePerson;
+        }
         public List<Person> GetAllUser()
         {
             return _context.People.ToList();
         }
 
-        /// <summary>
-        /// Returns a string with the PVGResponsible(s)
-        /// </summary>
+        // Returns a string with the PVGResponsible(s)
         // Kaat
         public string GetPVGResp(string testDivision, string barcoDivision)
         {
