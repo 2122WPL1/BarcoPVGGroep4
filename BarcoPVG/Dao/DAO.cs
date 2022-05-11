@@ -5,6 +5,7 @@ using System.Security;
 using System.Windows;
 using BarcoPVG.Models.Classes;
 using BarcoPVG.Models.Db;
+using BarcoPVG.Views.Login;
 using Microsoft.EntityFrameworkCore;
 
 namespace BarcoPVG.Dao
@@ -37,9 +38,8 @@ namespace BarcoPVG.Dao
             //Eakarach To Test
             this.BarcoUser = new BarcoUser()
             {
-                Name = "Test-Okie",
-                //Division = "DEV",
-                Function = "TEST",
+                Name = "Bart",
+                Function = "DEV"
             };
         }
 

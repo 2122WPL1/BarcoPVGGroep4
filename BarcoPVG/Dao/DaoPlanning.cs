@@ -25,6 +25,7 @@ namespace BarcoPVG.Dao
         {
             return _instancePlanning;
         }
+
         // Returns list of all Plannings in database
         // Kaat
         public List<PlPlanning> GetPlPlannings()

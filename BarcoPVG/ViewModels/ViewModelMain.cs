@@ -15,8 +15,6 @@ namespace BarcoPVG.ViewModels
     // Kaat
     class ViewModelMain : AbstractViewModelBase
     {
-
-        
         private AbstractViewModelBase _viewModel;
 
         public BarcoUser User { get; set; }
@@ -24,7 +22,6 @@ namespace BarcoPVG.ViewModels
         // TODO: check if ICommand also works
         public DelegateCommand Exit { get; set; }
         public DelegateCommand DisplayNewJRCommand { get; set; }
-
         public DelegateCommand DisplayNewInternJRCommand { get; set; }  // Eakarch
         public DelegateCommand DisplayExistingJRCommand { get; set; }
         public DelegateCommand DisplayEmployeeStartupCommand { get; set; }
@@ -250,7 +247,6 @@ namespace BarcoPVG.ViewModels
         //aanmaken van een JRNummer zodat deze ingevuld kan worden 
         private string CreateJRNummer(RqRequest jr)
         {
-            //
             string JrNumber = "JR" + _dao.BarcoUser.Function;
 
             for (int i = jr.IdRequest.ToString().Length; i <= 5; i++)
@@ -272,7 +268,6 @@ namespace BarcoPVG.ViewModels
 
             {
                 //jr.JrNumber = CreateJRNummer(jr); //jr ID wordt automatisch toegevoegd bij savecnages waardoor deze niet ka nwerken
-
                 List<EUT> euts = new List<EUT>();
                 if (CheckCreateRequirements(jr, out euts))
                 {
