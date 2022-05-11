@@ -22,15 +22,14 @@ namespace BarcoDB_Admin.ViewModels.DataBase
             Load();
         }
 
-        private List<Person> _AllUsers;
-        private Person _SelectedUser;//Amy
+        private List<Person> _allUsers;
+        //private Person _SelectedUser;//Amy
     
-        public List<Person> AllUsers
-        { 
-            get => _AllUsers; 
-            set =>_AllUsers = value; 
-        }
-
+        //public List<Person> AllUsers
+        //{ 
+        //    get => _AllUsers; 
+        //    set =>_AllUsers = value; 
+        //}
      
         public void Load()
         {
