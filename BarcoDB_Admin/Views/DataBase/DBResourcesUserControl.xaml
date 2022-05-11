@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         d:DesignHeight="800" d:Background="LightGray" Width="auto" Height="auto">
     <StackPanel Margin="5">
-        <GroupBox Height="500" Width="auto" Header="Resources">
-            <ListView ItemsSource="{Binding AllResources}" SelectedItem="{Binding SelectedResouce , Mode=TwoWay}" Height="204" VerticalAlignment="top">
+        <GroupBox MaxHeight="600" Width="auto" Header="Resources">
+            <ListView ItemsSource="{Binding AllResources}" SelectedItem="{Binding SelectedResouce , Mode=TwoWay}" VerticalAlignment="top">
                 <ListView.View>
                     <GridView >
                         <GridViewColumn Header="Name" Width="150" DisplayMemberBinding="{Binding Naam}"/>
@@ -30,7 +30,7 @@
                     Mode=OneWay}"
                     Margin="10"/>
             <Button Content="Delete" 
-                    Command="{Binding Delete}"
+                    Command="{Binding DeleteResource}"
                     Margin="10"/>
         </StackPanel>
     </StackPanel>

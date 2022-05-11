@@ -1,4 +1,4 @@
-﻿using BarcoPVG.Viewmodels.JobRequest;
+﻿using BarcoPVG.ViewModels.JobRequest;
 
 using System;
 using System.Collections.Generic;

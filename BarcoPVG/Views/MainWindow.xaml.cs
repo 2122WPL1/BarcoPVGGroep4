@@ -11,7 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BarcoPVG.Models.Classes;
-using BarcoPVG.Viewmodels;
+using BarcoPVG.ViewModels;
 
 namespace BarcoPVG.Views
 {
@@ -20,19 +20,13 @@ namespace BarcoPVG.Views
     /// </summary>
     public partial class MainWindow : Window
     {
-        
+
         public MainWindow()
-        // Global variables
+            // Global variables
         {
             DataContext = new ViewModelMain(); //user ingeven als parameter
 
             InitializeComponent();
-
-        }
-
-        private void Window_IsStylusCapturedChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-
         }
     }
 }

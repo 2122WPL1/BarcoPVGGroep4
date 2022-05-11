@@ -4,10 +4,6 @@ using BarcoDB_Admin.ViewModels.DataBase;
 using BarcoDB_Admin.ViewModels.Edit;
 using Prism.Commands;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace BarcoDB_Admin.ViewModels
@@ -16,7 +12,7 @@ namespace BarcoDB_Admin.ViewModels
     internal class ViewModelMain : AbstractViewModelBase
     {
         private AbstractViewModelBase _viewModel;
-
+        #region Commands
         public DelegateCommand Exit { get; set; }
         public DelegateCommand DisplayDatabaseUserCommand { get; set; }
         public DelegateCommand DisplayDataResourceCommand { get; set; }
@@ -47,8 +43,7 @@ namespace BarcoDB_Admin.ViewModels
 
             Exit = new DelegateCommand(exit);
         }
-
-        public void exit()
+        public void exit() //sluiten project
         {
             Environment.Exit(0);
         }
@@ -61,22 +56,19 @@ namespace BarcoDB_Admin.ViewModels
                 OnpropertyChanged();
             }
         }
-
+        #region Schermen
         public void DisplayDatabaseUserStartup()
         {
             this.ViewModel = new ViewModelDBUser();
         }
-
         public void DisplayDataResourceStartup()
         {
             this.ViewModel = new ViewModelDBResources();
         }
-
         public void DisplayDataBaseDivisionStartup()
         {
             this.ViewModel = new ViewModelDBDevision();
         }
-
         public void DisplayAddUserStartup()
         {
             SaveUserCommand = new DelegateCommand(InsertUser);
@@ -103,7 +95,6 @@ namespace BarcoDB_Admin.ViewModels
             SaveResourcesCommand = new DelegateCommand(InsertResources);
             this.ViewModel = new ViewModelAddResources();
         }
-
         public void DisplayEditResourcesStartup()
         {
 
@@ -118,12 +109,10 @@ namespace BarcoDB_Admin.ViewModels
                 MessageBox.Show("No Resource selected!");
             }
         }
-
         public void DisplayAddDivisionStartup()
         {
             this.ViewModel = new ViewModelAddDevision();
         }
-
         public void DisplayEditDivisionStartup()
         {
             var devision = ((ViewModelDBDevision)this.ViewModel).SelectedDivision.Afkorting;

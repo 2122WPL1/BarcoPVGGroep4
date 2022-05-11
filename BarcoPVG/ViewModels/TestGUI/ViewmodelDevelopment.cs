@@ -11,7 +11,7 @@ using BarcoPVG.Dao;
 using BarcoPVG.Models;
 using BarcoPVG.Views;
 
-namespace BarcoPVG.Viewmodels.TestGUI
+namespace BarcoPVG.ViewModels.TestGUI
 {
     // TEMPORARY SCREEN
     // Proof of concept: loading list of JR's from database
@@ -28,7 +28,7 @@ namespace BarcoPVG.Viewmodels.TestGUI
         // Loads all JR IDs in LB
         public void Load()
         {
-            var requestIds = _dao.GetAllJobRequests();
+            var requestIds = _daoJR.GetAllJobRequests();
             IdRequestsOnly.Clear();
 
             foreach (var requestId in requestIds)

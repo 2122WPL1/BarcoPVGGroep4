@@ -1,16 +1,9 @@
-﻿using BarcoPVG.Models.Classes;
-using BarcoPVG.Models.Db;
-using BarcoPVG.Viewmodels;
-using BarcoPVG.Views;
-using Prism.Commands;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using BarcoPVG.Models.Db;
+using BarcoPVG.Views;
 
 namespace BarcoPVG.ViewModels.Login
 {
@@ -18,13 +11,12 @@ namespace BarcoPVG.ViewModels.Login
     public class ViewModelLogin : AbstractViewModelBase
     {
         private ICommand loginCommand, exitCommand;
-
         private string _username = "";
         private string _password = "";
 
         public ViewModelLogin() 
         {
-            //MainWindowCommand = new DelegateCommand(DisplayMainWindow);
+
         }
 
         public ICommand LoginCommand
@@ -72,10 +64,8 @@ namespace BarcoPVG.ViewModels.Login
                 _password = value;
                 OnpropertyChanged("Password");
             }
-            
         }
 
-        
         private void ExitCommandMethode()
         {
             foreach (Window item in Application.Current.Windows)
@@ -87,7 +77,7 @@ namespace BarcoPVG.ViewModels.Login
         private void DisplayLogin(object param)
         {
             ObservableCollection<object> listParameter = (ObservableCollection<object>)param;
-            List<Person> allUser = _dao.GetAllUser();
+            List<Person> allUser = _daoPerson.GetAllUser();
             Person loginPerson = null;
 
             foreach (Person person in allUser)
@@ -101,7 +91,7 @@ namespace BarcoPVG.ViewModels.Login
 
             if (loginPerson != null)
             {
-                _dao.LoginSucceedded(loginPerson);
+                _daoLogin.LoginSucceeded(loginPerson);
                 foreach (Window item in Application.Current.Windows)
                 {
                     item.Hide();
@@ -113,7 +103,6 @@ namespace BarcoPVG.ViewModels.Login
                 MessageBox.Show("User or/and Password is not correct");
             }
         }
-
 
         public void DisplayMainWindow()
         {         

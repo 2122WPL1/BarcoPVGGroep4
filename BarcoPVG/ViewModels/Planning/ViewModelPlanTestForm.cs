@@ -9,9 +9,9 @@ using BarcoPVG.Models.Classes;
 using BarcoPVG.Models;
 using BarcoPVG.Models.Db;
 
-namespace BarcoPVG.Viewmodels.Planning
+namespace BarcoPVG.ViewModels.Planning
 {
-    // Kaat
+    //Kaat
     class ViewModelPlanTestForm : AbstractViewModelBase
     {
         // Listbox with equipment
@@ -21,13 +21,13 @@ namespace BarcoPVG.Viewmodels.Planning
         public PlPlanning SelectedPlan { get; set; }
 
         public ObservableCollection<Test> Tests { get; set; }
-        private Visibility doubleBooked;
-        private Test selectedTest;
-        private Test editingTest; 
+        protected Visibility doubleBooked;
+        protected Test selectedTest;
+        protected Test editingTest;
 
         // Used to triigger check for dates
-        private DateTime? startDate;
-        private DateTime? endDate;
+        protected DateTime? startDate;
+        protected DateTime? endDate;
 
         public ICommand AddNewTestCommand { get; set; }
         public ICommand ClearTestCommand { get; set; }
@@ -40,12 +40,12 @@ namespace BarcoPVG.Viewmodels.Planning
             Resources = new ObservableCollection<PlResource>();
             Tests = new ObservableCollection<Test>();
 
-            foreach (var item in _dao.GetResources(planning.TestDiv))
+            foreach (var item in _daoResources.GetResources(planning.TestDiv))
             {
                 Resources.Add(item);
             }
 
-            foreach (var item in _dao.GetTestsForJRAndDivision(SelectedPlan.IdRequest, SelectedPlan.TestDiv))
+            foreach (var item in _daoPlanning.GetTestsForJRAndDivision(SelectedPlan.IdRequest, SelectedPlan.TestDiv))
             {
                 Tests.Add(item);
             }
@@ -86,8 +86,7 @@ namespace BarcoPVG.Viewmodels.Planning
         { 
             get => startDate;
             set
-            {
-                
+            {              
                 startDate = value;
                 if(editingTest == null)
                 {
@@ -129,12 +128,12 @@ namespace BarcoPVG.Viewmodels.Planning
                 MessageBox.Show("Select a Resource");
                 return;
             }
-            if (startDate > endDate)
+            if (startDate >= endDate)
             {
-                MessageBox.Show("End Date Can't be before Start Date");
+                MessageBox.Show("End Date Can't be before or the same as Start Date");
                 return;
             }
-            if(startDate ==null || endDate == null)
+            if(startDate == null || endDate == null)
             {
                 MessageBox.Show("End Date and Start Date must be selected");
                 return;
@@ -170,7 +169,7 @@ namespace BarcoPVG.Viewmodels.Planning
 
             if (selectedTest.DbTestId != null)
             {
-                _dao.DeleteTest((int)selectedTest.DbTestId);
+                _daoPlanning.DeleteTest((int)selectedTest.DbTestId);
             }
             
             Tests.Remove(SelectedTest);
@@ -184,11 +183,11 @@ namespace BarcoPVG.Viewmodels.Planning
             {
                 if (test.DbTestId == null)
                 {
-                    _dao.CreateNewTest(test);
+                    _daoPlanning.CreateNewTest(test);
                 }
                 else
                 {
-                    _dao.UpdateTest((int)test.DbTestId, test);
+                    _daoPlanning.UpdateTest((int)test.DbTestId, test);
                 }
             }
 
@@ -229,14 +228,14 @@ namespace BarcoPVG.Viewmodels.Planning
             // includes savechanges
             SaveTests();
 
-            _dao.SetRqStatusIfComplete(SelectedPlan.IdRequest);
+            _daoPlanning.SetRqStatusIfComplete(SelectedPlan.IdRequest);
 
             return true;
         }
 
-        private void SetVisibility()
+        public void SetVisibility()
         {
-            bool isDoubleBooked = _dao.IsResourceDoubleBooked(editingTest);
+            bool isDoubleBooked = _daoPlanning.IsResourceDoubleBooked(editingTest);
 
             if (isDoubleBooked)
             {
