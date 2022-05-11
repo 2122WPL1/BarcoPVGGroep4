@@ -13,6 +13,4 @@ namespace BarcoDB_Admin.ViewModels.Edit
             set { _PlResource = value; OnpropertyChanged(); }
         }
     }
-
-   
 }

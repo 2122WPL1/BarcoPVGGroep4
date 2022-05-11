@@ -8,7 +8,7 @@ namespace BarcoDB_Admin.ViewModels.DataBase
 {
     public class ViewModelDBUser : AbstractViewModelBase
     {
-        DaoUser _dao = new DaoUser();
+        public DaoUser _dao = new DaoUser();
 
         #region properties
         protected DelegateCommand DeleteUser { get; set; }
@@ -23,10 +23,7 @@ namespace BarcoDB_Admin.ViewModels.DataBase
         }
 
         private List<Person> _allUsers;
-        private Person _SelectedUser;
-        //private Person _SelectedUser;//Amy
-
-
+        private Person _SelectedUser;//Amy
 
         public void Load()
         {

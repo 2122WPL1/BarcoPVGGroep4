@@ -6,7 +6,6 @@ using System;
 using System.Windows;
 using BarcoDB_Admin.Dao;
 
-
 namespace BarcoDB_Admin.ViewModels
 {
     //Amy
@@ -28,7 +27,6 @@ namespace BarcoDB_Admin.ViewModels
         public DelegateCommand SaveUserCommand { get; set; }
         public DelegateCommand SaveResourcesCommand { get; set; }
         #endregion
-
 
         public ViewModelMain()
         {
@@ -155,7 +153,7 @@ namespace BarcoDB_Admin.ViewModels
 
         public void InsertResources()
         {
-            var resource = ((ViewModelAddResources)this.ViewModel);
+            var resource = ((ViewModelAddResources)this.ViewModel).PlResource;
 
             _daoResource.AddResource(resource);
         }

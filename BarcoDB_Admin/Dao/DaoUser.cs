@@ -57,7 +57,6 @@ namespace BarcoDB_Admin.Dao
         }
 
         //Amy & Jarne
-        //add 
         public Person AddUser(Person person)
         {
             person = new Person()
@@ -73,11 +72,5 @@ namespace BarcoDB_Admin.Dao
             _context.SaveChanges();
             return person;
         }
-
-        //public Person GetUser(Person Afkorting)
-        //{
-        //    GetAllUser();
-        //    return Afkorting;
-        //}
     }
 }

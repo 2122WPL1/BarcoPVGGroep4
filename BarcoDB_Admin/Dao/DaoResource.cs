@@ -56,10 +56,9 @@ namespace BarcoDB_Admin.Dao
             _context.SaveChanges();
         }
 
-        public void AddResource(string resource)
+        public PlResource AddResource(PlResource resource)
         {
-
+            return resource;
         }
-
     }
 }
