@@ -11,7 +11,7 @@ namespace BarcoPVG.Dao
         //here comes all the data from Login
         protected DaoPerson _daoPerson = new();
         protected static readonly DaoLogin _instanceLogin = new();
-
+        public BarcoUser BarcoUser { get; set; }
         public static DaoLogin InstanceLogin()
         {
             return _instanceLogin;

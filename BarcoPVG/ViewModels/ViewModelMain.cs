@@ -54,7 +54,7 @@ namespace BarcoPVG.ViewModels
         public ViewModelMain()
         {
             
-            this.User = _daoPerson.BarcoUser;
+            this.User = _daoLogin.BarcoUser;
 
             DisplayNewJRCommand = new DelegateCommand(DisplayNewJR);
             DisplayNewInternJRCommand = new DelegateCommand(DisplayNewInternJR);
@@ -247,7 +247,8 @@ namespace BarcoPVG.ViewModels
         //aanmaken van een JRNummer zodat deze ingevuld kan worden 
         private string CreateJRNummer(RqRequest jr)
         {
-            string JrNumber = "JR" + _dao.BarcoUser.Function;
+            //
+            string JrNumber = "JR" + _daoLogin.BarcoUser.Function;
 
             for (int i = jr.IdRequest.ToString().Length; i <= 5; i++)
             {

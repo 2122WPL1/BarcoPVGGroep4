@@ -12,7 +12,9 @@ namespace BarcoPVG.Dao
         protected BarcoContext _context;
         protected static readonly DAO _instance = new();
 
-        public BarcoUser BarcoUser { get; set; }
+
+        
+
 
         // Calls an DAO instance
         public static DAO Instance()
