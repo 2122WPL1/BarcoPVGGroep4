@@ -31,14 +31,10 @@ namespace BarcoDB_Admin.Dao
             _context.SaveChanges();
         }
 
-        public string AddUser(string person)
+
+        public Person EditUser(Person person)
         {
             return person;
-        }
-
-        public void EditUser(string person)
-        {
-
         }
 
         public List<Person> GetAllUser()
@@ -46,6 +42,9 @@ namespace BarcoDB_Admin.Dao
             return _context.People.ToList();
         }
 
+
+        //Amy
+        //Add a new user
         public Person AddUser(Person person)
         {
             person = new Person()
@@ -60,7 +59,7 @@ namespace BarcoDB_Admin.Dao
             users.Add(person);
 
             _context.Add(person);
-
+            _context.SaveChanges();
             return person;
         }
     }

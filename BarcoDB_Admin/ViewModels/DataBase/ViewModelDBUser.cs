@@ -11,9 +11,9 @@ namespace BarcoDB_Admin.ViewModels.DataBase
         DaoUser _dao = new DaoUser();
 
         #region properties
-        protected DelegateCommand DeleteUser { get; set; }
-        protected List<Person> AllUsers { get => _allUsers; set => _allUsers = value; }
-        protected Person SelectedUser { get; set; }
+        public DelegateCommand DeleteUser { get; set; }
+        public List<Person> AllUsers { get => _allUsers; set => _allUsers = value; }
+        
         #endregion
 
         public ViewModelDBUser() : base()
@@ -23,14 +23,16 @@ namespace BarcoDB_Admin.ViewModels.DataBase
         }
 
         private List<Person> _allUsers;
-        //private Person _SelectedUser;//Amy
-    
+        private Person _SelectedUser;//Amy
+
+        public Person SelectedUser { get => _SelectedUser; set => _SelectedUser = value; }
+
         //public List<Person> AllUsers
         //{ 
         //    get => _AllUsers; 
         //    set =>_AllUsers = value; 
         //}
-     
+
         public void Load()
         {
             AllUsers = _dao.GetAllUser();

@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BarcoDB_Admin.Dao;
 
 namespace BarcoDB_Admin.ViewModels.Edit
 {
@@ -18,8 +19,8 @@ namespace BarcoDB_Admin.ViewModels.Edit
         public ViewModelEditUser(string Afkorting) : base()
         {
             //SelectedUser = user;
-            _Person = _dao.GetUser(Afkorting);
-            
+            //_Person = _dao.GetUser(Afkorting);
+
         }
 
         public Person Person
