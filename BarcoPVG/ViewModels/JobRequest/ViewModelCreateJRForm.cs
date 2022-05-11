@@ -66,7 +66,6 @@ namespace BarcoPVG.ViewModels.JobRequest
             {
                 this._jr = _daoJR.GetJR(idRequest);
 
-
                 List<RqRequestDetail> eutList = _daoJR.RqDetail(idRequest);
                 // We use a foreach to loop over every item in the eutList
                 // And link the user inputed data to the correct variables
@@ -75,7 +74,6 @@ namespace BarcoPVG.ViewModels.JobRequest
                 {
                     // Use DAO? --> base class
                     request = _context.RqRequests.FirstOrDefault(e => e.IdRequest == id.IdRequest);
-
                 }
                 FillEUT(request);
             }
@@ -113,18 +111,14 @@ namespace BarcoPVG.ViewModels.JobRequest
             }
         }
 
-        /// <summary>
-        /// This function adds an new EUT instance into the GUI RequestForm
-        /// EUT in Database
-        /// </summary>
+        // This function adds an new EUT instance into the GUI RequestForm
+        // EUT in Database
         public void AddEUT()
         {
             EUTs.Add(new EUT());
         }
 
-        /// <summary>
-        /// This function ensures that the existing data of an eut is read from the database and loaded into the requestForm xaml
-        /// </summary>
+        // This function ensures that the existing data of an eut is read from the database and loaded into the requestForm xaml
         /// <param name="id"></param>
         /// <param name="jr"></param>
         public void FillEUT( RqRequest rq)
@@ -135,10 +129,7 @@ namespace BarcoPVG.ViewModels.JobRequest
             }
         }
 
-
-        /// <summary>
-        /// Clear all data in JR
-        /// </summary>
+        // Clear all data in JR
         private void RefreshJR()
         {
       
@@ -146,15 +137,11 @@ namespace BarcoPVG.ViewModels.JobRequest
        
             EUTs.Clear();
         }
-
-        /// <summary>
-        /// deletes selected EUT via _selectedEut variable
-        /// </summary>
+        
+        // deletes selected EUT via _selectedEut variable
         public void RemoveSelectedEUT(object obj)
         {
             EUTs.Remove(_selectedEUT);
         }
-
-   
     }
 }

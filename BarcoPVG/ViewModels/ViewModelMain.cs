@@ -165,24 +165,20 @@ namespace BarcoPVG.ViewModels
             bool passed = false;
             if (jr.Requester.Length > 10)
             {
-                MessageBox.Show("Requester is longer than the allowed length(10)");
+                MessageBox.Show("Requester is longer than the allowed length (10)");
             }
             else
             {
                 if (!(
                         jr.BarcoDivision == String.Empty || jr.JobNature == String.Empty ||
-                        jr.EutPartnumbers == String.Empty || jr.NetWeight == String.Empty ||
-                        jr.GrossWeight == String.Empty || jr.EutProjectname == String.Empty ||
-                        jr.HydraProjectNr == String.Empty
+                        jr.EutProjectname == String.Empty || jr.HydraProjectNr == String.Empty
                     ))
                 {
-                    if (jr.ExpectedEnddate.Date !=
-                        DateTime.Now
-                            .Date) //geeft nooit null | de tijd van vandaag door datetime now te gebruiken | datetime now en enddate 1 milliseconde verschil | nu tijdelijke if clause
+                    if (jr.ExpectedEnddate.Date != DateTime.Now.Date) //never returns null | today's time by using datetime now | datetime now and enddate 1 milliseconde different
                     {
                         if (((AbstractViewModelContainer)this.ViewModel).EUTs.Count == 0) //all EUT from JR
                         {
-                            MessageBox.Show("Er moet tenminste 1 eut zijn");
+                            MessageBox.Show("there must be at least 1 EUT");
                         }
                         else
                         {
@@ -197,7 +193,6 @@ namespace BarcoPVG.ViewModels
                                 {
                                     passed = true;
                                 }
-
                                 eUts2.Add(eUT);
                             }
                         }
