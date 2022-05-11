@@ -80,7 +80,6 @@ namespace BarcoPVG.Dao
             };
             // We combine the rqo object with the rqrequest object and return the combined object
             rqrequest.RqOptionels.Add(rqo);
-
             return rqrequest;
         }
 

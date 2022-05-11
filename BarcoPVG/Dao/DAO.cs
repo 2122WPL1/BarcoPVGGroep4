@@ -9,7 +9,7 @@ namespace BarcoPVG.Dao
     public class DAO
     {
         // Variables
-        protected BarcoContext _context;
+        public BarcoContext _context;
         protected static readonly DAO _instance = new();
 
 
