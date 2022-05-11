@@ -50,16 +50,18 @@
                             RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, 
                             Mode=OneWay}" 
                         Margin="10"/>
-            <Button Content="New Intern JR" 
-                    Command="{Binding DataContext.DisplayNewInternJRCommand, 
-                            RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, 
-                            Mode=OneWay}" 
-                        Margin="10"/>
             <Button Content="Open JR details"
                     Command="{Binding DataContext.DisplayExistingJRCommand, 
                             RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, 
                             Mode=OneWay}"
                     Margin="10"/>
+            
+            <Button Content="New Intern JR" 
+                    Command="{Binding DataContext.DisplayNewInternJRCommand, 
+                            RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, 
+                            Mode=OneWay}"
+                        Visibility="{Binding NewInternJR}"
+                        Margin="10"/>
         </StackPanel>
     </StackPanel>
 </UserControl>

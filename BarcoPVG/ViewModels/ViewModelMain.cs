@@ -133,6 +133,7 @@ namespace BarcoPVG.ViewModels
         //Eakarach
         private void DisplayNewInternJR()
         {
+            SaveJrCommand = new DelegateCommand(InsertInternalJr);
             this.ViewModel = new ViewModelCreateInternJRForm();
         }
 
