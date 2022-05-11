@@ -17,7 +17,7 @@ namespace BarcoDB_Admin.ViewModels.Edit
         public ViewModelEditResources(int Id) : base()
         {
             //SelectedResouce = resource;
-            this._PlResource = _dao.GetResource(Id);
+            this._PlResource = _daoResource.GetResource(Id);
         }
 
         public PlResource PlResource

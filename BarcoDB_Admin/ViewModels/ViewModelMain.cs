@@ -130,8 +130,7 @@ namespace BarcoDB_Admin.ViewModels
             }
             else
             {
-                MessageBox.Show("No Devision selected!");
-
+                MessageBox.Show("No Division selected!");
             }
         }
 
@@ -142,7 +141,6 @@ namespace BarcoDB_Admin.ViewModels
             _daoUser.AddUser(person);
             //this.ViewModel = new ViewModelAddUser();
             DisplayDatabaseUserStartup();
-
         }
 
         public void UpdateUser()
@@ -161,6 +159,5 @@ namespace BarcoDB_Admin.ViewModels
 
             _daoResource.AddResource(resource);
         }
-
     }
 }

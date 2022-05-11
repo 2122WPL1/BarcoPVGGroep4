@@ -1,6 +1,7 @@
 ﻿using BarcoDB_Admin.Models.Db;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Media.TextFormatting;
 
 namespace BarcoDB_Admin.Dao
 {
@@ -8,6 +9,7 @@ namespace BarcoDB_Admin.Dao
     {
         //Jarne
         //here comes all the data from Person
+        public List<Person> users = new List<Person>();
 
         //copies the data from DAO
         public DaoUser() : base()
@@ -31,21 +33,31 @@ namespace BarcoDB_Admin.Dao
             _context.SaveChanges();
         }
 
-        public string AddUser(string person)
-        {
-            return person;
-        }
-
-        public void EditUser(string person)
-        {
-
-        }
-
         public List<Person> GetAllUser()
         {
             return _context.People.ToList();
         }
 
+        //Jarne
+        public Person EditUser(Person person)
+        {
+            users.Remove(person);
+            person = new Person()
+            {
+                Afkorting = person.Afkorting,
+                Voornaam = person.Voornaam,
+                Familienaam = person.Familienaam,
+                wachtwoord = person.wachtwoord
+            };
+
+            users.Add(person);
+            _context.Add(person);
+            _context.SaveChanges();
+            return person;
+        }
+
+        //Amy & Jarne
+        //add 
         public Person AddUser(Person person)
         {
             person = new Person()
@@ -56,12 +68,16 @@ namespace BarcoDB_Admin.Dao
                 wachtwoord = person.wachtwoord
             };
             
-            List<Person> users = new List<Person>();
             users.Add(person);
-
             _context.Add(person);
-
+            _context.SaveChanges();
             return person;
         }
+
+        //public Person GetUser(Person Afkorting)
+        //{
+        //    GetAllUser();
+        //    return Afkorting;
+        //}
     }
 }
