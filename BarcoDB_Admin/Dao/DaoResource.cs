@@ -12,9 +12,9 @@ namespace BarcoDB_Admin.Dao
 
         }
 
-        protected static readonly DaoUser _instanceResource = new();
+        protected static readonly DaoResource _instanceResource = new();
 
-        public static DaoUser InstanceResource()
+        public static DaoResource InstanceResource()
         {
             return _instanceResource;
         }
