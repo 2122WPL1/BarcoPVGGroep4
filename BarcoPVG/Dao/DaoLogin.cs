@@ -59,19 +59,5 @@ namespace BarcoPVG.Dao
 
             return output;
         }
-        /*
-        public void GetDiv(Person loginPerson)
-        {
-            List<RqBarcoDivision> listDiv = _daoPerson.GetAllDivisions();
-            foreach (RqBarcoDivision div in listDiv)
-            {
-                //if (div.Afkorting == loginPerson)
-                //{
-
-                //}
-            }
-        }
-        */
-
     }
 }

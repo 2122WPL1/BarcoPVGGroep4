@@ -215,8 +215,8 @@ namespace BarcoPVG.Dao
             return uiTests;
         }
 
-        // Set JR status to Finished if all related plans are finished
-        // <param name="rqId"></param>
+        /// Set JR status to Finished if all related plans are finished
+        /// <param name="rqId"></param>
         public void SetRqStatusIfComplete(int rqId)
         {
             // Get all planning
@@ -292,11 +292,11 @@ namespace BarcoPVG.Dao
             return false;
         }
 
-        // Returns a PlPlanning for the given job request and division
-        // <param name="request">Job Request</param>
-        // <param name="division">Test team division</param>
-        // <returns>PlPlanning with request and division data</returns>
-        // Kaat
+        /// Returns a PlPlanning for the given job request and division
+        /// <param name="request">Job Request</param>
+        /// <param name="division">Test team division</param>
+        /// <returns>PlPlanning with request and division data</returns>
+        /// Kaat
         public PlPlanning CreatePlPlanning(RqRequest request, string division)
         {
             var planning = new PlPlanning //clustered?

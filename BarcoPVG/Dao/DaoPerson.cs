@@ -30,9 +30,7 @@ namespace BarcoPVG.Dao
             return _context.People.ToList();
         }
 
-        /// <summary>
-        /// Returns a string with the PVGResponsible(s)
-        /// </summary>
+        // Returns a string with the PVGResponsible(s)
         // Kaat
         public string GetPVGResp(string testDivision, string barcoDivision)
         {

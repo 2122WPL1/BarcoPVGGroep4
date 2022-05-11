@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security;
-using System.Windows;
-using BarcoPVG.Models.Classes;
-using BarcoPVG.Models.Db;
-using BarcoPVG.Views.Login;
-using Microsoft.EntityFrameworkCore;
+﻿using BarcoPVG.Models.Classes;
 
 namespace BarcoPVG.Dao
 {
@@ -19,7 +11,6 @@ namespace BarcoPVG.Dao
         // Variables
         protected BarcoContext _context;
         protected static readonly DAO _instance = new();
-
 
         public BarcoUser BarcoUser { get; set; }
 
@@ -36,12 +27,11 @@ namespace BarcoPVG.Dao
             this._context = new BarcoContext();
 
             //Eakarach To Test
-            //this.BarcoUser = BarcoUser
-            //{
-            //    Name = "Test-Okie",
-            //    //Division = "DEV",
-            //    Function = "TEST",
-            //};
+            this.BarcoUser = new BarcoUser()
+            {
+                Name = "Bart",
+                Function = "DEV",
+            };
         }
 
         // Removes unsaved changed by replacing the context by a new instance

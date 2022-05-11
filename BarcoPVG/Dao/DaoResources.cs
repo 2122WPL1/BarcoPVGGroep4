@@ -20,6 +20,7 @@ namespace BarcoPVG.Dao
         {
             return _instanceResources;
         }
+
         // Returns list of all Equipment
         // Kaat
         public List<PlResource> GetResources()

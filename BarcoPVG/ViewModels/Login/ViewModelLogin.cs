@@ -1,34 +1,22 @@
-﻿using BarcoPVG.Models.Classes;
-using BarcoPVG.Models.Db;
-using BarcoPVG.ViewModels;
-using BarcoPVG.Views;
-using Prism.Commands;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-using BarcoPVG.Dao;
+using BarcoPVG.Models.Db;
+using BarcoPVG.Views;
 
 namespace BarcoPVG.ViewModels.Login
 {
     //Eakarach
     public class ViewModelLogin : AbstractViewModelBase
     {
-
-
-        
-
         private ICommand loginCommand, exitCommand;
-        private string _username = "bas";
-        private string _password = "aaa";
+        private string _username = "";
+        private string _password = "";
 
         public ViewModelLogin() 
         {
-            //MainWindowCommand = new DelegateCommand(DisplayMainWindow);
+
         }
 
         public ICommand LoginCommand
@@ -76,10 +64,8 @@ namespace BarcoPVG.ViewModels.Login
                 _password = value;
                 OnpropertyChanged("Password");
             }
-            
         }
 
-        
         private void ExitCommandMethode()
         {
             foreach (Window item in Application.Current.Windows)
@@ -117,7 +103,6 @@ namespace BarcoPVG.ViewModels.Login
                 MessageBox.Show("User or/and Password is not correct");
             }
         }
-
 
         public void DisplayMainWindow()
         {         

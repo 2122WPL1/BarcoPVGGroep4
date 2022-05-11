@@ -10,11 +10,13 @@ namespace BarcoPVG.Dao
     {
         public BarcoContext()
         {
+
         }
 
         public BarcoContext(DbContextOptions<BarcoContext> options)
             : base(options)
         {
+
         }
 
         public virtual DbSet<Eut> Euts { get; set; } = null!;
