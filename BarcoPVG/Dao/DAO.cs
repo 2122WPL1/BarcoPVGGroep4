@@ -43,7 +43,7 @@ namespace BarcoPVG.Dao
             {
                 Name = "Test-Okie",
                 Division = "ECO",
-                Function = "TEST",
+                Function = "DEV",
             };
         }
       
@@ -259,7 +259,8 @@ namespace BarcoPVG.Dao
 
             SaveChanges();
 
-            ApproveInternalRequest(rqrequest.IdRequest);
+            //ApproveRequest(rqrequest.IdRequest);
+            ApproveInternalRequest(rqrequest);
 
             //return rqrequest;
         }
@@ -269,6 +270,8 @@ namespace BarcoPVG.Dao
         {
             // Still have to look at holidays in Belgium****
             DateTime newDate = DateTime.Now;
+            newDate = newDate.AddDays(12);
+            var feestdagen = _context.PlVerletdagens.ToList();
             int fiveDays = 5;
 
             while (fiveDays > 0)
@@ -277,7 +280,13 @@ namespace BarcoPVG.Dao
 
                 if (newDate.DayOfWeek != DayOfWeek.Saturday && newDate.DayOfWeek != DayOfWeek.Sunday)
                 {
-                    fiveDays -= 1;
+                    PlVerletdagen eenFeestdag = feestdagen.FirstOrDefault(x => x.Datum.Date == newDate.Date && 
+                                                                            x.Datum.Month == newDate.Month && 
+                                                                            x.Datum.Year == newDate.Year);
+                    if (eenFeestdag == null)
+                    {
+                        fiveDays -= 1;
+                    }
                 }
             }
 
@@ -552,6 +561,7 @@ namespace BarcoPVG.Dao
             var divisions = DetailList.Select(d => d.Testdivisie).Distinct().ToList(); // OVERBODIG
 
             // On approval, set JR number and request date
+
             request.JrNumber = $"JRDEV{request.IdRequest:D5}";
             request.RequestDate = DateTime.Now;
             request.JrStatus = "In Plan";
@@ -566,8 +576,6 @@ namespace BarcoPVG.Dao
             jump:
                 try //foutafhandeling
                 {
-
-
                     _context.Add(planning);
                     _context.SaveChanges(); //Sander: het approven van een job request zorgt voor een probleem met de databank primary key van Planning_PK en pl_Planning
                                             //een dubbele id
@@ -590,10 +598,10 @@ namespace BarcoPVG.Dao
         }
         
         //Eakarach
-        public void ApproveInternalRequest(int jrId)
+        public void ApproveInternalRequest(RqRequest jrId)
         {
-            var DetailList = RqDetail(jrId);
-            var request = _context.RqRequests.SingleOrDefault(rq => rq.IdRequest == jrId);
+            //var DetailList = RqDetail(jrId);
+            var request = jrId;// _context.RqRequests.SingleOrDefault(rq => rq.IdRequest == jrId);
 
             // List of unique test divisions checked in this JR
 
@@ -604,22 +612,11 @@ namespace BarcoPVG.Dao
 
             // Create a new planning record for each unique division
 
+            var planning = CreatePlPlanning(request, BarcoUser.Division);
 
-            PlPlanning planning = new PlPlanning
-            {
-                IdRequest = request.IdRequest,
-                JrNr = request.JrNumber,
-                Requestdate = request.RequestDate,
-                DueDate = null,
-                TestDiv = BarcoUser.Division,
-                TestDivStatus = "In plan",
-            };
+            _context.Add(planning);
 
-            //_context.Add(planning); //add to planning
-            //_context.Remove(planning);
-            _context.Entry(planning).State = (Microsoft.EntityFrameworkCore.EntityState)EntityState.Detached;
-            _context.PlPlannings.Add(planning);
-            SaveChanges();
+            _context.SaveChanges(); 
             
         }
 
@@ -961,7 +958,7 @@ namespace BarcoPVG.Dao
                 IdRequest = request.IdRequest,
                 JrNr = request.JrNumber,
                 Requestdate = request.RequestDate,
-                DueDate = request.RequestDate == null ? request.RequestDate : ((DateTime)request.RequestDate).AddDays(5),
+                DueDate = Add5Datum(), //((DateTime)request.RequestDate).AddDays(5),
                 TestDiv = division,
                 TestDivStatus = "In plan", // use enums?
             };

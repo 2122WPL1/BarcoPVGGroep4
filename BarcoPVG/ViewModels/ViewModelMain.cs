@@ -292,7 +292,7 @@ namespace BarcoPVG.ViewModels
         {
             _dao.AddInternJobRequest(((AbstractViewModelContainer) this.ViewModel).JR); // SaveChanges included in function
 
-            DisplayDevStartup();
+            DisplayPlannerStartup();
         }
 
         // Updates existing job request and switches windows
@@ -380,7 +380,7 @@ namespace BarcoPVG.ViewModels
                     ApproveRequests = Visibility.Visible;
                     Test = Visibility.Visible;
                     SeeAll = Visibility.Visible;
-                    Data = Visibility.Hidden;
+                    Data = Visibility.Visible;
 
                     this.ViewModel = new ViewModelDevelopment();
 

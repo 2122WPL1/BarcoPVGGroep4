@@ -56,7 +56,7 @@
                       ScrollViewer.HorizontalScrollBarVisibility="Auto" 
                       HorizontalAlignment="Stretch"
                       HorizontalContentAlignment="Center"
-                      MaxHeight="500"
+                      MaxHeight="400"
                       ><!--Maxheight changes per device????????-->
                 <ListView.View>
                     <GridView>
