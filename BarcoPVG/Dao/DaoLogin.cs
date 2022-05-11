@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using BarcoPVG.Models.Classes;
 using BarcoPVG.Models.Db;
@@ -28,7 +29,8 @@ namespace BarcoPVG.Dao
         public void LoginSucceeded(Person loginPerson)
         {
             //Put division or to list if they have more than one division
-            //string division = GetAllDivisions().Where(div => "TS" == loginPerson.Afkorting).ToString();
+            string division = null;
+            division = GetAllDivForPerson(loginPerson).FirstOrDefault(x => x.AfkPerson == loginPerson.Afkorting).Pvggroup;
 
             //Put Function to give right the the user
             //string func = "";
@@ -36,9 +38,25 @@ namespace BarcoPVG.Dao
             //Jarne getting the info from the login details to get the right view display
             BarcoUser = new BarcoUser();
             BarcoUser.Name = loginPerson.Voornaam;
-            BarcoUser.Function = "DEV";
-            BarcoUser.Division = _daoPerson.GetAllDivisions().Where(div => "TS" == loginPerson.Afkorting).ToString();
+            BarcoUser.Division = division != null ? division : "";
+            BarcoUser.Function = GetFuntion(division);
 
+
+        }
+
+        //Eakarach
+        private string GetFuntion(string? division)
+        {
+            switch (division)
+            {
+                case "":
+                    return ""; // Log in als extern
+                default:
+                    return "TEST"; // Log in als TEST team
+                    break;
+            }
+
+            return null;
         }
 
         public List<RqBarcoDivisionPerson> GetAllDivForPerson(Person loginperson)
