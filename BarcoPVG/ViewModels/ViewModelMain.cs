@@ -6,6 +6,7 @@ using BarcoPVG.ViewModels.JobRequest;
 using Prism.Commands;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Windows;
 
 
@@ -30,6 +31,7 @@ namespace BarcoPVG.ViewModels
         public DelegateCommand DisplayTesterPlanCommand { get; set; }
         public DelegateCommand DisplayTesterTestCommand { get; set; }
         public DelegateCommand DisplayDevStartupCommand { get; set; }
+
         public DelegateCommand SaveJrCommand { get; set; }
         public DelegateCommand ApproveJRCommand { get; set; }
         public DelegateCommand DisplayTestPlanningCommand { get; set; }
@@ -288,22 +290,7 @@ namespace BarcoPVG.ViewModels
 
         public void InsertInternalJr()
         {
-            var jr = _dao.AddJobRequest(((AbstractViewModelContainer) this.ViewModel)
-                .JR); // SaveChanges included in function
-
-            jr.JrStatus = "In Plan";
-
-            int count = 0;
-            foreach (var thisEUT in ((AbstractViewModelContainer) this.ViewModel).EUTs)
-            {
-                count++;
-                _dao.AddEutToRqRequest(jr, thisEUT, count.ToString());
-            }
-
-            // Here we call the SaveChanges method, so that we can link several EUTs to one JR
-            _dao.SaveChanges();
-
-            _dao.ApproveInternalRequest(jr.IdRequest);
+            _dao.AddInternJobRequest(((AbstractViewModelContainer) this.ViewModel).JR); // SaveChanges included in function
 
             DisplayDevStartup();
         }

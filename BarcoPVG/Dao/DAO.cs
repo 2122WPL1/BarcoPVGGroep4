@@ -42,7 +42,7 @@ namespace BarcoPVG.Dao
             this.BarcoUser = new BarcoUser()
             {
                 Name = "Test-Okie",
-                //Division = "DEV",
+                Division = "ECO",
                 Function = "TEST",
             };
         }
@@ -193,8 +193,8 @@ namespace BarcoPVG.Dao
                 HydraProjectNr = Jr.HydraProjectnumber == null ? string.Empty : Jr.HydraProjectnumber,
 
                 ExpectedEnddate = Jr.ExpEnddate == null ? DateTime.Now : (DateTime)Jr.ExpEnddate, // Not nullable, so needs to be casted
-                InternRequest = Jr.InternRequest, // Bool, default false
-                Battery = Jr.Battery, // Bool, default false
+                InternRequest = Jr.InternRequest == null? false: Jr.InternRequest, // Bool, default false
+                Battery = Jr.Battery == null? false: Jr.Battery, // Bool, default false
 
                 NetWeight = Jr.NetWeight == null ? string.Empty : Jr.NetWeight,
                 GrossWeight = Jr.GrossWeight == null ? string.Empty : Jr.GrossWeight,
@@ -215,6 +215,53 @@ namespace BarcoPVG.Dao
 
 
             return rqrequest;
+        }
+
+        public void AddInternJobRequest(JR Jr)
+        {
+            // Copy data from JR to new RqRequest
+            // Used ternary operator to use String.Empty when null
+            RqRequest rqrequest = new()
+            {
+                JrStatus = Jr.JrStatus == null ? "In Plan" : Jr.JrStatus,
+                RequestDate = DateTime.Now,
+                //RequestDate = (DateTime)Jr.ExpEnddate, // Nullable
+                Requester = Jr.Requester == null ? string.Empty : Jr.Requester,
+                BarcoDivision = Jr.BarcoDivision == null ? string.Empty : Jr.BarcoDivision,
+                JobNature = Jr.JobNature == null ? string.Empty : Jr.JobNature,
+                EutProjectname = Jr.EutProjectname == null ? string.Empty : Jr.EutProjectname,
+                // EutPartnumbers = Jr.EutPartnr == null ? string.Empty : Jr.EutPartnr,
+                HydraProjectNr = Jr.HydraProjectnumber == null ? string.Empty : Jr.HydraProjectnumber,
+
+                ExpectedEnddate = Jr.ExpEnddate == null ? DateTime.Now : (DateTime)Jr.ExpEnddate, // Not nullable, so needs to be casted
+                InternRequest = Jr.InternRequest == null ? false : Jr.InternRequest, // Bool, default false
+                Battery = Jr.Battery == null ? false : Jr.Battery, // Bool, default false
+
+                NetWeight = Jr.NetWeight == null ? string.Empty : Jr.NetWeight,
+                GrossWeight = Jr.GrossWeight == null ? string.Empty : Jr.GrossWeight,
+                EutPartnumbers = Jr.EutPartnr == null ? string.Empty : Jr.EutPartnr
+            };
+
+
+            //Matti voorlopig
+            // We create a rqo object of the RqOptionel class to save the following fields in the database with the user input
+            RqOptionel rqo = new()
+            {
+                Link = Jr.Link == null ? string.Empty : Jr.Link,
+                Remarks = Jr.Remarks == null ? string.Empty : Jr.Remarks,
+
+            };
+            // We combine the rqo object with the rqrequest object and return the combined object
+            rqrequest.RqOptionels.Add(rqo);
+
+
+            _context.Add(rqrequest);
+
+            SaveChanges();
+
+            ApproveInternalRequest(rqrequest.IdRequest);
+
+            //return rqrequest;
         }
 
         // the JR has to be accepted within 5 non-holiday days.
@@ -301,6 +348,7 @@ namespace BarcoPVG.Dao
 
 
             };
+
             _context.RqRequests.Add(request);
         }
 
@@ -540,14 +588,14 @@ namespace BarcoPVG.Dao
                 }
             }
         }
-
+        
+        //Eakarach
         public void ApproveInternalRequest(int jrId)
         {
             var DetailList = RqDetail(jrId);
             var request = _context.RqRequests.SingleOrDefault(rq => rq.IdRequest == jrId);
 
             // List of unique test divisions checked in this JR
-            var divisions = DetailList.Select(d => d.Testdivisie).Distinct().ToList(); // OVERBODIG
 
             // On approval, set JR number and request date
             request.JrNumber = $"INTRN{request.IdRequest:D5}";
@@ -555,20 +603,24 @@ namespace BarcoPVG.Dao
             request.JrStatus = "In Plan";
 
             // Create a new planning record for each unique division
-            foreach (string division in divisions)
+
+
+            PlPlanning planning = new PlPlanning
             {
-                var planning = new PlPlanning
-                {
-                    IdRequest = request.IdRequest,
-                    JrNr = request.JrNumber,
-                    Requestdate = request.RequestDate,
-                    DueDate = null,
-                    TestDiv = division,
-                    TestDivStatus = "In plan",
-                };
-                _context.Add(planning);
-                _context.SaveChanges();
-            }
+                IdRequest = request.IdRequest,
+                JrNr = request.JrNumber,
+                Requestdate = request.RequestDate,
+                DueDate = null,
+                TestDiv = BarcoUser.Division,
+                TestDivStatus = "In plan",
+            };
+
+            //_context.Add(planning); //add to planning
+            //_context.Remove(planning);
+            _context.Entry(planning).State = (Microsoft.EntityFrameworkCore.EntityState)EntityState.Detached;
+            _context.PlPlannings.Add(planning);
+            SaveChanges();
+            
         }
 
 

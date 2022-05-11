@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BarcoPVG.Views.JobRequest"
+             xmlns:views="clr-namespace:BarcoPVG.Views"
              mc:Ignorable="d" d:Background="LightGray" Height="auto" Width="auto">
 
     <StackPanel>
@@ -33,12 +34,16 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Button Content="Confirm" HorizontalAlignment="Left" 
-                                Command="{Binding DataContext.SafeJrCommand, Mode=OneWay}"
-                                Margin="282,18,0,0" VerticalAlignment="Top"/>
-                <Button Grid.Column="1" Content="Cancel" HorizontalAlignment="Left" 
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Content="Confirm"
+                            Command="{Binding DataContext.SaveJrCommand, 
+                            RelativeSource={RelativeSource AncestorType={x:Type views:MainWindow}}, 
+                            Mode=OneWay}"
+                            Height="40" Margin="46,18,0,0" VerticalAlignment="Top" />
+                    <Button Grid.Column="1" Content="Cancel" HorizontalAlignment="Left" 
                                 Command="{Binding Datacontext.DisplayDevStartupCommand, Mode=OneWay}"
                                 Margin="46,18,0,0" VerticalAlignment="Top"/>
+                </StackPanel>
             </Grid>
 
         </DockPanel>

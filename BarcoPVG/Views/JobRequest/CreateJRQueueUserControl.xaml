@@ -17,7 +17,7 @@
                       SelectedItem="{Binding SelectedJR, Mode=TwoWay}"
                       VerticalAlignment="Stretch"
                       MinHeight="300"
-                      MaxHeight="700"
+                      MaxHeight="400"
                       Margin="3"
                       SelectionMode="Single"
                       SelectedIndex="1"
