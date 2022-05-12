@@ -9,7 +9,7 @@
     <!--amy-->
     <StackPanel Margin="5">
         <GroupBox MinHeight="500" Header="Devision" MaxHeight="600">
-            <ListView ItemsSource="{Binding AllDivisions}" SelectedItem="{Binding SelectedDivision, Mode=OneWay}" VerticalAlignment="Top" >
+            <ListView ItemsSource="{Binding AllDivisions}" SelectedItem="{Binding SelectedDivision, Mode=TwoWay}" VerticalAlignment="Top" >
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Abbreviation" Width="150" DisplayMemberBinding="{Binding Afkorting}"/>

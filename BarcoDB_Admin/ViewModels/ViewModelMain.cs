@@ -93,11 +93,12 @@ namespace BarcoDB_Admin.ViewModels
 
         public void DisplayEditUserStartup()
         {
-            var user = ((ViewModelDBUser)this.ViewModel).SelectedUser.Afkorting;
-            SaveUserCommand = new DelegateCommand(UpdateUser);
-
-            if (user != null)//EditUserUserControl can only be opened when there is a User selected
+            //EditUserUserControl can only be opened when there is a User selected
+            if (((ViewModelDBUser)this.ViewModel).SelectedUser == null)
             {
+                var user = ((ViewModelDBUser)this.ViewModel).SelectedUser.Afkorting; // make a new variable to keep the selected user
+                SaveUserCommand = new DelegateCommand(UpdateUser);
+
                 this.ViewModel = new ViewModelEditUser(user);
             }
             else
@@ -109,17 +110,20 @@ namespace BarcoDB_Admin.ViewModels
 
         public void DisplayAddResourcesStartup()
         {
-            SaveResourcesCommand = new DelegateCommand(InsertResources);
             this.ViewModel = new ViewModelAddResources();
+            SaveResourcesCommand = new DelegateCommand(InsertResource);
         }
 
         public void DisplayEditResourcesStartup()
         {
-            var resource = ((ViewModelDBResources)this.ViewModel).SelectedResouce.Id;
-
-            if (resource != null) //EditResourcesUserControl can only be opened when there is a resource selected
+            //Amy
+            //EditResourcesUserControl can only be opened when there is a resource selected
+            if (((ViewModelDBResources)this.ViewModel).SelectedResouce == null) 
             {
-                 this.ViewModel = new ViewModelEditResources(resource);
+                var resource = ((ViewModelDBResources)this.ViewModel).SelectedResouce.Id;
+                SaveResourcesCommand = new DelegateCommand(UpdateResource);
+
+                this.ViewModel = new ViewModelEditResources(resource);
             }
             else
             {
@@ -130,22 +134,25 @@ namespace BarcoDB_Admin.ViewModels
         public void DisplayAddDivisionStartup()
         {
             this.ViewModel = new ViewModelAddDevision();
+            SaveDivisionCommand = new DelegateCommand(InsertDivision);
         }
 
         public void DisplayEditDivisionStartup()
         {
-            var devision = ((ViewModelDBDevision)this.ViewModel).SelectedDivision.Afkorting;
-            if (devision != null)//EditDevisionUserControl can only be opened when there is a devision selected
+            if (((ViewModelDBDevision)this.ViewModel).SelectedDivision != null)
             {
+                var devision = ((ViewModelDBDevision)this.ViewModel).SelectedDivision.Afkorting;
+                SaveDivisionCommand = new DelegateCommand(UpdateDivision);
+
                 this.ViewModel = new ViewModelEditDevision(devision);
             }
             else
             {
                 MessageBox.Show("No Devision selected!");
-
             }
         }
 
+        //CRU USER
         public void InsertUser()
         {
 
@@ -164,11 +171,41 @@ namespace BarcoDB_Admin.ViewModels
             DisplayDatabaseUserStartup();
         }
 
-        public void InsertResources()
+        //CRU Division
+        public void InsertDivision()
         {
-            var resource = ((ViewModelAddResources)this.ViewModel);
 
-            //_daoResource.AddResource(resource);
+            RqBarcoDivision div = ((ViewModelAddDevision)this.ViewModel).Division;
+
+            _daoDivision.AddDivision(div);
+            DisplayDataBaseDivisionStartup();
+        }
+
+        public void UpdateDivision()
+        {
+            RqBarcoDivision div = ((AbstractViewModelContainer)this.ViewModel).Division;
+
+            _daoDivision.UpdateDivision(div);
+            DisplayDataBaseDivisionStartup();
+        }
+
+
+        //CRU Resource
+        public void InsertResource()
+        {
+
+            PlResource res = ((ViewModelAddResources)this.ViewModel).Resource;
+
+            _daoResource.AddResource(res);
+            DisplayDataResourceStartup();
+        }
+
+        public void UpdateResource() // update
+        {
+            PlResource res = ((AbstractViewModelContainer)this.ViewModel).Resource;
+
+            _daoResource.UpdateResouce(res);
+            DisplayDataResourceStartup();
         }
 
     }

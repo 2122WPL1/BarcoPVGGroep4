@@ -8,17 +8,16 @@ namespace BarcoDB_Admin.ViewModels.DataBase
 {
     public class ViewModelDBUser : AbstractViewModelContainer
     {
-        DaoUser _dao = new DaoUser();
 
         #region properties
         public DelegateCommand DeleteUser { get; set; }
-        public List<Person> AllUsers { get => _allUsers; set => _allUsers = value; }
-        public Person SelectedUser { get; set; }
+        public List<Person> AllUsers { get ; set ; }
+        public Person SelectedUser { get; set; } = null;
         #endregion
 
         public ViewModelDBUser() : base()
         {
-            //DeleteUser = new DelegateCommand(deleteUserFromDB);
+            DeleteUser = new DelegateCommand(DeleteUserFromDB);
             Load();
         }
 
@@ -27,16 +26,16 @@ namespace BarcoDB_Admin.ViewModels.DataBase
 
         public void Load()
         {
-            AllUsers = _dao.GetAllUser();
+            AllUsers = _daoUser.GetAllUser();
         }
 
-        public void deleteUserFromDB()
+        public void DeleteUserFromDB()
         {
             if (SelectedUser != null)
             {
                 if (MessageBox.Show("Are you sure you want to delete this user?", "Delete User", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
                 {
-                    _dao.RemoveUser(SelectedUser);
+                    _daoUser.RemoveUser(SelectedUser);
                     Load();
                     OnpropertyChanged("AllUsers");
                 }

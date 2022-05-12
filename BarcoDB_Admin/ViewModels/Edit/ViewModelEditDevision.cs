@@ -1,24 +1,38 @@
-﻿using BarcoDB_Admin.Models.Db;
+﻿using BarcoDB_Admin.ViewModels;
+using BarcoDB_Admin.Models.Db;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace BarcoDB_Admin.ViewModels.Edit
 {
     //Amy
-    public class ViewModelEditDevision : AbstractViewModelBase
+    public class ViewModelEditDevision : AbstractViewModelContainer
     {
-        private RqBarcoDivision _RqBarcoDivision;
         public RqBarcoDivision SelectedDivision { get; set; }
+        public bool _IsEnable1; 
+        public bool IsEnable1
+        {
+            get
+            { 
+                return _IsEnable1;
+            }
+            set
+            {
+                _IsEnable1 = value;
+                OnpropertyChanged();
+            }
+        }
 
         public ViewModelEditDevision(string Afkorting) : base()
         {
-            //SelectedDivision = devision;
-
-            //this._RqBarcoDivision = _daoUser.GetDevision(Afkorting);
+            Division = _daoDivision.GetAllDivisions().FirstOrDefault(x => x.Afkorting == Afkorting);
+            _IsEnable1 = false; // Set to false because we can't let primary to be changed.
         }
 
-        public RqBarcoDivision RqBarcoDivision
-        {
-            get { return _RqBarcoDivision; }
-            set { _RqBarcoDivision = value; OnpropertyChanged(); }
-        }
     }
 }
