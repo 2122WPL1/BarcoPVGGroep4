@@ -29,9 +29,6 @@ namespace BarcoPVG.Models.Classes
         // Constructor
         public EUT()
         {
-            //anders komt datum van vandaag in datetimepicker te staan
-            //AvailabilityDate = DateTime.Now;
-            
             // Tests are not active on start
             EMC = false;
             ENV = false;

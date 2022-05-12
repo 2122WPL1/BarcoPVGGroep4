@@ -1,23 +1,13 @@
 ﻿using Microsoft.Toolkit.Mvvm.Input;
 using Prism.Commands;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
-
-using BarcoPVG.Models;
-using BarcoPVG.Views;
 using BarcoPVG.Models.Db;
 using BarcoPVG.Models.Classes;
 using BarcoPVG.Dao;
-using BarcoPVG.ViewModels;
 
 namespace BarcoPVG.ViewModels.JobRequest
 {
@@ -132,7 +122,6 @@ namespace BarcoPVG.ViewModels.JobRequest
         // Clear all data in JR
         private void RefreshJR()
         {
-      
             this.JR = _daoJR.GetNewJR();
        
             EUTs.Clear();
