@@ -1,4 +1,4 @@
-﻿<Window x:Class="BarcoDB_Admin.Views.MainWindow"
+<Window x:Class="BarcoDB_Admin.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -9,10 +9,11 @@
         WindowState="Maximized"
         WindowStyle="ThreeDBorderWindow"
         WindowStartupLocation="CenterScreen"
-        MinWidth="330"
+     MinWidth="330  "
          
         Height="{x:Static SystemParameters.PrimaryScreenHeight}" 
-        Width="{x:Static SystemParameters.PrimaryScreenWidth}" >
+      Width="{x:Static SystemParameters.PrimaryScreenWidth}" 
+    >
     <!--amy-->
     <!--<ScrollViewer HorizontalScrollBarVisibility="Visible"> dit zorgt ervoor dat de andere scrollviewer niet zichtbaar wordt-->
     <StackPanel Margin="10" >
@@ -30,13 +31,13 @@
                     <Image Style="{StaticResource BarcoLogo}" Grid.Column="0" Margin="16,0,25,0"/>
                     <Button Content="X" BorderBrush="Black" Grid.Column="3" Command="{Binding Exit}" HorizontalAlignment="Center" VerticalAlignment="Center" Height="32" Width="50" Foreground="#FFF10000" Background="#FFD5DFE5"/>
                     <Image Style="{StaticResource BarcoLogo}" Grid.Column="0" Margin="27,0,37,0"/>
-                    <!--<StackPanel Orientation="Horizontal" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,0,1154,0" >
+                    <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,0,1154,0" >
                         <TextBlock FontSize="14" Text="Welcome "/>
                         <TextBlock FontSize="14" FontWeight="Bold" Text="{Binding User.Name}"/>
                         <TextBlock FontSize="14" Text=" ("/>
                         <TextBlock FontSize="14" Text="{Binding User.Division}"/>
                         <TextBlock FontSize="14" Text=")"/>
-                    </StackPanel>-->
+                    </StackPanel>
                 </Grid>
             </GroupBox.Header>
             <Grid>
@@ -44,7 +45,7 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="top">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Button Content="User" 
                             Command="{Binding DisplayDatabaseUserCommand, Mode=OneWay}"
                             Margin="5"/>
