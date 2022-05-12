@@ -11,7 +11,7 @@ namespace BarcoPVG.ViewModels.Login
     public class ViewModelLogin : AbstractViewModelBase
     {
         private ICommand loginCommand, exitCommand;
-        private string _username = "bas";
+        private string _username = "phiro";
         private string _password = "aaa";
 
         public ViewModelLogin() 
