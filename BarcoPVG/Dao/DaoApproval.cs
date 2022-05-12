@@ -32,14 +32,15 @@ namespace BarcoPVG.Dao
             var DetailList = daoJR.RqDetail(jrId);
             var request = _context.RqRequests.SingleOrDefault(rq => rq.IdRequest == jrId);
 
-            // List of unique test divisions checked in this JR
-            var divisions = DetailList.Select(d => d.Testdivisie).Distinct().ToList(); // OVERBODIG
+            
             
             // On approval, set JR number and request date
             request.JrNumber = $"JRDEV{request.IdRequest:D5}";
             request.RequestDate = DateTime.Now;
             request.JrStatus = "In Plan";
 
+            // List of unique test divisions checked in this JR
+            var divisions = DetailList.Select(d => d.Testdivisie).Distinct().ToList(); // OVERBODIG
             // Create a new planning record for each unique division
             foreach (string division in divisions)
             {
