@@ -21,8 +21,7 @@
                           ScrollViewer.CanContentScroll="True"
                           ScrollViewer.HorizontalScrollBarVisibility="Auto" 
                           HorizontalAlignment="Stretch"
-                          HorizontalContentAlignment="Center"
-                          MaxHeight="400">
+                          HorizontalContentAlignment="Center">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Id" DisplayMemberBinding="{Binding IdRequest}" />

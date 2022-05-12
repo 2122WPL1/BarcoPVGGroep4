@@ -30,7 +30,7 @@ namespace BarcoPVG.Dao
         {
             //Put division or to list if they have more than one division
             string division = null;
-            division = GetAllDivForPerson(loginPerson).FirstOrDefault(x => x.AfkPerson == loginPerson.Afkorting).Pvggroup;
+            division = GetAllDivForPerson(loginPerson).FirstOrDefault(x => x.AfkPerson == loginPerson.Afkorting).Pvggroup != null ? division : "";
 
             //Put Function to give right the the user
             //string func = "";
@@ -38,7 +38,7 @@ namespace BarcoPVG.Dao
             //Jarne getting the info from the login details to get the right view display
             BarcoUser = new BarcoUser();
             BarcoUser.Name = loginPerson.Voornaam;
-            BarcoUser.Division = division != null ? division : "";
+            BarcoUser.Division = division;
             BarcoUser.Function = GetFuntion(division);
 
             //BarcoUser.Function = "DEV"; log in as Developer

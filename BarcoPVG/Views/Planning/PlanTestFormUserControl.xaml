@@ -46,7 +46,7 @@
                       ScrollViewer.HorizontalScrollBarVisibility="Auto" 
                       HorizontalAlignment="Stretch"
                       HorizontalContentAlignment="Center"
-                      MaxHeight="400"
+                      MaxHeight="400">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Resource" DisplayMemberBinding="{Binding Resource}" />
@@ -57,10 +57,7 @@
                 </ListView.View>
             </ListView>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Content="Save New Tests" Margin="5"
-                        Command="{Binding DataContext.SaveTestsAndReturnCommand, 
-                            RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, 
-                            Mode=OneWay}"/>
+                <Button Content="Save New Tests" Margin="5" Command="{Binding DataContext.SaveTestsAndReturnCommand, RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, Mode=OneWay}"/>
                 <Button Content="Mark as planned" Margin="5"
                         Command="{Binding DataContext.ApprovePlanAndReturnCommand, 
                             RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, 

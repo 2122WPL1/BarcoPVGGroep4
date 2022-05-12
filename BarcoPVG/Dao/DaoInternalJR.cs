@@ -1,45 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows;
 using BarcoPVG.Models.Classes;
 using BarcoPVG.Models.Db;
-using Microsoft.EntityFrameworkCore;
 
 namespace BarcoPVG.Dao
 {
-    // SINGLETON PATTERN
-    // Private constructor, static instance
-    // Ensures only one DBconnection is opened at a time
-    // Ensures connection is closed when not in use
-    public class DAO
+    public class DaoInternalJR : DAO
     {
-        // Variables
-        public BarcoContext _context;
-        protected static readonly DAO _instance = new();
+        //Jarne
+        //here comes all the data from Internal JR
 
-        // Calls an DAO instance
-        public static DAO Instance()
+        //copies the data from DAO
+        protected static readonly DaoInternalJR _instanceInternalJR = new();
+        DaoPlanning _instancePlanning = DaoPlanning.InstancePlanning();
+        DaoLogin _instanceLogin = DaoLogin.InstanceLogin();
+
+
+        public static DaoInternalJR InstanceInternalJR()
         {
-            return _instance;
+            return _instanceInternalJR;
         }
 
-        // DAO Constructor - PRIVATE
-        // Calls an instance from the Barco2021Context and stores this context in the current context
-        protected DAO()
+        public DaoInternalJR() : base()
         {
-            this._context = new BarcoContext();
+
         }
 
-        // Removes unsaved changed by replacing the context by a new instance
-        // Kaat
-        public void RemoveChanges()
-        {
-            _context = new BarcoContext();
-        }
-
-        #region moved to DaoInternalJR
-        /*
         public void AddInternJobRequest(JR Jr)
         {
             // Copy data from JR to new RqRequest
@@ -88,7 +75,6 @@ namespace BarcoPVG.Dao
             //return rqrequest;
         }
 
-        //Eakarach
         public void ApproveInternalRequest(RqRequest jrId)
         {
             //var DetailList = RqDetail(jrId);
@@ -103,21 +89,12 @@ namespace BarcoPVG.Dao
 
             // Create a new planning record for each unique division
 
-            var planning = CreatePlPlanning(request, BarcoUser.Division);
+            var planning = _instancePlanning.CreatePlPlanning(request, _instanceLogin.BarcoUser.Division);
 
             _context.Add(planning);
 
-            _context.SaveChanges(); 
-            
-        }
-        */
-        #endregion
-
-        // SAVING
-        // Stores all data from GUI in DB
-        public void SaveChanges()
-        {
             _context.SaveChanges();
+
         }
     }
 }

@@ -25,6 +25,7 @@ namespace BarcoPVG.Dao
         {
             return _instancePerson;
         }
+
         public List<Person> GetAllUser()
         {
             return _context.People.ToList();
