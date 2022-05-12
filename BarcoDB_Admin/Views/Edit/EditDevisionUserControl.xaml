@@ -27,7 +27,7 @@
                             Mode=OneWay}"
                         Margin="654,322,0,0" VerticalAlignment="Top"/>
                 <Label Content="Active:" HorizontalAlignment="Left" Margin="247,207,0,0" VerticalAlignment="Top"/>
-                <CheckBox IsChecked="{Binding RqBarcoDivision.Actief, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                <CheckBox IsChecked="{Binding Division.Actief, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                           HorizontalAlignment="Left" Margin="353,213,0,0" VerticalAlignment="Top"/>
             </Grid>
         </GroupBox>
