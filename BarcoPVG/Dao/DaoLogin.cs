@@ -29,17 +29,23 @@ namespace BarcoPVG.Dao
         public void LoginSucceeded(Person loginPerson)
         {
             //Put division or to list if they have more than one division
-            string division = null;
-            division = GetAllDivForPerson(loginPerson).FirstOrDefault(x => x.AfkPerson == loginPerson.Afkorting).Pvggroup != null ? division : "";
+            string? division = null;
 
+            BarcoUser = new BarcoUser();
+            BarcoUser.Name = loginPerson.Voornaam;
+
+            if (GetAllDivForPerson(loginPerson).Count > 0)
+            {
+                division = GetAllDivForPerson(loginPerson).FirstOrDefault(x => x.AfkPerson == loginPerson.Afkorting).Pvggroup != null ? division : "";
+                BarcoUser.Division = division;
+            }
+            else
+            {
+                BarcoUser.Division = "Extern";
+            }
             //Put Function to give right the the user
             //string func = "";
 
-            //Jarne
-            //getting the info from the login details to get the right view display
-            BarcoUser = new BarcoUser();
-            BarcoUser.Name = loginPerson.Voornaam;
-            BarcoUser.Division = division;
             BarcoUser.Function = GetFuntion(division);
 
             //BarcoUser.Function = "DEV"; log in as Developer
@@ -52,10 +58,10 @@ namespace BarcoPVG.Dao
         {
             switch (division)
             {
-                case "":
-                    return ""; // Log in als extern
+                case null:
+                    return "DEV"; // Log in als extern
                 default:
-                    return "TEST"; // Log in als TEST team
+                    return "DEV"; // Log in als TEST team
                     break;
             }
 

@@ -77,12 +77,12 @@ namespace BarcoPVG.Dao
                 detail.Euts.Add(new Eut
                 {
                     // Static added for now
-                    // TODO: Dynamic linking
                     OmschrijvingEut = "EUT" + EutNr,
                     AvailableDate = ((DateTime)eut.AvailabilityDate).Date
                 });
             };
             _context.RqRequests.Add(request);
+            
         }
 
         // Mohamed, Kaat

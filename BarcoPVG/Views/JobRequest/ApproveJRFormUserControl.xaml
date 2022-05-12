@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="880" d:DesignWidth="1882" d:Background="LightGray">
     <StackPanel Margin="10" Orientation="Horizontal">
-        <GroupBox Header="Project Details" Margin="10" Width="auto" Height="auto" >
+        <GroupBox Header="Project Details" Margin="10">
             <Grid Margin="0,0,0,368">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -153,43 +153,31 @@
                                     Width="894"
                                     HorizontalAlignment="Left"/>
                     <!--Jarne-->
-                    <ListBox x:Name="ListEUT" 
-                             MinHeight="300" 
-                             Background="#363636" 
-                             ItemTemplate="{DynamicResource EUT}"
-                             SelectedItem="{Binding SelectedEUT, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                             Height="344"
-                             Width="1186"
-                             Margin="3"
-                             SelectionMode="Single"
-                             ScrollViewer.VerticalScrollBarVisibility="Auto"
-                             ScrollViewer.CanContentScroll="True"
-                             ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                             HorizontalContentAlignment="Center">
-                        <ListBox.Resources>
-                            <CollectionViewSource x:Key="EUTs" 
-                                                  Source="{Binding EUTs}" />
-                        </ListBox.Resources>
+                    <ListBox x:Name="ListEUT"
+                                         MinHeight="300"
+                                         MinWidth="850"
+                                         HorizontalAlignment="Stretch"
+                                         Background="#363636"
+                                         ItemTemplate="{DynamicResource EUT}" 
+                                         SelectedItem="{Binding SelectedEUT, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                         ScrollViewer.CanContentScroll="True"
+                                         ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                                         HorizontalContentAlignment="Center" >
                         <ListBox.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <StackPanel Orientation='Horizontal'/>
+                                <StackPanel Orientation="Horizontal"/>
                             </ItemsPanelTemplate>
                         </ListBox.ItemsPanel>
-                    </ListBox>
-                    <!--<ListBox.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <StackPanel Orientation="Horizontal"/>
-                        </ItemsPanelTemplate>
-                        </ListBox.ItemsPanel>
+                        <ListBox.Resources>
+                            <CollectionViewSource x:Key="EUTs" Source="{Binding EUTs}" />
+                        </ListBox.Resources>
                         <ListBox.ItemsSource>
                             <CompositeCollection>
                                 <CollectionContainer Collection="{Binding Source={StaticResource EUTs}}"/>
-                                <ListBoxItem>
-                                    <Button Command="{DynamicResource AddEUT}" Content="+"/>
-                                </ListBoxItem>
                             </CompositeCollection>
                         </ListBox.ItemsSource>
-                        </ListBox>-->
+                    </ListBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" 
                             HorizontalAlignment="Center">
