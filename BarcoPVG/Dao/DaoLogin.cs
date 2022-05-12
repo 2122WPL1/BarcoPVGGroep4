@@ -46,9 +46,6 @@ namespace BarcoPVG.Dao
             //Put Function to give right the the user
             //string func = "";
 
-            //Jarne getting the info from the login details to get the right view display
-            
-            
             BarcoUser.Function = GetFuntion(division);
 
             //BarcoUser.Function = "DEV"; log in as Developer

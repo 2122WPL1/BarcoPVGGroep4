@@ -17,22 +17,16 @@ namespace BarcoPVG.Models.Db
         public string? JrNumber { get; set; }
         public DateTime? RequestDate { get; set; }
         public string? JrStatus { get; set; }
-        /// <summary>
-        /// initialen
-        /// </summary>
         public string Requester { get; set; } = null!;
-        /// <summary>
-        /// uit keuzelijst
-        /// </summary>
         public string BarcoDivision { get; set; } = null!;
         public string JobNature { get; set; } = null!;
         public string EutProjectname { get; set; } = null!;
-        public string EutPartnumbers { get; set; } = null!;
+        public string? EutPartnumbers { get; set; }
         public string HydraProjectNr { get; set; } = null!;
         public DateTime ExpectedEnddate { get; set; }
         public bool? InternRequest { get; set; }
-        public string? GrossWeight { get; set; } = null!;
-        public string? NetWeight { get; set; } = null!;
+        public string? GrossWeight { get; set; }
+        public string? NetWeight { get; set; }
         public bool Battery { get; set; }
 
         public virtual ICollection<PlPlanning> PlPlannings { get; set; }

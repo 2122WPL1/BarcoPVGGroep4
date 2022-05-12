@@ -17,19 +17,21 @@ namespace BarcoPVG.Dao
         {
 
         }
+
         protected static readonly DaoEUT _instanceEUT = new();
 
         public static DaoEUT InstanceEUT()
         {
             return _instanceEUT;
         }
+
         //MOHAMED
         //Matti
         // This function adds the input from the EUT part to the request object
         // We create local variables to address the fields of the corresponding tables
         // The combined object is eventually given to the context
-        // <param name="request"></param>
-        // <param name="eut"></param>
+        /// <param name="request"></param>
+        /// <param name="eut"></param>
         public void AddEutToRqRequest(RqRequest request, EUT eut, string EutNr)
         {
             List<string> testDivision = new();

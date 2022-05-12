@@ -4,6 +4,7 @@ using BarcoDB_Admin.ViewModels.Edit;
 using Prism.Commands;
 using System;
 using System.Windows;
+using BarcoDB_Admin.Dao;
 
 namespace BarcoDB_Admin.ViewModels
 {
@@ -26,7 +27,6 @@ namespace BarcoDB_Admin.ViewModels
         public DelegateCommand SaveUserCommand { get; set; }
         public DelegateCommand SaveResourcesCommand { get; set; }
         #endregion
-
 
         public ViewModelMain()
         {
@@ -128,8 +128,7 @@ namespace BarcoDB_Admin.ViewModels
             }
             else
             {
-                MessageBox.Show("No Devision selected!");
-
+                MessageBox.Show("No Division selected!");
             }
         }
 
@@ -140,7 +139,6 @@ namespace BarcoDB_Admin.ViewModels
             _daoUser.AddUser(person);
             //this.ViewModel = new ViewModelAddUser();
             DisplayDatabaseUserStartup();
-
         }
 
         public void UpdateUser()
@@ -155,10 +153,9 @@ namespace BarcoDB_Admin.ViewModels
 
         public void InsertResources()
         {
-            var resource = ((ViewModelAddResources)this.ViewModel);
+            var resource = ((ViewModelAddResources)this.ViewModel).PlResource;
 
             _daoResource.AddResource(resource);
         }
-
     }
 }

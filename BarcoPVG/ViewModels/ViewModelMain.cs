@@ -54,7 +54,6 @@ namespace BarcoPVG.ViewModels
 
         public ViewModelMain()
         {
-            
             this.User = _daoLogin.BarcoUser;
 
             DisplayNewJRCommand = new DelegateCommand(DisplayNewJR);
@@ -165,24 +164,22 @@ namespace BarcoPVG.ViewModels
             bool passed = false;
             if (jr.Requester.Length > 10)
             {
-                MessageBox.Show("Requester is longer than the allowed length(10)");
+                MessageBox.Show("Requester is longer than the allowed length (10)");
             }
             else
             {
                 if (!(
+                        //Jarne
+                        //checking if fields JR are null
                         jr.BarcoDivision == String.Empty || jr.JobNature == String.Empty ||
-                        jr.EutPartnumbers == String.Empty || jr.NetWeight == String.Empty ||
-                        jr.GrossWeight == String.Empty || jr.EutProjectname == String.Empty ||
-                        jr.HydraProjectNr == String.Empty
+                        jr.EutProjectname == String.Empty || jr.HydraProjectNr == String.Empty
                     ))
                 {
-                    if (jr.ExpectedEnddate.Date !=
-                        DateTime.Now
-                            .Date) //geeft nooit null | de tijd van vandaag door datetime now te gebruiken | datetime now en enddate 1 milliseconde verschil | nu tijdelijke if clause
+                    if (jr.ExpectedEnddate.Date != DateTime.Now.Date) //never returns null | today's time by using datetime now | datetime now and enddate 1 milliseconde different
                     {
                         if (((AbstractViewModelContainer)this.ViewModel).EUTs.Count == 0) //all EUT from JR
                         {
-                            MessageBox.Show("Er moet tenminste 1 eut zijn");
+                            MessageBox.Show("there must be at least 1 EUT");
                         }
                         else
                         {
@@ -197,22 +194,20 @@ namespace BarcoPVG.ViewModels
                                 {
                                     passed = true;
                                 }
-
                                 eUts2.Add(eUT);
                             }
                         }
                     }
                     else
                     {
-                        MessageBox.Show("geef een datum in voor de jr");
+                        MessageBox.Show("Enter a date");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Alle verplichte gegevens moeten ingevuld worden");
+                    MessageBox.Show("All non-optional fields must be filled in");
                 }
             }
-
             eUTs1 = eUts2;
             return passed;
         }
@@ -231,15 +226,14 @@ namespace BarcoPVG.ViewModels
                     }
                     else
                     {
-                        MessageBox.Show("selecteer een devision bij alle de euts");
+                        MessageBox.Show("Select a division with every EUT");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("geen datum voor 1 van de eut's geslescteerd");
+                    MessageBox.Show("Check the EUT's selected date");
                 }
             }
-
             return passed;
         }
 
@@ -358,12 +352,9 @@ namespace BarcoPVG.ViewModels
                     {
                         MessageBox.Show(error);
                     }
-
                 }
                 // Here we call the SaveChanges method, so that we can link several EUTs to one JR
             }
-
-
         }
 
         // Switch screen for planner
@@ -420,17 +411,7 @@ namespace BarcoPVG.ViewModels
             string i = _daoLogin.BarcoUser.Function;
             switch (i)
             {
-                ////Jarne
-                ////aanmaken van een nieuwe view die DATA voor de Visibility van de database button
-                //case "DATA":
-                //    NewRequests = Visibility.Visible;
-                //    ApproveRequests = Visibility.Visible;
-                //    Test = Visibility.Visible;
-                //    SeeAll = Visibility.Visible;
-                //    Data = Visibility.Visible;
-                //
-                //    break;
-                case "DEV": // Developer -> Developer voor dit programma 
+                case "DEV": //Developer
                     NewRequests = Visibility.Visible;
                     ApproveRequests = Visibility.Visible;
                     Test = Visibility.Visible;
@@ -440,7 +421,7 @@ namespace BarcoPVG.ViewModels
                     this.ViewModel = new ViewModelDevelopment();
 
                     break;
-                case "TEST": // Test team -> om de geplande JR te plannen voor de test 
+                case "TEST": //Test team
                     NewRequests = Visibility.Visible;
                     ApproveRequests = Visibility.Hidden;
                     Test = Visibility.Visible;
@@ -450,7 +431,7 @@ namespace BarcoPVG.ViewModels
                     this.ViewModel = new ViewModelPlanTestQueue();
 
                     break;
-                case "PLAN": // Planning -> om plans goed te keuren
+                case "PLAN": //Planning
                     NewRequests = Visibility.Hidden;
                     ApproveRequests = Visibility.Visible;
                     Test = Visibility.Hidden;
@@ -460,7 +441,7 @@ namespace BarcoPVG.ViewModels
                     this.ViewModel = new ViewModelApproveJRQueue();
 
                     break;
-                default: // Normale gebuikers -> die kan enkele JR aan te vragen
+                default: //Standard user
                     NewRequests = Visibility.Visible;
                     ApproveRequests = Visibility.Hidden;
                     Test = Visibility.Hidden;
@@ -471,6 +452,5 @@ namespace BarcoPVG.ViewModels
                     break;
             }
         }
-
     }
 }
