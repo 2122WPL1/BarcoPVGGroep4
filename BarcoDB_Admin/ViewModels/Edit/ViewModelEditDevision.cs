@@ -12,7 +12,7 @@ namespace BarcoDB_Admin.ViewModels.Edit
         {
             //SelectedDivision = devision;
 
-            this._RqBarcoDivision = _dao.GetDevision(Afkorting);
+            //this._RqBarcoDivision = _daoUser.GetDevision(Afkorting);
         }
 
         public RqBarcoDivision RqBarcoDivision

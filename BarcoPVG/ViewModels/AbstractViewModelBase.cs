@@ -20,6 +20,7 @@ namespace BarcoPVG.ViewModels
         protected DaoResources _daoResources = DaoResources.InstanceResources();
         protected DaoPerson _daoPerson = DaoPerson.InstancePerson();
         protected DaoLogin _daoLogin = DaoLogin.InstanceLogin();
+        protected DaoInternalJR _daoInternalJr = DaoInternalJR.InstanceInternalJR();
 
         // Constructor
         public AbstractViewModelBase()

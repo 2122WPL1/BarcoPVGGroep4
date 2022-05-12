@@ -27,7 +27,7 @@ namespace BarcoPVG.ViewModels.JobRequest
 
         private void Init()
         {
-            if (_daoLogin.BarcoUser.Function == "TEST")
+            if (_daoLogin.BarcoUser.Function == "TEST" || _daoLogin.BarcoUser.Function == "DEV")
             {
                 NewInternJR = Visibility.Visible;
             }
@@ -41,7 +41,7 @@ namespace BarcoPVG.ViewModels.JobRequest
         // Loads all JR IDs in LB
         public void Load()
         {
-            var requestIds = _daoJR.GetAllJobRequests().Where(rq => rq.Requester == _daoLogin.BarcoUser.Name);
+            var requestIds = _daoJR.GetAllJobRequests().Where(rq => (rq.Requester == _daoLogin.BarcoUser.Name) && (rq.JrStatus == "To approve"));
             IdRequestsOnly.Clear();
 
 

@@ -17,7 +17,7 @@
                       ItemsSource="{Binding IdRequestsOnly}" 
                       SelectedItem="{Binding SelectedJR, Mode=TwoWay}"
                       VerticalAlignment="Stretch"
-                      Height="auto"
+                      MaxHeight="600"
                       Margin="3"
                       SelectionMode="Single"
                       ScrollViewer.VerticalScrollBarVisibility="Auto"

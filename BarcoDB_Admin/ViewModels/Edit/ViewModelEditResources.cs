@@ -1,10 +1,4 @@
 ﻿using BarcoDB_Admin.Models.Db;
-using BarcoDB_Admin.Viewmodels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BarcoDB_Admin.ViewModels.Edit
 {
@@ -17,7 +11,7 @@ namespace BarcoDB_Admin.ViewModels.Edit
         public ViewModelEditResources(int Id) : base()
         {
             //SelectedResouce = resource;
-            this._PlResource = _dao.GetResource(Id);
+            this._PlResource = _daoResource.GetResource(Id);
         }
 
         public PlResource PlResource
