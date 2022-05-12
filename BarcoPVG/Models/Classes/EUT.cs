@@ -50,7 +50,6 @@ namespace BarcoPVG.Models.Classes
             //TODO hier nog ervoor zorgen dat de parameter word meegestuurd vanuit xaml
             if (toRemove != null)
             {
-                
                 //remove EUT ViewModelApproveJRForm
                 EUTs.Remove(toRemove);
                 //MessageBox.Show(obj.ToString());
