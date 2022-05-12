@@ -29,9 +29,9 @@
                         <StackPanel Orientation="Horizontal" Grid.Column="1" >
                             <TextBlock FontSize="14" Text="Welcome "/>
                             <TextBlock FontSize="14" FontWeight="Bold" Text="{Binding User.Name}"/>
-                            <TextBlock FontSize="14" Text=" ("/>
+                            <!--<TextBlock FontSize="14" Text=" ("/>
                             <TextBlock FontSize="14" Text="{Binding User.Division}"/>
-                            <TextBlock FontSize="14" Text=")"/>
+                            <TextBlock FontSize="14" Text=")"/>-->
                         </StackPanel>
                     </Grid>
                 </GroupBox.Header>
@@ -58,7 +58,7 @@
                             Margin="10"/>
                     </StackPanel>
                     <ScrollViewer Margin="0,-0,0,0">
-                        <ContentControl x:Name="ctnView" Content="{Binding ViewModel}" Height="880" Width="1882" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto"/>
+                        <ContentControl x:Name="ctnView" Content="{Binding ViewModel}" Height="710" Width="1498" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto"/>
                     </ScrollViewer>
                 </StackPanel>
             </GroupBox>

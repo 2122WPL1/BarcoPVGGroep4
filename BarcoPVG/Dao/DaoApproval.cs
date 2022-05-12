@@ -33,14 +33,15 @@ namespace BarcoPVG.Dao
             var DetailList = daoJR.RqDetail(jrId);
             var request = _context.RqRequests.SingleOrDefault(rq => rq.IdRequest == jrId);
 
-            // List of unique test divisions checked in this JR
-            var divisions = DetailList.Select(d => d.Testdivisie).Distinct().ToList(); // OVERBODIG
-
+            
+            
             // On approval, set JR number and request date
             request.JrNumber = $"JRDEV{request.IdRequest:D5}";
             request.RequestDate = DateTime.Now;
             request.JrStatus = "In Plan";
 
+            // List of unique test divisions checked in this JR
+            var divisions = DetailList.Select(d => d.Testdivisie).Distinct().ToList(); // OVERBODIG
             // Create a new planning record for each unique division
             foreach (string division in divisions)
             {
@@ -51,7 +52,7 @@ namespace BarcoPVG.Dao
             jump:
                 try //foutafhandeling
                 {
-                    _context.Add(planning);
+                    _context.PlPlannings.Add(planning);
                     _context.SaveChanges();
                     //TODO approving a job request causes a problem with the database primary key of Planning_PK and pl_Planning a double id. it wants to make a record with the same id even if it already exsist → temporarely fixed with try catch.
                     if (msg)

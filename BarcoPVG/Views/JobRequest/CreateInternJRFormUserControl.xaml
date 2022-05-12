@@ -5,8 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BarcoPVG.Views.JobRequest"
              xmlns:views="clr-namespace:BarcoPVG.Views"
-             mc:Ignorable="d" d:Background="LightGray" Height="auto" Width="auto">
-    <StackPanel>
+             mc:Ignorable="d" 
+             d:DesignHeight="880" d:DesignWidth="1882" d:Background="LightGray">
+    <StackPanel Margin="10">
         <GroupBox Header="Intern JR Form" Height="353">
             <Grid>
                 <Grid.RowDefinitions>
@@ -27,24 +28,18 @@
                   Grid.Column="2" Margin="0,102,0,0" VerticalAlignment="Top" Width="150" HorizontalAlignment="Center" TextElement.Foreground="Black"/>
             </Grid>
         </GroupBox>
-        <DockPanel Height="100" LastChildFill="False">
-            <Grid Width="801">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
+       
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Button Content="Confirm"
                             Command="{Binding DataContext.SaveJrCommand, 
                             RelativeSource={RelativeSource AncestorType={x:Type views:MainWindow}}, 
                             Mode=OneWay}"
-                            Height="40" Margin="46,18,0,0" VerticalAlignment="Top" />
+                            Margin="5,5,5,5" VerticalAlignment="Center" />
                     <Button Grid.Column="1" Content="Cancel" HorizontalAlignment="Left" 
                                 Command="{Binding Datacontext.DisplayDevStartupCommand, Mode=OneWay}"
-                                Margin="46,18,0,0" VerticalAlignment="Top"/>
+                                Margin="5,5,5,5" VerticalAlignment="Center"/>
                 </StackPanel>
-            </Grid>
-        </DockPanel>
+
     </StackPanel>
 
 
