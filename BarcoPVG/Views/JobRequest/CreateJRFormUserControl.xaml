@@ -5,9 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BarcoPVG.Views"
              mc:Ignorable="d"
-             d:DesignHeight="880" d:DesignWidth="1882" d:Background="LightGray">
+             Height="auto" Width="auto" d:Background="LightGray">
     <StackPanel Margin="10">
-        <GroupBox Header="Project Details">
+        <GroupBox Header="Project Details" >
             <DockPanel>
                 <Grid HorizontalAlignment="Center">
                     <Grid.ColumnDefinitions>
@@ -133,14 +133,14 @@
                              HorizontalAlignment="Stretch"
                              Width="Auto"/>
                 </Grid>
-                <Grid MaxWidth="900" HorizontalAlignment="left">
+                <Grid HorizontalAlignment="left">
                     <DockPanel LastChildFill="False">
-                        <GroupBox Header="Parts and tests">
+                        <GroupBox Header="Parts and tests" Width="auto">
                             <StackPanel>
                                 <!--Jarne-->
-                                <ListBox x:Name="ListEUT"
-                                         MinHeight="300"
-                                         MinWidth="850"
+                                <ListBox x:Name="ListEUT" Width="auto"
+                                         d:DesignWidth="800"
+                                         MinHeight="320"
                                          HorizontalAlignment="Stretch"
                                          Background="#363636"
                                          ItemTemplate="{DynamicResource EUT}" 

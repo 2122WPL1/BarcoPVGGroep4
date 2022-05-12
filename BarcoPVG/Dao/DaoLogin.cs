@@ -71,7 +71,6 @@ namespace BarcoPVG.Dao
                     return "PLAN";
                 default:
                     return "EXTERN"; 
-                    
             }
         }
 

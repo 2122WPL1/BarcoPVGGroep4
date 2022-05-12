@@ -3,7 +3,6 @@
                     xmlns:JobRequest="clr-namespace:BarcoPVG.Views.JobRequest" 
                     xmlns:ViewModels="clr-namespace:BarcoPVG.ViewModels">
 
-
     <DataTemplate x:Key="AddEUT">
         <StackPanel>
             <Button Content="Voeg EUT toe" Command="{Binding AddEUTCommand}"></Button>
@@ -13,11 +12,8 @@
 
     <!-- DataTemplate to display EUT's in listboxes/listviews - Kaat-->
     <DataTemplate x:Key="EUT">
-
         <ListBoxItem BorderBrush="red" Width="180"  BorderThickness="2"  Background="LightGray" Foreground="Black">
-
-            <Grid  >
-
+            <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
@@ -26,11 +22,8 @@
                     <ColumnDefinition/>
                     <ColumnDefinition Width="10"/>
                 </Grid.ColumnDefinitions>
-                <Button HorizontalAlignment="Right" Content="X" Command="{Binding RemoveSingleEUTCommand}" CommandParameter="{Binding}"></Button>
-               
                 <TextBlock  Text="EUT" Margin="5" Width="30" HorizontalAlignment="Left"/>
-               
-
+                <Button HorizontalAlignment="Right" Content="X" Command="{Binding RemoveSingleEUTCommand}" CommandParameter="{Binding IdRqDetail}" IsEnabled="True"/>
                 <StackPanel  Grid.Row="1" Orientation="Vertical"  TextElement.Foreground="Black">
                     <CheckBox IsChecked="{Binding EMC, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="EMC"  FontSize="12" Width="150"  Margin="5"/>
                     <CheckBox IsChecked="{Binding ENV, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="ENVIRONMENTAL"  FontSize="12" Width="150"  Margin="5"/>
@@ -40,21 +33,14 @@
                     <CheckBox IsChecked="{Binding ECO, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="GREEN COMPLIANCE" FontSize="12" Width="150"  Margin="5" IsEnabled="False"/>
                     <TextBlock  Text="Foreseen availability date:" Margin="5"/>
                     <!--<DatePicker  SelectedDate="{Binding AvailabilityDate}" IsTodayHighlighted="True" Margin="5"/>-->
-                    <DatePicker SelectedDate ="{Binding AvailabilityDate}"
-                                Grid.Column="4" Grid.Row="10" IsTodayHighlighted="True" />
-
-
+                    <DatePicker SelectedDate ="{Binding AvailabilityDate}" Grid.Column="4" Grid.Row="10" IsTodayHighlighted="True" />
                 </StackPanel>
             </Grid>
-
         </ListBoxItem>
     </DataTemplate>
-    <!--<SolidColorBrush x:Key="ResourceColor" Color="{Binding Kleur}"  /> -->
-
    
     <!--Data template for pvg responsible in the Gui-->
     <DataTemplate x:Key="PVGRes">
-        <!--<ListBoxItem BorderBrush="white" BorderThickness="1" HorizontalContentAlignment="Stretch"  Foreground="White">-->
         <Grid HorizontalAlignment="Stretch">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -66,9 +52,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-
             <TextBlock Grid.RowSpan="1" Text="PVGResponsible:" Margin="5" Foreground="white"/>
-
             <StackPanel Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="6" Orientation="Horizontal" HorizontalAlignment="Center" TextElement.Foreground="White">
                 <TextBox Text="{Binding EMCpvg, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="center" Width="85" Margin="5"/>
                 <TextBox Text="{Binding ENVpvg, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" Width="85" Margin="5"/>
@@ -77,9 +61,6 @@
                 <TextBox Text="{Binding PCKpvg, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" Width="85" Margin="5"/>
                 <TextBox Text="{Binding ECOpvg, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" Width="85" Margin="5"/>
             </StackPanel>
-
         </Grid>
-        <!--</ListBoxItem>-->
     </DataTemplate>
-
 </ResourceDictionary>
