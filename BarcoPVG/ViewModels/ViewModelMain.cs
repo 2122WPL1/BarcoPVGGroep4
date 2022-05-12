@@ -245,22 +245,22 @@ namespace BarcoPVG.ViewModels
             return passed;
         }
 
-        //Sander, Jarne
-        //aanmaken van een JRNummer zodat deze ingevuld kan worden 
-        private string CreateJRNummer(RqRequest jr)
-        {
-            //
-            string JrNumber = "JR" + _daoLogin.BarcoUser.Function;
+        ////Sander, Jarne
+        ////aanmaken van een JRNummer zodat deze ingevuld kan worden 
+        //private string CreateJRNummer(RqRequest jr)
+        //{
+        //    //
+        //    string JrNumber = "JR" + _daoLogin.BarcoUser.Function;
 
-            for (int i = jr.IdRequest.ToString().Length; i <= 5; i++)
-            {
-                JrNumber += "0";
-            }
+        //    for (int i = jr.IdRequest.ToString().Length; i <= 5; i++)
+        //    {
+        //        JrNumber += "0";
+        //    }
 
-            JrNumber += _daoJR.GetJR(jr).IdRequest;
+        //    JrNumber += _daoJR.GetJR(jr).IdRequest;
 
-            return JrNumber;
-        }
+        //    return JrNumber;
+        //}
 
         public void InsertJr() // aanmaken job request
         {

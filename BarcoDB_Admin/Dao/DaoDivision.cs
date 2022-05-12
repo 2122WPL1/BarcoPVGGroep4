@@ -22,16 +22,5 @@ namespace BarcoDB_Admin.Dao
             _context.SaveChanges();
         }
 
-        public void GetDiv(Person loginPerson)
-        {
-            List<RqBarcoDivision> listDiv = GetAllDivisions();
-            foreach (RqBarcoDivision div in listDiv)
-            {
-                //if (div.Afkorting == loginPerson)
-                //{
-
-                //}
-            }
-        }
     }
 }

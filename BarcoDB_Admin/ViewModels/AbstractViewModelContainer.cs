@@ -13,7 +13,9 @@ namespace BarcoDB_Admin.ViewModels
         // Only one getter/setter needs to be made for all changes in GUI
         //protected JR _jr;
         //protected EUT _eut;
-        public Person _Person;
+        protected Person _Person;
+        protected PlResource _Resource;
+        protected RqBarcoDivision _Division;
 
 
         // EUT's
@@ -57,8 +59,20 @@ namespace BarcoDB_Admin.ViewModels
 
         public Person Person
         {
-            get { return _Person; }
+            get{ return _Person; }
             set { _Person = value; OnpropertyChanged(); }
+        }
+
+        public RqBarcoDivision Division
+        {
+            get { return _Division; }
+            set { _Division = value; OnpropertyChanged(); }
+        }
+
+        public PlResource Resource
+        {
+            get { return _Resource; }
+            set { _Resource = value; OnpropertyChanged(); }
         }
 
     }

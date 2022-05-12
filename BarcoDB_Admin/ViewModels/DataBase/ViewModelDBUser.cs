@@ -6,7 +6,7 @@ using System.Windows;
 
 namespace BarcoDB_Admin.ViewModels.DataBase
 {
-    public class ViewModelDBUser : AbstractViewModelBase
+    public class ViewModelDBUser : AbstractViewModelContainer
     {
         DaoUser _dao = new DaoUser();
 
@@ -18,7 +18,7 @@ namespace BarcoDB_Admin.ViewModels.DataBase
 
         public ViewModelDBUser() : base()
         {
-            DeleteUser = new DelegateCommand(deleteUserFromDB);
+            //DeleteUser = new DelegateCommand(deleteUserFromDB);
             Load();
         }
 
@@ -34,7 +34,7 @@ namespace BarcoDB_Admin.ViewModels.DataBase
         {
             if (SelectedUser != null)
             {
-                if (MessageBox.Show("Are you sure you want to delete this user?", "Delete User", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                if (MessageBox.Show("Are you sure you want to delete this user?", "Delete User", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
                 {
                     _dao.RemoveUser(SelectedUser);
                     Load();

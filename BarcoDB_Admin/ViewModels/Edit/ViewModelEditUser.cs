@@ -6,26 +6,21 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace BarcoDB_Admin.ViewModels.Edit
 {
     //Amy
-     class ViewModelEditUser : AbstractViewModelBase
+     class ViewModelEditUser : AbstractViewModelContainer
     {
-        private Person _Person;
 
-        public Person SelectedUser { get; set; }
+        ObservableCollection<Person> personDetails { get; set; }
         public ViewModelEditUser(string Afkorting) : base()
         {
-            //SelectedUser = user;
-            //_Person = _daoUser.GetUser(Afkorting);
+            Person = _daoUser.GetAllUser().FirstOrDefault(x => x.Afkorting == Afkorting);
             
         }
 
-        public Person Person
-        { 
-            get { return _Person; } 
-            set { _Person = value; OnpropertyChanged(); }
-        }
+
     }
 }
