@@ -101,21 +101,17 @@ namespace BarcoPVG.ViewModels.JobRequest
             }
         }
 
-        /// <summary>
-        /// This function adds an new EUT instance into the GUI RequestForm
-        /// EUT in Database
-        /// </summary>
+        // This function adds an new EUT instance into the GUI RequestForm
+        // EUT in Database
         public void AddEUT()
         {
             EUTs.Add(new EUT());
         }
 
-        /// <summary>
-        /// This function ensures that the existing data of an eut is read from the database and loaded into the requestForm xaml
-        /// </summary>
+        // This function ensures that the existing data of an eut is read from the database and loaded into the requestForm xaml
         /// <param name="id"></param>
         /// <param name="jr"></param>
-        public void FillEUT( RqRequest rq)
+        public void FillEUT(RqRequest rq)
         {
             foreach (var objecten in _daoEUT.GetEut(rq))
             {
@@ -123,19 +119,15 @@ namespace BarcoPVG.ViewModels.JobRequest
             }
         }
 
-        /// <summary>
-        /// Clear all data in JR
-        /// </summary>
+        // Clear all data in JR
         private void RefreshJR()
         {
             this.JR = _daoJR.GetNewJR();
        
             EUTs.Clear();
         }
-
-        /// <summary>
-        /// deletes selected EUT via _selectedEut variable
-        /// </summary>
+        
+        // deletes selected EUT via _selectedEut variable
         public void RemoveSelectedEUT(object obj)
         {
             EUTs.Remove(_selectedEUT);

@@ -34,22 +34,23 @@ namespace BarcoPVG.Dao
             BarcoUser = new BarcoUser();
             BarcoUser.Name = loginPerson.Voornaam;
 
-            if (GetAllDivForPerson(loginPerson).Count > 0)
+            List<RqBarcoDivisionPerson> divisionPeople = GetAllDivForPerson(loginPerson);
+            if (divisionPeople.Count > 0)
             {
-                division = GetAllDivForPerson(loginPerson).FirstOrDefault(x => x.AfkPerson == loginPerson.Afkorting).Pvggroup != null ? division : "";
+                division = divisionPeople.FirstOrDefault(x => x.AfkPerson == loginPerson.Afkorting).Pvggroup;
                 BarcoUser.Division = division;
             }
             else
             {
-                BarcoUser.Division = "Extern";
+                BarcoUser.Division = "Geen Division"; //Extern??
             }
             //Put Function to give right the the user
             //string func = "";
 
             //Jarne getting the info from the login details to get the right view display
-            
-            
-            BarcoUser.Function = GetFuntion(division);
+
+
+            BarcoUser.Function = GetFuntion(loginPerson);
 
             //BarcoUser.Function = "DEV"; log in as Developer
 
@@ -57,18 +58,20 @@ namespace BarcoPVG.Dao
         }
 
         //Eakarach
-        private string GetFuntion(string? division)
+        private string GetFuntion(Person user)
         {
-            switch (division)
-            {
-                case null:
-                    return "DEV"; // Log in als extern
-                default:
-                    return "DEV"; // Log in als TEST team
-                    break;
-            }
 
-            return null;
+            switch (user.Function)
+            {
+                case "DEV":
+                    return "DEV";
+                case "TEST":
+                    return "TEST";
+                case "PLAN":
+                    return "PLAN";
+                default:
+                    return "EXTERN"; 
+            }
         }
 
         public List<RqBarcoDivisionPerson> GetAllDivForPerson(Person loginperson)
@@ -88,6 +91,8 @@ namespace BarcoPVG.Dao
                     output.Add(result);
                 }
             }
+
+
             return output;
         }
     }

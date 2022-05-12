@@ -14,8 +14,7 @@ namespace BarcoDB_Admin.Dao
         {
         }
 
-        public BarcoContext(DbContextOptions<BarcoContext> options)
-            : base(options)
+        public BarcoContext(DbContextOptions<BarcoContext> options) : base(options)
         {
         }
 

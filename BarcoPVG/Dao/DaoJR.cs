@@ -52,12 +52,10 @@ namespace BarcoPVG.Dao
             {
                 JrStatus = Jr.JrStatus == null ? "To approve" : Jr.JrStatus,
                 RequestDate = Add5Datum(), // the JR has to be accepted within 5 non-holiday days.
-                //RequestDate = (DateTime)Jr.ExpEnddate, // Nullable
                 Requester = Jr.Requester == null ? string.Empty : Jr.Requester,
                 BarcoDivision = Jr.BarcoDivision == null ? string.Empty : Jr.BarcoDivision,
                 JobNature = Jr.JobNature == null ? string.Empty : Jr.JobNature,
                 EutProjectname = Jr.EutProjectname == null ? string.Empty : Jr.EutProjectname,
-                // EutPartnumbers = Jr.EutPartnr == null ? string.Empty : Jr.EutPartnr,
                 HydraProjectNr = Jr.HydraProjectnumber == null ? string.Empty : Jr.HydraProjectnumber,
 
                 ExpectedEnddate = Jr.ExpEnddate == null ? DateTime.Now : (DateTime)Jr.ExpEnddate, // Not nullable, so needs to be casted
