@@ -20,7 +20,6 @@ namespace BarcoPVG.ViewModels
 
         public BarcoUser User { get; set; }
 
-        // TODO: check if ICommand also works
         public DelegateCommand Exit { get; set; }
         public DelegateCommand DisplayNewJRCommand { get; set; }
         public DelegateCommand DisplayNewInternJRCommand { get; set; }  // Eakarch
@@ -92,7 +91,6 @@ namespace BarcoPVG.ViewModels
         }
 
         // Command methods
-        // TODO: add method to switch return window based on function
         public void DisplayNewJR()
         {
             SaveJrCommand = new DelegateCommand(InsertJr);
@@ -279,11 +277,29 @@ namespace BarcoPVG.ViewModels
                         _daoEUT.AddEutToRqRequest(jr, eut, count.ToString());
                         count++;
                     }
-                    
+                    // Here we call the SaveChanges method, so that we can link several EUTs to one JR
                     _daoJR.SaveChanges();
-                    DisplayDevStartup();
                 }
-                // Here we call the SaveChanges method, so that we can link several EUTs to one JR
+
+                DisplayEmployeeStartup();
+
+                ////Jarne switch for openening window based on who's logged in
+                //switch (_daoLogin.BarcoUser.Division)
+                //{
+                //    case "DEV":
+                //        DisplayDevStartup();
+                //        break;
+                //    case "TEST":
+                //        DisplayEmployeeStartup();
+                //        break;
+                //    case "PLAN":
+                //        DisplayPlannerStartup();
+                //        break;
+                //    default:
+                //        DisplayEmployeeStartup();
+                //        break;
+                //}
+                //}
             }
         }
 
@@ -293,6 +309,23 @@ namespace BarcoPVG.ViewModels
                 .JR); // SaveChanges included in function
 
             DisplayPlannerStartup();
+            //Jarne switch for openening window based on who's logged in
+                switch (_daoLogin.BarcoUser.Division)
+                {
+                    case "DEV":
+                        DisplayDevStartup();
+                        break;
+                    case "TEST":
+                        DisplayEmployeeStartup();
+                        break;
+                    case "PLAN":
+                        DisplayPlannerStartup();
+                        break;
+                    default:
+                        DisplayEmployeeStartup();
+                        break;
+                }
+                DisplayEmployeeStartup();
         }
 
         // Updates existing job request and switches windows

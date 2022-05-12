@@ -44,7 +44,6 @@ namespace BarcoPVG.Dao
         }
 
         // Creates and saves RqRequest based on JR
-        // TODO: save data stored in other tables
         public RqRequest AddJobRequest(JR Jr)
         {
             // Copy data from JR to new RqRequest
