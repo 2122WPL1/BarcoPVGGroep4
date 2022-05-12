@@ -4,11 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BarcoPVG.Views"
-             mc:Ignorable="d" 
-             d:DesignHeight="880" d:DesignWidth="1882" d:Background="LightGray">
+             mc:Ignorable="d" d:Background="LightGray">
     <StackPanel Margin="10" Orientation="Horizontal">
-        <GroupBox Header="Project Details" Margin="10" Width="auto" Height="auto" >
-            <Grid Margin="0,0,0,368">
+        <GroupBox Header="Project Details" Margin="10" Width="auto" Height="500" >
+            <Grid HorizontalAlignment="Center" Width="650">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
@@ -34,7 +33,7 @@
                 <Label Content="Requester initials:"/>
 
                 <TextBox Text="{Binding JR.Requester, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                         Grid.Column="1" Margin="17,20,0,21"/>
+                         Grid.Column="1" Margin="30,6,0,6" Grid.ColumnSpan="2"/>
 
                 <Label Content="Division:"
                        Grid.Row="1"/>
@@ -43,7 +42,7 @@
                           Text="{Binding JR.BarcoDivision, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                           Grid.Column="1" 
                           Grid.Row="1" 
-                          TextElement.Foreground="Black" Margin="17,20,0,20"/>
+                          TextElement.Foreground="Black" Margin="30,7,0,6" Grid.ColumnSpan="2"/>
 
                 <Label Content="Job nature:" 
                           Grid.Row="2"/>
@@ -51,41 +50,39 @@
                 <ComboBox ItemsSource="{Binding JobNatures}" 
                           Text="{Binding JR.JobNature,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
                           Grid.Column="1" 
-                          Grid.Row="2" Margin="17,17,0,24"/>
+                          Grid.Row="2" Margin="30,6,0,6" Grid.ColumnSpan="2"/>
 
                 <Label Content="Partnumber(s):" 
                        Grid.Row="5"/>
 
                 <TextBox Grid.Column="1" 
                          Grid.Row="5" 
-                         Text="{Binding JR.EutPartnr, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="17,21,0,20"/>
+                         Text="{Binding JR.EutPartnr, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="30,6,0,6" Grid.ColumnSpan="2"/>
 
                 <Label Grid.Row="6" 
                        Content="Net Weight(s) (kg):"/>
 
                 <TextBox Grid.Row="6" 
                          Grid.Column="1" 
-                         Text="{Binding JR.NetWeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="16,20,0,21"/>
+                         Text="{Binding JR.NetWeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="30,6,0,6" Grid.ColumnSpan="2"/>
 
                 <Label Grid.Row="7" 
                        Content="Gross Weight(s) (kg):" 
                        Height="25" 
-                       VerticalAlignment="Top" Grid.ColumnSpan="2" Margin="0,15,174,0"/>
+                       VerticalAlignment="Center" Margin="0,0,60,0"/>
 
                 <TextBox Grid.Row="7" Grid.Column="1"  
-                         Text="{Binding JR.GrossWeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="16,15,0,25"/>
+                         Text="{Binding JR.GrossWeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="30,7,0,6" Grid.ColumnSpan="2"/>
 
                 <Label Content="" Grid.Row="9"/>
 
                 <Label Content="Link to testplan (optional):"
-                       Grid.Row="8" 
-                       Grid.ColumnSpan="2" 
-                       Margin="0,28,150,4" 
-                       Grid.RowSpan="2"/>
+                       Grid.Row="9" 
+                       Margin="0,6,11,6"/>
                 <TextBox Text="{Binding JR.Link,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                              Grid.Column="1"
                              Grid.Row="9"
-                             Margin="16,0,0,41" Grid.ColumnSpan="2" />
+                             Margin="32,6,0,6" Grid.ColumnSpan="2" />
 
                 <Label Content="Projectnr. (SAP/Hydra):" 
                        Grid.Column="3"/>
@@ -135,40 +132,35 @@
 
                 <DatePicker SelectedDate ="{Binding JR.ExpEnddate, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                             Grid.Column="3" 
-                            Grid.Row="8" 
+                            Grid.Row="9" 
                             IsTodayHighlighted="True"
                             Grid.ColumnSpan="2" 
-                            Margin="160,28,0,28"
-                            Grid.RowSpan="3" />
+                            Margin="160,0,0,0" />
 
                 <Label Content="Special remarks (optional):" Grid.Row="10" Grid.ColumnSpan="2" Margin="0,10,150,21" Grid.RowSpan="2"/>
                 <TextBox Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="4" Text="{Binding JR.Remarks,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Height="50" Margin="8,1,2,5" HorizontalAlignment="Stretch" Width="Auto" Grid.RowSpan="2"/>
             </Grid>
         </GroupBox>
-        <GroupBox Header="Parts and tests" Width="1189" Height="840">
-            <StackPanel Width="auto" Height="auto">
+        <GroupBox Header="Parts and tests" Width="auto" HorizontalAlignment="Right" Height="500">
+            <StackPanel>
                 <StackPanel>
                     <ContentControl ContentTemplate="{DynamicResource PVGRes}"
                                     Content="{Binding JR}" 
-                                    Width="894"
-                                    HorizontalAlignment="Left"/>
+                                    HorizontalAlignment="Right"/>
                     <!--Jarne-->
                     <ListBox x:Name="ListEUT" 
-                             MinHeight="300" 
-                             Background="#363636" 
-                             ItemTemplate="{DynamicResource EUT}"
+                             MinHeight="350"
+                             MinWidth="850"
+                             HorizontalAlignment="Stretch"
+                             Background="#363636"
+                             ItemTemplate="{DynamicResource EUT}" 
                              SelectedItem="{Binding SelectedEUT, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                             Height="344"
-                             Width="1186"
-                             Margin="3"
-                             SelectionMode="Single"
                              ScrollViewer.VerticalScrollBarVisibility="Auto"
                              ScrollViewer.CanContentScroll="True"
                              ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                             HorizontalContentAlignment="Center">
+                             HorizontalContentAlignment="Center" >
                         <ListBox.Resources>
-                            <CollectionViewSource x:Key="EUTs" 
-                                                  Source="{Binding EUTs}" />
+                            <CollectionViewSource x:Key="EUTs" Source="{Binding EUTs}" />
                         </ListBox.Resources>
                         <ListBox.ItemsPanel>
                             <ItemsPanelTemplate>
