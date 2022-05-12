@@ -241,18 +241,18 @@ namespace BarcoPVG.ViewModels
         //aanmaken van een JRNummer zodat deze ingevuld kan worden 
         private string CreateJRNummer(RqRequest jr)
         {
-            //
+            
             string JrNumber = "JR" + _daoLogin.BarcoUser.Functie;
 
-        //    for (int i = jr.IdRequest.ToString().Length; i <= 5; i++)
-        //    {
-        //        JrNumber += "0";
-        //    }
+            for (int i = jr.IdRequest.ToString().Length; i <= 5; i++)
+            {
+                JrNumber += "0";
+            }
 
-        //    JrNumber += _daoJR.GetJR(jr).IdRequest;
+            JrNumber += _daoJR.GetJR(jr).IdRequest;
 
-        //    return JrNumber;
-        //}
+            return JrNumber;
+        }
 
         public void InsertJr() // aanmaken job request
         {
@@ -305,29 +305,29 @@ namespace BarcoPVG.ViewModels
 
             DisplayPlannerStartup();
             //Jarne switch for openening window based on who's logged in
-                switch (_daoLogin.BarcoUser.Division)
-                {
-                    case "DEV":
-                        DisplayDevStartup();
-                        break;
-                    case "TEST":
-                        DisplayEmployeeStartup();
-                        break;
-                    case "PLAN":
-                        DisplayPlannerStartup();
-                        break;
-                    default:
-                        DisplayEmployeeStartup();
-                        break;
-                }
-                DisplayEmployeeStartup();
+            switch (_daoLogin.BarcoUser.Division)
+            {
+                case "DEV":
+                    DisplayDevStartup();
+                    break;
+                case "TEST":
+                    DisplayEmployeeStartup();
+                    break;
+                case "PLAN":
+                    DisplayPlannerStartup();
+                    break;
+                default:
+                    DisplayEmployeeStartup();
+                    break;
+            }
+            DisplayEmployeeStartup();
         }
 
         // Updates existing job request and switches windows
         public void UpdateJr()
         {
             var jr = _daoJR.AddJobRequest(
-               ((AbstractViewModelContainer)this.ViewModel) 
+               ((AbstractViewModelContainer)this.ViewModel)
                .JR); // SaveChanges included in function
             int count = 0;
 
@@ -454,3 +454,4 @@ namespace BarcoPVG.ViewModels
         }
     }
 }
+
