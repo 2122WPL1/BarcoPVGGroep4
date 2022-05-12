@@ -17,6 +17,8 @@ namespace BarcoDB_Admin.ViewModels
         public AbstractViewModelContainer()
         {
 
+        }
+
         public Person Person
         {
             get{ return _Person; }

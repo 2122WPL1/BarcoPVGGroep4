@@ -15,10 +15,23 @@ namespace BarcoDB_Admin.ViewModels.Edit
     {
 
         ObservableCollection<Person> personDetails { get; set; }
+        public bool _IsEnable1;
+        public bool IsEnable1
+        {
+            get
+            {
+                return _IsEnable1;
+            }
+            set
+            {
+                _IsEnable1 = value;
+                OnpropertyChanged();
+            }
+        }
         public ViewModelEditUser(string Afkorting) : base()
         {
             Person = _daoUser.GetAllUser().FirstOrDefault(x => x.Afkorting == Afkorting);
-            
+            IsEnable1 = false;
         }
 
 

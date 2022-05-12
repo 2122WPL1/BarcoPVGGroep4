@@ -94,7 +94,7 @@ namespace BarcoDB_Admin.ViewModels
         public void DisplayEditUserStartup()
         {
             //EditUserUserControl can only be opened when there is a User selected
-            if (((ViewModelDBUser)this.ViewModel).SelectedUser == null)
+            if (((ViewModelDBUser)this.ViewModel).SelectedUser != null)
             {
                 var user = ((ViewModelDBUser)this.ViewModel).SelectedUser.Afkorting; // make a new variable to keep the selected user
                 SaveUserCommand = new DelegateCommand(UpdateUser);
@@ -118,7 +118,7 @@ namespace BarcoDB_Admin.ViewModels
         {
             //Amy
             //EditResourcesUserControl can only be opened when there is a resource selected
-            if (((ViewModelDBResources)this.ViewModel).SelectedResouce == null) 
+            if (((ViewModelDBResources)this.ViewModel).SelectedResouce != null) 
             {
                 var resource = ((ViewModelDBResources)this.ViewModel).SelectedResouce.Id;
                 SaveResourcesCommand = new DelegateCommand(UpdateResource);
