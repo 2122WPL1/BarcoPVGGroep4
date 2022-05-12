@@ -7,7 +7,7 @@
              mc:Ignorable="d" d:Background="LightGray">
     <StackPanel Margin="10" Orientation="Horizontal">
         <GroupBox Header="Project Details" Margin="10">
-            <Grid Margin="0,0,0,368">
+            <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
@@ -141,7 +141,7 @@
                 <TextBox Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="4" Text="{Binding JR.Remarks,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Height="50" Margin="8,1,2,5" HorizontalAlignment="Stretch" Width="Auto" Grid.RowSpan="2"/>
             </Grid>
         </GroupBox>
-        <GroupBox Header="Parts and tests" Width="auto" HorizontalAlignment="Right" Height="500">
+        <GroupBox Header="Parts and tests" Width="auto" Height="423">
             <StackPanel>
                 <StackPanel>
                     <ContentControl ContentTemplate="{DynamicResource PVGRes}"
