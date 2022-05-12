@@ -15,8 +15,20 @@ namespace BarcoPVG.ViewModels
 
         // EUT's
         // Does not necessarily need to be linked to JR? We can retrieve the JR ID and add it in DAO
-        public ObservableCollection<EUT> EUTs { get; set; }
-        protected EUT _selectedEUT;
+
+        private ObservableCollection<EUT> _EUTs;
+
+        public ObservableCollection<EUT> EUTs
+        {
+            get { return _EUTs; }
+            set
+            {
+                _EUTs = value;
+                OnpropertyChanged();
+            }
+        }
+
+        public EUT _selectedEUT;
 
         public AbstractViewModelContainer()
         {

@@ -121,7 +121,7 @@ namespace BarcoPVG.ViewModels.JobRequest
         // This function ensures that the existing data of an eut is read from the database and loaded into the requestForm xaml
         /// <param name="id"></param>
         /// <param name="jr"></param>
-        public void FillEUT( RqRequest rq)
+        public void FillEUT(RqRequest rq)
         {
             foreach (var objecten in _daoEUT.GetEut(rq))
             {
