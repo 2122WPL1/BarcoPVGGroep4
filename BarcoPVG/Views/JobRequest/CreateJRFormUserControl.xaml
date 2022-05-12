@@ -138,10 +138,10 @@
                         <GroupBox Header="Parts and tests" Width="auto">
                             <StackPanel>
                                 <!--Jarne-->
-                                <ListBox x:Name="ListEUT" Width="auto"
+                                <ListBox x:Name="ListEUT"
                                          d:DesignWidth="800"
-                                         MinHeight="320"
-                                         MinWidth="1200"
+                                         MinHeight="350"
+                                         MinWidth="500"
                                          HorizontalAlignment="Stretch"
                                          Background="#363636"
                                          ItemTemplate="{DynamicResource EUT}" 
