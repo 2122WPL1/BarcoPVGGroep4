@@ -7,6 +7,7 @@ using BarcoPVG.ViewModels.TestGUI;
 using Prism.Commands;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Windows;
 
 
@@ -29,6 +30,7 @@ namespace BarcoPVG.ViewModels
         public DelegateCommand DisplayTesterPlanCommand { get; set; }
         public DelegateCommand DisplayTesterTestCommand { get; set; }
         public DelegateCommand DisplayDevStartupCommand { get; set; }
+
         public DelegateCommand SaveJrCommand { get; set; }
         public DelegateCommand ApproveJRCommand { get; set; }
         public DelegateCommand DisplayTestPlanningCommand { get; set; }
@@ -413,7 +415,7 @@ namespace BarcoPVG.ViewModels
                     ApproveRequests = Visibility.Visible;
                     Test = Visibility.Visible;
                     SeeAll = Visibility.Visible;
-                    Data = Visibility.Hidden;
+                    Data = Visibility.Visible;
 
                     this.ViewModel = new ViewModelDevelopment();
 

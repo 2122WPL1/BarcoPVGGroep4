@@ -6,12 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using BarcoPVG.Dao;
 
 namespace BarcoPVG.ViewModels.JobRequest
 {
     public class ViewModelCreateInternJRForm : AbstractViewModelContainer
     {
-        
+        private BarcoContext _context = new BarcoContext();
 
         public ObservableCollection<string> Divisions { get; set; }
 
@@ -19,6 +20,10 @@ namespace BarcoPVG.ViewModels.JobRequest
         {
             Init();
             Load();
+
+            // JR = new JR
+            RefreshJR();
+
         }
 
         private void Init()
@@ -37,6 +42,11 @@ namespace BarcoPVG.ViewModels.JobRequest
             {
                 Divisions.Add(division.Afkorting);
             }
+        }
+        private void RefreshJR()
+        {
+            this.JR = _dao.GetNewJR();
+            
         }
     }
 }

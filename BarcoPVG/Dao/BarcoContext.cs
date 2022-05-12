@@ -92,7 +92,7 @@ namespace BarcoPVG.Dao
                 entity.ToTable("Pl_planning");
 
                 entity.Property(e => e.IdPlanning)
-                    .ValueGeneratedNever()
+                    .ValueGeneratedOnAdd()
                     .HasColumnName("id_planning");
 
                 entity.Property(e => e.DueDate).HasColumnType("date");

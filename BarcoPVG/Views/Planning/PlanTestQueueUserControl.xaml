@@ -24,8 +24,8 @@
                         <GridViewColumn Header=" idplanning" DisplayMemberBinding="{Binding IdPlanning}"/>
                         <GridViewColumn  Header="Division" DisplayMemberBinding="{Binding TestDiv}" />
                         <GridViewColumn Header="JR number" DisplayMemberBinding="{Binding JrNr}" />
-                        <GridViewColumn Header="Expected Approve Date" DisplayMemberBinding="{Binding Requestdate, StringFormat=d}" />
-                        <GridViewColumn Header="Expected End Date" DisplayMemberBinding="{Binding DueDate, StringFormat=d}" />
+                        <GridViewColumn Header="Expected To Plan Date" DisplayMemberBinding="{Binding DueDate, StringFormat=d}" />
+                        <GridViewColumn Header="Expected End Date" DisplayMemberBinding="{Binding Requestdate, StringFormat=d}" />
                     </GridView>
                 </ListView.View>
             </ListView>

@@ -27,7 +27,7 @@ namespace BarcoPVG.ViewModels.JobRequest
 
         private void Init()
         {
-            if (_daoLogin.BarcoUser.Function == "TEST")
+            if (_dao.BarcoUser.Function == "TEST" || _dao.BarcoUser.Function == "DEV")
             {
                 NewInternJR = Visibility.Visible;
             }
