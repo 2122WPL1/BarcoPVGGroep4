@@ -155,7 +155,7 @@ namespace BarcoDB_Admin.ViewModels
         {
             var resource = ((ViewModelAddResources)this.ViewModel).PlResource;
 
-            _daoResource.AddResource(resource);
+            _daoResource.AddResource(resource.ToString());
         }
     }
 }

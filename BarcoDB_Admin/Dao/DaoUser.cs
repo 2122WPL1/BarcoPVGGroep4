@@ -32,13 +32,12 @@ namespace BarcoDB_Admin.Dao
             _context.SaveChanges();
         }
 
-        public List<Person> GetAllUser()
+        public Person AddUser(Person person)
         {
             return _context.People.ToList();
         }
 
-        //Jarne
-        public Person EditUser(Person person)
+        public void EditUser(Person person)
         {
             users.Remove(person);
             person = new Person()
