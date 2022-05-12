@@ -24,33 +24,33 @@ namespace BarcoDB_Admin.Dao
             this.BarcoUser = new BarcoUser()
             {
                 Name = "Bart",
-                Function = "DEV",
+                Functie = "DEV",
             };
         }
 
-        public List<string> GetDiv(Person loginPerson)
-        {
-            List<string> output = new List<String>();
-            List<RqBarcoDivisionPerson> listDiv = _context.RqBarcoDivisionPeople.ToList();
-            foreach (RqBarcoDivisionPerson div in listDiv)
-            {
-                if (loginPerson.Afkorting == div.AfkPerson)
-                {
-                    output.Add(div.AfkDevision);
-                }
-            }
-            return output;
-        }
+        //public List<string> GetDiv(Person loginPerson)
+        //{
+        //    List<string> output = new List<String>();
+        //    List<RqBarcoDivisionPerson> listDiv = _context.RqBarcoDivisionPeople.ToList();
+        //    foreach (RqBarcoDivisionPerson div in listDiv)
+        //    {
+        //        if (loginPerson.Afkorting == div.AfkPerson)
+        //        {
+        //            output.Add(div.AfkDevision);
+        //        }
+        //    }
+        //    return output;
+        //}
 
-        // Removes unsaved changed by replacing the context by a new instance
-        // Kaat
-        public void RemoveChanges()
-        {
-            _context = new BarcoContext();
-        }
-        public void SaveChanges()
-        {
-            _context.SaveChanges();
-        }
+        //// Removes unsaved changed by replacing the context by a new instance
+        //// Kaat
+        //public void RemoveChanges()
+        //{
+        //    _context = new BarcoContext();
+        //}
+        //public void SaveChanges()
+        //{
+        //    _context.SaveChanges();
+        //}
     }
 }

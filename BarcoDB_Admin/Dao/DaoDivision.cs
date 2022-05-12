@@ -38,16 +38,16 @@ namespace BarcoDB_Admin.Dao
             return div;
         }
 
-        public void GetDiv(Person loginPerson)
-        {
-            List<RqBarcoDivision> listDiv = GetAllDivisions();
-            foreach (RqBarcoDivision div in listDiv)
-            {
-                //if (div.Afkorting == loginPerson)
-                //{
+        //public void GetDiv(Person loginPerson)
+        //{
+        //    List<RqBarcoDivision> listDiv = GetAllDivisions();
+        //    foreach (RqBarcoDivision div in listDiv)
+        //    {
+        //        //if (div.Afkorting == loginPerson)
+        //        //{
 
-                //}
-            }
-        }
+        //        //}
+        //    }
+        //}
     }
 }

@@ -44,15 +44,15 @@ namespace BarcoPVG.Dao
             {
                 BarcoUser.Division = "Geen Division"; //Extern??
             }
-            //Put Function to give right the the user
+            //Put Functie to give right the the user
             //string func = "";
 
             //Jarne getting the info from the login details to get the right view display
 
 
-            BarcoUser.Function = GetFuntion(loginPerson);
+            BarcoUser.Functie = GetFuntion(loginPerson);
 
-            //BarcoUser.Function = "DEV"; log in as Developer
+            //BarcoUser.Functie = "DEV"; log in as Developer
 
 
         }
@@ -61,7 +61,7 @@ namespace BarcoPVG.Dao
         private string GetFuntion(Person user)
         {
 
-            switch (user.Function)
+            switch (user.Functie)
             {
                 case "DEV":
                     return "DEV";

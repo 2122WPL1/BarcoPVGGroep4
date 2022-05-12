@@ -27,7 +27,7 @@ namespace BarcoDB_Admin.ViewModels.DataBase
 
         public void Load()
         {
-            AllUsers = _dao.GetAllUser();
+            AllUsers = _daoUser.GetUsers();
         }
 
         public void deleteUserFromDB()

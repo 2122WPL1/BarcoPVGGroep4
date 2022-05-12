@@ -32,12 +32,12 @@ namespace BarcoDB_Admin.Dao
             _context.SaveChanges();
         }
 
-        public Person AddUser(Person person)
+        public List<Person> GetUsers()
         {
             return _context.People.ToList();
         }
 
-        public void EditUser(Person person)
+        public Person EditUser(Person person)
         {
             users.Remove(person);
             person = new Person()
@@ -45,7 +45,7 @@ namespace BarcoDB_Admin.Dao
                 Afkorting = person.Afkorting,
                 Voornaam = person.Voornaam,
                 Familienaam = person.Familienaam,
-                wachtwoord = person.wachtwoord
+                Wachtwoord = person.Wachtwoord
             };
 
             users.Add(person);
@@ -62,7 +62,7 @@ namespace BarcoDB_Admin.Dao
                 Afkorting = person.Afkorting,
                 Voornaam = person.Voornaam,
                 Familienaam = person.Familienaam,
-                wachtwoord = person.wachtwoord
+                Wachtwoord = person.Wachtwoord
             };
             
             users.Add(person);

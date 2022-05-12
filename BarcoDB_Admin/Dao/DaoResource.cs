@@ -31,19 +31,19 @@ namespace BarcoDB_Admin.Dao
             return _context.PlResources.SingleOrDefault(r => r.Naam == name);
         }
 
-        public List<PlResource> GetResources(string TestDivision)
-        {
-            var idList = _context.PlResourcesDivisions.Where(rd => rd.DivisionAfkorting == TestDivision).Select(rd => rd.ResourcesId).ToList();
+        //public List<PlResource> GetResources(string TestDivision)
+        //{
+        //    var idList = _context.PlResourcesDivisions.Where(rd => rd.DivisionAfkorting == TestDivision).Select(rd => rd.ResourcesId).ToList();
 
-            // try with mapping?
-            var resourceList = new List<PlResource>();
+        //    // try with mapping?
+        //    var resourceList = new List<PlResource>();
 
-            foreach (var id in idList)
-            {
-                resourceList.Add(GetResource(id));
-            }
-            return resourceList;
-        }
+        //    foreach (var id in idList)
+        //    {
+        //        resourceList.Add(GetResource(id));
+        //    }
+        //    return resourceList;
+        //}
 
         public List<PlResource> GetResources()
         {

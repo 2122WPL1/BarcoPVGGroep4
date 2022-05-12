@@ -242,7 +242,7 @@ namespace BarcoPVG.ViewModels
         private string CreateJRNummer(RqRequest jr)
         {
             //
-            string JrNumber = "JR" + _daoLogin.BarcoUser.Function;
+            string JrNumber = "JR" + _daoLogin.BarcoUser.Functie;
 
             for (int i = jr.IdRequest.ToString().Length; i <= 5; i++)
             {
@@ -408,7 +408,7 @@ namespace BarcoPVG.ViewModels
 
         private void SetWindowProperties()
         {
-            string i = _daoLogin.BarcoUser.Function;
+            string i = _daoLogin.BarcoUser.Functie;
             switch (i)
             {
                 case "DEV": //Developer

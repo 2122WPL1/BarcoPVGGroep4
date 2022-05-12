@@ -43,10 +43,10 @@
                 
                 
                     <Label Content="Password:" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Right" />
-                <TextBox Text="{Binding Person.wachtwoord, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                <TextBox Text="{Binding Person.Wachtwoord, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                          Width="150"  Grid.Column="2" Grid.Row="4" HorizontalAlignment="Left" />
 
-                <Label Content="Function:" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Right" />
+                <Label Content="Functie:" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Right" />
                 <ComboBox Text="Extern" Width="150"  Grid.Column="2" Grid.Row="5" HorizontalAlignment="Left">
                     <ComboBoxItem Content="EXTERN"/>
                     <ComboBoxItem Content="PLAN"/>
