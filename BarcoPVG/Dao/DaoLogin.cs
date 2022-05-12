@@ -42,15 +42,15 @@ namespace BarcoPVG.Dao
             }
             else
             {
-                BarcoUser.Division = "Extern";
+                BarcoUser.Division = "Geen Division"; //Extern??
             }
             //Put Function to give right the the user
             //string func = "";
 
             //Jarne getting the info from the login details to get the right view display
-            
-            
-            BarcoUser.Function = GetFuntion(division);
+
+
+            BarcoUser.Function = GetFuntion(loginPerson);
 
             //BarcoUser.Function = "DEV"; log in as Developer
 
@@ -58,15 +58,19 @@ namespace BarcoPVG.Dao
         }
 
         //Eakarach
-        private string GetFuntion(string? division)
+        private string GetFuntion(Person user)
         {
 
-            switch (division)
+            switch (user.Function)
             {
-                case null:
-                    return ""; // Log in als extern
+                case "DEV":
+                    return "DEV";
+                case "TEST":
+                    return "TEST";
+                case "PLAN":
+                    return "PLAN";
                 default:
-                    return "TEST"; // Log in als TEST team
+                    return "EXTERN"; 
                     
             }
         }
