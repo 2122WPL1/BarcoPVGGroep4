@@ -6,9 +6,6 @@ namespace BarcoDB_Admin.Dao
 {
     public class DaoDivision : DAO
     {
-        //Jarne 
-
-        //copies the data from DAO
         public DaoDivision() : base()
         {
 
@@ -26,28 +23,23 @@ namespace BarcoDB_Admin.Dao
             return _context.RqBarcoDivisions.ToList();
         }
 
+        public void AddDivision(RqBarcoDivision div)
+        {
+            _context.Add(div);
+            _context.SaveChanges();
+        }
+
+        public void UpdateDivision(RqBarcoDivision div)
+        {
+            _context.Update(div);
+            _context.SaveChanges();
+        }
+
         public void RemoveDivision(RqBarcoDivision div)
         {
             _context.Remove(div);
             _context.SaveChanges();
         }
 
-        public RqBarcoDivision GetDivision()
-        {
-            RqBarcoDivision div = new RqBarcoDivision();
-            return div;
-        }
-
-        //public void GetDiv(Person loginPerson)
-        //{
-        //    List<RqBarcoDivision> listDiv = GetAllDivisions();
-        //    foreach (RqBarcoDivision div in listDiv)
-        //    {
-        //        //if (div.Afkorting == loginPerson)
-        //        //{
-
-        //        //}
-        //    }
-        //}
     }
 }

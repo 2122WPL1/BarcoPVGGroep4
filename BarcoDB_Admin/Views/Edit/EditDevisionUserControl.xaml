@@ -12,12 +12,14 @@
             <Grid>
                 <Label Content="Abbreviation:" HorizontalAlignment="Left" Margin="212,114,0,0" VerticalAlignment="Top"/>
                 <Label Content="Alias:" HorizontalAlignment="Left" Margin="255,160,0,0" VerticalAlignment="Top"/>
-                <TextBox Margin="353,114,0,0" Text="{Binding RqBarcoDivision.Afkorting, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                         VerticalAlignment="Top" Width="150"/>
-                <TextBox Text="{Binding RqBarcoDivision.Alias, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                <TextBox Margin="353,114,0,0" VerticalAlignment="Top" Width="150" 
+                         Text="{Binding Division.Afkorting, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding IsEnable1}"/>
+                <TextBox Text="{Binding Division.Alias, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                          VerticalAlignment="Top" Width="150" Margin="353,160,0,0"/>
                 <Button Content="Save" HorizontalAlignment="Left" 
-                        
+                        Command="{Binding DataContext.SaveDivisionCommand, 
+                            RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, 
+                            Mode=OneWay}"
                         Margin="569,322,0,0" VerticalAlignment="Top"/>
                 <Button Content="Cancel" HorizontalAlignment="Left" 
                         Command="{Binding DataContext.DisplayDataBaseDivisionCommand, 
@@ -25,7 +27,7 @@
                             Mode=OneWay}"
                         Margin="654,322,0,0" VerticalAlignment="Top"/>
                 <Label Content="Active:" HorizontalAlignment="Left" Margin="247,207,0,0" VerticalAlignment="Top"/>
-                <CheckBox IsChecked="{Binding RqBarcoDivision.Actief, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                <CheckBox IsChecked="{Binding Division.Actief, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                           HorizontalAlignment="Left" Margin="353,213,0,0" VerticalAlignment="Top"/>
             </Grid>
         </GroupBox>

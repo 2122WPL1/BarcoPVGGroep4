@@ -6,22 +6,22 @@ using System.Windows;
 
 namespace BarcoDB_Admin.ViewModels.DataBase
 {
-    class ViewModelDBResources : AbstractViewModelBase
+    class ViewModelDBResources : AbstractViewModelContainer
     {
-        DaoResource _dao = new DaoResource();
         #region properties
         public DelegateCommand DeleteResource { get; set; }
         public List<PlResource> AllResources { get; set; }
-        public PlResource SelectedResouce { get; set; }
+        public PlResource SelectedResouce { get; set; } = null;
         #endregion
         public ViewModelDBResources() : base()
         {
             DeleteResource = new DelegateCommand(DeleteResourceFromDB);
+            
             Load();
         }
         private void Load()
         {
-            AllResources = _dao.GetResources();
+            AllResources = _daoResource.GetResources();
         }
         private void DeleteResourceFromDB()
         {
@@ -29,7 +29,7 @@ namespace BarcoDB_Admin.ViewModels.DataBase
             {
                 if (MessageBox.Show( "Are you sure you want to delete this Resource?", "Delete Resource", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
-                    _dao.RemoveResource(SelectedResouce);
+                    _daoResource.RemoveResource(SelectedResouce);
                     Load();
                     OnpropertyChanged("AllResources");
                 }

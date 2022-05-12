@@ -3,21 +3,15 @@
 namespace BarcoDB_Admin.ViewModels.Edit
 {
     //Amy
-    public class ViewModelEditResources : AbstractViewModelBase
+    public class ViewModelEditResources : AbstractViewModelContainer
     {
-        private PlResource _PlResource;
         public PlResource SelectedResouce { get; set; }
 
         public ViewModelEditResources(int Id) : base()
         {
             //SelectedResouce = resource;
-            this._PlResource = _daoResource.GetResource(Id);
+            Resource = _daoResource.GetResource(Id);
         }
 
-        public PlResource PlResource
-        {
-            get { return _PlResource; }
-            set { _PlResource = value; OnpropertyChanged(); }
-        }
     }
 }

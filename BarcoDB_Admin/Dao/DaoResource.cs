@@ -23,7 +23,7 @@ namespace BarcoDB_Admin.Dao
 
         public PlResource GetResource(int id)
         {
-            return _context.PlResources.SingleOrDefault(r => r.Id == id);
+            return _context.PlResources.FirstOrDefault(r => r.Id == id);
         }
 
         public PlResource GetResource(string name)
@@ -31,23 +31,36 @@ namespace BarcoDB_Admin.Dao
             return _context.PlResources.SingleOrDefault(r => r.Naam == name);
         }
 
-        //public List<PlResource> GetResources(string TestDivision)
-        //{
-        //    var idList = _context.PlResourcesDivisions.Where(rd => rd.DivisionAfkorting == TestDivision).Select(rd => rd.ResourcesId).ToList();
+        public List<PlResource> GetResources(string TestDivision)
+        {
+            var idList = _context.PlResourcesDivisions.Where(rd => rd.DivisionAfkorting == TestDivision).Select(rd => rd.ResourcesId).ToList();
 
-        //    // try with mapping?
-        //    var resourceList = new List<PlResource>();
+            // try with mapping?
+            var resourceList = new List<PlResource>();
 
-        //    foreach (var id in idList)
-        //    {
-        //        resourceList.Add(GetResource(id));
-        //    }
-        //    return resourceList;
-        //}
+            foreach (var id in idList)
+            {
+                resourceList.Add(GetResource(id));
+            }
+            return resourceList;
+        }
 
         public List<PlResource> GetResources()
         {
             return _context.PlResources.ToList();
+        }
+
+        //CRUD
+        public void AddResource(PlResource resource)
+        {
+            _context.Add(resource);
+            _context.SaveChanges();
+        }
+
+        public void UpdateResouce(PlResource resource)
+        { 
+            _context.Update(resource);
+            _context.SaveChanges();
         }
 
         public void RemoveResource(PlResource req)
@@ -56,9 +69,7 @@ namespace BarcoDB_Admin.Dao
             _context.SaveChanges();
         }
 
-        public PlResource AddResource(PlResource resource)
-        {
-            return resource;
-        }
+
+
     }
 }

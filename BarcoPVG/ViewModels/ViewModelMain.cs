@@ -244,15 +244,15 @@ namespace BarcoPVG.ViewModels
             //
             string JrNumber = "JR" + _daoLogin.BarcoUser.Functie;
 
-            for (int i = jr.IdRequest.ToString().Length; i <= 5; i++)
-            {
-                JrNumber += "0";
-            }
+        //    for (int i = jr.IdRequest.ToString().Length; i <= 5; i++)
+        //    {
+        //        JrNumber += "0";
+        //    }
 
-            JrNumber += _daoJR.GetJR(jr).IdRequest;
+        //    JrNumber += _daoJR.GetJR(jr).IdRequest;
 
-            return JrNumber;
-        }
+        //    return JrNumber;
+        //}
 
         public void InsertJr() // aanmaken job request
         {
