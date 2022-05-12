@@ -1,23 +1,13 @@
 ﻿using Microsoft.Toolkit.Mvvm.Input;
 using Prism.Commands;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
-
-using BarcoPVG.Models;
-using BarcoPVG.Views;
 using BarcoPVG.Models.Db;
 using BarcoPVG.Models.Classes;
 using BarcoPVG.Dao;
-using BarcoPVG.ViewModels;
 
 namespace BarcoPVG.ViewModels.JobRequest
 {
@@ -66,7 +56,6 @@ namespace BarcoPVG.ViewModels.JobRequest
             {
                 this._jr = _daoJR.GetJR(idRequest);
 
-
                 List<RqRequestDetail> eutList = _daoJR.RqDetail(idRequest);
                 // We use a foreach to loop over every item in the eutList
                 // And link the user inputed data to the correct variables
@@ -75,7 +64,6 @@ namespace BarcoPVG.ViewModels.JobRequest
                 {
                     // Use DAO? --> base class
                     request = _context.RqRequests.FirstOrDefault(e => e.IdRequest == id.IdRequest);
-
                 }
                 FillEUT(request);
             }
@@ -135,13 +123,11 @@ namespace BarcoPVG.ViewModels.JobRequest
             }
         }
 
-
         /// <summary>
         /// Clear all data in JR
         /// </summary>
         private void RefreshJR()
         {
-      
             this.JR = _daoJR.GetNewJR();
        
             EUTs.Clear();
@@ -154,7 +140,5 @@ namespace BarcoPVG.ViewModels.JobRequest
         {
             EUTs.Remove(_selectedEUT);
         }
-
-   
     }
 }

@@ -31,9 +31,6 @@ namespace BarcoPVG.Models.Classes
         // Constructor
         public EUT()
         {
-            //anders komt datum van vandaag in datetimepicker te staan
-            //AvailabilityDate = DateTime.Now;
-
             // Tests are not active on start
             EMC = false;
             ENV = false;
@@ -48,7 +45,7 @@ namespace BarcoPVG.Models.Classes
             if (obj != null)
             {
                 //verwijder EUT ViewModelApproveJRForm
-               // geen idee hoe dit gedaan moet worden er is all een multivalueconverter maar is nog niet toegevoegd
+                //geen idee hoe dit gedaan moet worden er is all een multivalueconverter maar is nog niet toegevoegd
 
                 MessageBox.Show(obj.ToString());
             }
