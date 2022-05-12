@@ -32,6 +32,10 @@
                 <viewEdit:EditUserUserControl/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type viewModelEdit:ViewModelAddUser}">
+                <viewEdit:EditUserUserControl/>
+            </DataTemplate>
+
             <DataTemplate DataType="{x:Type viewModelEdit:ViewModelEditResources}">
                 <viewEdit:EditResourcesUserControl/>
             </DataTemplate>
@@ -40,7 +44,13 @@
                 <viewEdit:EditDevisionUserControl/>
             </DataTemplate>
             
-            
+            <DataTemplate DataType="{x:Type viewModelEdit:ViewModelAddResources}">
+                <viewEdit:EditUserUserControl/>
+            </DataTemplate>
+        
+            <DataTemplate DataType="{x:Type viewModelEdit:ViewModelAddDevision}">
+                <viewEdit:EditUserUserControl/>
+            </DataTemplate>
    
             
    

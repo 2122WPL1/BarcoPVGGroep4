@@ -17,6 +17,7 @@ using BarcoPVG.Views;
 using BarcoPVG.Models.Db;
 using BarcoPVG.Models.Classes;
 using BarcoPVG.Dao;
+using BarcoPVG.ViewModels;
 
 namespace BarcoPVG.ViewModels.JobRequest
 {
@@ -37,6 +38,7 @@ namespace BarcoPVG.ViewModels.JobRequest
         public ICommand RemoveEUTCommand { get; set; }
         public ICommand RefreshJRCommand { get; set; }
 
+
         // Constructor for new JR
         public ViewModelCreateJRForm(bool isInternalRequest = false) : base()
         {
@@ -56,16 +58,16 @@ namespace BarcoPVG.ViewModels.JobRequest
             Load();
 
             // Look for JR with correct ID
-            if (_dao.GetJR(idRequest) == null)
+            if (_daoJR.GetJR(idRequest) == null)
             {
 
             }
             else
             {
-                this._jr = _dao.GetJR(idRequest);
+                this._jr = _daoJR.GetJR(idRequest);
 
 
-                List<RqRequestDetail> eutList = _dao.RqDetail(idRequest);
+                List<RqRequestDetail> eutList = _daoJR.RqDetail(idRequest);
                 // We use a foreach to loop over every item in the eutList
                 // And link the user inputed data to the correct variables
                 var request = new RqRequest();
@@ -89,14 +91,14 @@ namespace BarcoPVG.ViewModels.JobRequest
             // Command initialization
             RefreshJRCommand = new DelegateCommand(RefreshJR);
             AddEUTCommand = new DelegateCommand(AddEUT);
-            RemoveEUTCommand = new DelegateCommand(RemoveSelectedEUT);
+            RemoveEUTCommand = new Command((param) => RemoveSelectedEUT(param));
         }
 
         // Loads jobNatures, divisions in cbb
         public void Load()
         {
-            var jobNatures = _dao.GetAllJobNatures();
-            var divisions = _dao.GetAllDivisions();
+            var jobNatures = _daoJR.GetAllJobNatures();
+            var divisions = _daoPerson.GetAllDivisions();
             JobNatures.Clear();
             Divisions.Clear();
 
@@ -127,7 +129,7 @@ namespace BarcoPVG.ViewModels.JobRequest
         /// <param name="jr"></param>
         public void FillEUT( RqRequest rq)
         {
-            foreach (var objecten in _dao.GetEut(rq))
+            foreach (var objecten in _daoEUT.GetEut(rq))
             {
                 EUTs.Add(objecten);
             }
@@ -139,16 +141,20 @@ namespace BarcoPVG.ViewModels.JobRequest
         /// </summary>
         private void RefreshJR()
         {
-            this.JR = _dao.GetNewJR();
+      
+            this.JR = _daoJR.GetNewJR();
+       
             EUTs.Clear();
         }
 
         /// <summary>
         /// deletes selected EUT via _selectedEut variable
         /// </summary>
-        public void RemoveSelectedEUT()
+        public void RemoveSelectedEUT(object obj)
         {
             EUTs.Remove(_selectedEUT);
         }
+
+   
     }
 }

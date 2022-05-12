@@ -9,27 +9,28 @@
         WindowState="Maximized"
         WindowStyle="ThreeDBorderWindow"
         WindowStartupLocation="CenterScreen"
-     MinWidth="330  "
+        MinWidth="330"
          
         Height="{x:Static SystemParameters.PrimaryScreenHeight}" 
-      Width="{x:Static SystemParameters.PrimaryScreenWidth}" 
-    >
+        Width="{x:Static SystemParameters.PrimaryScreenWidth}" >
     <!--amy-->
     <!--<ScrollViewer HorizontalScrollBarVisibility="Visible"> dit zorgt ervoor dat de andere scrollviewer niet zichtbaar wordt-->
-        <StackPanel Margin="10" >
+    <StackPanel Margin="10" >
         <GroupBox BorderThickness="0.1" Height="auto">
             <GroupBox.Header>
                 <!-- This could be done more efficiently? -->
                 <Grid Background="#FFF10000">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="7*"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="164*"/>
+                        <ColumnDefinition Width="164*"/>
+                        <ColumnDefinition Width="1503*"/>
+                        <ColumnDefinition Width="50*"/>
                     </Grid.ColumnDefinitions>
                     <Button x:Name="X" Content="X" Background="LightGray" BorderBrush="#FFF44336" Grid.Column="3" Command="{Binding Exit}"/>
                     <Image Style="{StaticResource BarcoLogo}" Grid.Column="0" Margin="16,0,25,0"/>
-                    <StackPanel Orientation="Horizontal" Grid.Column="1" >
+                    <Button Content="X" BorderBrush="Black" Grid.Column="3" Command="{Binding Exit}" HorizontalAlignment="Center" VerticalAlignment="Center" Height="32" Width="50" Foreground="#FFF10000" Background="#FFD5DFE5"/>
+                    <Image Style="{StaticResource BarcoLogo}" Grid.Column="0" Margin="27,0,37,0"/>
+                    <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,0,1154,0" >
                         <TextBlock FontSize="14" Text="Welcome "/>
                         <TextBlock FontSize="14" FontWeight="Bold" Text="{Binding User.Name}"/>
                         <TextBlock FontSize="14" Text=" ("/>
@@ -43,7 +44,7 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="top">
                     <Button Content="User" 
                             Command="{Binding DisplayDatabaseUserCommand, Mode=OneWay}"
                             Margin="5"/>
@@ -54,8 +55,8 @@
                             Command="{Binding DisplayDataBaseDivisionCommand, Mode=OneWay}"
                             Margin="5"/>
                 </StackPanel>
-                <ScrollViewer Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Visible" >
-                    <ContentControl Content="{Binding ViewModel}" Width="auto" HorizontalContentAlignment="Center"  />
+                <ScrollViewer Grid.Row="1">
+                    <ContentControl Content="{Binding ViewModel}" HorizontalContentAlignment="Center" Width="auto"  />
                 </ScrollViewer>
             </Grid>
         </GroupBox>

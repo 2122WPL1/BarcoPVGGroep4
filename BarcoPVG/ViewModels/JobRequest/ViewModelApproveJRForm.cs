@@ -45,10 +45,10 @@ namespace BarcoPVG.ViewModels.JobRequest
             
 
             // Look for JR with correct ID
-            this._jr = _dao.GetJR(idRequest);
+            this._jr = _daoJR.GetJR(idRequest);
 
 
-            List<RqRequestDetail> eutList = _dao.RqDetail(idRequest);
+            List<RqRequestDetail> eutList = _daoJR.RqDetail(idRequest);
             // We use a foreach to loop over every item in the eutList
             // And link the user inputed data to the correct variables
             var request = new RqRequest();
@@ -60,15 +60,15 @@ namespace BarcoPVG.ViewModels.JobRequest
             }
             FillEUT(request);
 
-            _dao.PrintPvg(idRequest, _jr);
+            _daoApproval.PrintPvg(idRequest, _jr);
         }
        
 
         // Loads jobNatures, divisions in cbb
         public void Load()
         {
-            var jobNatures = _dao.GetAllJobNatures();
-            var divisions = _dao.GetAllDivisions();
+            var jobNatures = _daoJR.GetAllJobNatures();
+            var divisions = _daoPerson.GetAllDivisions();
             JobNatures.Clear();
             Divisions.Clear();
 
@@ -99,7 +99,7 @@ namespace BarcoPVG.ViewModels.JobRequest
         /// <param name="jr"></param>
         public void FillEUT(RqRequest rq)
         {
-            foreach (var objecten in _dao.GetEut(rq))
+            foreach (var objecten in _daoEUT.GetEut(rq))
             {
                 EUTs.Add(objecten);
             }

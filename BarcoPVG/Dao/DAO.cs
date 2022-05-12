@@ -1,16 +1,4 @@
-﻿using System;
-using System.CodeDom;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Net.Mail;
-using System.Windows;
-using BarcoPVG.Models.Classes;
-using BarcoPVG;
-using BarcoPVG.Models;
-using BarcoPVG.Models.Db;
-using System.Data.SqlClient;
+﻿using BarcoPVG.Models.Classes;
 
 namespace BarcoPVG.Dao
 {
@@ -21,10 +9,12 @@ namespace BarcoPVG.Dao
     public class DAO
     {
         // Variables
-        private BarcoContext _context;
-        private static readonly DAO _instance = new();
+        public BarcoContext _context;
+        protected static readonly DAO _instance = new();
 
-        public BarcoUser BarcoUser { get; set; }
+
+        
+
 
         // Calls an DAO instance
         public static DAO Instance()
@@ -34,7 +24,7 @@ namespace BarcoPVG.Dao
 
         // DAO Constructor - PRIVATE
         // Calls an instance from the Barco2021Context and stores this context in the current context
-        private DAO()
+        protected DAO()
         {
             this._context = new BarcoContext();
 
@@ -78,15 +68,12 @@ namespace BarcoPVG.Dao
             }
         }
 
-        /// <summary>
-        /// Removes unsaved changed by replacing the context by a new instance
-        /// </summary>
-        /// Kaat
+        // Removes unsaved changed by replacing the context by a new instance
+        // Kaat
         public void RemoveChanges()
         {
             _context = new BarcoContext();
         }
-
 
         // LISTS
         // Eakarach
@@ -906,7 +893,6 @@ namespace BarcoPVG.Dao
         {
             _context.SaveChanges();
         }
-
         /// <summary>
         /// This function creates a list of rqRequestDetails objects that are linked to the given idRequest via the parameter
         /// </summary>

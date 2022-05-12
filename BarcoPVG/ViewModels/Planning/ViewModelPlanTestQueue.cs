@@ -20,7 +20,7 @@ namespace BarcoPVG.ViewModels.Planning
             Collection initialization;
             PlansToApprove = new ObservableCollection<PlPlanning>();
 
-            foreach (var item in _dao.GetPlPlannings().Where(pl => pl.TestDivStatus == "In plan"))
+            foreach (var item in _daoPlanning.GetPlPlannings().Where(pl => pl.TestDivStatus == "In plan"))
             {
                 PlansToApprove.Add(item);
             }

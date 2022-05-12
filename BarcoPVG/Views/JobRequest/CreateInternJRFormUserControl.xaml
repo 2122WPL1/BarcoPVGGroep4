@@ -6,7 +6,6 @@
              xmlns:local="clr-namespace:BarcoPVG.Views.JobRequest"
              xmlns:views="clr-namespace:BarcoPVG.Views"
              mc:Ignorable="d" d:Background="LightGray" Height="auto" Width="auto">
-
     <StackPanel>
         <GroupBox Header="Intern JR Form" Height="353">
             <Grid>
@@ -25,7 +24,7 @@
                 <TextBox Grid.Column="2" Margin="0,30,0,0" Grid.Row="1" VerticalAlignment="Top" Width="150" HorizontalAlignment="Center"
                          Text="{Binding JR.EutProjectname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <ComboBox ItemsSource="{Binding Divisions}" Text="{Binding JR.BarcoDivision, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
-                         Grid.Column="2" Margin="0,102,0,0" VerticalAlignment="Top" Width="150" HorizontalAlignment="Center" TextElement.Foreground="Black"/>
+                  Grid.Column="2" Margin="0,102,0,0" VerticalAlignment="Top" Width="150" HorizontalAlignment="Center" TextElement.Foreground="Black"/>
             </Grid>
         </GroupBox>
         <DockPanel Height="100" LastChildFill="False">
@@ -45,7 +44,8 @@
                                 Margin="46,18,0,0" VerticalAlignment="Top"/>
                 </StackPanel>
             </Grid>
-
         </DockPanel>
     </StackPanel>
+
+
 </UserControl>

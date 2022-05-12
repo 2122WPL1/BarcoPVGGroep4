@@ -15,24 +15,23 @@
         Width="{x:Static SystemParameters.PrimaryScreenWidth}">
     <StackPanel>
         <StackPanel Margin="10">
-            <GroupBox BorderThickness="0.1" Height="auto" >
+            <GroupBox BorderThickness="0.1" Height="auto">
                 <GroupBox.Header>
-                    <!-- This could be done more efficiently? -->
                     <Grid Background="#FFF10000">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="7*"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="94*"/>
+                            <ColumnDefinition Width="94*"/>
+                            <ColumnDefinition Width="728*"/>
+                            <ColumnDefinition Width="25*"/>
                         </Grid.ColumnDefinitions>
-                        <Button x:Name="X" Content="X" Background="LightGray" BorderBrush="#FFF44336" Grid.Column="3" Command="{Binding Exit}"/>
-                        <Image Style="{StaticResource BarcoLogo}" Grid.Column="0" Margin="16,0,25,0"/>
+                        <Button Content="X" BorderBrush="Black" Grid.Column="3" Command="{Binding Exit}" HorizontalAlignment="Center" VerticalAlignment="Center" Height="32" Width="50" Foreground="#FFF10000" Background="#FFD5DFE5"/>
+                        <Image Style="{StaticResource BarcoLogo}" Grid.Column="0" Margin="40,0,48,0"/>
                         <StackPanel Orientation="Horizontal" Grid.Column="1" >
                             <TextBlock FontSize="14" Text="Welcome "/>
                             <TextBlock FontSize="14" FontWeight="Bold" Text="{Binding User.Name}"/>
-                            <!--<TextBlock FontSize="14" Text=" ("/>
+                            <TextBlock FontSize="14" Text=" ("/>
                             <TextBlock FontSize="14" Text="{Binding User.Division}"/>
-                            <TextBlock FontSize="14" Text=")"/>-->
+                            <TextBlock FontSize="14" Text=")"/>
                         </StackPanel>
                     </Grid>
                 </GroupBox.Header>
@@ -42,11 +41,10 @@
                             Command="{Binding DisplayEmployeeStartupCommand,
                             Mode=OneWay}" 
                             Visibility="{Binding NewRequests}"
-                            Margin="10" />
+                            Margin="10"/>
                         <Button Content="Edit/Approve requests" 
                             Command="{Binding DisplayPlannerStartupCommand, Mode=OneWay}" 
-                            Visibility="{Binding ApproveRequests}"
-                            />
+                            Visibility="{Binding ApproveRequests}"/>
                         <Button Content="Plan tests" 
                             Command="{Binding DisplayTesterPlanCommand, Mode=OneWay}"
                             Visibility="{Binding Test}"
@@ -59,8 +57,8 @@
                             Visibility="{Binding SeeAll}"
                             Margin="10"/>
                     </StackPanel>
-                    <ScrollViewer Height="910" Margin="0,-0,0,0">
-                        <ContentControl x:Name="ctnView" Content="{Binding ViewModel}" Height="auto" Margin="0,-10,0,0" ScrollViewer.HorizontalScrollBarVisibility="Auto"/>
+                    <ScrollViewer Margin="0,-0,0,0">
+                        <ContentControl x:Name="ctnView" Content="{Binding ViewModel}" Height="880" Width="1882" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto"/>
                     </ScrollViewer>
                 </StackPanel>
             </GroupBox>

@@ -1,14 +1,9 @@
-﻿//using BarcoPVG.ViewModels;
-//using BarcoPVG.ViewModels.DatabaseManagement;
-using BarcoDB_Admin.ViewModels;
+﻿using BarcoDB_Admin.Models.Db;
 using BarcoDB_Admin.ViewModels.DataBase;
 using BarcoDB_Admin.ViewModels.Edit;
 using Prism.Commands;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
 
 namespace BarcoDB_Admin.ViewModels
 {
@@ -17,6 +12,7 @@ namespace BarcoDB_Admin.ViewModels
     {
         private AbstractViewModelBase _viewModel;
 
+        #region DelegateCommand
         public DelegateCommand Exit { get; set; }
         public DelegateCommand DisplayDatabaseUserCommand { get; set; }
         public DelegateCommand DisplayDataResourceCommand { get; set; }
@@ -27,7 +23,9 @@ namespace BarcoDB_Admin.ViewModels
         public DelegateCommand DisplayEditResourcesCommand { get; set; }
         public DelegateCommand DisplayAddDivisionCommand { get; set; }
         public DelegateCommand DisplayEditDivisionCommand { get; set; }
-
+        public DelegateCommand SaveUserCommand { get; set; }
+        public DelegateCommand SaveResourcesCommand { get; set; }
+        #endregion
 
 
         public ViewModelMain()
@@ -41,13 +39,15 @@ namespace BarcoDB_Admin.ViewModels
             DisplayEditResourcesCommand = new DelegateCommand(DisplayEditResourcesStartup);
             DisplayAddDivisionCommand = new DelegateCommand(DisplayAddDivisionStartup);
             DisplayEditDivisionCommand = new DelegateCommand(DisplayEditDivisionStartup);
+            
             Exit = new DelegateCommand(exit);
         }
 
-        public void exit()
+        public void exit() //sluiten project
         {
             Environment.Exit(0);
         }
+
         public AbstractViewModelBase ViewModel
         {
             get => _viewModel;
@@ -58,6 +58,7 @@ namespace BarcoDB_Admin.ViewModels
             }
         }
 
+        #region views
         public void DisplayDatabaseUserStartup()
         {
             this.ViewModel = new ViewModelDBUser();
@@ -75,32 +76,88 @@ namespace BarcoDB_Admin.ViewModels
 
         public void DisplayAddUserStartup()
         {
-            this.ViewModel = new ViewModelEditUser();
+            SaveUserCommand = new DelegateCommand(InsertUser);
+            this.ViewModel = new ViewModelAddUser();
         }
+        #endregion
 
         public void DisplayEditUserStartup()
         {
-            this.ViewModel = new ViewModelEditUser();
+            var user = ((ViewModelDBUser)this.ViewModel).SelectedUser.Afkorting;
+            SaveUserCommand = new DelegateCommand(UpdateUser);
+
+            if (user != null)//EditUserUserControl can only be opened when there is a User selected
+            {
+                this.ViewModel = new ViewModelEditUser(user);
+            }
+            else
+            {
+                MessageBox.Show("No user selected!");
+            }
         }
 
         public void DisplayAddResourcesStartup()
         {
-            this.ViewModel = new ViewModelEditResources();
+            SaveResourcesCommand = new DelegateCommand(InsertResources);
+            this.ViewModel = new ViewModelAddResources();
         }
-
         public void DisplayEditResourcesStartup()
         {
-            this.ViewModel = new ViewModelEditResources();
-        }
 
+            var resource = ((ViewModelDBResources)this.ViewModel).SelectedResouce.Id;
+
+            if (resource != null) //EditResourcesUserControl can only be opened when there is a resource selected
+            {
+                 this.ViewModel = new ViewModelEditResources(resource);
+            }
+            else
+            {
+                MessageBox.Show("No Resource selected!");
+            }
+        }
         public void DisplayAddDivisionStartup()
         {
-            this.ViewModel = new ViewModelEditDevision();
+            this.ViewModel = new ViewModelAddDevision();
         }
-
         public void DisplayEditDivisionStartup()
         {
-            this.ViewModel = new ViewModelEditDevision();
+            var devision = ((ViewModelDBDevision)this.ViewModel).SelectedDivision.Afkorting;
+            if (devision != null)//EditDevisionUserControl can only be opened when there is a devision selected
+            {
+                this.ViewModel = new ViewModelEditDevision(devision);
+            }
+            else
+            {
+                MessageBox.Show("No Devision selected!");
+
+            }
+        }
+
+        public void InsertUser()
+        {
+            Person person = ((AbstractViewModelContainer)this.ViewModel).Person;
+
+            _daoUser.AddUser(person);
+            //this.ViewModel = new ViewModelAddUser();
+            DisplayDatabaseUserStartup();
+
+        }
+
+        public void UpdateUser()
+        {
+            //_dao.EditUser(((ViewModelEditUser)this.ViewModel).Person);
+            Person person = ((AbstractViewModelContainer)this.ViewModel).Person;
+
+            //var person = ((ViewModelEditUser)this.ViewModel).SelectedUser;
+
+            _daoUser.EditUser(person);
+        }
+
+        public void InsertResources()
+        {
+            var resource = ((ViewModelAddResources)this.ViewModel);
+
+            _daoResource.AddResource(resource);
         }
 
     }
