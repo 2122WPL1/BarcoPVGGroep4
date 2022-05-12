@@ -61,7 +61,7 @@ namespace BarcoPVG.Dao
         private string GetFuntion(Person user)
         {
 
-            switch (user.Function)
+            switch (user.Functie)
             {
                 case "DEV":
                     return "DEV";
