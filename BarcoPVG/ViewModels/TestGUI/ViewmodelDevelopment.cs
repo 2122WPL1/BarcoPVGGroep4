@@ -13,9 +13,6 @@ using BarcoPVG.Views;
 
 namespace BarcoPVG.ViewModels.TestGUI
 {
-    // TEMPORARY SCREEN
-    // Proof of concept: loading list of JR's from database
-    // TODO: datatemplate for JR's
     public class ViewModelDevelopment : AbstractViewModelCollectionRQ
     {
         //Constructor

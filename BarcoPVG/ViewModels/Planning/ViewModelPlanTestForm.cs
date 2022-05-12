@@ -40,7 +40,7 @@ namespace BarcoPVG.ViewModels.Planning
             Resources = new ObservableCollection<PlResource>();
             Tests = new ObservableCollection<Test>();
 
-            foreach (var item in _daoResources.GetResources(planning.TestDiv))
+            foreach (var item in _daoResources.GetResources(planning.TestDiv)) // testdivision eco wordt niet gevonden 
             {
                 Resources.Add(item);
             }

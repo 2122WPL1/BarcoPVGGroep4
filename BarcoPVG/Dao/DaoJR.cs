@@ -44,7 +44,6 @@ namespace BarcoPVG.Dao
         }
 
         // Creates and saves RqRequest based on JR
-        // TODO: save data stored in other tables
         public RqRequest AddJobRequest(JR Jr)
         {
             // Copy data from JR to new RqRequest
@@ -76,7 +75,7 @@ namespace BarcoPVG.Dao
                 Remarks = Jr.Remarks == null ? string.Empty : Jr.Remarks,
             };
             // We combine the rqo object with the rqrequest object and return the combined object
-            _context.RqRequests.Add(rqrequest);
+            
             rqrequest.RqOptionels.Add(rqo);
             return rqrequest;
         }
@@ -139,8 +138,6 @@ namespace BarcoPVG.Dao
                     };
                 }
 
-                //Sander: wss wanneer er een JR aangepast wordt zodat het wel optionele velden heeft komt er hier een crash
-                //Sander: context heeft geen rqoptional
                 rqo.Link = Jr.Link;
                 rqo.Remarks = Jr.Remarks;
                 // We combine the rqo and rqrequest objects

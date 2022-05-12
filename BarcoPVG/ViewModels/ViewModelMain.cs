@@ -20,7 +20,6 @@ namespace BarcoPVG.ViewModels
 
         public BarcoUser User { get; set; }
 
-        // TODO: check if ICommand also works
         public DelegateCommand Exit { get; set; }
         public DelegateCommand DisplayNewJRCommand { get; set; }
         public DelegateCommand DisplayNewInternJRCommand { get; set; }  // Eakarch
@@ -91,7 +90,6 @@ namespace BarcoPVG.ViewModels
         }
 
         // Command methods
-        // TODO: add method to switch return window based on function
         public void DisplayNewJR()
         {
             SaveJrCommand = new DelegateCommand(InsertJr);
@@ -273,11 +271,30 @@ namespace BarcoPVG.ViewModels
                         _daoEUT.AddEutToRqRequest(jr, eut, count.ToString());
                         count++;
                     }
-                    
+                    _daoJR._context.RqRequests.Add(jr);
+                    // Here we call the SaveChanges method, so that we can link several EUTs to one JR
                     _daoJR.SaveChanges();
-                    DisplayDevStartup();
                 }
-                // Here we call the SaveChanges method, so that we can link several EUTs to one JR
+
+                DisplayEmployeeStartup();
+
+                ////Jarne switch for openening window based on who's logged in
+                //switch (_daoLogin.BarcoUser.Division)
+                //{
+                //    case "DEV":
+                //        DisplayDevStartup();
+                //        break;
+                //    case "TEST":
+                //        DisplayEmployeeStartup();
+                //        break;
+                //    case "PLAN":
+                //        DisplayPlannerStartup();
+                //        break;
+                //    default:
+                //        DisplayEmployeeStartup();
+                //        break;
+                //}
+                //}
             }
         }
 
@@ -287,18 +304,35 @@ namespace BarcoPVG.ViewModels
                 .JR); // SaveChanges included in function
 
             DisplayPlannerStartup();
+            //Jarne switch for openening window based on who's logged in
+                switch (_daoLogin.BarcoUser.Division)
+                {
+                    case "DEV":
+                        DisplayDevStartup();
+                        break;
+                    case "TEST":
+                        DisplayEmployeeStartup();
+                        break;
+                    case "PLAN":
+                        DisplayPlannerStartup();
+                        break;
+                    default:
+                        DisplayEmployeeStartup();
+                        break;
+                }
+                DisplayEmployeeStartup();
         }
 
         // Updates existing job request and switches windows
         public void UpdateJr()
         {
             var jr = _daoJR.AddJobRequest(
-               ((AbstractViewModelContainer)this.ViewModel) //ID request wordt automatisch 0 voor een of andere reden
+               ((AbstractViewModelContainer)this.ViewModel) 
                .JR); // SaveChanges included in function
             int count = 0;
 
             {
-                //jr.JrNumber = CreateJRNummer(jr); //jr ID wordt automatisch toegevoegd bij savecnages waardoor deze niet ka nwerken
+                //jr.JrNumber = CreateJRNummer(jr); 
 
                 List<EUT> euts = new List<EUT>();
                 if (CheckCreateRequirements(jr, out euts))

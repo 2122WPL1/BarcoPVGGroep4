@@ -6,8 +6,8 @@
              xmlns:local="clr-namespace:BarcoPVG.Views"
              mc:Ignorable="d" d:Background="LightGray">
     <StackPanel Margin="10" Orientation="Horizontal">
-        <GroupBox Header="Project Details" Margin="10" Width="auto" Height="500" >
-            <Grid HorizontalAlignment="Center" Width="650">
+        <GroupBox Header="Project Details" Margin="10">
+            <Grid Margin="0,0,0,368">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
@@ -148,40 +148,31 @@
                                     Content="{Binding JR}" 
                                     HorizontalAlignment="Right"/>
                     <!--Jarne-->
-                    <ListBox x:Name="ListEUT" 
-                             MinHeight="350"
-                             MinWidth="850"
-                             HorizontalAlignment="Stretch"
-                             Background="#363636"
-                             ItemTemplate="{DynamicResource EUT}" 
-                             SelectedItem="{Binding SelectedEUT, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                             ScrollViewer.VerticalScrollBarVisibility="Auto"
-                             ScrollViewer.CanContentScroll="True"
-                             ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                             HorizontalContentAlignment="Center" >
+                    <ListBox x:Name="ListEUT"
+                                         MinHeight="300"
+                                         MinWidth="850"
+                                         HorizontalAlignment="Stretch"
+                                         Background="#363636"
+                                         ItemTemplate="{DynamicResource EUT}" 
+                                         SelectedItem="{Binding SelectedEUT, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                         ScrollViewer.CanContentScroll="True"
+                                         ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                                         HorizontalContentAlignment="Center" >
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
                         <ListBox.Resources>
                             <CollectionViewSource x:Key="EUTs" Source="{Binding EUTs}" />
                         </ListBox.Resources>
-                        <ListBox.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <StackPanel Orientation='Horizontal'/>
-                            </ItemsPanelTemplate>
-                        </ListBox.ItemsPanel>
-                    </ListBox>
-                    <!--<ListBox.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <StackPanel Orientation="Horizontal"/>
-                        </ItemsPanelTemplate>
-                        </ListBox.ItemsPanel>
                         <ListBox.ItemsSource>
                             <CompositeCollection>
                                 <CollectionContainer Collection="{Binding Source={StaticResource EUTs}}"/>
-                                <ListBoxItem>
-                                    <Button Command="{DynamicResource AddEUT}" Content="+"/>
-                                </ListBoxItem>
                             </CompositeCollection>
                         </ListBox.ItemsSource>
-                        </ListBox>-->
+                    </ListBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" 
                             HorizontalAlignment="Center">
