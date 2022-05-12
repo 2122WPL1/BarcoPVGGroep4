@@ -279,7 +279,7 @@ namespace BarcoPVG.ViewModels
                         _daoEUT.AddEutToRqRequest(jr, eut, count.ToString());
                         count++;
                     }
-                    
+                    _daoJR._context.RqRequests.Add(jr);
                     _daoJR.SaveChanges();
                     DisplayDevStartup();
                 }
@@ -299,12 +299,12 @@ namespace BarcoPVG.ViewModels
         public void UpdateJr()
         {
             var jr = _daoJR.AddJobRequest(
-               ((AbstractViewModelContainer)this.ViewModel) //ID request wordt automatisch 0 voor een of andere reden
+               ((AbstractViewModelContainer)this.ViewModel) 
                .JR); // SaveChanges included in function
             int count = 0;
 
             {
-                //jr.JrNumber = CreateJRNummer(jr); //jr ID wordt automatisch toegevoegd bij savecnages waardoor deze niet ka nwerken
+                //jr.JrNumber = CreateJRNummer(jr); 
 
                 List<EUT> euts = new List<EUT>();
                 if (CheckCreateRequirements(jr, out euts))

@@ -33,7 +33,7 @@ namespace BarcoPVG.Dao
         // Kaat
         public List<PlResource> GetResources(string TestDivision)
         {
-            var idList = _context.PlResourcesDivisions.Where(rd => rd.DivisionAfkorting == TestDivision).Select(rd => rd.ResourcesId).ToList();
+            var idList = _context.PlResourcesDivisions.Where(rd => rd.DivisionAfkorting == TestDivision).Select(rd => rd.ResourcesId).ToList(); //Wanneer de division ECO is wordt de lijst leeg
 
             // try with mapping?
             var resourceList = new List<PlResource>();

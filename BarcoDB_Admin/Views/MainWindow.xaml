@@ -30,13 +30,13 @@
                     <Image Style="{StaticResource BarcoLogo}" Grid.Column="0" Margin="16,0,25,0"/>
                     <Button Content="X" BorderBrush="Black" Grid.Column="3" Command="{Binding Exit}" HorizontalAlignment="Center" VerticalAlignment="Center" Height="32" Width="50" Foreground="#FFF10000" Background="#FFD5DFE5"/>
                     <Image Style="{StaticResource BarcoLogo}" Grid.Column="0" Margin="27,0,37,0"/>
-                    <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,0,1154,0" >
+                    <!--<StackPanel Orientation="Horizontal" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,0,1154,0" >
                         <TextBlock FontSize="14" Text="Welcome "/>
                         <TextBlock FontSize="14" FontWeight="Bold" Text="{Binding User.Name}"/>
                         <TextBlock FontSize="14" Text=" ("/>
                         <TextBlock FontSize="14" Text="{Binding User.Division}"/>
                         <TextBlock FontSize="14" Text=")"/>
-                    </StackPanel>
+                    </StackPanel>-->
                 </Grid>
             </GroupBox.Header>
             <Grid>

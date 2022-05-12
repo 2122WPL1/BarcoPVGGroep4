@@ -41,7 +41,7 @@ namespace BarcoPVG.ViewModels.JobRequest
         // Loads all JR IDs in LB
         public void Load()
         {
-            var requestIds = _daoJR.GetAllJobRequests().Where(rq => rq.Requester == _daoLogin.BarcoUser.Name);
+            var requestIds = _daoJR.GetAllJobRequests().Where(rq => (rq.Requester == _daoLogin.BarcoUser.Name) && (rq.JrStatus == "To approve"));
             IdRequestsOnly.Clear();
 
 

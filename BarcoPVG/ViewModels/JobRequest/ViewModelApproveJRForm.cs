@@ -25,10 +25,10 @@ namespace BarcoPVG.ViewModels.JobRequest
 
         // ICommand does not take pinput
      
-        public ICommand AddEUTCommand { get; set; }
-        public ICommand RemoveEUTCommand { get; set; }
+        //public ICommand AddEUTCommand { get; set; }
+        //public ICommand RemoveEUTCommand { get; set; }
         public ICommand RefreshJRCommand { get; set; }
-        public ICommand AddMockEUTCommand { get; set; }
+        //public ICommand AddMockEUTCommand { get; set; }
 
         // Constructor for existing JR
         // Planner only works with existing JRs
@@ -40,8 +40,8 @@ namespace BarcoPVG.ViewModels.JobRequest
             Divisions = new ObservableCollection<string>();
 
             Load();
-            AddEUTCommand = new DelegateCommand(AddEUT);
-            RemoveEUTCommand = new DelegateCommand(RemoveSelectedEUT);
+            //AddEUTCommand = new DelegateCommand(AddEUT);
+            //RemoveEUTCommand = new DelegateCommand(RemoveSelectedEUT);
             
 
             // Look for JR with correct ID
@@ -87,10 +87,10 @@ namespace BarcoPVG.ViewModels.JobRequest
         /// This function adds an new EUT instance into the GUI RequestForm
         /// EUT in Database
         /// </summary>
-        public void AddEUT()
-        {
-            EUTs.Add(new EUT());
-        }
+        //public void AddEUT()
+        //{
+        //    EUTs.Add(new EUT());
+        //}
 
         /// <summary>
         /// This function ensures that the existing data of an eut is read from the database and loaded into the requestForm xaml
@@ -108,10 +108,10 @@ namespace BarcoPVG.ViewModels.JobRequest
         /// <summary>
         /// deletes selected EUT via _selectedEut variable
         /// </summary>
-        public void RemoveSelectedEUT()
-        {
-            //note: zorgen dat de eut hemzelf select 
-            EUTs.Remove(SelectedEUT);
-        }
+        //public void RemoveSelectedEUT()
+        //{
+        //    //note: zorgen dat de eut hemzelf select 
+        //    EUTs.Remove(SelectedEUT);
+        //}
     }
 }
