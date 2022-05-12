@@ -7,7 +7,7 @@
              xmlns:views="clr-namespace:BarcoPVG.Views"
              mc:Ignorable="d" 
              d:DesignHeight="880" d:DesignWidth="1882" d:Background="LightGray">
-    <StackPanel Margin="10">
+    <StackPanel Margin="0">
         <GroupBox Header="Intern JR Form" Height="353">
             <Grid>
                 <Grid.RowDefinitions>
