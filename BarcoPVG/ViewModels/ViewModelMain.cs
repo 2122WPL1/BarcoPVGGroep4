@@ -7,6 +7,7 @@ using BarcoPVG.ViewModels.TestGUI;
 using Prism.Commands;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Windows;
 
 
@@ -29,6 +30,7 @@ namespace BarcoPVG.ViewModels
         public DelegateCommand DisplayTesterPlanCommand { get; set; }
         public DelegateCommand DisplayTesterTestCommand { get; set; }
         public DelegateCommand DisplayDevStartupCommand { get; set; }
+
         public DelegateCommand SaveJrCommand { get; set; }
         public DelegateCommand ApproveJRCommand { get; set; }
         public DelegateCommand DisplayTestPlanningCommand { get; set; }
@@ -281,24 +283,10 @@ namespace BarcoPVG.ViewModels
 
         public void InsertInternalJr()
         {
-            var jr = _daoJR.AddJobRequest(((AbstractViewModelContainer)this.ViewModel)
+            _daoInternalJr.AddInternJobRequest(((AbstractViewModelContainer)this.ViewModel)
                 .JR); // SaveChanges included in function
 
-            jr.JrStatus = "In Plan";
-
-            int count = 0;
-            foreach (var thisEUT in ((AbstractViewModelContainer)this.ViewModel).EUTs)
-            {
-                count++;
-                _daoEUT.AddEutToRqRequest(jr, thisEUT, count.ToString());
-            }
-
-            // Here we call the SaveChanges method, so that we can link several EUTs to one JR
-            _dao.SaveChanges();
-
-            _daoApproval.ApproveInternalRequest(jr.IdRequest);
-
-            DisplayDevStartup();
+            DisplayPlannerStartup();
         }
 
         // Updates existing job request and switches windows
@@ -394,7 +382,7 @@ namespace BarcoPVG.ViewModels
                     ApproveRequests = Visibility.Visible;
                     Test = Visibility.Visible;
                     SeeAll = Visibility.Visible;
-                    Data = Visibility.Hidden;
+                    Data = Visibility.Visible;
 
                     this.ViewModel = new ViewModelDevelopment();
 

@@ -19,6 +19,7 @@ namespace BarcoPVG.Dao
         {
             
         }
+
         protected static readonly DaoPlanning _instancePlanning = new();
 
         public static DaoPlanning InstancePlanning()

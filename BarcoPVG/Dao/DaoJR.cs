@@ -39,7 +39,6 @@ namespace BarcoPVG.Dao
 
             autofilledJR.Requester = _instanceLogin.BarcoUser.Name;
             autofilledJR.BarcoDivision = _instanceLogin.BarcoUser.Division;
-            
 
             return autofilledJR;
         }
