@@ -62,9 +62,9 @@ namespace BarcoPVG.Dao
             switch (division)
             {
                 case null:
-                    return ""; // Log in als extern
+                    return "DEV"; // Log in als extern
                 default:
-                    return "TEST"; // Log in als TEST team
+                    return "DEV"; // Log in als TEST team
                     break;
             }
 

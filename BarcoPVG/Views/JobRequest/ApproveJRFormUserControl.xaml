@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="880" d:DesignWidth="1882" d:Background="LightGray">
     <StackPanel Margin="10" Orientation="Horizontal">
-        <GroupBox Header="Project Details" Margin="10" Width="auto" Height="auto" >
+        <GroupBox Header="Project Details" Margin="10">
             <Grid Margin="0,0,0,368">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
