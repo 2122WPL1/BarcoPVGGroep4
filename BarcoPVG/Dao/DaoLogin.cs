@@ -34,9 +34,10 @@ namespace BarcoPVG.Dao
             BarcoUser = new BarcoUser();
             BarcoUser.Name = loginPerson.Voornaam;
 
-            if (GetAllDivForPerson(loginPerson).Count > 0)
+            List<RqBarcoDivisionPerson> divisionPeople = GetAllDivForPerson(loginPerson);
+            if (divisionPeople.Count > 0)
             {
-                division = GetAllDivForPerson(loginPerson).FirstOrDefault(x => x.AfkPerson == loginPerson.Afkorting).Pvggroup != null ? division : "";
+                division = divisionPeople.FirstOrDefault(x => x.AfkPerson == loginPerson.Afkorting).Pvggroup;
                 BarcoUser.Division = division;
             }
             else
@@ -59,16 +60,15 @@ namespace BarcoPVG.Dao
         //Eakarach
         private string GetFuntion(string? division)
         {
+
             switch (division)
             {
                 case null:
                     return ""; // Log in als extern
                 default:
                     return "TEST"; // Log in als TEST team
-                    break;
+                    
             }
-
-            return null;
         }
 
         public List<RqBarcoDivisionPerson> GetAllDivForPerson(Person loginperson)
@@ -88,6 +88,8 @@ namespace BarcoPVG.Dao
                     output.Add(result);
                 }
             }
+
+
             return output;
         }
     }

@@ -19,6 +19,7 @@
                         <GridViewColumn Header="First Name" Width="150" DisplayMemberBinding="{Binding Voornaam}"/>
                         <GridViewColumn Header="Last Name" Width="150" DisplayMemberBinding="{Binding Familienaam}"/>
                         <GridViewColumn Header="Password" Width="150" DisplayMemberBinding="{Binding wachtwoord}"/>
+                        <GridViewColumn Header="Function" Width="150" DisplayMemberBinding="{Binding Function}"/>
                     </GridView>
 
                 </ListView.View>
