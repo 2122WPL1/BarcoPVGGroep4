@@ -13,7 +13,6 @@ namespace BarcoDB_Admin.ViewModels.Edit
     //Amy
      class ViewModelEditUser : AbstractViewModelContainer
     {
-
         ObservableCollection<Person> personDetails { get; set; }
         public bool _IsEnable1;
         public bool IsEnable1
@@ -33,7 +32,5 @@ namespace BarcoDB_Admin.ViewModels.Edit
             Person = _daoUser.GetAllUser().FirstOrDefault(x => x.Afkorting == Afkorting);
             IsEnable1 = false;
         }
-
-
     }
 }

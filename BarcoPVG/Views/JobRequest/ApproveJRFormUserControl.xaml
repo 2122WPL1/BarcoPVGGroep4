@@ -138,7 +138,18 @@
                             Margin="160,0,0,0" />
 
                 <Label Content="Special remarks (optional):" Grid.Row="10" Grid.ColumnSpan="2" Margin="0,10,150,21" Grid.RowSpan="2"/>
-                <TextBox Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="4" Text="{Binding JR.Remarks, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="50" Margin="8,1,2,5" HorizontalAlignment="Stretch" Width="Auto" Grid.RowSpan="2"/>
+                <TextBox Grid.Row="10" 
+                         Grid.Column="1" 
+                         Grid.ColumnSpan="4" 
+                         Text="{Binding JR.Remarks, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         Height="50"
+                         Margin="8,1,2,5"
+                         HorizontalAlignment="Stretch"
+                         Grid.RowSpan="2"
+                         Width="Auto"
+                         MaxWidth="500"
+                         HorizontalScrollBarVisibility="Auto"
+                         VerticalScrollBarVisibility="Auto"/>
             </Grid>
         </GroupBox>
         <GroupBox Header="Parts and tests">
