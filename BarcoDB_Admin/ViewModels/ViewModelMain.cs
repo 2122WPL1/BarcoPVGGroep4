@@ -274,7 +274,6 @@ namespace BarcoDB_Admin.ViewModels
                     return false;
                 }
             }
-
             return true;
         }
     }
