@@ -63,7 +63,6 @@ namespace BarcoDB_Admin.ViewModels
         public void DisplayDatabaseUserStartup()
         {
             this.ViewModel = new ViewModelDBUser();
-
         }
 
 
@@ -152,24 +151,65 @@ namespace BarcoDB_Admin.ViewModels
 
             Person person = ((ViewModelAddUser)this.ViewModel).Person;
 
-            _daoUser.AddUser(person);
-            DisplayDatabaseUserStartup();
+            //cheks if all the required fields are filled in
+            if (CheckRequirment(person))
+            {
+                // if abbreviation is not filled in the it creates one with the first 2 letters of firstname en the last 2 letters of surname
+                if (person.Afkorting is null || person.Afkorting == "")
+                {
+                    person.Afkorting = (person.Voornaam.Substring(0, 2) + person.Familienaam.Substring(person.Familienaam.Length - 2)).ToUpper();
 
+                }
+                else
+                {
+                    // ensures that abbreviation is in uppercase
+                    person.Afkorting = person.Afkorting.ToUpper();
+                }
+
+                // if email is not filled in then it creates email with First name and surname
+                if (person.Email is null || person.Email == "") 
+                {
+                    person.Email = (person.Voornaam + "." + person.Familienaam + "@barco.com").ToLower();
+                }
+
+                _daoUser.AddUser(person); 
+                DisplayDatabaseUserStartup(); // toont view DBUSerUserControl
+            }
+            else
+            {
+                MessageBox.Show("please fill all required fields");
+            }
         }
 
         public void UpdateUser() // update
         {
             Person user = ((AbstractViewModelContainer)this.ViewModel).Person;
 
-            _daoUser.EditUser(user);
-            DisplayDatabaseUserStartup();
+            if (CheckRequirment(user))
+            {
+                user.Afkorting = (user.Voornaam.Substring(0, 2) + user.Familienaam.Substring(user.Familienaam.Length - 2)).ToUpper();
+
+                // if email is not filled in then it creates email with First name and surname
+                if (user.Email is null || user.Email == "")
+                {
+                    user.Email = (user.Voornaam + "." + user.Familienaam + "@barco.com").ToLower();
+                }
+
+                _daoUser.AddUser(user);
+                DisplayDatabaseUserStartup(); // toont view DBUSerUserControl
+            }
+            else
+            {
+                MessageBox.Show("please fill all required fields");
+                DisplayDatabaseUserStartup();
+            }
         }
 
         //CRU Division
         public void InsertDivision()
         {
             RqBarcoDivision div = ((ViewModelAddDevision)this.ViewModel).Division;
-
+            //cheks if all the required fields are filled in
             if (CheckRequirment(div))
             {
                 div.Actief = true;
@@ -188,15 +228,25 @@ namespace BarcoDB_Admin.ViewModels
         {
             RqBarcoDivision div = ((AbstractViewModelContainer)this.ViewModel).Division;
 
-            _daoDivision.UpdateDivision(div);
-            DisplayDataBaseDivisionStartup();
+            //cheks if all the required fields are filled in
+            if (CheckRequirment(div))
+            {
+                div.Actief = true;
+
+                _daoDivision.AddDivision(div);
+                DisplayDataBaseDivisionStartup();
+            }
+            else
+            {
+                MessageBox.Show("please fill all required fields");
+            }
         }
 
         //CRU Resource
         public void InsertResource()
         {
             PlResource res = ((ViewModelAddResources)this.ViewModel).Resource;
-
+            //cheks if all the required fields are filled in
             if (CheckRequirment(res))
             {
                 res.KleurHex = res.KleurHex is null ? "" : res.KleurHex.ToString();
@@ -215,36 +265,50 @@ namespace BarcoDB_Admin.ViewModels
         {
             PlResource res = ((AbstractViewModelContainer)this.ViewModel).Resource;
 
-            _daoResource.UpdateResouce(res);
-            DisplayDataResourceStartup();
+            //cheks if all the required fields are filled in
+            if (CheckRequirment(res))
+            {
+                res.KleurHex = res.KleurHex is null ? "" : res.KleurHex.ToString();
+
+                _daoResource.AddResource(res);
+                DisplayDataResourceStartup();
+            }
+            else
+            {
+                MessageBox.Show("please fill all required fields");
+            }
         }
 
         private bool CheckRequirment(object input)
         {
-            if (input is Person)
+
+            if (input is Person) // cheks if the input comes from Person
             {
                 Person checkPerson = (Person)input;
-
-                if (checkPerson.Voornaam is null || checkPerson.Familienaam is null || checkPerson.Functie is null || checkPerson.Wachtwoord is null ||
+                //Cheks if the required fields are all filled in 
+                //If fields are empty return false
+                if (checkPerson.Voornaam is null || checkPerson.Familienaam is null || checkPerson.Functie is null || checkPerson.Wachtwoord is null || 
                     checkPerson.Voornaam == "" || checkPerson.Familienaam == "" || checkPerson.Functie == "" || checkPerson.Wachtwoord == "")
                 {
                     return false;
                 }
             }
-            else if (input is PlResource)
+            else if (input is PlResource) // cheks if the input comes from PlResource
             {
                 PlResource checkResource = (PlResource)input;
-
+                //Cheks if the required fields are all filled in 
+                //If fields are empty return false
                 if (checkResource.Naam is null || checkResource.Naam == "" ||
                     checkResource.KleurRgb is null || checkResource.KleurRgb == "")
                 {
                     return false;
                 }
             }
-            else if (input is RqBarcoDivision)
+            else if (input is RqBarcoDivision) //cheks if the input comes from Person
             {
                 RqBarcoDivision checkDivision = (RqBarcoDivision)input;
-
+                //Cheks if the required fields are all filled in 
+                //If fields are empty return false
                 if (checkDivision.Afkorting is null || checkDivision.Afkorting == "")
                 {
                     return false;
