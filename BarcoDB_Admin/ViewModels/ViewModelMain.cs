@@ -4,7 +4,6 @@ using BarcoDB_Admin.ViewModels.Edit;
 using Prism.Commands;
 using System;
 using System.Windows;
-using BarcoDB_Admin.Dao;
 
 namespace BarcoDB_Admin.ViewModels
 {
@@ -24,7 +23,6 @@ namespace BarcoDB_Admin.ViewModels
         public DelegateCommand DisplayEditResourcesCommand { get; set; }
         public DelegateCommand DisplayAddDivisionCommand { get; set; }
         public DelegateCommand DisplayEditDivisionCommand { get; set; }
-
         public DelegateCommand SaveUserCommand { get; set; }
         public DelegateCommand SaveResourcesCommand { get; set; }
         public DelegateCommand SaveDivisionCommand { get; set; }
@@ -43,9 +41,6 @@ namespace BarcoDB_Admin.ViewModels
             DisplayAddDivisionCommand = new DelegateCommand(DisplayAddDivisionStartup);
             DisplayEditDivisionCommand = new DelegateCommand(DisplayEditDivisionStartup);
 
-
-            
-            
             Exit = new DelegateCommand(exit);
         }
 
@@ -107,7 +102,6 @@ namespace BarcoDB_Admin.ViewModels
             }
         }
 
-
         public void DisplayAddResourcesStartup()
         {
             this.ViewModel = new ViewModelAddResources();
@@ -160,7 +154,6 @@ namespace BarcoDB_Admin.ViewModels
 
             _daoUser.AddUser(person);
             DisplayDatabaseUserStartup();
-
         }
 
         public void UpdateUser() // update
@@ -174,7 +167,6 @@ namespace BarcoDB_Admin.ViewModels
         //CRU Division
         public void InsertDivision()
         {
-
             RqBarcoDivision div = ((ViewModelAddDevision)this.ViewModel).Division;
 
             _daoDivision.AddDivision(div);
@@ -189,11 +181,9 @@ namespace BarcoDB_Admin.ViewModels
             DisplayDataBaseDivisionStartup();
         }
 
-
         //CRU Resource
         public void InsertResource()
         {
-
             PlResource res = ((ViewModelAddResources)this.ViewModel).Resource;
 
             _daoResource.AddResource(res);
