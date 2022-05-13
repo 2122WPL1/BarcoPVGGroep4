@@ -81,6 +81,11 @@ namespace BarcoDB_Admin.Dao
                 entity.Property(e => e.Voornaam).HasMaxLength(50);
 
                 entity.Property(e => e.Wachtwoord).HasMaxLength(50);
+
+                entity.Property(e => e.Email).HasMaxLength(50);
+
+                entity.Property(e => e.Functie).HasMaxLength(50);
+
             });
 
             modelBuilder.Entity<PlPlanning>(entity =>

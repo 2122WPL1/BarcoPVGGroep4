@@ -10,7 +10,7 @@
     <StackPanel Margin="5">
         <GroupBox Height="422" Header="Devision">
             <Grid>
-                <Label Content="Abbreviation:" HorizontalAlignment="Left" Margin="212,114,0,0" VerticalAlignment="Top"/>
+                <Label Content="*Abbreviation:" HorizontalAlignment="Left" Margin="212,114,0,0" VerticalAlignment="Top"/>
                 <Label Content="Alias:" HorizontalAlignment="Left" Margin="255,160,0,0" VerticalAlignment="Top"/>
                 <TextBox Margin="353,114,0,0" VerticalAlignment="Top" Width="150" 
                          Text="{Binding Division.Afkorting, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding IsEnable1}"/>

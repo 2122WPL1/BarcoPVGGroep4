@@ -154,6 +154,7 @@ namespace BarcoDB_Admin.ViewModels
 
             _daoUser.AddUser(person);
             DisplayDatabaseUserStartup();
+
         }
 
         public void UpdateUser() // update
@@ -169,8 +170,18 @@ namespace BarcoDB_Admin.ViewModels
         {
             RqBarcoDivision div = ((ViewModelAddDevision)this.ViewModel).Division;
 
-            _daoDivision.AddDivision(div);
-            DisplayDataBaseDivisionStartup();
+            if (CheckRequirment(div))
+            {
+                div.Actief = true;
+
+                _daoDivision.AddDivision(div);
+                DisplayDataBaseDivisionStartup();
+            }
+            else
+            {
+                MessageBox.Show("please fill all required fields");
+            }
+
         }
 
         public void UpdateDivision()
@@ -186,8 +197,18 @@ namespace BarcoDB_Admin.ViewModels
         {
             PlResource res = ((ViewModelAddResources)this.ViewModel).Resource;
 
-            _daoResource.AddResource(res);
-            DisplayDataResourceStartup();
+            if (CheckRequirment(res))
+            {
+                res.KleurHex = res.KleurHex is null ? "" : res.KleurHex.ToString();
+
+                _daoResource.AddResource(res);
+                DisplayDataResourceStartup();
+            }
+            else
+            {
+                MessageBox.Show("please fill all required fields");
+            }
+
         }
 
         public void UpdateResource() // update
@@ -196,6 +217,40 @@ namespace BarcoDB_Admin.ViewModels
 
             _daoResource.UpdateResouce(res);
             DisplayDataResourceStartup();
+        }
+
+        private bool CheckRequirment(object input)
+        {
+            if (input is Person)
+            {
+                Person checkPerson = (Person)input;
+
+                if (checkPerson.Voornaam is null || checkPerson.Familienaam is null || checkPerson.Functie is null || checkPerson.Wachtwoord is null ||
+                    checkPerson.Voornaam == "" || checkPerson.Familienaam == "" || checkPerson.Functie == "" || checkPerson.Wachtwoord == "")
+                {
+                    return false;
+                }
+            }
+            else if (input is PlResource)
+            {
+                PlResource checkResource = (PlResource)input;
+
+                if (checkResource.Naam is null || checkResource.Naam == "" ||
+                    checkResource.KleurRgb is null || checkResource.KleurRgb == "")
+                {
+                    return false;
+                }
+            }
+            else if (input is RqBarcoDivision)
+            {
+                RqBarcoDivision checkDivision = (RqBarcoDivision)input;
+
+                if (checkDivision.Afkorting is null || checkDivision.Afkorting == "")
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }
