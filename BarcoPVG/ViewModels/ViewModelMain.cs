@@ -261,41 +261,41 @@ namespace BarcoPVG.ViewModels
                 .JR); // SaveChanges included in function
             int count = 0;
 
+
+            //jr.JrNumber = CreateJRNummer(jr); //jr ID wordt automatisch toegevoegd bij savecnages waardoor deze niet ka nwerken
+            List<EUT> euts = new List<EUT>();
+            if (CheckCreateRequirements(jr, out euts))
             {
-                //jr.JrNumber = CreateJRNummer(jr); //jr ID wordt automatisch toegevoegd bij savecnages waardoor deze niet ka nwerken
-                List<EUT> euts = new List<EUT>();
-                if (CheckCreateRequirements(jr, out euts))
+                foreach (EUT eut in euts)
                 {
-                    foreach (EUT eut in euts)
-                    {
-                        _daoEUT.AddEutToRqRequest(jr, eut, count.ToString());
-                        count++;
-                    }
-                    _daoJR._context.RqRequests.Add(jr);
-                    // Here we call the SaveChanges method, so that we can link several EUTs to one JR
-                    _daoJR.SaveChanges();
+                    _daoEUT.AddEutToRqRequest(jr, eut, count.ToString());
+                    count++;
                 }
-
-                DisplayEmployeeStartup();
-
-                ////Jarne switch for openening window based on who's logged in
-                //switch (_daoLogin.BarcoUser.Division)
-                //{
-                //    case "DEV":
-                //        DisplayDevStartup();
-                //        break;
-                //    case "TEST":
-                //        DisplayEmployeeStartup();
-                //        break;
-                //    case "PLAN":
-                //        DisplayPlannerStartup();
-                //        break;
-                //    default:
-                //        DisplayEmployeeStartup();
-                //        break;
-                //}
-                //}
+                _daoJR._context.RqRequests.Add(jr);
+                // Here we call the SaveChanges method, so that we can link several EUTs to one JR
+                _daoJR.SaveChanges();
             }
+
+            DisplayEmployeeStartup();
+
+            ////Jarne switch for openening window based on who's logged in
+            //switch (_daoLogin.BarcoUser.Division)
+            //{
+            //    case "DEV":
+            //        DisplayDevStartup();
+            //        break;
+            //    case "TEST":
+            //        DisplayEmployeeStartup();
+            //        break;
+            //    case "PLAN":
+            //        DisplayPlannerStartup();
+            //        break;
+            //    default:
+            //        DisplayEmployeeStartup();
+            //        break;
+            //}
+            //}
+
         }
 
         public void InsertInternalJr()
@@ -303,23 +303,8 @@ namespace BarcoPVG.ViewModels
             _daoInternalJr.AddInternJobRequest(((AbstractViewModelContainer)this.ViewModel)
                 .JR); // SaveChanges included in function
 
-            DisplayPlannerStartup();
             //Jarne switch for openening window based on who's logged in
-            switch (_daoLogin.BarcoUser.Division)
-            {
-                case "DEV":
-                    DisplayDevStartup();
-                    break;
-                case "TEST":
-                    DisplayEmployeeStartup();
-                    break;
-                case "PLAN":
-                    DisplayPlannerStartup();
-                    break;
-                default:
-                    DisplayEmployeeStartup();
-                    break;
-            }
+
             DisplayEmployeeStartup();
         }
 
@@ -330,7 +315,6 @@ namespace BarcoPVG.ViewModels
                ((AbstractViewModelContainer)this.ViewModel)
                .JR); // SaveChanges included in function
             int count = 0;
-
             {
                 //jr.JrNumber = CreateJRNummer(jr); 
 
@@ -346,7 +330,7 @@ namespace BarcoPVG.ViewModels
 
                     if (error == null)
                     {
-                        DisplayDevStartup();
+                        DisplayEmployeeStartup();
                     }
                     else
                     {

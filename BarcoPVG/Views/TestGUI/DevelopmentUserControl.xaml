@@ -39,8 +39,9 @@
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
                         <GridViewColumn Header="JR number" DisplayMemberBinding="{Binding JrNumber}" />
-                        <GridViewColumn Header="Expected Approve Date" DisplayMemberBinding="{Binding RequestDate, StringFormat=d}" />
-                        <GridViewColumn Header="Expected End Date" DisplayMemberBinding="{Binding ExpectedEnddate, StringFormat=d}" />
+                        <GridViewColumn Header="Request Date" DisplayMemberBinding="{Binding RequestDate, StringFormat=d}" Width="Auto"/>
+                        <GridViewColumn Header="Expected End Date" DisplayMemberBinding="{Binding ExpectedEnddate, StringFormat=d}" Width="Auto"/>
+                        <GridViewColumn Header="Status" DisplayMemberBinding="{Binding JrStatus}" Width="Auto"/>
 
                         <!--<GridViewColumn Header="Id" DisplayMemberBinding="{Binding IdRequest}" />
                         <GridViewColumn Header="Division" DisplayMemberBinding="{Binding BarcoDivision}" />

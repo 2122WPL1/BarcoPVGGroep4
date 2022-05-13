@@ -196,7 +196,7 @@
                         Height="40" Margin="5"
                         />
             <Button Content="Cancel"
-                        Command="{Binding DataContext.DisplayDevStartupCommand, 
+                        Command="{Binding DataContext.DisplayEmployeeStartup, 
                             RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, 
                             Mode=OneWay}"
                         Height="40" Margin="5"/>
