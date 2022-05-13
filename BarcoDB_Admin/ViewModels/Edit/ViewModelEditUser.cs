@@ -10,12 +10,12 @@ using System.Windows.Input;
 
 namespace BarcoDB_Admin.ViewModels.Edit
 {
-    //Amy
-     class ViewModelEditUser : AbstractViewModelContainer
+    //Amy,Eakarach
+    class ViewModelEditUser : AbstractViewModelContainer
     {
         ObservableCollection<Person> personDetails { get; set; }
         public bool _IsEnable1;
-        public bool IsEnable1
+        public bool IsEnable1 //ensure that primary can not be changed
         {
             get
             {
@@ -29,7 +29,7 @@ namespace BarcoDB_Admin.ViewModels.Edit
         }
         public ViewModelEditUser(string Afkorting) : base()
         {
-            Person = _daoUser.GetAllUser().FirstOrDefault(x => x.Afkorting == Afkorting);
+            Person = _daoUser.GetAllUser().FirstOrDefault(x => x.Afkorting == Afkorting); //to be able to edit the selected person in the database
             IsEnable1 = false;
         }
     }
