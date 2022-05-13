@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BarcoPVG.Views"
-             mc:Ignorable="d" d:Background="LightGray" Height="496">
+             mc:Ignorable="d" d:Background="LightGray" Height="auto" Width="auto">
     <StackPanel Margin="10" Orientation="Horizontal">
         <GroupBox Header="Project Details">
             <Grid>
@@ -158,7 +158,7 @@
                                     HorizontalAlignment="Right"/>
                     <!--Jarne-->
                     <ListBox x:Name="ListEUT"
-                                         MinHeight="300"
+                                         MinHeight="350"
                                          MinWidth="1200"
                                          HorizontalAlignment="Stretch"
                                          Background="#363636"
@@ -167,8 +167,7 @@
                                          ScrollViewer.VerticalScrollBarVisibility="Auto"
                                          ScrollViewer.CanContentScroll="True"
                                          ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                                         HorizontalContentAlignment="Center" 
-                                         IsEnabled="false">
+                                         HorizontalContentAlignment="Center">
                         <ListBox.Resources>
                             <CollectionViewSource x:Key="EUTs" Source="{Binding EUTs}" />
                         </ListBox.Resources>

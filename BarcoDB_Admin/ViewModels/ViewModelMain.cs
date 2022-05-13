@@ -4,7 +4,6 @@ using BarcoDB_Admin.ViewModels.Edit;
 using Prism.Commands;
 using System;
 using System.Windows;
-using BarcoDB_Admin.Dao;
 
 namespace BarcoDB_Admin.ViewModels
 {
@@ -24,7 +23,6 @@ namespace BarcoDB_Admin.ViewModels
         public DelegateCommand DisplayEditResourcesCommand { get; set; }
         public DelegateCommand DisplayAddDivisionCommand { get; set; }
         public DelegateCommand DisplayEditDivisionCommand { get; set; }
-
         public DelegateCommand SaveUserCommand { get; set; }
         public DelegateCommand SaveResourcesCommand { get; set; }
         public DelegateCommand SaveDivisionCommand { get; set; }
@@ -43,9 +41,6 @@ namespace BarcoDB_Admin.ViewModels
             DisplayAddDivisionCommand = new DelegateCommand(DisplayAddDivisionStartup);
             DisplayEditDivisionCommand = new DelegateCommand(DisplayEditDivisionStartup);
 
-
-            
-            
             Exit = new DelegateCommand(exit);
         }
 
@@ -107,7 +102,6 @@ namespace BarcoDB_Admin.ViewModels
             }
         }
 
-
         public void DisplayAddResourcesStartup()
         {
             this.ViewModel = new ViewModelAddResources();
@@ -158,23 +152,8 @@ namespace BarcoDB_Admin.ViewModels
 
             Person person = ((ViewModelAddUser)this.ViewModel).Person;
 
-            if (CheckRequirment(person))
-            {
-                person.Afkorting = (person.Voornaam.Substring(0, 2) + person.Familienaam.Substring(person.Familienaam.Length - 2)).ToUpper();
-
-                if (person.Email is null || person.Email == "")
-                {
-                    person.Email = (person.Voornaam + "." + person.Familienaam + "@barco.com").ToLower();
-                }
-
-                _daoUser.AddUser(person);
-                DisplayDatabaseUserStartup();
-            }
-            else
-            {
-                MessageBox.Show("please fill all required fields");
-            }
-
+            _daoUser.AddUser(person);
+            DisplayDatabaseUserStartup();
 
         }
 
@@ -189,7 +168,6 @@ namespace BarcoDB_Admin.ViewModels
         //CRU Division
         public void InsertDivision()
         {
-
             RqBarcoDivision div = ((ViewModelAddDevision)this.ViewModel).Division;
 
             if (CheckRequirment(div))
@@ -214,11 +192,9 @@ namespace BarcoDB_Admin.ViewModels
             DisplayDataBaseDivisionStartup();
         }
 
-
         //CRU Resource
         public void InsertResource()
         {
-
             PlResource res = ((ViewModelAddResources)this.ViewModel).Resource;
 
             if (CheckRequirment(res))
