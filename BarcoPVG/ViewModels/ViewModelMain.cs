@@ -165,7 +165,7 @@ namespace BarcoPVG.ViewModels
                         jr.EutProjectname == String.Empty || jr.HydraProjectNr == String.Empty
                     ))
                 {
-                    if (jr.ExpectedEnddate.Date != DateTime.Now.Date) //never returns null | today's time by using datetime now | datetime now and enddate 1 milliseconde different
+                    if (jr.ExpectedEnddate.Date != DateTime.Now.Date) //never returns null | today's time by using datetime now | datetime now and end-date 1 milliseconde different
                     {
                         if (((AbstractViewModelContainer)this.ViewModel).EUTs.Count == 0) //all EUT from JR
                         {
@@ -230,7 +230,7 @@ namespace BarcoPVG.ViewModels
         public void InsertJr() // creating a job request
         {
             var jr = _daoJR.AddJobRequest(
-                ((AbstractViewModelContainer)this.ViewModel) //TODO: ID request is automatically 0 for some reason
+                ((AbstractViewModelContainer)this.ViewModel) //TODO ID request is automatically 0 for some reason
                 .JR); // SaveChanges included in function
             int count = 0;
 

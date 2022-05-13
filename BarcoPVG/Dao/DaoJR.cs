@@ -95,16 +95,13 @@ namespace BarcoPVG.Dao
 
                 if (newDate.DayOfWeek != DayOfWeek.Saturday && newDate.DayOfWeek != DayOfWeek.Sunday)
                 {
-                    PlVerletdagen eenFeestdag = feestdagen.FirstOrDefault(x => x.Datum.Date == newDate.Date &&
-                                                                            x.Datum.Month == newDate.Month &&
-                                                                            x.Datum.Year == newDate.Year);
+                    PlVerletdagen eenFeestdag = feestdagen.FirstOrDefault(x => x.Datum.Date == newDate.Date && x.Datum.Month == newDate.Month && x.Datum.Year == newDate.Year);
                     if (eenFeestdag == null)
                     {
                         fiveDays -= 1;
                     }
                 }
             }
-
             return newDate;
         }
 
@@ -246,7 +243,6 @@ namespace BarcoPVG.Dao
                 GrossWeight = selectedRQ.GrossWeight,
                 NetWeight = selectedRQ.NetWeight,
                 Battery = (bool)selectedRQ.Battery,
-                //EutPartnr = selectedRQ.EutPartnumbers,
 
                 // Testing
                 Link = selectedRQO.Link,

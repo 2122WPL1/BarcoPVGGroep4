@@ -159,7 +159,7 @@
                     <!--Jarne-->
                     <ListBox x:Name="ListEUT"
                                          MinHeight="350"
-                                         MinWidth="1200"
+                                         MinWidth="800"
                                          HorizontalAlignment="Stretch"
                                          Background="#363636"
                                          ItemTemplate="{DynamicResource EUT}" 
@@ -167,7 +167,8 @@
                                          ScrollViewer.VerticalScrollBarVisibility="Auto"
                                          ScrollViewer.CanContentScroll="True"
                                          ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                                         HorizontalContentAlignment="Center">
+                                         HorizontalContentAlignment="Center"
+                                         IsEnabled="false">
                         <ListBox.Resources>
                             <CollectionViewSource x:Key="EUTs" Source="{Binding EUTs}" />
                         </ListBox.Resources>
