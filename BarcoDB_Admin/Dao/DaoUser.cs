@@ -31,7 +31,7 @@ namespace BarcoDB_Admin.Dao
             _context.Remove(person);
             _context.SaveChanges();
         }
-
+        
         public void AddUser(Person person)
         {
             _context.Add(person);
