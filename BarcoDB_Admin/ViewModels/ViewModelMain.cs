@@ -24,7 +24,6 @@ namespace BarcoDB_Admin.ViewModels
         public DelegateCommand DisplayEditResourcesCommand { get; set; }
         public DelegateCommand DisplayAddDivisionCommand { get; set; }
         public DelegateCommand DisplayEditDivisionCommand { get; set; }
-
         public DelegateCommand SaveUserCommand { get; set; }
         public DelegateCommand SaveResourcesCommand { get; set; }
         public DelegateCommand SaveDivisionCommand { get; set; }
@@ -43,9 +42,6 @@ namespace BarcoDB_Admin.ViewModels
             DisplayAddDivisionCommand = new DelegateCommand(DisplayAddDivisionStartup);
             DisplayEditDivisionCommand = new DelegateCommand(DisplayEditDivisionStartup);
 
-
-            
-            
             Exit = new DelegateCommand(exit);
         }
 
