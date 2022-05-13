@@ -13,6 +13,7 @@ namespace BarcoPVG.Dao
 
         protected DaoJR daoJR = new();
         protected DaoResources _daoResources = new();
+        
 
         //copies the data from DAO
         public DaoPlanning() : base()
@@ -305,7 +306,7 @@ namespace BarcoPVG.Dao
                 IdRequest = request.IdRequest,
                 JrNr = request.JrNumber,
                 Requestdate = request.RequestDate,
-                DueDate = request.RequestDate == null ? request.RequestDate : ((DateTime)request.RequestDate).AddDays(5),
+                DueDate = request.RequestDate == null ? request.RequestDate : daoJR.Add5Datum(),
                 TestDiv = division,
                 TestDivStatus = "In plan", // use enums?
             };

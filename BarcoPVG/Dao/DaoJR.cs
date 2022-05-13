@@ -80,10 +80,13 @@ namespace BarcoPVG.Dao
             return rqrequest;
         }
 
+        //Eakarach
         public DateTime Add5Datum()
         {
             // Still have to look at holidays in Belgium****
             DateTime newDate = DateTime.Now;
+            newDate = newDate.AddDays(12);
+            var feestdagen = _context.PlVerletdagens.ToList();
             int fiveDays = 5;
 
             while (fiveDays > 0)
@@ -92,9 +95,16 @@ namespace BarcoPVG.Dao
 
                 if (newDate.DayOfWeek != DayOfWeek.Saturday && newDate.DayOfWeek != DayOfWeek.Sunday)
                 {
-                    fiveDays -= 1;
+                    PlVerletdagen eenFeestdag = feestdagen.FirstOrDefault(x => x.Datum.Date == newDate.Date &&
+                                                                            x.Datum.Month == newDate.Month &&
+                                                                            x.Datum.Year == newDate.Year);
+                    if (eenFeestdag == null)
+                    {
+                        fiveDays -= 1;
+                    }
                 }
             }
+
             return newDate;
         }
 
