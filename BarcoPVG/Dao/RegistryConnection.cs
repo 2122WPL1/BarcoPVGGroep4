@@ -21,7 +21,6 @@ namespace BarcoPVG.Dao
                     property.SetValue(storage, valueKey.GetValue(property.Name));
                 }
             }
-
             return storage;
         }
     }

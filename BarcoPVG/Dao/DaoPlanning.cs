@@ -14,7 +14,6 @@ namespace BarcoPVG.Dao
         protected DaoJR daoJR = new();
         protected DaoResources _daoResources = new();
         
-
         //copies the data from DAO
         public DaoPlanning() : base()
         {
