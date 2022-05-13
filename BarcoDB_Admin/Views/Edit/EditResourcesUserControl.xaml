@@ -10,8 +10,8 @@
     <StackPanel Margin="5">
         <GroupBox Height="422" Header="Resource">
             <Grid>
-                <Label Content="Name:" HorizontalAlignment="Left" Margin="171,112,0,0" VerticalAlignment="Top"/>
-                <Label Content="Color-RGB:" HorizontalAlignment="Left" Margin="147,160,0,0" VerticalAlignment="Top"/>
+                <Label Content="*Name:" HorizontalAlignment="Left" Margin="171,112,0,0" VerticalAlignment="Top"/>
+                <Label Content="*Color-RGB:" HorizontalAlignment="Left" Margin="147,160,0,0" VerticalAlignment="Top"/>
                 <Label Content="Color-HEX:" HorizontalAlignment="Left" Margin="148,212,0,0" VerticalAlignment="Top"/>
                 <TextBox Margin="264,112,0,0" VerticalAlignment="Top" Width="150"
                          Text="{Binding Resource.Naam, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
