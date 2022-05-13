@@ -39,7 +39,6 @@
                             <GridViewColumn DisplayMemberBinding="{Binding Description}" Header="Description"/>
                             <GridViewColumn DisplayMemberBinding="{Binding StartDate, StringFormat=d}" Header="Start Date"/>
                             <GridViewColumn DisplayMemberBinding="{Binding EndDate, StringFormat=d}" Header="End Date"/>
-                            <GridViewColumn DisplayMemberBinding="{Binding         DueDate, StringFormat=d}" Header="Expected To Planed Date"/>
                             <GridViewColumn DisplayMemberBinding="{Binding Status}" Header="Status"/>
                         </GridView>
                     </ListView.View>
