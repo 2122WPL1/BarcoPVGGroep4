@@ -28,7 +28,7 @@
                     <CheckBox IsChecked="{Binding EMC, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="EMC"  FontSize="12" Width="150"  Margin="5"/>
                     <CheckBox IsChecked="{Binding ENV, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="ENVIRONMENTAL"  FontSize="12" Width="150"  Margin="5"/>
                     <CheckBox IsChecked="{Binding REL, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="RELIABILITY"  FontSize="12" Width="150"   Margin="5"/>
-                    <CheckBox IsChecked="{Binding SAV, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="PRODUCT SAFETY"  Width="150" FontSize="12"  Margin="5"/>
+                    <CheckBox IsChecked="{Binding SAV, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="PRODUCT SAFETY"  Width="150" FontSize="12"  Margin="5" IsEnabled="False"/>
                     <CheckBox IsChecked="{Binding PCK, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="PACKAGING"  FontSize="12" Width="150"  Margin="5"/>
                     <CheckBox IsChecked="{Binding ECO, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="GREEN COMPLIANCE" FontSize="12" Width="150"  Margin="5" IsEnabled="False"/>
                     <TextBlock  Text="Foreseen availability date:" Margin="5"/>

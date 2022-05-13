@@ -168,7 +168,7 @@
                                          ScrollViewer.CanContentScroll="True"
                                          ScrollViewer.HorizontalScrollBarVisibility="Auto"
                                          HorizontalContentAlignment="Center"
-                                         IsEnabled="false">
+                                         IsEnabled="True">
                         <ListBox.Resources>
                             <CollectionViewSource x:Key="EUTs" Source="{Binding EUTs}" />
                         </ListBox.Resources>
