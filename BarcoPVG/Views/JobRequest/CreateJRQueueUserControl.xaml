@@ -38,8 +38,9 @@
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
                         <GridViewColumn Header="JR number" DisplayMemberBinding="{Binding JrNumber}" Width="Auto"/>
-                        <GridViewColumn Header="Expected Approve Date" DisplayMemberBinding="{Binding RequestDate, StringFormat=d}" Width="Auto"/>
+                        <GridViewColumn Header="Request Date" DisplayMemberBinding="{Binding RequestDate, StringFormat=d}" Width="Auto"/>
                         <GridViewColumn Header="Expected End Date" DisplayMemberBinding="{Binding ExpectedEnddate, StringFormat=d}" Width="Auto"/>
+                        <GridViewColumn Header="Status" DisplayMemberBinding="{Binding JrStatus}" Width="Auto"/>
                     </GridView>
                 </ListView.View>
             </ListView>

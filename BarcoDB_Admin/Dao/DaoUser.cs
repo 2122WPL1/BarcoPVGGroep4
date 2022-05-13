@@ -31,44 +31,22 @@ namespace BarcoDB_Admin.Dao
             _context.Remove(person);
             _context.SaveChanges();
         }
-
-        public List<Person> GetUsers()
+        
+        public void AddUser(Person person)
         {
-            return _context.People.ToList();
+            _context.Add(person);
+            _context.SaveChanges();
         }
 
         public Person EditUser(Person person)
         {
-            users.Remove(person);
-            person = new Person()
-            {
-                Afkorting = person.Afkorting,
-                Voornaam = person.Voornaam,
-                Familienaam = person.Familienaam,
-                wachtwoord = person.wachtwoord
-            };
-
-            users.Add(person);
-            _context.Add(person);
+            _context.Update(person);
             _context.SaveChanges();
-            return person;
         }
 
-        //Amy & Jarne
-        public Person AddUser(Person person)
+        public List<Person> GetAllUser()
         {
-            person = new Person()
-            {
-                Afkorting = person.Afkorting,
-                Voornaam = person.Voornaam,
-                Familienaam = person.Familienaam,
-                wachtwoord = person.wachtwoord
-            };
-            
-            users.Add(person);
-            _context.Add(person);
-            _context.SaveChanges();
-            return person;
+            return _context.People.ToList();
         }
     }
 }

@@ -6,37 +6,36 @@ using System.Windows;
 
 namespace BarcoDB_Admin.ViewModels.DataBase
 {
-    public class ViewModelDBUser : AbstractViewModelBase
+    public class ViewModelDBUser : AbstractViewModelContainer
     {
-        public DaoUser _dao = new DaoUser();
 
         #region properties
         public DelegateCommand DeleteUser { get; set; }
-        public List<Person> AllUsers { get => _allUsers; set => _allUsers = value; }
-        public Person SelectedUser { get; set; }
+        public List<Person> AllUsers { get ; set ; }
+        public Person SelectedUser { get; set; } = null;
         #endregion
 
         public ViewModelDBUser() : base()
         {
-            DeleteUser = new DelegateCommand(deleteUserFromDB);
+            DeleteUser = new DelegateCommand(DeleteUserFromDB);
             Load();
         }
 
-        private List<Person> _allUsers;
-        private Person _SelectedUser;//Amy
+        protected List<Person> _allUsers;
+        //protected Person _SelectedUser;//Amy
 
         public void Load()
         {
-            AllUsers = _daoUser.GetUsers();
+            AllUsers = _daoUser.GetAllUser();
         }
 
-        public void deleteUserFromDB()
+        public void DeleteUserFromDB()
         {
             if (SelectedUser != null)
             {
-                if (MessageBox.Show("Are you sure you want to delete this user?", "Delete User", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                if (MessageBox.Show("Are you sure you want to delete this user?", "Delete User", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
                 {
-                    _dao.RemoveUser(SelectedUser);
+                    _daoUser.RemoveUser(SelectedUser);
                     Load();
                     OnpropertyChanged("AllUsers");
                 }

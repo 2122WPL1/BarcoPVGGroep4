@@ -7,19 +7,19 @@
         mc:Ignorable="d"
         d:DesignHeight="800" d:Background="LightGray">
     <!--amy-->
-
     <StackPanel Margin="0,5,0,10">
         <GroupBox Header="User" Width="auto" MaxHeight="600">
 
-            <ListView ItemsSource="{Binding AllUsers}" SelectedItem="{Binding SelectedUser, Mode=TwoWay}" Height="300" VerticalAlignment="Top" >
+            <ListView ItemsSource="{Binding AllUsers}" SelectedItem="{Binding SelectedUser, Mode=TwoWay}" Height="300" VerticalAlignment="Top" HorizontalAlignment="Stretch" >
 
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Abbreviation" Width="150" DisplayMemberBinding="{Binding Afkorting}"/>
+                        <GridViewColumn Header="Abbreviation" Width="150" DisplayMemberBinding="{Binding Afkorting}" />
                         <GridViewColumn Header="First Name" Width="150" DisplayMemberBinding="{Binding Voornaam}"/>
                         <GridViewColumn Header="Last Name" Width="150" DisplayMemberBinding="{Binding Familienaam}"/>
-                        <GridViewColumn Header="Password" Width="150" DisplayMemberBinding="{Binding wachtwoord}"/>
-                        <GridViewColumn Header="Function" Width="150" DisplayMemberBinding="{Binding Function}"/>
+                        <GridViewColumn Header="Password" Width="150" DisplayMemberBinding="{Binding Wachtwoord}"/>
+                        <GridViewColumn Header="Email" Width="auto" DisplayMemberBinding="{Binding Email}"/>
+                        <GridViewColumn Header="Functie" Width="150" DisplayMemberBinding="{Binding Functie}"/>
                     </GridView>
 
                 </ListView.View>

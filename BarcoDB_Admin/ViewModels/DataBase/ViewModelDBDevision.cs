@@ -11,23 +11,25 @@ using Prism.Commands;
 
 namespace BarcoDB_Admin.ViewModels.DataBase
 {
-    class ViewModelDBDevision : AbstractViewModelBase
+    class ViewModelDBDevision : AbstractViewModelContainer
     {
-        DaoDivision _dao = new DaoDivision();
+
+        #region properties
+        public List<RqBarcoDivision> AllDivisions { get; set; }
+        public RqBarcoDivision SelectedDivision { get; set; } = null;
+        public DelegateCommand DeleteDivision { get; set; }
+        #endregion
+
         public ViewModelDBDevision() : base()
         {
             DeleteDivision = new DelegateCommand(DeleteDivisionFromDB);
             Load();
         }
-        #region properties
-        public List<RqBarcoDivision> AllDivisions{ get; set; }
-        public RqBarcoDivision SelectedDivision { get; set; }
-        public DelegateCommand DeleteDivision { get; set; }
-        #endregion
+
 
         private void Load()
         {
-            AllDivisions = _dao.GetAllDivisions();
+            AllDivisions = _daoDivision.GetAllDivisions();
         }
         private void DeleteDivisionFromDB()
         {
@@ -35,7 +37,7 @@ namespace BarcoDB_Admin.ViewModels.DataBase
             {
                 if (MessageBox.Show( "Are you sure you want to delete this division?", "Delete division", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
-                    _dao.RemoveDivision(SelectedDivision);
+                    _daoDivision.RemoveDivision(SelectedDivision);
                     Load();
                     OnpropertyChanged("AllDivisions");
                 }

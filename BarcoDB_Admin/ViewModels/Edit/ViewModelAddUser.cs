@@ -2,18 +2,13 @@
 
 namespace BarcoDB_Admin.ViewModels.Edit
 {
-    public class ViewModelAddUser : AbstractViewModelBase
+    public class ViewModelAddUser : AbstractViewModelContainer
     {
-        protected Person _Person;
 
         public ViewModelAddUser() : base()
         {
+            Person = new Person();
         }
 
-        public Person Person
-        {
-            get { return _Person; }
-            set { _Person = value; OnpropertyChanged(); }
-        }
     }
 }

@@ -7,9 +7,9 @@
        
         Background="LightGray" Foreground="White"
         WindowState="Maximized"
-        WindowStyle="ThreeDBorderWindow"
+        WindowStyle="None"
         WindowStartupLocation="CenterScreen"
-     MinWidth="330  "
+        MinWidth="330"
          
         Height="{x:Static SystemParameters.PrimaryScreenHeight}" 
       Width="{x:Static SystemParameters.PrimaryScreenWidth}" 
@@ -33,10 +33,10 @@
                     <Image Style="{StaticResource BarcoLogo}" Grid.Column="0" Margin="27,0,37,0"/>
                     <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,0,1154,0" >
                         <TextBlock FontSize="14" Text="Welcome "/>
-                        <TextBlock FontSize="14" FontWeight="Bold" Text="{Binding User.Name}"/>
+                        <!--<TextBlock FontSize="14" FontWeight="Bold" Text="{Binding User.Name}"/>
                         <TextBlock FontSize="14" Text=" ("/>
                         <TextBlock FontSize="14" Text="{Binding User.Division}"/>
-                        <TextBlock FontSize="14" Text=")"/>
+                        <TextBlock FontSize="14" Text=")"/>-->
                     </StackPanel>
                 </Grid>
             </GroupBox.Header>

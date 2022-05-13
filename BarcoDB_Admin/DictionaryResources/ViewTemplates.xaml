@@ -28,29 +28,28 @@
                 <viewDataBase:DBDevisionUserControl/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type viewModelEdit:ViewModelAddUser}">
+                <viewEdit:EditUserUserControl/>
+            </DataTemplate>
             <DataTemplate DataType="{x:Type viewModelEdit:ViewModelEditUser}">
                 <viewEdit:EditUserUserControl/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type viewModelEdit:ViewModelAddUser}">
-                <viewEdit:EditUserUserControl/>
-            </DataTemplate>
 
+             <DataTemplate DataType="{x:Type viewModelEdit:ViewModelAddResources}">
+                <viewEdit:EditResourcesUserControl/>
+            </DataTemplate>
             <DataTemplate DataType="{x:Type viewModelEdit:ViewModelEditResources}">
                 <viewEdit:EditResourcesUserControl/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type viewModelEdit:ViewModelEditDevision}">
+            <DataTemplate DataType="{x:Type viewModelEdit:ViewModelAddDevision}">
                 <viewEdit:EditDevisionUserControl/>
             </DataTemplate>
-            
-            <DataTemplate DataType="{x:Type viewModelEdit:ViewModelAddResources}">
-                <viewEdit:EditUserUserControl/>
-            </DataTemplate>
-        
-            <DataTemplate DataType="{x:Type viewModelEdit:ViewModelAddDevision}">
-                <viewEdit:EditUserUserControl/>
-            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModelEdit:ViewModelEditDevision}">
+                <viewEdit:EditDevisionUserControl/>
+            </DataTemplate>      
+
    
             
    

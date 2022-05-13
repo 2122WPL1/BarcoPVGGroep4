@@ -241,8 +241,8 @@ namespace BarcoPVG.ViewModels
         //aanmaken van een JRNummer zodat deze ingevuld kan worden 
         private string CreateJRNummer(RqRequest jr)
         {
-            //
-            string JrNumber = "JR" + _daoLogin.BarcoUser.Function;
+            
+            string JrNumber = "JR" + _daoLogin.BarcoUser.Functie;
 
             for (int i = jr.IdRequest.ToString().Length; i <= 5; i++)
             {
@@ -261,41 +261,41 @@ namespace BarcoPVG.ViewModels
                 .JR); // SaveChanges included in function
             int count = 0;
 
+
+            //jr.JrNumber = CreateJRNummer(jr); //jr ID wordt automatisch toegevoegd bij savecnages waardoor deze niet ka nwerken
+            List<EUT> euts = new List<EUT>();
+            if (CheckCreateRequirements(jr, out euts))
             {
-                //jr.JrNumber = CreateJRNummer(jr); //jr ID wordt automatisch toegevoegd bij savecnages waardoor deze niet ka nwerken
-                List<EUT> euts = new List<EUT>();
-                if (CheckCreateRequirements(jr, out euts))
+                foreach (EUT eut in euts)
                 {
-                    foreach (EUT eut in euts)
-                    {
-                        _daoEUT.AddEutToRqRequest(jr, eut, count.ToString());
-                        count++;
-                    }
-                    _daoJR._context.RqRequests.Add(jr);
-                    // Here we call the SaveChanges method, so that we can link several EUTs to one JR
-                    _daoJR.SaveChanges();
+                    _daoEUT.AddEutToRqRequest(jr, eut, count.ToString());
+                    count++;
                 }
-
-                DisplayEmployeeStartup();
-
-                ////Jarne switch for openening window based on who's logged in
-                //switch (_daoLogin.BarcoUser.Division)
-                //{
-                //    case "DEV":
-                //        DisplayDevStartup();
-                //        break;
-                //    case "TEST":
-                //        DisplayEmployeeStartup();
-                //        break;
-                //    case "PLAN":
-                //        DisplayPlannerStartup();
-                //        break;
-                //    default:
-                //        DisplayEmployeeStartup();
-                //        break;
-                //}
-                //}
+                _daoJR._context.RqRequests.Add(jr);
+                // Here we call the SaveChanges method, so that we can link several EUTs to one JR
+                _daoJR.SaveChanges();
             }
+
+            DisplayEmployeeStartup();
+
+            ////Jarne switch for openening window based on who's logged in
+            //switch (_daoLogin.BarcoUser.Division)
+            //{
+            //    case "DEV":
+            //        DisplayDevStartup();
+            //        break;
+            //    case "TEST":
+            //        DisplayEmployeeStartup();
+            //        break;
+            //    case "PLAN":
+            //        DisplayPlannerStartup();
+            //        break;
+            //    default:
+            //        DisplayEmployeeStartup();
+            //        break;
+            //}
+            //}
+
         }
 
         public void InsertInternalJr()
@@ -303,34 +303,18 @@ namespace BarcoPVG.ViewModels
             _daoInternalJr.AddInternJobRequest(((AbstractViewModelContainer)this.ViewModel)
                 .JR); // SaveChanges included in function
 
-            DisplayPlannerStartup();
             //Jarne switch for openening window based on who's logged in
-                switch (_daoLogin.BarcoUser.Division)
-                {
-                    case "DEV":
-                        DisplayDevStartup();
-                        break;
-                    case "TEST":
-                        DisplayEmployeeStartup();
-                        break;
-                    case "PLAN":
-                        DisplayPlannerStartup();
-                        break;
-                    default:
-                        DisplayEmployeeStartup();
-                        break;
-                }
-                DisplayEmployeeStartup();
+
+            DisplayEmployeeStartup();
         }
 
         // Updates existing job request and switches windows
         public void UpdateJr()
         {
             var jr = _daoJR.AddJobRequest(
-               ((AbstractViewModelContainer)this.ViewModel) 
+               ((AbstractViewModelContainer)this.ViewModel)
                .JR); // SaveChanges included in function
             int count = 0;
-
             {
                 //jr.JrNumber = CreateJRNummer(jr); 
 
@@ -346,7 +330,7 @@ namespace BarcoPVG.ViewModels
 
                     if (error == null)
                     {
-                        DisplayDevStartup();
+                        DisplayEmployeeStartup();
                     }
                     else
                     {
@@ -408,7 +392,7 @@ namespace BarcoPVG.ViewModels
 
         private void SetWindowProperties()
         {
-            string i = _daoLogin.BarcoUser.Function;
+            string i = _daoLogin.BarcoUser.Functie;
             switch (i)
             {
                 case "DEV": //Developer
@@ -454,3 +438,4 @@ namespace BarcoPVG.ViewModels
         }
     }
 }
+

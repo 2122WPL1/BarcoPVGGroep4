@@ -27,6 +27,7 @@
                         <GridViewColumn Header="JR number" DisplayMemberBinding="{Binding JrNr}" />
                         <GridViewColumn Header="Expected To Plan Date" DisplayMemberBinding="{Binding DueDate, StringFormat=d}" />
                         <GridViewColumn Header="Expected End Date" DisplayMemberBinding="{Binding Requestdate, StringFormat=d}" />
+                        <GridViewColumn Header="Status" DisplayMemberBinding="{Binding TestDivStatus}" />
                     </GridView>
                 </ListView.View>
             </ListView>

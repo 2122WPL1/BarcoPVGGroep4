@@ -23,7 +23,7 @@ namespace BarcoDB_Admin.Dao
 
         public PlResource GetResource(int id)
         {
-            return _context.PlResources.SingleOrDefault(r => r.Id == id);
+            return _context.PlResources.FirstOrDefault(r => r.Id == id);
         }
 
         public PlResource GetResource(string name)
@@ -50,15 +50,26 @@ namespace BarcoDB_Admin.Dao
             return _context.PlResources.ToList();
         }
 
+        //CRUD
+        public void AddResource(PlResource resource)
+        {
+            _context.Add(resource);
+            _context.SaveChanges();
+        }
+
+        public void UpdateResouce(PlResource resource)
+        { 
+            _context.Update(resource);
+            _context.SaveChanges();
+        }
+
         public void RemoveResource(PlResource req)
         {
             _context.Remove(req);
             _context.SaveChanges();
         }
 
-        public PlResource AddResource(PlResource resource)
-        {
-            return resource;
-        }
+
+
     }
 }

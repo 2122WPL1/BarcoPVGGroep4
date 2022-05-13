@@ -21,7 +21,7 @@ namespace BarcoPVG.ViewModels.TestGUI
             Load();
         }
 
-        // Function used in code behind
+        // Functie used in code behind
         // Loads all JR IDs in LB
         public void Load()
         {
