@@ -41,8 +41,6 @@ namespace BarcoDB_Admin.ViewModels
             DisplayAddDivisionCommand = new DelegateCommand(DisplayAddDivisionStartup);
             DisplayEditDivisionCommand = new DelegateCommand(DisplayEditDivisionStartup);
 
-            
-            
             Exit = new DelegateCommand(exit);
         }
 
@@ -150,6 +148,9 @@ namespace BarcoDB_Admin.ViewModels
         //CRU USER
         public void InsertUser()
         {
+
+            Person person = ((ViewModelAddUser)this.ViewModel).Person;
+
             //cheks if all the required fields are filled in
             if (CheckRequirment(person))
             {
@@ -178,11 +179,6 @@ namespace BarcoDB_Admin.ViewModels
             {
                 MessageBox.Show("please fill all required fields");
             }
-
-                MessageBox.Show("please fill all required fields");
-            }
-
-
         }
 
         public void UpdateUser() // update
