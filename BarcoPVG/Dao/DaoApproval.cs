@@ -54,7 +54,6 @@ namespace BarcoPVG.Dao
                 {
                     _context.PlPlannings.Add(planning);
                     _context.SaveChanges();
-                    //TODO approving a job request causes a problem with the database primary key of Planning_PK and pl_Planning a double id. it wants to make a record with the same id even if it already exsist → temporarely fixed with try catch.
                     if (msg)
                     {
                         MessageBox.Show("the original ID is " + id + ", because there was an error the id has been changed to " + planning.IdPlanning);

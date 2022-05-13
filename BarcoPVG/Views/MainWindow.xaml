@@ -6,16 +6,16 @@
         mc:Ignorable="d"
         Title="MainWindow"
         Background="LightGray" Foreground="White"
-        ResizeMode="CanMinimize" 
+        ResizeMode="NoResize" 
         WindowStyle="None" 
         WindowStartupLocation="CenterScreen" 
         WindowState="Maximized" 
         Focusable="True"
-        Height="{x:Static SystemParameters.PrimaryScreenHeight}" 
+        Height="{x:Static SystemParameters.PrimaryScreenHeight}"
         Width="{x:Static SystemParameters.PrimaryScreenWidth}">
     <StackPanel>
         <StackPanel Margin="10">
-            <GroupBox BorderThickness="0.1" Height="auto">
+            <GroupBox BorderThickness="0.1">
                 <GroupBox.Header>
                     <Grid Background="#FFF10000">
                         <Grid.ColumnDefinitions>

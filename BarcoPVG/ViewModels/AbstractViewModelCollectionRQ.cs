@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
-using System.Text;
 using System.Windows.Data;
 using System.Windows.Media;
-using BarcoPVG.Models;
 using BarcoPVG.Models.Db;
 
 namespace BarcoPVG.ViewModels
@@ -47,8 +44,6 @@ namespace BarcoPVG.ViewModels
             get => jobNatureColor;
             set => jobNatureColor = value;
         }
-
-
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
