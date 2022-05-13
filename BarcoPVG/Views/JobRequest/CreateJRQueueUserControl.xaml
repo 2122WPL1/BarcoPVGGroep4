@@ -50,7 +50,8 @@
                     Command="{Binding DataContext.DisplayNewJRCommand, 
                             RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, 
                             Mode=OneWay}" 
-                        Margin="10"/>
+                            Visibility="{Binding NoExternForTestTeam}"
+                            Margin="10"/>
             <Button Content="Open JR details"
                     Command="{Binding DataContext.DisplayExistingJRCommand, 
                             RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, 

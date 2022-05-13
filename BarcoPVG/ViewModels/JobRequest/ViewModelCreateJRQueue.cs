@@ -17,6 +17,7 @@ namespace BarcoPVG.ViewModels.JobRequest
     public class ViewModelCreateJRQueue : AbstractViewModelCollectionRQ
     {
         public Visibility NewInternJR { get; set; }
+        public Visibility NoExternForTestTeam { get; set; }
 
         //Constructor
         public ViewModelCreateJRQueue() : base()
@@ -30,10 +31,12 @@ namespace BarcoPVG.ViewModels.JobRequest
             if (_daoLogin.BarcoUser.Functie == "TEST" || _daoLogin.BarcoUser.Functie == "DEV")
             {
                 NewInternJR = Visibility.Visible;
+                NoExternForTestTeam = Visibility.Hidden;
             }
             else
             {
                 NewInternJR = Visibility.Hidden;
+                NoExternForTestTeam = Visibility.Visible;
             }
         }
 
@@ -41,7 +44,7 @@ namespace BarcoPVG.ViewModels.JobRequest
         // Loads all JR IDs in LB
         public void Load()
         {
-            var requestIds = _daoJR.GetAllJobRequests().Where(rq => (rq.Requester == _daoLogin.BarcoUser.Name) && (rq.JrStatus == "To approve"));
+            var requestIds = _daoJR.GetAllJobRequests().Where(rq => (rq.Requester == _daoLogin.BarcoUser.Name)/* && (rq.JrStatus == "To approve")*/);
             IdRequestsOnly.Clear();
 
 
