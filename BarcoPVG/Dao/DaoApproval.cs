@@ -50,7 +50,7 @@ namespace BarcoPVG.Dao
                 var planning = _daoPlanning.CreatePlPlanning(request, division);
                 int id = planning.IdPlanning;
             jump:
-                try //foutafhandeling
+                try //error handling
                 {
                     _context.PlPlannings.Add(planning);
                     _context.SaveChanges();

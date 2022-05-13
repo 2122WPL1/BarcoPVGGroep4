@@ -28,8 +28,7 @@
                   Grid.Column="2" Margin="0,102,0,0" VerticalAlignment="Top" Width="150" HorizontalAlignment="Center" TextElement.Foreground="Black"/>
             </Grid>
         </GroupBox>
-       
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Button Content="Confirm"
                             Command="{Binding DataContext.SaveJrCommand, 
                             RelativeSource={RelativeSource AncestorType={x:Type views:MainWindow}}, 
@@ -39,8 +38,5 @@
                                 Command="{Binding Datacontext.DisplayEmployeeStartup, Mode=OneWay}"
                                 Margin="5,5,5,5" VerticalAlignment="Center"/>
                 </StackPanel>
-
     </StackPanel>
-
-
 </UserControl>
