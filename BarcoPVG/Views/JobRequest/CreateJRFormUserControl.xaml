@@ -191,10 +191,10 @@
                             RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, 
                             Mode=OneWay}"
                     Height="40" Margin="5"/>
-            <Button Content="Empty All Fields"
+            <!--<Button Content="Empty All Fields"
                         Command="{Binding Path=RefreshJRCommand}"
                         Height="40" Margin="5"
-                        />
+                        />-->
             <Button Content="Cancel"
                         Command="{Binding DataContext.DisplayEmployeeStartup, 
                             RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, 
