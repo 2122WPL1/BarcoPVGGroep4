@@ -94,7 +94,6 @@ namespace BarcoPVG.Dao
             _context.Add(planning);
 
             _context.SaveChanges();
-
         }
     }
 }
