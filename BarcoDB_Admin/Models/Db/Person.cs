@@ -11,6 +11,5 @@ namespace BarcoDB_Admin.Models.Db
         public string? Wachtwoord { get; set; }
         public string? Email { get; set; }
         public string? Functie { get; set; }
-        
     }
 }

@@ -10,6 +10,5 @@ namespace BarcoPVG.Models.Db
         public string? Familienaam { get; set; }
         public string? Wachtwoord { get; set; }
         public string? Functie { get; set; }
-        
     }
 }
