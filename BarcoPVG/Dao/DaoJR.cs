@@ -254,12 +254,8 @@ namespace BarcoPVG.Dao
         // Returns list of all JRs
         public List<RqRequest> GetAllJobRequests()
         {
-            return _context.RqRequests
-                //.Include(r => r.IdRequest)
+            return _context.RqRequests //.Include(r => r.IdRequest)
                 .ToList();
-
-            //indien geen JR aanwezig in databanke moet je null sturen, an-ders bovenstaande query
-            //return null;
         }
 
         /// This function creates a list of rqRequestDetails objects that are linked to the given idRequest via the parameter

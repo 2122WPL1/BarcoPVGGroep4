@@ -10,8 +10,7 @@ namespace BarcoPVG.Dao
     {
         //Jarne
         //here comes all the data from Login
-        protected DaoPerson _daoPerson = new();
-        protected static readonly DaoLogin _instanceLogin = new();
+        public static readonly DaoLogin _instanceLogin = new();
         public BarcoUser BarcoUser { get; set; }
         public static DaoLogin InstanceLogin()
         {
@@ -44,23 +43,15 @@ namespace BarcoPVG.Dao
             {
                 BarcoUser.Division = "Geen Division"; //Extern??
             }
-            //Put Functie to give right the the user
-            //string func = "";
 
             //Jarne getting the info from the login details to get the right view display
-
-
             BarcoUser.Functie = GetFuntion(loginPerson);
-
-            //BarcoUser.Functie = "DEV"; log in as Developer
-
-
         }
 
         //Eakarach
         private string GetFuntion(Person user)
         {
-
+            //Jarne checking who's logged in
             switch (user.Functie)
             {
                 case "DEV":
@@ -83,7 +74,6 @@ namespace BarcoPVG.Dao
 
             foreach (RqBarcoDivisionPerson result in list)
             {
-                //if (GetAllDivForPerson().FirstOrDefault(x => x.Afkorting == result.Pvggroup))
                 text = result.Pvggroup;
 
                 if (output.FirstOrDefault(x => x.Pvggroup == text) == null)
@@ -91,8 +81,6 @@ namespace BarcoPVG.Dao
                     output.Add(result);
                 }
             }
-
-
             return output;
         }
     }
