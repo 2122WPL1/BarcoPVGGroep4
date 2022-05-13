@@ -156,7 +156,17 @@ namespace BarcoDB_Admin.ViewModels
             //cheks if all the required fields are filled in
             if (CheckRequirment(person))
             {
-                person.Afkorting = (person.Voornaam.Substring(0, 2) + person.Familienaam.Substring(person.Familienaam.Length - 2)).ToUpper();
+                // if abbreviation is not filled in the it creates one with the first 2 letters of firstname en the last 2 letters of surname
+                if (person.Afkorting is null || person.Afkorting == "")
+                {
+                    person.Afkorting = (person.Voornaam.Substring(0, 2) + person.Familienaam.Substring(person.Familienaam.Length - 2)).ToUpper();
+
+                }
+                else
+                {
+                    // ensures that abbreviation is in uppercase
+                    person.Afkorting = person.Afkorting.ToUpper();
+                }
 
                 // if email is not filled in then it creates email with First name and surname
                 if (person.Email is null || person.Email == "") 
