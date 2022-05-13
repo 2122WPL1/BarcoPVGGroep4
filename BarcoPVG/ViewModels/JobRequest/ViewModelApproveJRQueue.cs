@@ -21,7 +21,7 @@ namespace BarcoPVG.ViewModels.JobRequest
             // Get unapproved JR's
             //Eakarach
             // Show all JR that not yet be approved
-            List<RqRequest> requestIds = _daoJR.GetAllJobRequests().Where(rq => rq.Requester == _daoLogin.BarcoUser.Name && rq.JrStatus == "To approve").ToList();
+            List<RqRequest> requestIds = _daoJR.GetAllJobRequests().Where(rq => rq.JrStatus == "To approve").ToList();
             IdRequestsOnly.Clear();
 
             foreach (var requestId in requestIds)
