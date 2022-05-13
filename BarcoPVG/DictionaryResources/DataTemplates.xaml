@@ -33,7 +33,7 @@
                     <CheckBox IsChecked="{Binding ECO, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="GREEN COMPLIANCE" FontSize="12" Width="150"  Margin="5" IsEnabled="False"/>
                     <TextBlock  Text="Foreseen availability date:" Margin="5"/>
                     <!--<DatePicker  SelectedDate="{Binding AvailabilityDate}" IsTodayHighlighted="True" Margin="5"/>-->
-                    <DatePicker SelectedDate ="{Binding AvailabilityDate}" Grid.Column="4" Grid.Row="10" IsTodayHighlighted="True" />
+                    <DatePicker SelectedDate ="{Binding AvailabilityDate}" Grid.Column="4" Grid.Row="10" IsTodayHighlighted="True"  />
                 </StackPanel>
             </Grid>
         </ListBoxItem>
