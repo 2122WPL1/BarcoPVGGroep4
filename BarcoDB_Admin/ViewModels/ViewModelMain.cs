@@ -187,21 +187,13 @@ namespace BarcoDB_Admin.ViewModels
 
             if (CheckRequirment(user))
             {
-                user.Afkorting = (user.Voornaam.Substring(0, 2) + user.Familienaam.Substring(user.Familienaam.Length - 2)).ToUpper();
+                _daoUser.EditUser(user);
 
-                // if email is not filled in then it creates email with First name and surname
-                if (user.Email is null || user.Email == "")
-                {
-                    user.Email = (user.Voornaam + "." + user.Familienaam + "@barco.com").ToLower();
-                }
-
-                _daoUser.AddUser(user);
                 DisplayDatabaseUserStartup(); // toont view DBUSerUserControl
             }
             else
             {
                 MessageBox.Show("please fill all required fields");
-                DisplayDatabaseUserStartup();
             }
         }
 
@@ -231,9 +223,8 @@ namespace BarcoDB_Admin.ViewModels
             //cheks if all the required fields are filled in
             if (CheckRequirment(div))
             {
-                div.Actief = true;
-
-                _daoDivision.AddDivision(div);
+                _daoDivision.UpdateDivision(div);
+                
                 DisplayDataBaseDivisionStartup();
             }
             else
@@ -268,9 +259,7 @@ namespace BarcoDB_Admin.ViewModels
             //cheks if all the required fields are filled in
             if (CheckRequirment(res))
             {
-                res.KleurHex = res.KleurHex is null ? "" : res.KleurHex.ToString();
-
-                _daoResource.AddResource(res);
+                _daoResource.UpdateResouce(res);
                 DisplayDataResourceStartup();
             }
             else
