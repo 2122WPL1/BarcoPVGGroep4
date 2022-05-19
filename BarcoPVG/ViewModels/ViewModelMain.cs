@@ -207,7 +207,7 @@ namespace BarcoPVG.ViewModels
             bool passed = false;
             foreach (var thisEUT in ((AbstractViewModelContainer)this.ViewModel).EUTs)
             {
-                if (thisEUT.AvailabilityDate != null && thisEUT.AvailabilityDate > jr.ExpectedEnddate)
+                if (thisEUT.AvailabilityDate != null && thisEUT.AvailabilityDate < jr.ExpectedEnddate)
                 {
                     if (thisEUT.ECO || thisEUT.SAV || thisEUT.EMC || thisEUT.ENV || thisEUT.PCK || thisEUT.REL ||
                         thisEUT.SAV)
