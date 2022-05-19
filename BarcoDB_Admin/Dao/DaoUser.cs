@@ -48,5 +48,6 @@ namespace BarcoDB_Admin.Dao
         {
             return _context.People.ToList();
         }
+
     }
 }
