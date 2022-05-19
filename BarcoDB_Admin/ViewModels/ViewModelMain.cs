@@ -3,6 +3,7 @@ using BarcoDB_Admin.ViewModels.DataBase;
 using BarcoDB_Admin.ViewModels.Edit;
 using Prism.Commands;
 using System;
+using System.Linq;
 using System.Windows;
 
 namespace BarcoDB_Admin.ViewModels
@@ -154,11 +155,13 @@ namespace BarcoDB_Admin.ViewModels
             //cheks if all the required fields are filled in
             if (CheckRequirment(person))
             {
-                // if abbreviation is not filled in the it creates one with the first 2 letters of firstname en the last 2 letters of surname
-                if (person.Afkorting is null || person.Afkorting == "")
-                {
-                    person.Afkorting = (person.Voornaam.Substring(0, 2) + person.Familienaam.Substring(person.Familienaam.Length - 2)).ToUpper();
+                var checkuser = _daoUser.GetAllUser().FirstOrDefault(x => x.Afkorting == person.Afkorting.ToUpper()); //cheks in the database if abbrevation exsist //Amy
 
+                //If abbrevation exist -> error message is shown
+                if (checkuser != null)
+                {
+                    MessageBox.Show("error!\nAbbreviation already exists.\nPlease enter a new abbreviation.");
+                    return;
                 }
                 else
                 {
@@ -170,6 +173,10 @@ namespace BarcoDB_Admin.ViewModels
                 if (person.Email is null || person.Email == "") 
                 {
                     person.Email = (person.Voornaam + "." + person.Familienaam + "@barco.com").ToLower();
+                }
+                else if (!person.Email.Contains("@barco.com"))
+                {
+                    person.Email = person.Email.ToLower() + "@barco.com";
                 }
 
                 _daoUser.AddUser(person); 
@@ -204,10 +211,22 @@ namespace BarcoDB_Admin.ViewModels
             //cheks if all the required fields are filled in
             if (CheckRequirment(div))
             {
-                div.Actief = true;
+                var checkdevision = _daoDivision.GetAllDivisions().FirstOrDefault(x => x.Afkorting == div.Afkorting.ToUpper()); //cheks in the database if abbrevation exsist //Amy
 
-                _daoDivision.AddDivision(div);
-                DisplayDataBaseDivisionStartup();
+                if (checkdevision != null) //If abbrevation exist -> error message is shown
+                {
+                    MessageBox.Show("error!\nAbbreviation already exists.\nPlease enter a new abbreviation.");
+                    return;
+                }
+                else
+                {
+                    div.Actief = true;
+
+                    _daoDivision.AddDivision(div);
+                    DisplayDataBaseDivisionStartup();
+                }
+
+               
             }
             else
             {
@@ -277,7 +296,7 @@ namespace BarcoDB_Admin.ViewModels
                 //Cheks if the required fields are all filled in 
                 //If fields are empty return false
                 if (checkPerson.Voornaam is null || checkPerson.Familienaam is null || checkPerson.Functie is null || checkPerson.Wachtwoord is null || 
-                    checkPerson.Voornaam == "" || checkPerson.Familienaam == "" || checkPerson.Functie == "" || checkPerson.Wachtwoord == "")
+                    checkPerson.Voornaam == "" || checkPerson.Familienaam == "" || checkPerson.Functie == "" || checkPerson.Wachtwoord == "" || checkPerson.Afkorting == "" || checkPerson.Afkorting is null)
                 {
                     return false;
                 }
