@@ -175,7 +175,7 @@ namespace BarcoPVG.ViewModels
                         {
                             foreach (EUT eUT in ((AbstractViewModelContainer)this.ViewModel).EUTs)
                             {
-                                if (!CheckEUTRequirements(eUT))
+                                if (!CheckEUTRequirements(eUT, jr))
                                 {
                                     passed = false;
                                     break;
@@ -202,12 +202,12 @@ namespace BarcoPVG.ViewModels
             return passed;
         }
 
-        private bool CheckEUTRequirements(EUT eut)
+        private bool CheckEUTRequirements(EUT eut, RqRequest jr)
         {
             bool passed = false;
             foreach (var thisEUT in ((AbstractViewModelContainer)this.ViewModel).EUTs)
             {
-                if (thisEUT.AvailabilityDate != null)
+                if (thisEUT.AvailabilityDate != null && thisEUT.AvailabilityDate > jr.ExpectedEnddate)
                 {
                     if (thisEUT.ECO || thisEUT.SAV || thisEUT.EMC || thisEUT.ENV || thisEUT.PCK || thisEUT.REL ||
                         thisEUT.SAV)
@@ -245,26 +245,28 @@ namespace BarcoPVG.ViewModels
                 _daoJR._context.RqRequests.Add(jr);
                 // Here we call the SaveChanges method, so that we can link several EUTs to one JR
                 _daoJR.SaveChanges();
+                DisplayEmployeeStartup();
+                switch (_daoLogin.BarcoUser.Division)
+                {
+                    case "DEV":
+                        DisplayDevStartup();
+                        break;
+                    case "TEST":
+                        DisplayEmployeeStartup();
+                        break;
+                    case "PLAN":
+                        DisplayPlannerStartup();
+                        break;
+                    default: // extern
+                        DisplayEmployeeStartup();
+                        break;
+                }
             }
 
-            DisplayEmployeeStartup();
+            
 
             //Jarne switch for openening window based on who's logged in
-            switch (_daoLogin.BarcoUser.Division)
-            {
-                case "DEV":
-                    DisplayDevStartup();
-                    break;
-                case "TEST":
-                    DisplayEmployeeStartup();
-                    break;
-                case "PLAN":
-                    DisplayPlannerStartup();
-                    break;
-                default: // extern
-                    DisplayEmployeeStartup();
-                    break;
-            }
+            
         }
 
         public void InsertInternalJr()
