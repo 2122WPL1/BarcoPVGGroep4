@@ -93,7 +93,8 @@ namespace BarcoPVG.ViewModels.Planning
                     editingTest = new Test(); //Sander: wanneer een test verwijderd wordt dan bestaad editingTest niet meer dus geef ik hem hier een lege Test
                 }
                 editingTest.StartDate = value; 
-
+                EndDate = value;
+                editingTest.EndDate = value;
                 SetVisibility();
                 OnpropertyChanged();
             }
@@ -128,7 +129,7 @@ namespace BarcoPVG.ViewModels.Planning
                 MessageBox.Show("Select a Resource");
                 return;
             }
-            if (startDate >= endDate)
+            if (startDate > endDate)
             {
                 MessageBox.Show("End Date Can't be before or the same as Start Date");
                 return;
