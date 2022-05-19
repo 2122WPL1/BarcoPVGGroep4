@@ -261,7 +261,7 @@ namespace BarcoPVG.ViewModels
                 case "PLAN":
                     DisplayPlannerStartup();
                     break;
-                default:
+                default: // extern
                     DisplayEmployeeStartup();
                     break;
             }
