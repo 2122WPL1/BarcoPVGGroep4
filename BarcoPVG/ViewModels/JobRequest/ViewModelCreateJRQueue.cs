@@ -16,29 +16,13 @@ namespace BarcoPVG.ViewModels.JobRequest
 {
     public class ViewModelCreateJRQueue : AbstractViewModelCollectionRQ
     {
-        public Visibility NewInternJR { get; set; }
-        public Visibility NoExternForTestTeam { get; set; }
 
         //Constructor
         public ViewModelCreateJRQueue() : base()
         {
-            Init();
             Load();
         }
 
-        private void Init()
-        {
-            if (_daoLogin.BarcoUser.Functie == "TEST" || _daoLogin.BarcoUser.Functie == "DEV")
-            {
-                NewInternJR = Visibility.Visible;
-                NoExternForTestTeam = Visibility.Hidden;
-            }
-            else
-            {
-                NewInternJR = Visibility.Hidden;
-                NoExternForTestTeam = Visibility.Visible;
-            }
-        }
 
         // Functie used in code behind
         // Loads all JR IDs in LB
