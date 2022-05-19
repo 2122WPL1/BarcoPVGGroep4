@@ -93,7 +93,8 @@ namespace BarcoPVG.ViewModels.Planning
                     editingTest = new Test(); //Sander: wanneer een test verwijderd wordt dan bestaad editingTest niet meer dus geef ik hem hier een lege Test
                 }
                 editingTest.StartDate = value; 
-
+                EndDate = value;
+                editingTest.EndDate = value;
                 SetVisibility();
                 OnpropertyChanged();
             }
