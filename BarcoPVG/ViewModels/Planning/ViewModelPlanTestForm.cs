@@ -128,7 +128,7 @@ namespace BarcoPVG.ViewModels.Planning
                 MessageBox.Show("Select a Resource");
                 return;
             }
-            if (startDate >= endDate)
+            if (startDate > endDate)
             {
                 MessageBox.Show("End Date Can't be before or the same as Start Date");
                 return;
