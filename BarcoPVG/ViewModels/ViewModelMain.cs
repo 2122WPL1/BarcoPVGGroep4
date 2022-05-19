@@ -269,12 +269,21 @@ namespace BarcoPVG.ViewModels
 
         public void InsertInternalJr()
         {
-            _daoInternalJr.AddInternJobRequest(((AbstractViewModelContainer)this.ViewModel)
-                .JR); // SaveChanges included in function
+            if (((AbstractViewModelContainer)this.ViewModel).JR.BarcoDivision == null ||
+                ((AbstractViewModelContainer)this.ViewModel).JR.BarcoDivision == "" ||
+                ((AbstractViewModelContainer)this.ViewModel).JR.EutProjectname == null ||
+                ((AbstractViewModelContainer)this.ViewModel).JR.EutProjectname == "")
+            {
+                MessageBox.Show("Please fill everything");
+            }
+            else
+            {
+                _daoInternalJr.AddInternJobRequest(((AbstractViewModelContainer)this.ViewModel).JR); // SaveChanges included in function
+                DisplayTesterPlan();
+            }
 
-            //Jarne switch for openening window based on who's logged in
 
-            DisplayEmployeeStartup();
+            
         }
 
         // Updates existing job request and switches windows
@@ -374,7 +383,7 @@ namespace BarcoPVG.ViewModels
 
                     break;
                 case "TEST": //Test team
-                    NewRequests = Visibility.Visible;
+                    NewRequests = Visibility.Hidden;
                     ApproveRequests = Visibility.Hidden;
                     Test = Visibility.Visible;
                     SeeAll = Visibility.Hidden;

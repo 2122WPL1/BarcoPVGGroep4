@@ -11,7 +11,7 @@
             <ListView ItemsSource="{Binding PlansToApprove}" 
                       SelectedItem="{Binding SelectedPlan, Mode=TwoWay}"
                       Height="auto"
-                      MaxHeight="600"
+                      MaxHeight="500"
                       VerticalAlignment="Stretch"
                       Margin="3"
                       SelectionMode="Single"
@@ -38,6 +38,11 @@
                             RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, 
                             Mode=OneWay}"
                     Height="40" Margin="5"/>
+            <Button Content="New Intern JR" 
+                    Command="{Binding DataContext.DisplayNewInternJRCommand, 
+                            RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, 
+                            Mode=OneWay}"
+                        Height="40" Margin="10"/>
         </StackPanel>
     </StackPanel>
 </UserControl>
