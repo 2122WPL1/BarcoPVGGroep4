@@ -1,12 +1,5 @@
-﻿using BarcoDB_Admin.ViewModels;
-using BarcoDB_Admin.Models.Db;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using BarcoDB_Admin.Models.Db;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
 
 namespace BarcoDB_Admin.ViewModels.Edit
 {

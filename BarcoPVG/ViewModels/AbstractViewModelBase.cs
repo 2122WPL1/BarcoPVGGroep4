@@ -1,10 +1,6 @@
 ﻿using BarcoPVG.Dao;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Windows;
 
 
 namespace BarcoPVG.ViewModels

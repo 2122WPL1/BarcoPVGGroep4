@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using BarcoDB_Admin.Models.Classes;
-using BarcoDB_Admin.Models.Db;
+﻿using BarcoDB_Admin.Models.Classes;
 
 namespace BarcoDB_Admin.Dao
 {

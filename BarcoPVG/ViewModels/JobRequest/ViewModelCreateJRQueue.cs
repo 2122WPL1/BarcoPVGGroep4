@@ -1,16 +1,4 @@
-﻿using Microsoft.Toolkit.Mvvm.Input;
-using Prism.Commands;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Windows;
-using System.Windows.Input;
-using BarcoPVG;
-using BarcoPVG.Views.JobRequest;
-using System.Windows.Media;
-using System.Windows.Data;
+﻿using System.Linq;
 
 namespace BarcoPVG.ViewModels.JobRequest
 {

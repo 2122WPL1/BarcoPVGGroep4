@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows;
-using BarcoPVG.Models.Classes;
-using BarcoPVG.Models.Db;
-using Microsoft.EntityFrameworkCore;
-
-namespace BarcoPVG.Dao
+﻿namespace BarcoPVG.Dao
 {
+    //Jarne moving the specific dao methods to the right Dao class
+    //all general methods are being kept inside this class
+
     // SINGLETON PATTERN
     // Private constructor, static instance
     // Ensures only one DBconnection is opened at a time
