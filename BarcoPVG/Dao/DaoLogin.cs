@@ -40,14 +40,14 @@ namespace BarcoPVG.Dao
             }
             else
             {
-                BarcoUser.Division = "Geen Division"; //Extern??
+                BarcoUser.Division = "No Division"; //Extern??
             }
 
             //Jarne getting the info from the login details to get the right view display
             BarcoUser.Functie = GetFuntion(loginPerson);
         }
 
-        //Eakarach
+        //Jarne
         private string GetFuntion(Person user)
         {
             //Jarne checking who's logged in

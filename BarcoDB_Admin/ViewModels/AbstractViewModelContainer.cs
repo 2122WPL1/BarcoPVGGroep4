@@ -9,6 +9,7 @@ namespace BarcoDB_Admin.ViewModels
 {
     public abstract class AbstractViewModelContainer : AbstractViewModelBase
     {
+        //Jarne
         protected Person _Person;
         protected PlResource _Resource;
         protected RqBarcoDivision _Division;
