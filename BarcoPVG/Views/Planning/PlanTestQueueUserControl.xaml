@@ -5,25 +5,29 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BarcoPVG.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="800" d:DesignWidth="800" d:Background="LightGray">
+             d:DesignHeight="880" d:DesignWidth="1882" d:Background="LightGray">
     <StackPanel Margin="10">
-        <GroupBox Header="Tests to plan" BorderThickness="0.1">
-            <ListView ItemsSource="{Binding PlansToApprove}" SelectedItem="{Binding SelectedPlan, Mode=TwoWay}" Height="250">
+        <GroupBox Header="Tests to plan" BorderThickness="0.1" Height="auto">
+            <ListView ItemsSource="{Binding PlansToApprove}" 
+                      SelectedItem="{Binding SelectedPlan, Mode=TwoWay}"
+                      Height="auto"
+                      MaxHeight="500"
+                      VerticalAlignment="Stretch"
+                      Margin="3"
+                      SelectionMode="Single"
+                      ScrollViewer.VerticalScrollBarVisibility="Auto"
+                      ScrollViewer.CanContentScroll="True"
+                      ScrollViewer.HorizontalScrollBarVisibility="Auto" 
+                      HorizontalAlignment="Stretch"
+                      HorizontalContentAlignment="Center">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn  Header="Division" DisplayMemberBinding="{Binding BarcoDivision}" />
-                        <GridViewColumn Header="Requester" DisplayMemberBinding="{Binding Requester}" />
-                        <GridViewColumn Header="EUT Projectname" DisplayMemberBinding="{Binding EutProjectname}" />
-                        <GridViewColumn  Header="Job Nature" DisplayMemberBinding="{Binding JobNature}" />
-                        <GridViewColumn Header="JR number" DisplayMemberBinding="{Binding JrNumber}" />
-                        <GridViewColumn Header="Expected Approve Date" DisplayMemberBinding="{Binding RequestDate, StringFormat=d}" />
-                        <GridViewColumn Header="Expected End Date" DisplayMemberBinding="{Binding ExpectedEnddate, StringFormat=d}" />
-
-                        <!--<GridViewColumn Header="Id Planning" DisplayMemberBinding="{Binding IdPlanning}" />
-                        <GridViewColumn Header="Job Request Number" DisplayMemberBinding="{Binding JrNr}" />
-                        <GridViewColumn Header="Request Date" DisplayMemberBinding="{Binding Requestdate, StringFormat=d}" />
-                        <GridViewColumn Header="Due Date" DisplayMemberBinding="{Binding DueDate, StringFormat=d}" />
-                        <GridViewColumn Header="Test Division" DisplayMemberBinding="{Binding TestDiv}" />-->
+                        <GridViewColumn Header=" idplanning" DisplayMemberBinding="{Binding IdPlanning}"/>
+                        <GridViewColumn  Header="Division" DisplayMemberBinding="{Binding TestDiv}" />
+                        <GridViewColumn Header="JR number" DisplayMemberBinding="{Binding JrNr}" />
+                        <GridViewColumn Header="Expected To Plan Date" DisplayMemberBinding="{Binding DueDate, StringFormat=d}" />
+                        <GridViewColumn Header="Expected End Date" DisplayMemberBinding="{Binding Requestdate, StringFormat=d}" />
+                        <GridViewColumn Header="Status" DisplayMemberBinding="{Binding TestDivStatus}" />
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -34,6 +38,11 @@
                             RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, 
                             Mode=OneWay}"
                     Height="40" Margin="5"/>
+            <Button Content="New Intern JR" 
+                    Command="{Binding DataContext.DisplayNewInternJRCommand, 
+                            RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, 
+                            Mode=OneWay}"
+                        Height="40" Margin="10"/>
         </StackPanel>
     </StackPanel>
 </UserControl>

@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Timers;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using BarcoPVG.Models.Classes;
-using BarcoPVG.Viewmodels;
+﻿using System.Windows;
+using BarcoPVG.ViewModels;
 
 namespace BarcoPVG.Views
 {
@@ -20,27 +8,13 @@ namespace BarcoPVG.Views
     /// </summary>
     public partial class MainWindow : Window
     {
-        
+
         public MainWindow()
-        // Global variables
+            // Global variables
         {
             DataContext = new ViewModelMain(); //user ingeven als parameter
 
             InitializeComponent();
-
-            //if a user is already logged in then the MainWindow pops-up 
-            //else the Login screen pops-up
-            //Jarne
-            //if (IsLoggedIn == true)
-            //{
-            //    //tonen van de mainwindow
-            //    MainWindow;
-            //}
-            //else
-            //{
-            //    //tonen van het login scherm
-            //    Login;
-            //}
         }
     }
 }

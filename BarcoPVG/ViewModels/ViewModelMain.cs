@@ -1,63 +1,53 @@
 ﻿using BarcoPVG.Models.Classes;
-using BarcoPVG.Viewmodels.JobRequest;
-using BarcoPVG.Viewmodels.Planning;
-using BarcoPVG.Viewmodels.TestGUI;
-using BarcoPVG.ViewModels.DatabaseManagement;
+using BarcoPVG.Models.Db;
+using BarcoPVG.ViewModels.JobRequest;
+using BarcoPVG.ViewModels.Planning;
+using BarcoPVG.ViewModels.TestGUI;
 using Prism.Commands;
 using System;
+using System.Collections.Generic;
 using System.Windows;
 
 
-
-namespace BarcoPVG.Viewmodels
+namespace BarcoPVG.ViewModels
 {
     // Kaat
     class ViewModelMain : AbstractViewModelBase
     {
         private AbstractViewModelBase _viewModel;
+
         public BarcoUser User { get; set; }
 
-
-        // TODO: check if ICommand also works
-
+        public DelegateCommand Exit { get; set; }
         public DelegateCommand DisplayNewJRCommand { get; set; }
+        public DelegateCommand DisplayNewInternJRCommand { get; set; }  // Eakarch
         public DelegateCommand DisplayExistingJRCommand { get; set; }
         public DelegateCommand DisplayEmployeeStartupCommand { get; set; }
         public DelegateCommand DisplayPlannerStartupCommand { get; set; }
         public DelegateCommand DisplayTesterPlanCommand { get; set; }
         public DelegateCommand DisplayTesterTestCommand { get; set; }
         public DelegateCommand DisplayDevStartupCommand { get; set; }
+
         public DelegateCommand SaveJrCommand { get; set; }
         public DelegateCommand ApproveJRCommand { get; set; }
         public DelegateCommand DisplayTestPlanningCommand { get; set; }
         public DelegateCommand SaveTestsAndReturnCommand { get; set; }
         public DelegateCommand ApprovePlanAndReturnCommand { get; set; }
         public DelegateCommand TesterReturnCommand { get; set; }
-        // Amy & Jarne
-        public DelegateCommand AddUserCommand { get; set; }
-        public DelegateCommand RemoveUserCommand { get; set; }
-        public DelegateCommand AddResourceCommand { get; set; }
-        public DelegateCommand RemoveResourceCommand { get; set; }
-        public DelegateCommand DatabaseManagementCommand { get; set; }
-        public DelegateCommand SaveAddUserCommand { get; set; }
-        public DelegateCommand DisplayDatabaseManagementStartupCommand { get; set; }
-
-
-
 
         // Visibility of buttons
         public Visibility NewRequests { get; set; }
         public Visibility ApproveRequests { get; set; }
         public Visibility Test { get; set; }
+
         public Visibility SeeAll { get; set; }
-        //Jarne
-        public Visibility Data { get; set; }
 
         public ViewModelMain()
         {
-            this.User = _dao.BarcoUser;
+            this.User = _daoLogin.BarcoUser;
 
             DisplayNewJRCommand = new DelegateCommand(DisplayNewJR);
+            DisplayNewInternJRCommand = new DelegateCommand(DisplayNewInternJR);
             DisplayExistingJRCommand = new DelegateCommand(DisplayExistingJR);
             DisplayEmployeeStartupCommand = new DelegateCommand(DisplayEmployeeStartup);
             DisplayPlannerStartupCommand = new DelegateCommand(DisplayPlannerStartup);
@@ -69,20 +59,15 @@ namespace BarcoPVG.Viewmodels
             SaveTestsAndReturnCommand = new DelegateCommand(SaveTestsAndReturn);
             ApprovePlanAndReturnCommand = new DelegateCommand(ApprovePlanAndReturn);
             TesterReturnCommand = new DelegateCommand(TesterReturn);
-            //Jarne & Amy
-            AddUserCommand = new DelegateCommand(DisplayAddUser);
-            RemoveUserCommand = new DelegateCommand(DisplayRemoveUser);
-            AddResourceCommand = new DelegateCommand(DisplayAddResource);
-            RemoveResourceCommand = new DelegateCommand(DisplayRemoveResource);
-            DatabaseManagementCommand = new DelegateCommand(DisplayDatabaseManagement);
-            SaveAddUserCommand = new DelegateCommand(DisplayAddUser);
-            DisplayDatabaseManagementStartupCommand = new DelegateCommand(DisplayDatabaseManagementStartup);
-
-
+            Exit = new DelegateCommand(exit);
 
             SetWindowProperties();
         }
 
+        public void exit()
+        {
+            Environment.Exit(0);
+        }
         // Getters/Setters
         public AbstractViewModelBase ViewModel
         {
@@ -95,20 +80,13 @@ namespace BarcoPVG.Viewmodels
         }
 
         // Command methods
-        // TODO: add method to switch return window based on function
         public void DisplayNewJR()
         {
             SaveJrCommand = new DelegateCommand(InsertJr);
             this.ViewModel = new ViewModelCreateJRForm();
         }
 
-        public void DisplayNewInternalJR()
-        {
-            SaveJrCommand = new DelegateCommand(InsertInternalJr);
-            this.ViewModel = new ViewModelCreateJRForm(true);
-        }
-
-        public void DisplayExistingJR() //Sander: Foutmelding wanneer er niets geselecteerd wordt
+        public void DisplayExistingJR() //Sander: error message when nothing is selected
         {
 
             SaveJrCommand = new DelegateCommand(UpdateJr);
@@ -116,7 +94,8 @@ namespace BarcoPVG.Viewmodels
 
             var ExistingJrId = ((AbstractViewModelCollectionRQ)this.ViewModel).SelectedJR.IdRequest;
 
-            if (((AbstractViewModelCollectionRQ)this.ViewModel).SelectedJR.ExpectedEnddate != new DateTime()) //als de verwachte einddatum niet geset is dan geeft hij een foutmelding
+            if (((AbstractViewModelCollectionRQ)this.ViewModel).SelectedJR.ExpectedEnddate !=
+                new DateTime()) //if the expected end-date is null then error message
             {
                 if (this.ViewModel is ViewModelApproveJRQueue)
                 {
@@ -124,14 +103,12 @@ namespace BarcoPVG.Viewmodels
                 }
                 else
                 {
-                    
                     this.ViewModel = new ViewModelCreateJRForm(ExistingJrId);
                 }
             }
             else
             {
-                MessageBox.Show("Geen JR geselecteerd");
-
+                MessageBox.Show("No JR selected");
             }
         }
 
@@ -140,10 +117,18 @@ namespace BarcoPVG.Viewmodels
             this.ViewModel = new ViewModelCreateJRQueue();
         }
 
+        //Eakarach
+        private void DisplayNewInternJR()
+        {
+            SaveJrCommand = new DelegateCommand(InsertInternalJr);
+            this.ViewModel = new ViewModelCreateInternJRForm();
+        }
+
         public void DisplayPlannerStartup()
         {
             this.ViewModel = new ViewModelApproveJRQueue();
         }
+
         public void DisplayTesterPlan()
         {
             this.ViewModel = new ViewModelPlanTestQueue();
@@ -159,93 +144,180 @@ namespace BarcoPVG.Viewmodels
             this.ViewModel = new ViewModelDevelopment();
         }
 
-        //Jarne & Amy
-        public void DisplayAddUser()
-        {
-            SaveAddUserCommand = new DelegateCommand(InsertUser);
-            this.ViewModel = new ViewModelDatabaseAddUser();
-        }
-        public void DisplayRemoveUser()
-        {
-            this.ViewModel = new ViewModelDatabaseRemoveUser();
-        }
-
-        public void DisplayAddResource()
-        {
-            this.ViewModel = new ViewModelDatabaseAddResource();
-        }
-
-        public void DisplayRemoveResource()
-        {
-            this.ViewModel = new ViewModelDatabaseRemoveResource();
-        }
-        
-        public void DisplayDatabaseManagement()
-        {
-            this.ViewModel = new ViewModelDatabaseManagement();
-        }
-        public void DisplayDatabaseManagementStartup()
-        {
-            this.ViewModel = new ViewModelDatabaseManagement();
-        }
-
-
-
         // JR CRUD
         // Command functions
         // Adds and stores a job request and switches windows
-        public void InsertJr()
+        private bool CheckCreateRequirements(RqRequest jr, out List<EUT> eUTs1)
         {
-            var jr = _dao.AddJobRequest(((AbstractViewModelContainer)this.ViewModel).JR); // SaveChanges included in function
-            int count = 0;
+            List<EUT> eUts2 = new List<EUT>();
 
-            foreach (var thisEUT in ((AbstractViewModelContainer)this.ViewModel).EUTs)
+            bool passed = false;
+            if (jr.Requester.Length > 10)
             {
-                count++;
-                _dao.AddEutToRqRequest(jr, thisEUT, count.ToString());
+                MessageBox.Show("Requester is longer than the allowed length (20)");
             }
-
-            // Here we call the SaveChanges method, so that we can link several EUTs to one JR
-            _dao.SaveChanges();
-            DisplayDevStartup();
+            else
+            {
+                if (!(
+                        //Jarne
+                        //checking if fields JR are null
+                        jr.BarcoDivision == String.Empty || jr.JobNature == String.Empty ||
+                        jr.EutProjectname == String.Empty || jr.HydraProjectNr == String.Empty
+                    ))
+                {
+                    if (jr.ExpectedEnddate.Date != DateTime.Now.Date) //never returns null | today's time by using datetime now | datetime now and end-date 1 milliseconde different
+                    {
+                        if (((AbstractViewModelContainer)this.ViewModel).EUTs.Count == 0) //all EUT from JR
+                        {
+                            MessageBox.Show("there must be at least 1 EUT");
+                        }
+                        else
+                        {
+                            foreach (EUT eUT in ((AbstractViewModelContainer)this.ViewModel).EUTs)
+                            {
+                                if (!CheckEUTRequirements(eUT, jr))
+                                {
+                                    passed = false;
+                                    break;
+                                }
+                                else
+                                {
+                                    passed = true;
+                                }
+                                eUts2.Add(eUT);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Enter a date");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("All non-optional fields must be filled in");
+                }
+            }
+            eUTs1 = eUts2;
+            return passed;
         }
 
-
-
-        // Change so no JR and no
-        public void InsertInternalJr()
+        private bool CheckEUTRequirements(EUT eut, RqRequest jr)
         {
-            var jr = _dao.AddJobRequest(((AbstractViewModelContainer)this.ViewModel).JR); // SaveChanges included in function
-
-            jr.JrStatus = "In Plan";
-            
-            int count = 0;
+            bool passed = false;
             foreach (var thisEUT in ((AbstractViewModelContainer)this.ViewModel).EUTs)
             {
-                count++;
-                _dao.AddEutToRqRequest(jr, thisEUT, count.ToString());
+                if (thisEUT.AvailabilityDate != null && thisEUT.AvailabilityDate < jr.ExpectedEnddate)
+                {
+                    if (thisEUT.ECO || thisEUT.SAV || thisEUT.EMC || thisEUT.ENV || thisEUT.PCK || thisEUT.REL ||
+                        thisEUT.SAV)
+                    {
+                        passed = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Select a division with every EUT");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Check the EUT's selected date");
+                }
+            }
+            return passed;
+        }
+
+        public void InsertJr() // creating a job request
+        {
+            var jr = _daoJR.AddJobRequest(
+                ((AbstractViewModelContainer)this.ViewModel) //TODO ID request is automatically 0 for some reason
+                .JR); // SaveChanges included in function
+            int count = 0;
+
+            List<EUT> euts = new List<EUT>();
+            if (CheckCreateRequirements(jr, out euts))
+            {
+                foreach (EUT eut in euts)
+                {
+                    _daoEUT.AddEutToRqRequest(jr, eut, count.ToString());
+                    count++;
+                }
+                _daoJR._context.RqRequests.Add(jr);
+                // Here we call the SaveChanges method, so that we can link several EUTs to one JR
+                _daoJR.SaveChanges();
+                DisplayEmployeeStartup();
+                switch (_daoLogin.BarcoUser.Division)
+                {
+                    case "DEV":
+                        DisplayDevStartup();
+                        break;
+                    case "TEST":
+                        DisplayEmployeeStartup();
+                        break;
+                    case "PLAN":
+                        DisplayPlannerStartup();
+                        break;
+                    default: // extern
+                        DisplayEmployeeStartup();
+                        break;
+                }
             }
 
-            // Here we call the SaveChanges method, so that we can link several EUTs to one JR
-            _dao.SaveChanges();
+            
 
-            _dao.ApproveInternalRequest(jr.IdRequest);
+            //Jarne switch for openening window based on who's logged in
+            
+        }
 
-            DisplayDevStartup();
+        public void InsertInternalJr()
+        {
+            if (((AbstractViewModelContainer)this.ViewModel).JR.BarcoDivision == null ||
+                ((AbstractViewModelContainer)this.ViewModel).JR.BarcoDivision == "" ||
+                ((AbstractViewModelContainer)this.ViewModel).JR.EutProjectname == null ||
+                ((AbstractViewModelContainer)this.ViewModel).JR.EutProjectname == "")
+            {
+                MessageBox.Show("Please fill everything");
+            }
+            else
+            {
+                _daoInternalJr.AddInternJobRequest(((AbstractViewModelContainer)this.ViewModel).JR); // SaveChanges included in function
+                DisplayTesterPlan();
+            }
+
+
+            
         }
 
         // Updates existing job request and switches windows
         public void UpdateJr()
         {
-            string error = _dao.UpdateJobRequest(((AbstractViewModelContainer)this.ViewModel).JR); // SaveChanges included in function
+            var jr = _daoJR.AddJobRequest(
+               ((AbstractViewModelContainer)this.ViewModel)
+               .JR); // SaveChanges included in function
+            int count = 0;
+            {
+                //jr.JrNumber = CreateJRNummer(jr); 
 
-            if (error == null)
-            {
-                DisplayDevStartup();
-            }
-            else
-            {
-                MessageBox.Show(error);
+                List<EUT> euts = new List<EUT>();
+                if (CheckCreateRequirements(jr, out euts))
+                {
+                    foreach (EUT eut in euts)
+                    {
+                        _daoEUT.AddEutToRqRequest(jr, eut, count.ToString());
+                        count++;
+                    }
+                    string error = _daoJR.UpdateJobRequest(((AbstractViewModelContainer)this.ViewModel).JR); // SaveChanges included in function
+
+                    if (error == null)
+                    {
+                        DisplayEmployeeStartup();
+                    }
+                    else
+                    {
+                        MessageBox.Show(error);
+                    }
+                }
+                // Here we call the SaveChanges method, so that we can link several EUTs to one JR
             }
         }
 
@@ -255,13 +327,13 @@ namespace BarcoPVG.Viewmodels
         {
             int jrId = ((AbstractViewModelContainer)this.ViewModel).JR.IdRequest;
 
-            _dao.ApproveRequest(jrId);
+            _daoApproval.ApproveRequest(jrId);
 
             this.ViewModel = new ViewModelApproveJRQueue();
         }
 
         // Switch to test planning for tester
-        public void DisplayTestPlanning() //sander: foutafhandeling wanneer er niets geselecteerd is
+        public void DisplayTestPlanning() //sander: error catch when nothing is selected
         {
             // get id from JR
 
@@ -272,7 +344,7 @@ namespace BarcoPVG.Viewmodels
             }
             else
             {
-                MessageBox.Show("Geen planning geselecteerd");
+                MessageBox.Show("No JR selected");
             }
         }
 
@@ -300,71 +372,45 @@ namespace BarcoPVG.Viewmodels
 
         private void SetWindowProperties()
         {
-            switch (_dao.BarcoUser.Function)
+            string i = _daoLogin.BarcoUser.Functie;
+            switch (i)
             {
-
-                //Jarne
-                case "DATA":
+                case "DEV": //Developer
                     NewRequests = Visibility.Visible;
                     ApproveRequests = Visibility.Visible;
                     Test = Visibility.Visible;
                     SeeAll = Visibility.Visible;
-                    Data = Visibility.Visible;
-
-                    this.ViewModel = new ViewModelDatabaseManagement();
-
-                    break;
-                case "DEV":
-                    NewRequests = Visibility.Visible;
-                    ApproveRequests = Visibility.Visible;
-                    Test = Visibility.Visible;
-                    SeeAll = Visibility.Visible;
-                    Data = Visibility.Hidden;
 
                     this.ViewModel = new ViewModelDevelopment();
 
                     break;
-
-                case "TEST":
-                    NewRequests = Visibility.Visible;
+                case "TEST": //Test team
+                    NewRequests = Visibility.Hidden;
                     ApproveRequests = Visibility.Hidden;
                     Test = Visibility.Visible;
                     SeeAll = Visibility.Hidden;
-                    Data = Visibility.Hidden;
-
-                    DisplayNewJRCommand = new DelegateCommand(DisplayNewInternalJR);
 
                     this.ViewModel = new ViewModelPlanTestQueue();
 
                     break;
-                case "PLAN":
+                case "PLAN": //Planning
                     NewRequests = Visibility.Hidden;
                     ApproveRequests = Visibility.Visible;
                     Test = Visibility.Hidden;
                     SeeAll = Visibility.Hidden;
-                    Data = Visibility.Hidden;
 
                     this.ViewModel = new ViewModelApproveJRQueue();
 
                     break;
-
-                default:
+                default: //Standard user
                     NewRequests = Visibility.Visible;
                     ApproveRequests = Visibility.Hidden;
                     Test = Visibility.Hidden;
                     SeeAll = Visibility.Hidden;
-                    Data = Visibility.Hidden;
 
                     this.ViewModel = new ViewModelCreateJRQueue();
-
                     break;
             }
         }
-
-        public void InsertUser()
-        {
-
-        }
-
     }
 }

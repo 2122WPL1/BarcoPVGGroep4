@@ -1,9 +1,8 @@
-﻿using System;
+﻿using BarcoPVG.Models.Db;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
-namespace BarcoPVG.Viewmodels.JobRequest
+namespace BarcoPVG.ViewModels.JobRequest
 {
     class ViewModelApproveJRQueue: AbstractViewModelCollectionRQ
     {
@@ -13,12 +12,14 @@ namespace BarcoPVG.Viewmodels.JobRequest
             Load();
         }
 
-        // Function used in code behind
+        // Functie used in code behind
         // Loads all JR IDs in LB
         public void Load()
         {
             // Get unapproved JR's
-            var requestIds = _dao.GetAllJobRequests().Where(rq => rq.JrStatus == "To approve");
+            //Eakarach
+            // Show all JR that not yet be approved
+            List<RqRequest> requestIds = _daoJR.GetAllJobRequests().Where(rq => rq.JrStatus == "To approve").ToList();
             IdRequestsOnly.Clear();
 
             foreach (var requestId in requestIds)

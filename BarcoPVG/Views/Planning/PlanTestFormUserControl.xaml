@@ -5,8 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BarcoPVG.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="800" d:DesignWidth="600" d:Background="LightGray">
-    <GroupBox>
+             d:DesignHeight="880" d:DesignWidth="1882" d:Background="LightGray">
+    <GroupBox VerticalAlignment="Top">
         <GroupBox.Header>
             <StackPanel Orientation="Horizontal">
                 <TextBlock FontSize="16" Text="Planning "/>
@@ -16,28 +16,18 @@
             </StackPanel>
         </GroupBox.Header>
         <StackPanel Margin="10">
-            <!-- Change to grid?-->
             <StackPanel Orientation="Horizontal">
                 <ComboBox ItemsSource="{Binding Resources}" 
                           DisplayMemberPath="Naam"
                           Text="{Binding EditingTest.Resource, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                          Margin="10"
-                          >
-                    <!--
-                    <ComboBox.ItemContainerStyle>
-                        <Style TargetType="{x:Type ComboBoxItem}">
-                            <Setter Property="Background" Value="{StaticResource ResourceColor}"/>
-                        </Style>
-                    </ComboBox.ItemContainerStyle> 
-                    -->
+                          Margin="10">
                 </ComboBox>
 
                 <TextBox Text="{Binding EditingTest.Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="10"/>
-                <!--Currently two datepickers for start/end, looking into using one to get an array? -->
                 <DatePicker SelectedDate="{Binding StartDate}" IsTodayHighlighted="True" Margin="5"/>
                 <DatePicker SelectedDate="{Binding EndDate}" IsTodayHighlighted="True" Margin="5"/>
                 <TextBlock Text="ITEM ALREADY IN USE ON SELECTED DATES" 
-                           Background="Red" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center"
+                           Background="#FFF10000" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center"
                            Visibility="{Binding DoubleBooked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
@@ -45,7 +35,18 @@
                 <Button Content="Clear Test" Command="{Binding Path=ClearTestCommand}" Margin="5"/>
                 <Button Content="Remove Test" Command="{Binding Path=DeleteTestCommand}" Margin="5"/>
             </StackPanel>
-            <ListView ItemsSource="{Binding Tests}" SelectedItem="{Binding SelectedTest, Mode=TwoWay}" Height="250">
+            <ListView ItemsSource="{Binding Tests}" 
+                      SelectedItem="{Binding SelectedTest, Mode=TwoWay}" 
+                      VerticalAlignment="Stretch"
+                      Height="auto"
+                      Margin="3"
+                      SelectionMode="Single"
+                      ScrollViewer.VerticalScrollBarVisibility="Auto"
+                      ScrollViewer.CanContentScroll="True"
+                      ScrollViewer.HorizontalScrollBarVisibility="Auto" 
+                      HorizontalAlignment="Stretch"
+                      HorizontalContentAlignment="Center"
+                      MaxHeight="400">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Resource" DisplayMemberBinding="{Binding Resource}" />
@@ -56,10 +57,7 @@
                 </ListView.View>
             </ListView>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Content="Save New Tests" Margin="5"
-                        Command="{Binding DataContext.SaveTestsAndReturnCommand, 
-                            RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, 
-                            Mode=OneWay}"/>
+                <Button Content="Save New Tests" Margin="5" Command="{Binding DataContext.SaveTestsAndReturnCommand, RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, Mode=OneWay}"/>
                 <Button Content="Mark as planned" Margin="5"
                         Command="{Binding DataContext.ApprovePlanAndReturnCommand, 
                             RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, 

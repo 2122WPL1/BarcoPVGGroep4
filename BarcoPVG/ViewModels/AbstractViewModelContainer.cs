@@ -1,10 +1,7 @@
 ﻿using BarcoPVG.Models.Classes;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 
-namespace BarcoPVG.Viewmodels
+namespace BarcoPVG.ViewModels
 {
     public abstract class AbstractViewModelContainer : AbstractViewModelBase
     {
@@ -15,7 +12,7 @@ namespace BarcoPVG.Viewmodels
 
         // EUT's
         // Does not necessarily need to be linked to JR? We can retrieve the JR ID and add it in DAO
-        public ObservableCollection<EUT> EUTs { get; set; }
+        public ObservableCollection<EUT> EUTs { get ; set; }
         protected EUT _selectedEUT;
 
         public AbstractViewModelContainer()

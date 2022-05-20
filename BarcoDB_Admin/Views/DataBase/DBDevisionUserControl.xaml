@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="BarcoDB_Admin.Views.DataBase.DBDevisionUserControl"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BarcoDB_Admin.Views"
+        mc:Ignorable="d"
+        d:DesignHeight="800" d:Background="LightGray" Width="auto">
+    <!--amy-->
+    <StackPanel Margin="5">
+        <GroupBox MinHeight="500" Header="Devision" MaxHeight="600">
+            <ListView ItemsSource="{Binding AllDivisions}" SelectedItem="{Binding SelectedDivision, Mode=TwoWay}" VerticalAlignment="Top" >
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Abbreviation" Width="150" DisplayMemberBinding="{Binding Afkorting}"/>
+                        <GridViewColumn Header="Alias" Width="150" DisplayMemberBinding="{Binding Alias}"/>
+                        <GridViewColumn Header="Active" Width="150" DisplayMemberBinding="{Binding Actief}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </GroupBox>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Edit" 
+                    Command="{Binding DataContext.DisplayEditDivisionCommand,
+                    RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}},
+                    Mode=OneWay}"
+                    Margin="10"/>
+            <Button Content="Add new" 
+                    Command="{Binding DataContext.DisplayAddDivisionCommand,
+                    RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}},
+                    Mode=OneWay}"
+                    Margin="10"/>
+            <Button Content="Delete" 
+                    Command="{Binding DeleteDivision}"
+                    Margin="10"/>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

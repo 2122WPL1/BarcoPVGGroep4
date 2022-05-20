@@ -7,39 +7,72 @@
         <Setter Property="Opacity" Value="50" />
         <Setter Property="Title" Value="Barco Planning Tool"/>
     </Style>
-    
 
-    <!--IMAGE BARCO-->
+    <!--IMAGES-->
     <Style x:Key="BarcoLogo" TargetType="{x:Type Image}">
         <Setter Property="Width" Value="100"/>
         <Setter Property="Source" Value="barco-logo.png"/>
         <Setter Property="Margin" Value="0 0 0 0"/>
     </Style>
 
-    
+    <Style x:Key="IconUser" TargetType="{x:Type Image}">
+        <Setter Property="Width" Value="100"/>
+        <Setter Property="Source" Value="user.png"/>
+        <Setter Property="Margin" Value="0 0 0 0"/>
+    </Style>
+
+    <Style x:Key="IconLock" TargetType="{x:Type Image}">
+        <Setter Property="Width" Value="100"/>
+        <Setter Property="Source" Value="lock.png"/>
+        <Setter Property="Margin" Value="0 0 0 0"/>
+    </Style>
+
     <!--LISTBOX & LISTBOXITEMS-->
     <Style TargetType="ListBox">
         <Setter Property="Height" Value="150"/>
     </Style>
-
     
     <!--CHANGE STYLES 2 WITH STATIC RESOURCE-->
     <Style x:Key="GrayListItem" TargetType="ListBoxItem" >
         <Setter Property="BorderBrush" Value="gray"/>
     </Style>
 
-    
     <!--BUTTONS-->
     <Style x:Key="AddJRbtn" TargetType="Button">
         <Setter Property="MinWidth" Value="100"/>
         <Setter Property="Height" Value="40"/>
+        <Setter Property="Background" Value="#FFF10000"/>
+        <Setter Property="FontFamily" Value="Helvetica"/>
+        <Setter Property="FontWeight" Value="Light"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="20"
+                            BorderThickness="2"
+                            BorderBrush="White">
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Background" Value="red"/>
+                <Setter Property="Opacity" Value="0.4"/>
+                <Setter Property="Foreground" Value="black"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
     <Style x:Key="HorButtons" TargetType="Button">
         <Setter Property="Margin" Value="10"/>
         <Setter Property="Padding" Value="10 0"/>
     </Style>
-    
+
+    <Style x:Key="LoginButton">
+        
+    </Style>
 
     <!--LABELS-->
     <Style TargetType="Label">
@@ -69,7 +102,6 @@
         <Setter Property="Margin" Value="0,0,0,26"/>
     </Style>
 
-
     <!--TEXTBOXES-->
     <Style TargetType="TextBox">
         <Setter Property="Background" Value="White"/>
@@ -97,6 +129,31 @@
         <Setter Property="TextWrapping" Value="Wrap"/>
     </Style>
 
+    <Style x:Key="LogInGroupBox" TargetType="GroupBox">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="GroupBox">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Border Grid.Row="1" 
+                                BorderThickness="2 " BorderBrush="Gray"
+                                CornerRadius="50" Background="WhiteSmoke">
+                            <ContentPresenter Margin="4" />
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect ShadowDepth="3"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <!--Affects the two lil textboxes bellow-->
     <Style x:Key="BottomText" TargetType="TextBox">
         <Setter Property="Width" Value="50"/>
@@ -112,7 +169,6 @@
         <Setter Property="Height" Value="80"/>
     </Style>
 
-    
     <!--CHECKBOXES-->
     <Style TargetType="CheckBox">
         <Setter Property="VerticalAlignment" Value="Center"/>
@@ -123,13 +179,11 @@
         <Setter Property="FontSize" Value="9"/>
         <Setter Property="Foreground" Value="White"/>
     </Style>
-
     
     <!--DATEPCIKERS-->
     <Style TargetType="DatePicker">
         <Setter Property="IsTodayHighlighted" Value="True"/>
     </Style>
-
     
     <!--COMBOBOXES-->
     <Style TargetType="ComboBox">
@@ -137,7 +191,6 @@
         <Setter Property="Width" Value="150"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>
     </Style>
-
     
     <!--STACKPANELS-->
     <Style x:Key="GoodStack" TargetType="StackPanel">
@@ -149,5 +202,4 @@
     <Style x:Key="HorStack" TargetType="StackPanel">
         <Setter Property="Orientation" Value="Horizontal"/>
     </Style>
-
 </ResourceDictionary>

@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using BarcoPVG.Models;
 using BarcoPVG.Models.Db;
+using Microsoft.VisualBasic;
 
-namespace BarcoPVG.Viewmodels.Planning
+namespace BarcoPVG.ViewModels.Planning
 {
     class ViewModelPlanTestQueue : AbstractViewModelBase
     {
@@ -16,10 +13,10 @@ namespace BarcoPVG.Viewmodels.Planning
         //Constructor
         public ViewModelPlanTestQueue() : base()
         {
-            // Collection initialization
+            Collection initialization;
             PlansToApprove = new ObservableCollection<PlPlanning>();
 
-            foreach (var item in _dao.GetPlPlannings().Where(pl => pl.TestDivStatus == "In plan"))
+            foreach (var item in _daoPlanning.GetPlPlannings().Where(pl => pl.TestDivStatus == "In plan"))
             {
                 PlansToApprove.Add(item);
             }

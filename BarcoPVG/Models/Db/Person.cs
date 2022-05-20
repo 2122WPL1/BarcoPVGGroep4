@@ -8,5 +8,7 @@ namespace BarcoPVG.Models.Db
         public string Afkorting { get; set; } = null!;
         public string? Voornaam { get; set; }
         public string? Familienaam { get; set; }
+        public string? Wachtwoord { get; set; }
+        public string? Functie { get; set; }
     }
 }

@@ -1,14 +1,10 @@
 ﻿using Prism.Commands;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Windows.Input;
 using BarcoPVG.Models.Classes;
-using BarcoPVG.Models;
 
-namespace BarcoPVG.Viewmodels.TestGUI
+namespace BarcoPVG.ViewModels.TestGUI
 {
     class ViewModelUpdateTestQueue : AbstractViewModelBase
     {
@@ -35,11 +31,11 @@ namespace BarcoPVG.Viewmodels.TestGUI
 
             Tests = new ObservableCollection<Test>();
 
-            foreach (var item in _dao.GetAllTests().Where(t => t.Status != "Unconfirmed"))
+            foreach (var item in _daoPlanning.GetAllTests().Where(t => t.Status != "Unconfirmed"))
             {
                 Tests.Add(item);
             }
-
+                
             SaveStatusChangesCommand = new DelegateCommand(SaveStatusChanges);
 
             selectedTest = new Test();
@@ -58,7 +54,7 @@ namespace BarcoPVG.Viewmodels.TestGUI
         {
             foreach (var item in Tests)
             {
-                _dao.UpdateTestStatus(item);
+                _daoPlanning.UpdateTestStatus(item);
             }
         }
     }

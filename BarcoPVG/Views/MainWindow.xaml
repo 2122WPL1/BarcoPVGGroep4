@@ -4,22 +4,29 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Height="1143" Width="980" Background="LightGray" Foreground="White"
-        WindowState="Maximized"
-        WindowStyle="ThreeDBorderWindow"
-        WindowStartupLocation="CenterScreen">
+        Title="MainWindow"
+        Background="LightGray" Foreground="White"
+        ResizeMode="NoResize" 
+        WindowStyle="None" 
+        WindowStartupLocation="CenterScreen" 
+        WindowState="Maximized" 
+        Focusable="True"
+        Height="{x:Static SystemParameters.PrimaryScreenHeight}"
+        Width="{x:Static SystemParameters.PrimaryScreenWidth}">
     <StackPanel>
         <StackPanel Margin="10">
             <GroupBox BorderThickness="0.1">
                 <GroupBox.Header>
-                    <!-- This could be done more efficiently? -->
                     <Grid Background="#FFF10000">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="150"/>
-                            <ColumnDefinition/>
+                            <ColumnDefinition Width="150*"/>
+                            <ColumnDefinition Width="237*"/>
+                            <ColumnDefinition Width="1071*"/>
+                            <ColumnDefinition Width="40*"/>
                         </Grid.ColumnDefinitions>
-                        <Image Style="{StaticResource BarcoLogo}"/>
-                        <StackPanel Orientation="Horizontal" Grid.Column="1" >
+                        <Button Content="X" BorderBrush="Black" Grid.Column="3" Command="{Binding Exit}" HorizontalAlignment="Center" VerticalAlignment="Center" Height="32" Width="50" Foreground="#FFF10000" Background="#FFD5DFE5"/>
+                        <Image Style="{StaticResource BarcoLogo}" Grid.Column="0" Margin="25,0,25,0"/>
+                        <StackPanel Orientation="Horizontal" Grid.ColumnSpan="3" Margin="150,0,1067,0" >
                             <TextBlock FontSize="14" Text="Welcome "/>
                             <TextBlock FontSize="14" FontWeight="Bold" Text="{Binding User.Name}"/>
                             <TextBlock FontSize="14" Text=" ("/>
@@ -28,35 +35,30 @@
                         </StackPanel>
                     </Grid>
                 </GroupBox.Header>
-                <StackPanel Width="920">
+                <StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="10">
                         <Button Content="Your requests" 
                             Command="{Binding DisplayEmployeeStartupCommand,
                             Mode=OneWay}" 
                             Visibility="{Binding NewRequests}"
-                            Margin="10" Background="#FFF10000"/>
+                            Margin="10"/>
                         <Button Content="Edit/Approve requests" 
                             Command="{Binding DisplayPlannerStartupCommand, Mode=OneWay}" 
-                            Visibility="{Binding ApproveRequests}"
-                            Background="#FFF10000"/>
+                            Visibility="{Binding ApproveRequests}"/>
                         <Button Content="Plan tests" 
                             Command="{Binding DisplayTesterPlanCommand, Mode=OneWay}"
                             Visibility="{Binding Test}"
-                            Margin="10" Background="#FFF10000"/>
+                            Margin="10"/>
                         <Button Content="View/Update tests" 
                             Command="{Binding DisplayTesterTestCommand, Mode=OneWay}"
-                            Visibility="{Binding Test}"
-                            Background="#FFF10000"/>
+                            Visibility="{Binding Test}"/>
                         <Button Content="Development"
                             Command="{Binding DisplayDevStartupCommand, Mode=OneWay}" 
                             Visibility="{Binding SeeAll}"
-                            Margin="10" Background="#FFF10000"/>
-                        <Button Content="Database Management"
-                            Command="{Binding DatabaseManagementCommand, Mode=OneWay}"
-                            Visibility="{Binding Data}" Background="#FFF10000" />
+                            Margin="10"/>
                     </StackPanel>
-                    <ScrollViewer Height="450">
-                        <ContentControl Content="{Binding ViewModel}"/>
+                    <ScrollViewer>
+                        <ContentControl x:Name="ctnView" Content="{Binding ViewModel}" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto"/>
                     </ScrollViewer>
                 </StackPanel>
             </GroupBox>

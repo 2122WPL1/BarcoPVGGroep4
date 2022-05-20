@@ -4,15 +4,28 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BarcoPVG.Views"
-             xmlns:vm="clr-namespace:BarcoPVG.Viewmodels.JobRequest"
+             xmlns:vm="clr-namespace:BarcoPVG.ViewModels.JobRequest"
              mc:Ignorable="d" 
-             d:DesignHeight="800" d:Background="LightGray" Width="1068">
+             d:DesignHeight="700" d:Background="LightGray" Width="auto"
+             VerticalAlignment="Top">
     <UserControl.Resources>
         <vm:ViewModelCreateJRQueue x:Key="converterToColor"/>
     </UserControl.Resources>
     <StackPanel Margin="10">
-        <GroupBox Header="Planned JobRequests" BorderThickness="0.1">
-            <ListView ItemsSource="{Binding IdRequestsOnly}" SelectedItem="{Binding SelectedJR, Mode=TwoWay}" Height="250">
+        <GroupBox Header="Planned JobRequests" BorderThickness="0.1" Height="auto" Width="auto">
+            <ListView ItemsSource="{Binding IdRequestsOnly}"
+                      SelectedItem="{Binding SelectedJR, Mode=TwoWay}"
+                      VerticalAlignment="Stretch"
+                      Margin="3"
+                      SelectionMode="Single"
+                      SelectedIndex="1"
+                      ScrollViewer.VerticalScrollBarVisibility="Auto"
+                      ScrollViewer.CanContentScroll="True"
+                      ScrollViewer.HorizontalScrollBarVisibility="Auto" 
+                      HorizontalAlignment="Stretch"
+                      HorizontalContentAlignment="Center"
+                      MaxHeight="500" 
+                      Height="auto">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn  Header="Division" DisplayMemberBinding="{Binding BarcoDivision}" />
@@ -26,8 +39,9 @@
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
                         <GridViewColumn Header="JR number" DisplayMemberBinding="{Binding JrNumber}" />
-                        <GridViewColumn Header="Expected Approve Date" DisplayMemberBinding="{Binding RequestDate, StringFormat=d}" />
-                        <GridViewColumn Header="Expected End Date" DisplayMemberBinding="{Binding ExpectedEnddate, StringFormat=d}" />
+                        <GridViewColumn Header="Request Date" DisplayMemberBinding="{Binding RequestDate, StringFormat=d}" Width="Auto"/>
+                        <GridViewColumn Header="Expected End Date" DisplayMemberBinding="{Binding ExpectedEnddate, StringFormat=d}" Width="Auto"/>
+                        <GridViewColumn Header="Status" DisplayMemberBinding="{Binding JrStatus}" Width="Auto"/>
 
                         <!--<GridViewColumn Header="Id" DisplayMemberBinding="{Binding IdRequest}" />
                         <GridViewColumn Header="Division" DisplayMemberBinding="{Binding BarcoDivision}" />
@@ -38,7 +52,7 @@
                 </ListView.View>
             </ListView>
         </GroupBox>
-        <StackPanel Orientation="Horizontal" Margin="10">
+        <StackPanel Orientation="Horizontal" Margin="10" Height="auto">
             <Button Content="New JR" 
                     Command="{Binding DataContext.DisplayNewJRCommand, 
                             RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, 

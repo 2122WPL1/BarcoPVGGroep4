@@ -4,41 +4,45 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BarcoPVG.Views"
+             xmlns:vm="clr-namespace:BarcoPVG.ViewModels.JobRequest"
              mc:Ignorable="d" 
-             d:DesignHeight="800" d:DesignWidth="600" d:Background="LightGray">
-    <!-- Arne -->
+             d:DesignHeight="880" d:DesignWidth="1882" d:Background="LightGray">
+    <UserControl.Resources>
+        <vm:ViewModelCreateJRQueue x:Key="converterToColor"/>
+    </UserControl.Resources>
+
     <StackPanel Margin="10">
         <GroupBox Header="Approval queue" BorderThickness="0.1">
-            <!-- Filter elements - Arne
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" HorizontalAlignment="Center" Foreground="White" Text="DIVISION"/>
-                <TextBlock Grid.Column="1" HorizontalAlignment="Center" Foreground="White" Text="PROJECT NAME"/>
-                <TextBlock Grid.Column="2" HorizontalAlignment="Center" Foreground="White" Text="JR nr"/>
-                <TextBlock Grid.Column="3" HorizontalAlignment="Center" Foreground="White" Text="STATUS"/>
-                <TextBlock Grid.Column="4" HorizontalAlignment="Center" Foreground="White" Text="FORESEEN DATE"/>
-                <ComboBox Name="cbmSearchdevision" VerticalAlignment="Top" Width="120" HorizontalAlignment="Center" Margin="0,40,0,0"/>
-                <TextBox Name="txtSearchprojectname" Grid.Column="1" Margin="0,40,0,0" Text="" VerticalAlignment="Top" Width="120" HorizontalAlignment="Center"/>
-                <TextBox Name="txtSearchjrnr" Grid.Column="2" Margin="0,40,0,0" Text="" VerticalAlignment="Top" Width="120" HorizontalAlignment="Center"/>
-                <ComboBox Name="cbmSearchstatus" Grid.Column="3" Margin="0,40,0,0" VerticalAlignment="Top" Width="120" HorizontalAlignment="Center"/>
-                <TextBox Name="txtSearchdate" Grid.Column="4" Margin="0,40,0,0" Text="" VerticalAlignment="Top" Width="120" HorizontalAlignment="Center"/>
-            </Grid>
-            -->
             <StackPanel>
-                <ListView Height="250" ItemsSource="{Binding IdRequestsOnly}" SelectedItem="{Binding SelectedJR, Mode=TwoWay}" >
+                <!--Jarne-->
+                <ListView ItemsSource="{Binding IdRequestsOnly}" 
+                          MaxHeight="600"
+                          SelectedItem="{Binding SelectedJR, Mode=TwoWay}" 
+                          VerticalAlignment="Stretch"
+                          
+                          Margin="3"
+                          SelectionMode="Single"
+                          ScrollViewer.VerticalScrollBarVisibility="Auto"
+                          ScrollViewer.CanContentScroll="True"
+                          ScrollViewer.HorizontalScrollBarVisibility="Auto" 
+                          HorizontalAlignment="Stretch"
+                          HorizontalContentAlignment="Center">
                     <ListView.View>
-                        <GridView>
-                            <GridViewColumn Header="Id" DisplayMemberBinding="{Binding IdRequest}" />
-                            <GridViewColumn Header="Division" DisplayMemberBinding="{Binding BarcoDivision}" />
-                            <GridViewColumn Header="Requester" DisplayMemberBinding="{Binding Requester}" />
-                            <GridViewColumn Header="Eut Projectname" DisplayMemberBinding="{Binding EutProjectname}" />
-                            <GridViewColumn Header="Expected End Date" DisplayMemberBinding="{Binding ExpectedEnddate, StringFormat=d}" />
+                        <GridView >
+                            <GridViewColumn Header="Division" DisplayMemberBinding="{Binding BarcoDivision}" Width="Auto"/>
+                            <GridViewColumn Header="Requester" DisplayMemberBinding="{Binding Requester}" Width="Auto"/>
+                            <GridViewColumn Header="EUT Projectname" DisplayMemberBinding="{Binding EutProjectname}" Width="Auto"/>
+                            <GridViewColumn Header="Job Nature" Width="Auto">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding JobNature}" Background="{Binding JobNature, Converter={StaticResource converterToColor}}"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="JR number" DisplayMemberBinding="{Binding JrNumber}" Width="Auto"/>
+                            <GridViewColumn Header="Request Date" DisplayMemberBinding="{Binding RequestDate, StringFormat=d}" Width="Auto"/>
+                            <GridViewColumn Header="Expected End Date" DisplayMemberBinding="{Binding ExpectedEnddate, StringFormat=d}" Width="Auto"/>
+                            <GridViewColumn Header="Status" DisplayMemberBinding="{Binding JrStatus}" Width="Auto"/>
                         </GridView>
                     </ListView.View>
                 </ListView>

@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="BarcoDB_Admin.Views.DataBase.DBUserUserControl"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BarcoDB_Admin.Views"
+        xmlns:pw="clr-namespace:BarcoPVG.Views.Login;assembly=BarcoPVG"
+        mc:Ignorable="d"
+        d:DesignHeight="800" d:Background="LightGray">
+    <!--amy-->
+    <StackPanel Margin="0,5,0,10">
+        <GroupBox Header="User" Width="auto" MaxHeight="600">
+
+            <ListView ItemsSource="{Binding AllUsers}" SelectedItem="{Binding SelectedUser, Mode=TwoWay}" Height="300" VerticalAlignment="Top" HorizontalAlignment="Stretch" >
+
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Abbreviation" Width="150" DisplayMemberBinding="{Binding Afkorting}" />
+                        <GridViewColumn Header="First Name" Width="150" DisplayMemberBinding="{Binding Voornaam}"/>
+                        <GridViewColumn Header="Last Name" Width="150" DisplayMemberBinding="{Binding Familienaam}"/>
+                        <GridViewColumn Header="Password" Width="150" >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <pw:BindablePasswordBox x:Name="pwdPassword" FontFamily="Helvetica"
+                             FontWeight="Light"
+                             Password="{Binding Wachtwoord}"
+                             FontSize="20"
+                             Foreground="Black"
+                             Background="Transparent"
+                             BorderThickness=".20"
+                             Width="150"
+                             Grid.Column="2" Grid.Row="4"
+                             Opacity="0.5"
+                             Height="25"
+                            IsEnabled="False"
+                             />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Email" Width="auto" DisplayMemberBinding="{Binding Email}"/>
+                        <GridViewColumn Header="Functie" Width="150" DisplayMemberBinding="{Binding Functie}"/>
+                    </GridView>
+
+                </ListView.View>
+            </ListView>
+        </GroupBox>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Edit" 
+                    Command="{Binding DataContext.DisplayEditUserCommand, 
+                    RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}},
+                    Mode=OneWay}"
+                    Margin="10"/>
+            <Button Content="Add new" 
+                    Command="{Binding DataContext.DisplayAddUserCommand, 
+                    RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}},
+                    Mode=OneWay}"
+                    Margin="10"/>
+            <Button Content="Delete" 
+                    Command="{Binding DeleteUser}"
+                    Margin="10"/>
+        </StackPanel>
+    </StackPanel>
+
+</UserControl>
