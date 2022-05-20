@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BarcoDB_Admin.Views"
         mc:Ignorable="d"
-        d:DesignHeight="800" d:Background="LightGray" Width="auto">
+        d:DesignHeight="800" d:Background="LightGray" Width="auto" Height="auto">
     <!--amy-->
     <StackPanel Margin="5">
-        <GroupBox MinHeight="500" Header="Devision" MaxHeight="600">
+        <GroupBox MinHeight="300" MaxHeight="700" Header="Devision">
             <ListView ItemsSource="{Binding AllDivisions}" SelectedItem="{Binding SelectedDivision, Mode=TwoWay}" VerticalAlignment="Top" >
                 <ListView.View>
                     <GridView>
