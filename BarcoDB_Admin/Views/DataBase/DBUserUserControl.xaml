@@ -6,13 +6,11 @@
         xmlns:local="clr-namespace:BarcoDB_Admin.Views"
         xmlns:pw="clr-namespace:BarcoPVG.Views.Login;assembly=BarcoPVG"
         mc:Ignorable="d"
-        d:DesignHeight="800" d:Background="LightGray">
+        d:DesignHeight="800" d:Background="LightGray" Width="auto" Height="auto">
     <!--amy-->
     <StackPanel Margin="0,5,0,10">
-        <GroupBox Header="User" Width="auto" MaxHeight="600">
-
-            <ListView ItemsSource="{Binding AllUsers}" SelectedItem="{Binding SelectedUser, Mode=TwoWay}" Height="300" VerticalAlignment="Top" HorizontalAlignment="Stretch" >
-
+        <GroupBox MinHeight="300" MaxHeight="700" Header="User">
+            <ListView ItemsSource="{Binding AllUsers}" SelectedItem="{Binding SelectedUser, Mode=TwoWay}" VerticalAlignment="Top">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Abbreviation" Width="150" DisplayMemberBinding="{Binding Afkorting}" />

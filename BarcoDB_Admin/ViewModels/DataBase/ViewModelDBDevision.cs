@@ -1,12 +1,6 @@
-﻿using BarcoDB_Admin.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using BarcoDB_Admin.Models.Db;
 using System.Windows;
-using BarcoDB_Admin.Dao;
 using Prism.Commands;
 
 namespace BarcoDB_Admin.ViewModels.DataBase

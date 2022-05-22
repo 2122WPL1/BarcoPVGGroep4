@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         d:DesignHeight="800" d:Background="LightGray" Width="auto" Height="auto">
     <StackPanel Margin="5">
-        <GroupBox MaxHeight="600" Width="auto" Header="Resources">
+        <GroupBox MinHeight="300" MaxHeight="700" Width="auto" Header="Resources">
             <ListView ItemsSource="{Binding AllResources}" SelectedItem="{Binding SelectedResouce , Mode=TwoWay}" VerticalAlignment="top">
                 <ListView.View>
                     <GridView >

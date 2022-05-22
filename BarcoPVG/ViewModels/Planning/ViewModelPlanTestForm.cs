@@ -1,12 +1,9 @@
 ﻿using Prism.Commands;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Windows;
 using System.Windows.Input;
 using BarcoPVG.Models.Classes;
-using BarcoPVG.Models;
 using BarcoPVG.Models.Db;
 
 namespace BarcoPVG.ViewModels.Planning

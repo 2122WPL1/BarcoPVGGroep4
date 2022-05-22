@@ -1,13 +1,8 @@
 ﻿using Prism.Commands;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Windows.Input;
 using BarcoPVG.Models.Classes;
-using BarcoPVG.Models;
-using BarcoPVG.ViewModels;
 
 namespace BarcoPVG.ViewModels.TestGUI
 {

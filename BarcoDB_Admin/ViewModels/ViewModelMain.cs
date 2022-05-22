@@ -4,6 +4,7 @@ using BarcoDB_Admin.ViewModels.DataBase;
 using BarcoDB_Admin.ViewModels.Edit;
 using Prism.Commands;
 using System;
+using System.Linq;
 using System.Windows;
 
 namespace BarcoDB_Admin.ViewModels
@@ -161,7 +162,8 @@ namespace BarcoDB_Admin.ViewModels
             {
                 if (person.Functie == "TEST" && (testTeam.Afkorting == null || testTeam.Afkorting == "" || divisions.IsNull == true))
                 {
-                    MessageBox.Show("Testeam should have team and division");
+                    MessageBox.Show("error!\nAbbreviation already exists.\nPlease enter a new abbreviation.");
+                    return;
                 }
                 else if (person.Functie != "TEST" && ((testTeam.Afkorting != null && testTeam.Afkorting != "") || divisions.IsNull == false))
                 {
@@ -181,6 +183,15 @@ namespace BarcoDB_Admin.ViewModels
                     //    person.Afkorting = person.Afkorting.ToUpper();
                     //}
 
+                // if email is not filled in then it creates email with First name and surname
+                if (person.Email is null || person.Email == "") 
+                {
+                    person.Email = (person.Voornaam + "." + person.Familienaam + "@barco.com").ToLower();
+                }
+                else if (!person.Email.Contains("@barco.com"))
+                {
+                    person.Email = person.Email.ToLower() + "@barco.com";
+                }
                     if (IsDoubleAfkorting(person))
                     {
                         MessageBox.Show("The abbreviation is already used please should another");
@@ -332,10 +343,22 @@ namespace BarcoDB_Admin.ViewModels
             //cheks if all the required fields are filled in
             if (CheckRequirment(div))
             {
-                div.Actief = true;
+                var checkdevision = _daoDivision.GetAllDivisions().FirstOrDefault(x => x.Afkorting == div.Afkorting.ToUpper()); //cheks in the database if abbrevation exsist //Amy
 
-                _daoDivision.AddDivision(div);
-                DisplayDataBaseDivisionStartup();
+                if (checkdevision != null) //If abbrevation exist -> error message is shown
+                {
+                    MessageBox.Show("error!\nAbbreviation already exists.\nPlease enter a new abbreviation.");
+                    return;
+                }
+                else
+                {
+                    div.Actief = true;
+
+                    _daoDivision.AddDivision(div);
+                    DisplayDataBaseDivisionStartup();
+                }
+
+               
             }
             else
             {

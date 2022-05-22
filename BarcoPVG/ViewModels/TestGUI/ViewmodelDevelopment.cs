@@ -1,17 +1,4 @@
-﻿using Microsoft.Toolkit.Mvvm.Input;
-using Newtonsoft.Json.Serialization;
-using Prism.Commands;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
-using System.Windows;
-using System.Windows.Input;
-using BarcoPVG.Dao;
-using BarcoPVG.Models;
-using BarcoPVG.Views;
-
-namespace BarcoPVG.ViewModels.TestGUI
+﻿namespace BarcoPVG.ViewModels.TestGUI
 {
     public class ViewModelDevelopment : AbstractViewModelCollectionRQ
     {
