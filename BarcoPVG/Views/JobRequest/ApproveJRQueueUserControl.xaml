@@ -19,7 +19,6 @@
                           MaxHeight="600"
                           SelectedItem="{Binding SelectedJR, Mode=TwoWay}" 
                           VerticalAlignment="Stretch"
-                          
                           Margin="3"
                           SelectionMode="Single"
                           ScrollViewer.VerticalScrollBarVisibility="Auto"

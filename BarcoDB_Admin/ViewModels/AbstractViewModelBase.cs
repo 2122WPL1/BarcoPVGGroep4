@@ -14,7 +14,7 @@ namespace BarcoDB_Admin.ViewModels
         protected DaoDivision _daoDivision = DaoDivision.InstanceDivision();
 
         protected DAO _dao = DAO.Instance();
-        //protected BarcoDB_Admin.Dao.DAO _dao = BarcoDB_Admin.Dao.DAO.Instance(); //dao's apart in de viewmodels gedefineerd
+        //protected BarcoDB_Admin.Dao.DAO _dao = BarcoDB_Admin.Dao.DAO.Instance(); //dao's seperatly defined in viewmodels
 
         // Constructor
         public AbstractViewModelBase()

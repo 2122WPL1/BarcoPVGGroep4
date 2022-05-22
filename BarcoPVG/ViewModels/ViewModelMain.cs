@@ -8,7 +8,6 @@ using System;
 using System.Collections.Generic;
 using System.Windows;
 
-
 namespace BarcoPVG.ViewModels
 {
     // Kaat
@@ -152,7 +151,7 @@ namespace BarcoPVG.ViewModels
             List<EUT> eUts2 = new List<EUT>();
 
             bool passed = false;
-            if (jr.Requester.Length > 10)
+            if (jr.Requester.Length > 20)
             {
                 MessageBox.Show("Requester is longer than the allowed length (20)");
             }
@@ -246,6 +245,7 @@ namespace BarcoPVG.ViewModels
                 // Here we call the SaveChanges method, so that we can link several EUTs to one JR
                 _daoJR.SaveChanges();
                 DisplayEmployeeStartup();
+                //Jarne switch for openening window based on who's logged in
                 switch (_daoLogin.BarcoUser.Division)
                 {
                     case "DEV":
@@ -262,11 +262,6 @@ namespace BarcoPVG.ViewModels
                         break;
                 }
             }
-
-            
-
-            //Jarne switch for openening window based on who's logged in
-            
         }
 
         public void InsertInternalJr()
@@ -283,9 +278,6 @@ namespace BarcoPVG.ViewModels
                 _daoInternalJr.AddInternJobRequest(((AbstractViewModelContainer)this.ViewModel).JR); // SaveChanges included in function
                 DisplayTesterPlan();
             }
-
-
-            
         }
 
         // Updates existing job request and switches windows
