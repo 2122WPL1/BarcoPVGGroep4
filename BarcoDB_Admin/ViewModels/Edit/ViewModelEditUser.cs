@@ -31,6 +31,14 @@ namespace BarcoDB_Admin.ViewModels.Edit
         }
         public ViewModelEditUser(string Afkorting) : base()
         {
+            //Prevent Null exception
+            Person = new Person();
+            BarcoDivisions = new BarcoDivision();
+            TestDivision = new RqTestDevision();
+
+
+
+
             Person = _daoUser.GetAllUser().FirstOrDefault(x => x.Afkorting == Afkorting); //to be able to edit the selected person in the database
 
             if (Person.Functie == "TEST")

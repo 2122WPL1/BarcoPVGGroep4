@@ -161,8 +161,10 @@ namespace BarcoDB_Admin.ViewModels
             {
 
                 //Check if they choos other function than TEST and fill testteam or division
-                if (((ViewModelAddUser)this.ViewModel).Person.Functie != "TEST" && 
-                    (((ViewModelAddUser)this.ViewModel).TestDivision.Afkorting != null || ((ViewModelAddUser)this.ViewModel).BarcoDivisions.IsNull == false))
+                if (((ViewModelAddUser)this.ViewModel).Person.Functie != "TEST" &&
+                    (((ViewModelAddUser)this.ViewModel).BarcoDivisions.IsNull == false) ||
+                    ((((ViewModelAddUser)this.ViewModel).TestDivision.Afkorting != null && ((ViewModelAddUser)this.ViewModel).TestDivision.Afkorting != "")))
+                     
                 {
                     MessageBox.Show("Only TEST team can choose Testteam and Division");
                 }
@@ -197,7 +199,7 @@ namespace BarcoDB_Admin.ViewModels
                     _daoUser.AddUser(person);
 
                     //Add to TB BarcoDivisionPerson
-                    if (testTeam is not null)
+                    if (testTeam.Afkorting is not null || testTeam.Afkorting != "")
                     {
                         _daoUser.AddBarcoDivisionPerson(person, divisions, testTeam);
                     }
@@ -233,6 +235,7 @@ namespace BarcoDB_Admin.ViewModels
                 }
                 else if (((ViewModelEditUser)this.ViewModel).Person.Functie == "TEST" &&
                          (((ViewModelEditUser)this.ViewModel).TestDivision.Afkorting == null ||
+                          ((ViewModelAddUser)this.ViewModel).TestDivision.Afkorting != "" ||
                           ((ViewModelEditUser)this.ViewModel).BarcoDivisions.IsNull == true))
                 {
                     MessageBox.Show("Testeam should have team and division");
@@ -260,6 +263,7 @@ namespace BarcoDB_Admin.ViewModels
                     }
 
                     _daoUser.EditUser(person, divisions, testTeam);
+
 
                     MessageBox.Show($"{person.Voornaam} is updated");
                     DisplayDatabaseUserStartup(); // toont view DBUSerUserControl
