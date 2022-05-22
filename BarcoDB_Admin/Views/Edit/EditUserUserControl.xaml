@@ -31,7 +31,7 @@
                     
                 </Grid.RowDefinitions>
 
-                <Label Content="Abbreviation:" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Right" />
+                <Label Content="*Abbreviation:" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Right" />
                 <TextBox Text="{Binding Person.Afkorting, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          IsEnabled="{Binding IsEnable1}"
                          Width="150" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Left" />
@@ -81,7 +81,7 @@
                     <ComboBoxItem Content="EMC"/>
                     <ComboBoxItem Content="ENV"/>
                     <ComboBoxItem Content="REL"/>
-                    <ComboBoxItem Content="SAV"/>
+                    <ComboBoxItem Content="SAF"/>
                     <ComboBoxItem Content="PCK"/>
                     <ComboBoxItem Content="ECO"/>
                 </ComboBox>

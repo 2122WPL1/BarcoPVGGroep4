@@ -63,39 +63,44 @@ namespace BarcoDB_Admin.Dao
         }
         public void EditUser(Person person, BarcoDivision div, RqTestDevision team)
         {
+
             if (person.Functie == "TEST")
             {
-                var barcoPerson = GetAllBarcoDivisionPersons().Where(t => t.AfkPerson == person.Afkorting);
-
-                //this function still have to work
-                //var division = div.AllDivisions();
-
-                //for (int i = 0; i < division.Count; i++)
+                //var barcoPerson = GetAllBarcoDivisionPersons().Where(t => t.AfkPerson == person.Afkorting);
+                ////Delete all BarcoDivision of this person
+                //foreach (var onePerson in barcoPerson)
                 //{
-                //    if (division[i] == true)
-                //    {
-                //        var alldivision = _context.RqBarcoDivisions.ToList();
-                //        string divisionAfkorting = alldivision.ElementAt(i + 1).Afkorting;
+                //    var rqBarcoDivisionPerson = onePerson;
 
-                //        var barcoDivPerson = new RqBarcoDivisionPerson()
-                //        {
-                //            AfkDevision = divisionAfkorting,
-                //            AfkPerson = person.Afkorting,
-                //            Pvggroup = team.Afkorting
-                //        };
-
-                //        _context.Add(barcoDivPerson);
-                //        _context.SaveChanges();
-                //    }
+                //    _context.Remove(rqBarcoDivisionPerson);
+                //    _context.SaveChanges();
                 //}
 
-                foreach (var onePerson in barcoPerson)
+                //_context.Add(person);
+                //_context.SaveChanges();
+
+
+                //Add new BarcoDivision from this person
+                var division = div.AllDivisions();
+
+                for (int i = 0; i < division.Count; i++)
                 {
-                    onePerson.Pvggroup = team.Afkorting;
+                    if (division[i] == true)
+                    {
+                        var alldivision = _context.RqBarcoDivisions.ToList();
+                        string divisionAfkorting = alldivision.ElementAt(i + 1).Afkorting;
 
-                    _context.Update(onePerson);
+                        var barcoDivPerson = new RqBarcoDivisionPerson()
+                        {
+                            AfkDevision = divisionAfkorting,
+                            AfkPerson = person.Afkorting,
+                            Pvggroup = team.Afkorting
+                        };
+
+                        _context.Add(barcoDivPerson);
+                        _context.SaveChanges();
+                    }
                 }
-
 
             }
             

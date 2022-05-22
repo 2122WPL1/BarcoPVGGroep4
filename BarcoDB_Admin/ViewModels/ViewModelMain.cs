@@ -159,62 +159,116 @@ namespace BarcoDB_Admin.ViewModels
             //cheks if all the required fields are filled in
             if (CheckRequirment(person))
             {
-
-                //Check if they choos other function than TEST and fill testteam or division
-                if (((ViewModelAddUser)this.ViewModel).Person.Functie != "TEST" &&
-                    (((ViewModelAddUser)this.ViewModel).BarcoDivisions.IsNull == false) ||
-                    ((((ViewModelAddUser)this.ViewModel).TestDivision.Afkorting != null && ((ViewModelAddUser)this.ViewModel).TestDivision.Afkorting != "")))
-                     
-                {
-                    MessageBox.Show("Only TEST team can choose Testteam and Division");
-                }
-                else if (((ViewModelAddUser)this.ViewModel).Person.Functie == "TEST" &&
-                         (((ViewModelAddUser)this.ViewModel).TestDivision.Afkorting == null ||
-                          ((ViewModelAddUser)this.ViewModel).BarcoDivisions.IsNull == true))
+                if (person.Functie == "TEST" && (testTeam.Afkorting == null || testTeam.Afkorting == "" || divisions.IsNull == true))
                 {
                     MessageBox.Show("Testeam should have team and division");
                 }
+                else if (person.Functie != "TEST" && ((testTeam.Afkorting != null && testTeam.Afkorting != "") || divisions.IsNull == false))
+                {
+                    MessageBox.Show("Only TEST team can choose Testteam and Division");
+                }
                 else
                 {
-
                     //Add to TB Person
-                    // if abbreviation is not filled in the it creates one with the first 2 letters of firstname en the last 2 letters of surname
-                    if (person.Afkorting is null || person.Afkorting == "")
-                    {
-                        person.Afkorting = (person.Voornaam.Substring(0, 2) + person.Familienaam.Substring(person.Familienaam.Length - 2)).ToUpper();
+                    //// if abbreviation is not filled in the it creates one with the first 2 letters of firstname en the last 2 letters of surname
+                    //if (person.Afkorting is null || person.Afkorting == "")
+                    //{
+                    //    person.Afkorting = checkAfkorting(person);
+                    //}
+                    //else
+                    //{
+                    //    // ensures that abbreviation is in uppercase
+                    //    person.Afkorting = person.Afkorting.ToUpper();
+                    //}
 
+                    if (IsDoubleAfkorting(person))
+                    {
+                        MessageBox.Show("The abbreviation is already used please should another");
                     }
                     else
                     {
-                        // ensures that abbreviation is in uppercase
+                        // if email is not filled in then it creates email with First name and surname
+                        if (person.Email is null || person.Email == "")
+                        {
+                            person.Email = (person.Voornaam + "." + person.Familienaam + "@barco.com").ToLower();
+                        }
+
                         person.Afkorting = person.Afkorting.ToUpper();
+
+                        _daoUser.AddUser(person);
+
+                        //Add to TB BarcoDivisionPerson
+                        if (testTeam.Afkorting is not null || testTeam.Afkorting != "")
+                        {
+                            _daoUser.AddBarcoDivisionPerson(person, divisions, testTeam);
+                        }
+
+                        MessageBox.Show($"{person.Voornaam} is added to Database");
+                        DisplayDatabaseUserStartup(); // toont view DBUSerUserControl
                     }
-
-                    // if email is not filled in then it creates email with First name and surname
-                    if (person.Email is null || person.Email == "")
-                    {
-                        person.Email = (person.Voornaam + "." + person.Familienaam + "@barco.com").ToLower();
-                    }
-
-                    _daoUser.AddUser(person);
-
-                    //Add to TB BarcoDivisionPerson
-                    if (testTeam.Afkorting is not null || testTeam.Afkorting != "")
-                    {
-                        _daoUser.AddBarcoDivisionPerson(person, divisions, testTeam);
-                    }
-
-                    MessageBox.Show($"{person.Voornaam} is added to Database");
-                    DisplayDatabaseUserStartup(); // toont view DBUSerUserControl
                 }
-               
-                
-               
             }
             else
             {
                 MessageBox.Show("please fill all required fields");
             }
+        }
+
+        private bool IsDoubleAfkorting(Person person)
+        {
+            var AllUser = _daoUser.GetAllUser();
+
+            foreach (var afkorting in AllUser)
+            {
+                if (afkorting.Afkorting == person.Afkorting.ToUpper())
+                {
+                    return true;
+                } 
+            }
+
+            return false;
+        }
+
+        //TODO
+        //This methode is have to work
+        private string? checkAfkorting(Person person)
+        {
+            var AllUser = _daoUser.GetAllUser();
+            int i = 0;
+            bool newName = false;
+            string newAfkorting = null;
+
+            int j = 0;
+
+            while (!newName || j < 100)
+            {
+                if (i >= person.Voornaam.Length - 1 || i >= person.Familienaam.Length - 1)
+                {
+                    break;
+                }
+                
+                newAfkorting = (person.Voornaam.Substring(0, 2+i) + person.Familienaam.Substring(0,1+i)).ToUpper();
+
+                foreach (var afkorting in AllUser)
+                {
+                    if (afkorting.Afkorting == newAfkorting)
+                    {
+                        i++;
+                        break;
+                    }
+                    else
+                    {
+                        newName = true;
+                        
+                    }
+                }
+
+                j++;
+
+
+            }
+
+            return newAfkorting;
         }
 
         public void UpdateUser() // update
@@ -228,33 +282,29 @@ namespace BarcoDB_Admin.ViewModels
 
             if (CheckRequirment(person))
             {
-                if (((ViewModelEditUser)this.ViewModel).Person.Functie != "TEST" &&
-                   (((ViewModelEditUser)this.ViewModel).TestDivision.Afkorting != null || ((ViewModelEditUser)this.ViewModel).BarcoDivisions.IsNull == false))
-                {
-                    MessageBox.Show("Only TEST team can choose Testteam and Division");
-                }
-                else if (((ViewModelEditUser)this.ViewModel).Person.Functie == "TEST" &&
-                         (((ViewModelEditUser)this.ViewModel).TestDivision.Afkorting == null ||
-                          ((ViewModelAddUser)this.ViewModel).TestDivision.Afkorting != "" ||
-                          ((ViewModelEditUser)this.ViewModel).BarcoDivisions.IsNull == true))
+                if (person.Functie == "TEST" && (testTeam.Afkorting == null || testTeam.Afkorting == "" || divisions.IsNull == true))
                 {
                     MessageBox.Show("Testeam should have team and division");
+                }
+                else if (person.Functie != "TEST" && ((testTeam.Afkorting != null && testTeam.Afkorting != "") || divisions.IsNull == false))
+                {
+                    MessageBox.Show("Only TEST team can choose Testteam and Division");
                 }
                 else
                 {
 
                     //Add to TB Person
                     // if abbreviation is not filled in the it creates one with the first 2 letters of firstname en the last 2 letters of surname
-                    if (person.Afkorting is null || person.Afkorting == "")
-                    {
-                        person.Afkorting = (person.Voornaam.Substring(0, 2) + person.Familienaam.Substring(person.Familienaam.Length - 2)).ToUpper();
+                    //if (person.Afkorting is null || person.Afkorting == "")
+                    //{
+                    //    person.Afkorting = (person.Voornaam.Substring(0, 2) + person.Familienaam.Substring(person.Familienaam.Length - 2)).ToUpper();
 
-                    }
-                    else
-                    {
-                        // ensures that abbreviation is in uppercase
-                        person.Afkorting = person.Afkorting.ToUpper();
-                    }
+                    //}
+                    //else
+                    //{
+                    //    // ensures that abbreviation is in uppercase
+                    //    person.Afkorting = person.Afkorting.ToUpper();
+                    //}
 
                     // if email is not filled in then it creates email with First name and surname
                     if (person.Email is null || person.Email == "")
@@ -354,8 +404,8 @@ namespace BarcoDB_Admin.ViewModels
                 Person checkPerson = (Person)input;
                 //Cheks if the required fields are all filled in 
                 //If fields are empty return false
-                if (checkPerson.Voornaam is null || checkPerson.Familienaam is null || checkPerson.Functie is null || checkPerson.Wachtwoord is null || 
-                    checkPerson.Voornaam == "" || checkPerson.Familienaam == "" || checkPerson.Functie == "" || checkPerson.Wachtwoord == "")
+                if (checkPerson.Voornaam is null || checkPerson.Familienaam is null || checkPerson.Functie is null || checkPerson.Wachtwoord is null || checkPerson.Afkorting is null ||
+                    checkPerson.Voornaam == "" || checkPerson.Familienaam == "" || checkPerson.Functie == "" || checkPerson.Wachtwoord == "" || checkPerson.Afkorting == "") 
                 {
                     return false;
                 }
