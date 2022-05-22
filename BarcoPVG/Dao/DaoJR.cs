@@ -85,7 +85,6 @@ namespace BarcoPVG.Dao
         {
             // Still have to look at holidays in Belgium****
             DateTime newDate = DateTime.Now;
-            newDate = newDate.AddDays(12);
             var feestdagen = _context.PlVerletdagens.ToList();
             int fiveDays = 5;
 

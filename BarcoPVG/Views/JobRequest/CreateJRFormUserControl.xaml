@@ -152,7 +152,8 @@
                                          ScrollViewer.VerticalScrollBarVisibility="Auto"
                                          ScrollViewer.CanContentScroll="True"
                                          ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                                         HorizontalContentAlignment="Center" Width="1037" >
+                                         HorizontalContentAlignment="Center" Width="1037" 
+                                         >
                                     <ListBox.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <StackPanel Orientation="Horizontal"/>

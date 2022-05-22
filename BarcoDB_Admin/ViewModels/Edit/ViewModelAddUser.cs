@@ -1,4 +1,6 @@
-﻿using BarcoDB_Admin.Models.Db;
+﻿using BarcoDB_Admin.Models.Classes;
+using BarcoDB_Admin.Models.Db;
+using System.Windows;
 
 namespace BarcoDB_Admin.ViewModels.Edit
 {
@@ -8,7 +10,14 @@ namespace BarcoDB_Admin.ViewModels.Edit
         public ViewModelAddUser() : base()
         {
             Person = new Person();
+
+            BarcoDivisions = new BarcoDivision();
+            TestDivision = new RqTestDevision();
+
+            IsIntern = Visibility.Hidden;
         }
+
+
 
     }
 }

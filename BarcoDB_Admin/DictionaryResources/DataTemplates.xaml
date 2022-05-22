@@ -19,7 +19,7 @@
 
         <ListBoxItem BorderBrush="red" Width="180"  BorderThickness="2"  Background="LightGray" Foreground="Black">
 
-            <Grid  >
+            <Grid>
 
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -51,7 +51,8 @@
             </Grid>
 
         </ListBoxItem>
-    </DataTemplate>
+    </DataTemplate >
+
     <!--<SolidColorBrush x:Key="ResourceColor" Color="{Binding Kleur}"  /> -->
 
    

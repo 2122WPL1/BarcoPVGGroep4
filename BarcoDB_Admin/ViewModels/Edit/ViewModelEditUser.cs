@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using BarcoDB_Admin.Models.Classes;
+using System.Windows;
 
 namespace BarcoDB_Admin.ViewModels.Edit
 {
@@ -30,7 +32,25 @@ namespace BarcoDB_Admin.ViewModels.Edit
         public ViewModelEditUser(string Afkorting) : base()
         {
             Person = _daoUser.GetAllUser().FirstOrDefault(x => x.Afkorting == Afkorting); //to be able to edit the selected person in the database
+
+            if (Person.Functie == "TEST")
+            {
+                //Find Testeam
+                var afkortingTest = _daoUser.GetAllBarcoDivisionPersons()
+                    .FirstOrDefault(t => t.AfkPerson == Person.Afkorting);
+                TestDivision = _daoUser.GetAllTestTeam().FirstOrDefault(t => t.Afkorting == afkortingTest.Pvggroup);
+
+                //Find Division
+                var afkortingDiv = _daoUser.GetAllBarcoDivisionPersons().FirstOrDefault(dp => dp.AfkPerson == Person.Afkorting);
+                Division = _daoDivision.GetAllDivisions().FirstOrDefault(d => d.Afkorting == afkortingDiv.AfkDevision);
+            }
+            
+
             IsEnable1 = false;
+
+            
+                 
+            
         }
     }
 }

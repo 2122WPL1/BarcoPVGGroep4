@@ -23,6 +23,8 @@ namespace BarcoDB_Admin.Dao
             return _context.RqBarcoDivisions.ToList();
         }
 
+
+
         public void AddDivision(RqBarcoDivision div)
         {
             _context.Add(div);

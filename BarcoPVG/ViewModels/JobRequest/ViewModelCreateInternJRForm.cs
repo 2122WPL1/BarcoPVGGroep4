@@ -46,7 +46,6 @@ namespace BarcoPVG.ViewModels.JobRequest
         private void RefreshJR()
         {
             this.JR = _daoJR.GetNewJR();
-            
         }
     }
 }
