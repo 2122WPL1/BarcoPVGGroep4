@@ -25,7 +25,9 @@ namespace BarcoDB_Admin.ViewModels.DataBase
 
         public void Load()
         {
+            AllUsers = new List<Person>();
             AllUsers = _daoUser.GetAllUser();
+            OnpropertyChanged("AllUsers");
         }
 
         public void DeleteUserFromDB()
@@ -36,7 +38,6 @@ namespace BarcoDB_Admin.ViewModels.DataBase
                 {
                     _daoUser.RemoveUser(SelectedUser);
                     Load();
-                    OnpropertyChanged("AllUsers");
                 }
                 else
                 {
